@@ -1,0 +1,31 @@
+{
+  "repository": "Francesco/parasites-1s07h",
+  "revision": "02a0263ac6694c917c374fa112c4863a0cc0939b",
+  "classes": {
+    "1": "Ancylostoma Spp",
+    "2": "Ascaris Lumbricoides",
+    "3": "Enterobius Vermicularis",
+    "4": "Fasciola Hepatica",
+    "5": "Hymenolepis",
+    "6": "Schistosoma",
+    "7": "Taenia Sp",
+    "8": "Trichuris Trichiura"
+  },
+  "splits": {
+    "train": {
+      "file": "train-00000-of-00001-7e2c85bbcc1a45a2.parquet",
+      "sha256": "a3920e22ed2f60de9817cfb333c4f2da7e610195a7fe5fa9133f0463941024f1",
+      "images": 1484
+    },
+    "val": {
+      "file": "validation-00000-of-00001-e3aee1a46235b438.parquet",
+      "sha256": "8f754c3d6fef7d16a63bad328d3788154339322de2287555e3b7026f43c77657",
+      "images": 215
+    },
+    "test": {
+      "file": "test-00000-of-00001-829beee109b299d9.parquet",
+      "sha256": "5cf2a2c5ed2dd17e6eca0da44a1eb6da7d1cd774e51040c4cee1e1dd8888aee2",
+      "images": 411
+    }
+  }
+}
