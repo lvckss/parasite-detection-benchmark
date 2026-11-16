@@ -4,10 +4,10 @@ Aquí se descargan los tres Parquet de [Francesco/parasites-1s07h](https://huggi
 
 ## Descargar
 
-Desde la raíz del repo:
+Desde la raíz del repo, con el entorno activado (`source .venv/bin/activate`):
 
 ```bash
-python3 scripts/download_dataset.py
+python scripts/download_dataset.py
 ```
 
 ```text

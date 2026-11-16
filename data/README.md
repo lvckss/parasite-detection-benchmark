@@ -33,11 +33,11 @@ Conservamos estas particiones al convertir los datos.
 
 ## Generar los datos locales
 
-Desde la raíz del repo, con el entorno instalado:
+Desde la raíz del repo, con el entorno activado (`source .venv/bin/activate`):
 
 ```bash
-python3 scripts/download_dataset.py
-.venv/bin/python scripts/prepare_dataset.py
+python scripts/download_dataset.py
+python scripts/prepare_dataset.py
 ```
 
 Los archivos de datos están ignorados por Git. Los README de cada fase sí se comparten.

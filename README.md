@@ -25,13 +25,14 @@ cd parasite-detection-benchmark
 
 # 1. Crear el entorno y el kernel VISION P5
 ./scripts/setup_env.sh cpu
+source .venv/bin/activate
 
 # 2. Descargar y convertir el dataset
-python3 scripts/download_dataset.py
-.venv/bin/python scripts/prepare_dataset.py
+python scripts/download_dataset.py
+python scripts/prepare_dataset.py
 
 # 3. Abrir Jupyter
-.venv/bin/jupyter lab
+jupyter lab
 ```
 
 Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_dataset_overview.ipynb): recuentos, distribución de clases y ejemplos con sus cajas.
@@ -44,14 +45,19 @@ Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_datas
 
 El script utiliza `uv sync --locked --extra cpu` o `uv sync --locked --extra cu128`. Las versiones están en `uv.lock`; cada persona crea su propia `.venv`.
 
-Con el entorno instalado, usa `.venv/bin/python` o `uv run --no-sync` para conservar el backend elegido.
+Activa el entorno con `source .venv/bin/activate` al abrir una terminal nueva en el repo. Después puedes usar `python` y `jupyter` directamente.
 
-En Windows puedes ejecutar `uv sync --locked --extra cpu` y usar `.venv\Scripts\python.exe` directamente.
+En Windows, desde PowerShell:
+
+```powershell
+uv sync --locked --extra cpu
+.\.venv\Scripts\Activate.ps1
+```
 
 Si abres los notebooks desde un Jupyter instalado fuera de este entorno, registra también el kernel en tu usuario:
 
 ```bash
-.venv/bin/python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
+python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 ```
 
 </details>

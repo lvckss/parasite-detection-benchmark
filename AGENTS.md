@@ -4,8 +4,8 @@ Compare Faster R-CNN v2 (ResNet-50 FPN) and YOLOv10-S on `Francesco/parasites-1s
 This is an experimental university assignment. Keep changes simple and useful for the experiments.
 
 - Set up with `bash scripts/setup_env.sh cpu` or `bash scripts/setup_env.sh cu128`.
-- Use `.venv/bin/python` or `uv run --no-sync` once the environment is installed, preserving the selected backend.
-- Download with `python3 scripts/download_dataset.py`; prepare with `.venv/bin/python scripts/prepare_dataset.py`.
+- Activate the environment with `source .venv/bin/activate` in each new terminal, then use `python` and `jupyter` directly.
+- Download with `python scripts/download_dataset.py`; prepare with `python scripts/prepare_dataset.py`.
 - Keep original Hugging Face train/validation/test splits. Their pinned source is in `configs/dataset.json`.
 - Data stages: `data/raw/` contains original downloads; `data/converted/` contains extracted images and COCO/YOLO annotations with unchanged image content. `data/preprocessed/` is reserved for the team's future transformations and currently contains only its README.
 - COCO/torchvision use class IDs 1–8 (0 is background); YOLO uses 0–7. The generated `class_mapping.json` records both.
