@@ -4,7 +4,7 @@
 ![uv](https://img.shields.io/badge/dependencies-uv-DE5FE9?logo=uv&logoColor=white)
 ![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-EE4C2C?logo=pytorch&logoColor=white)
 
-**Faster R-CNN v2 vs. YOLOv10-S** sobre imágenes de microscopía de ocho especies de parásitos. Práctica de Visión por Computador.
+**Faster R-CNN v2 vs. YOLOv10-S** sobre imágenes de microscopía de ocho especies de parásitos. Práctica de Visión por Computador I.
 
 [Empezar](#empezar) · [Dataset](data/README.md) · [Exploración](notebooks/01_dataset_overview.ipynb) · [Equipo](#equipo)
 
@@ -40,29 +40,28 @@ Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_datas
 > [!TIP]
 > **¿Vas a usar una GPU NVIDIA?** Cambia `cpu` por `cu128` al crear el entorno. Necesitas un driver compatible con CUDA 12.8; puedes consultarlo con `nvidia-smi`. Elige un backend por entorno.
 
-<details>
-<summary>Comandos uv, Windows y Jupyter externo</summary>
+### Configuración del entorno
 
 El script utiliza `uv sync --locked --extra cpu` o `uv sync --locked --extra cu128`. Las versiones están en `uv.lock`; cada persona crea su propia `.venv`.
 
 Activa el entorno con `source .venv/bin/activate` al abrir una terminal nueva en el repo. Después puedes usar `python` y `jupyter` directamente.
 
-En Windows, desde PowerShell:
+#### Windows (PowerShell)
 
 ```powershell
 uv sync --locked --extra cpu
 .\.venv\Scripts\Activate.ps1
 ```
 
-Si abres los notebooks desde un Jupyter instalado fuera de este entorno, registra también el kernel en tu usuario:
+#### Jupyter externo
+
+Con el entorno activado, registra el kernel en tu usuario si vas a abrir los notebooks desde un Jupyter instalado fuera de este entorno:
 
 ```bash
 python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 ```
 
-</details>
-
-## Dónde va cada cosa
+## Estructura del repositorio
 
 | Ruta | Contenido |
 |---|---|
@@ -107,5 +106,3 @@ Codex y Claude Code comparten las reglas de [`AGENTS.md`](AGENTS.md). [`CLAUDE.m
 | Acción | Codex | Claude Code |
 |---|---|---|
 | Preparar commits, subir la rama y abrir PR | `$semantic-commits-and-push` | `/semantic-commits-and-push` |
-
-Cada experimento debe dejar su configuración, métricas y figuras. Elegimos las mejoras con validación y reservamos test para la comparación final.
