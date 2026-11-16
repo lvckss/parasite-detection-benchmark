@@ -91,6 +91,14 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 
 ## Equipo
 
+| Integrante | Correo |
+|---|---|
+| Rodrigo Boquete Ríos | [rodrigo.boquete@rai.usc.gal](mailto:rodrigo.boquete@rai.usc.gal) |
+| Alejandro Barros Monroy | [alejandro.barros0@rai.usc.gal](mailto:alejandro.barros0@rai.usc.gal) |
+| Lucas García Ruiz | [lucas.garcia0@rai.usc.es](mailto:lucas.garcia0@rai.usc.es) |
+
+### Trabajo con agentes
+
 Codex y Claude Code comparten las reglas de [`AGENTS.md`](AGENTS.md). [`CLAUDE.md`](CLAUDE.md) las importa y las skills de `.claude/` remiten a las de `.agents/`.
 
 | Acción | Codex | Claude Code |
