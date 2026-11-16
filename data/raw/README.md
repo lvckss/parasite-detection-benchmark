@@ -1,13 +1,28 @@
-# Datos originales
+# `raw/` · Originales
 
-Esta carpeta guarda los Parquet originales de `Francesco/parasites-1s07h` en `parasites-1s07h/`, junto con `source.json`, que registra su procedencia.
+Aquí se descargan los tres Parquet de [Francesco/parasites-1s07h](https://huggingface.co/datasets/Francesco/parasites-1s07h). Cada uno guarda las imágenes y sus anotaciones.
 
-Desde la raíz del repositorio:
+## Descargar
+
+Desde la raíz del repo:
 
 ```bash
 python3 scripts/download_dataset.py
 ```
 
-La revisión y los checksums están fijados en `configs/dataset.json`. El descargador reutiliza los archivos completos. Las particiones de origen contienen 1484 imágenes de entrenamiento, 215 de validación y 411 de test.
+```text
+raw/
+├── README.md
+└── parasites-1s07h/
+    ├── train-*.parquet
+    ├── validation-*.parquet
+    ├── test-*.parquet
+    └── source.json
+```
 
-Conserva estos archivos sin modificarlos. La extracción de imágenes y la conversión de anotaciones se guardan en `data/converted/`. Los Parquet y `source.json` no se suben a Git.
+La revisión y los checksums están fijados en [`configs/dataset.json`](../../configs/dataset.json). `source.json` guarda esa información junto a la descarga. Al repetir el comando, se reutilizan los archivos completos.
+
+> [!IMPORTANT]
+> Conserva estos archivos tal como se descargan. La extracción y la conversión se escriben en [`converted/`](../converted/README.md); los cambios experimentales irán en [`preprocessed/`](../preprocessed/README.md).
+
+Los Parquet y `source.json` son locales y no se suben a Git.

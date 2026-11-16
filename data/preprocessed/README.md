@@ -1,9 +1,16 @@
-# Preprocesamientos experimentales
+# `preprocessed/` · Nuestros experimentos
 
-Carpeta reservada para los preprocesamientos que diseñe e implemente el equipo. Por ahora contiene únicamente este README: no hay datos, variantes ni transformaciones implementadas.
+Aquí irán las variantes de preprocesamiento que probemos a partir de [`converted/`](../converted/README.md).
 
-Cuando se guarden aquí imágenes transformadas, deberán partir de `data/converted/`, conservar las particiones y documentar los parámetros de cada variante. Si una transformación cambia la geometría, también tendrá que ajustar las cajas.
+> [!NOTE]
+> **Pendiente.** Por ahora solo está este README. Los datos y las transformaciones los añadiremos durante la práctica.
 
-Las transformaciones que se apliquen durante la carga o el entrenamiento pueden registrarse en la configuración del experimento sin guardar otra copia del dataset.
+Cuando preparemos una variante:
 
-Los datos que se generen aquí no se suben a Git.
+- Guardamos los parámetros usados para poder repetirla.
+- Conservamos las particiones de entrenamiento, validación y test.
+- Si cambia la geometría de la imagen, ajustamos también las cajas.
+
+Si la transformación se aplica al cargar las imágenes durante el entrenamiento, basta con guardar su configuración en el experimento. No hace falta duplicar el dataset en disco.
+
+Los datos que generemos aquí están ignorados por Git.

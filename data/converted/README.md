@@ -1,22 +1,47 @@
-# Datos convertidos
+# `converted/` · Listos para cargar
 
-Esta carpeta contiene `parasites-1s07h/`, generado a partir de los Parquet de `data/raw/`:
+Extraemos las imágenes de los Parquet y escribimos las anotaciones que necesita cada detector. **Ambos modelos usan las mismas imágenes y los mismos objetos.**
+
+## Convertir
+
+Desde la raíz del repo, después de descargar los datos:
 
 ```bash
 .venv/bin/python scripts/prepare_dataset.py
 ```
 
-La conversión utiliza PyArrow para leer los Parquet y Pillow para consultar las dimensiones y el formato de las imágenes. Genera:
+El script lee los Parquet con **PyArrow** y consulta el formato y las dimensiones de las imágenes con **Pillow**. Conserva las particiones y llama `val` a `validation`.
 
-- `images/{train,val,test}/`: imágenes extraídas con nombres basados en su ID. Se guardan sus bytes originales, sin recomprimir, redimensionar ni aplicar aumentos.
-- `annotations/instances_{train,val,test}.json`: anotaciones COCO con cajas `[x, y, ancho, alto]` en píxeles y clases 1–8.
-- `labels/{train,val,test}/`: anotaciones YOLO con cajas `[centro_x, centro_y, ancho, alto]` normalizadas y clases 0–7.
-- `dataset.yaml`: rutas y clases para YOLO.
-- `class_mapping.json`: correspondencia de clases entre ambos formatos.
-- `summary.json`: recuentos de imágenes y objetos por partición y especie.
+> [!NOTE]
+> **Las imágenes mantienen sus bytes originales.** Aquí no se redimensiona, recomprime ni aplica data augmentation. Para YOLO se normalizan las coordenadas de las cajas; la imagen y el objeto señalado siguen siendo los mismos.
 
-Las dos representaciones describen los mismos objetos y comparten las mismas imágenes. Se conservan las particiones de los Parquet, nombrando `validation` como `val`.
+## Qué se genera
 
-Esta fase prepara los formatos de entrada. Los preprocesamientos experimentales que cambien las imágenes se desarrollarán por separado en `data/preprocessed/`.
+Todo queda dentro de `parasites-1s07h/`:
 
-Puedes regenerar esta carpeta con el mismo comando. Si mueves el repositorio, repítelo para actualizar las rutas de `dataset.yaml`. Los archivos generados no se suben a Git.
+| Ruta | Contenido |
+|---|---|
+| `images/{train,val,test}/` | Imágenes con nombres basados en su ID |
+| `annotations/instances_{train,val,test}.json` | Anotaciones COCO |
+| `labels/{train,val,test}/` | Un TXT de etiquetas YOLO por imagen |
+| `dataset.yaml` | Rutas y nombres de clase para YOLO |
+| `class_mapping.json` | Correspondencia de etiquetas entre modelos |
+| `summary.json` | Recuentos de imágenes y objetos por partición y especie |
+
+## Cajas y clases
+
+| | COCO / Faster R-CNN | YOLOv10-S |
+|---|---|---|
+| Caja guardada | `[x, y, ancho, alto]` | `[centro_x, centro_y, ancho, alto]` |
+| Coordenadas | Píxeles | Normalizadas entre 0 y 1 |
+| Especies | IDs **1–8** | IDs **0–7** |
+| Entrada de datos | Imágenes + JSON COCO | `dataset.yaml` |
+
+En torchvision, **0 es background**: la cabeza del detector tendrá 9 salidas para las 8 especies y el fondo. El dataset de entrenamiento deberá convertir las cajas COCO a `[x1, y1, x2, y2]` al cargarlas.
+
+La categoría general `parasites` con ID 0 de los metadatos originales no cuenta como una novena especie. La correspondencia completa está en `class_mapping.json`.
+
+> [!TIP]
+> Si mueves el repo, vuelve a ejecutar la conversión: `dataset.yaml` contiene la ruta local de las imágenes. Puedes regenerar esta carpeta con el mismo comando.
+
+Los archivos generados están ignorados por Git. Los futuros preprocesamientos se guardarán en [`preprocessed/`](../preprocessed/README.md).
