@@ -37,6 +37,8 @@ jupyter lab
 
 Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_dataset_overview.ipynb): recuentos, distribución de clases y ejemplos con sus cajas.
 
+Para preparar el baseline de Faster R-CNN, empieza por [`02_faster_rcnn_data_check.ipynb`](notebooks/02_faster_rcnn_data_check.ipynb), que verifica la carga de imágenes y anotaciones COCO. Después, [`03_faster_rcnn_baseline.ipynb`](notebooks/03_faster_rcnn_baseline.ipynb) contiene el fine-tuning, la selección por validación y la evaluación final en test. Antes, ejecuta los pasos de descarga y conversión indicados arriba.
+
 > [!TIP]
 > **¿Vas a usar una GPU NVIDIA?** Cambia `cpu` por `cu128` al crear el entorno. Necesitas un driver compatible con CUDA 12.8; puedes consultarlo con `nvidia-smi`. Elige un backend por entorno.
 
@@ -49,8 +51,14 @@ Activa el entorno con `source .venv/bin/activate` al abrir una terminal nueva en
 #### Windows (PowerShell)
 
 ```powershell
-uv sync --locked --extra cpu
+uv sync --no-editable --locked --extra cpu
 .\.venv\Scripts\Activate.ps1
+```
+
+If you run the package from outside the repository and its virtual environment, set the repository path first:
+
+```powershell
+$env:PARASITE_DETECTION_ROOT = "C:\path\to\parasite-detection-benchmark"
 ```
 
 #### Jupyter externo
