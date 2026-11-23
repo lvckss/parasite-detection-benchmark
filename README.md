@@ -27,14 +27,19 @@ cd parasite-detection-benchmark
 ./scripts/setup_env.sh cpu
 source .venv/bin/activate
 
-# 2. Descargar y convertir el dataset
+# 2. Descargar los pesos preentrenados (opcional)
+just weights  # guarda ambos modelos en models/; no se suben a Git
+
+# 3. Descargar y convertir el dataset
 python scripts/download_dataset.py
 python scripts/prepare_dataset.py
 python scripts/deduplicate_train.py  # opcional: train sin casi duplicados de val/test
 
-# 3. Abrir Jupyter
+# 4. Abrir Jupyter
 jupyter lab
 ```
+
+`just weights` descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S indicados en el guion de la práctica. Para descargar solo uno, usa `python scripts/download_weights.py --only fasterrcnn` o `--only yolo`; añade `--force` para reemplazar un archivo existente. El peso de Faster R-CNN se valida con el prefijo SHA-256 publicado en su nombre; la release de YOLO no incluye una suma de referencia en el guion.
 
 Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_dataset_overview.ipynb): recuentos, distribución de clases y ejemplos con sus cajas.
 
