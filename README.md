@@ -26,27 +26,21 @@ Necesitas [uv](https://docs.astral.sh/uv/getting-started/installation/). Desde u
 git clone https://github.com/lvckss/parasite-detection-benchmark.git
 cd parasite-detection-benchmark
 
-# 1. Crear el entorno y el kernel VISION P5
 ./scripts/setup_env.sh cpu
 source .venv/bin/activate
 
-# 2. Descargar los pesos preentrenados (opcional)
-just weights  # guarda ambos modelos en models/; no se suben a Git
+# Descargar los pesos y preparar el dataset
+just weights
+just dataset
+just prepare
 
-# 3. Descargar y convertir el dataset
-python scripts/download_dataset.py
-python scripts/prepare_dataset.py
-python scripts/deduplicate_train.py  # opcional: train sin casi duplicados de val/test
-
-# 4. Abrir Jupyter
+# Abrir los notebooks
 jupyter lab
 ```
 
 `just weights` descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S indicados en el guion de la práctica. Para descargar solo uno, usa `python scripts/download_weights.py --only fasterrcnn` o `--only yolo`; añade `--force` para reemplazar un archivo existente. El peso de Faster R-CNN se valida con el prefijo SHA-256 publicado en su nombre; la release de YOLO no incluye una suma de referencia en el guion.
 
-Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_dataset_overview.ipynb): recuentos, distribución de clases y ejemplos con sus cajas.
-
-Para preparar el baseline de Faster R-CNN, empieza por [`02_faster_rcnn_data_check.ipynb`](notebooks/02_faster_rcnn_data_check.ipynb), que verifica la carga de imágenes y anotaciones COCO. Después, [`03_faster_rcnn_baseline.ipynb`](notebooks/03_faster_rcnn_baseline.ipynb) contiene el fine-tuning, la selección por validación y la evaluación final en test. Antes, ejecuta los pasos de descarga y conversión indicados arriba.
+Con Jupyter abierto, selecciona el kernel **VISION P5** y sigue los notebooks de `notebooks/` para explorar el dataset y ejecutar los experimentos.
 
 > [!TIP]
 > **¿Vas a usar una GPU NVIDIA?** Cambia `cpu` por `cu128` al crear el entorno. Necesitas un driver compatible con CUDA 12.8; puedes consultarlo con `nvidia-smi`. Elige un backend por entorno.
@@ -107,10 +101,9 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 
 ## Clasificación visual del train deduplicado
 
-Después de preparar el dataset y generar la variante sin casi duplicados, inicia el clasificador local:
+Con la variante depurada y su ordenación visual preparadas, inicia el clasificador local:
 
 ```bash
-python scripts/deduplicate_train.py  # si todavía no existe data/preprocessed/parasites-1s07h-dedup/
 python scripts/order_train_images_by_similarity.py  # primera ejecución: requiere CUDA y descarga DINOv2
 just label
 ```

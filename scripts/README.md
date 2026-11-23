@@ -15,11 +15,11 @@ Los pesos y archivos descargados se mantienen localmente y no se incluyen en Git
 
 | Archivo | Función | Uso |
 |---|---|---|
-| [`download_dataset.py`](download_dataset.py) | Descarga los Parquet originales de Hugging Face según la revisión y los checksums fijados en `configs/dataset.json`. Los guarda en `data/raw/parasites-1s07h/`. | `python scripts/download_dataset.py` |
-| [`prepare_dataset.py`](prepare_dataset.py) | Extrae las imágenes y exporta las anotaciones a formatos COCO y YOLO en `data/converted/parasites-1s07h/`. Conserva las particiones originales. | `python scripts/prepare_dataset.py` |
+| [`download_dataset.py`](download_dataset.py) | Descarga los Parquet originales de Hugging Face según la revisión y los checksums fijados en `configs/dataset.json`. Los guarda en `data/raw/parasites-1s07h/`. | `just dataset` |
+| [`prepare_dataset.py`](prepare_dataset.py) | Extrae las imágenes y exporta las anotaciones a formatos COCO y YOLO en `data/converted/parasites-1s07h/`. Conserva las particiones originales. | `just prepare` |
 | [`deduplicate_train.py`](deduplicate_train.py) | Genera `data/preprocessed/parasites-1s07h-dedup/`, quitando del train imágenes casi duplicadas de validation o test. Mantiene validation y test y guarda el registro en `results/metrics/train_removed_near_duplicates.csv`. El umbral predeterminado es `0.90`. | `python scripts/deduplicate_train.py` |
 
-Flujo inicial: `download_dataset.py` → `prepare_dataset.py` →, si se necesita la variante depurada, `deduplicate_train.py`.
+Flujo inicial: `just dataset` → `just prepare`.
 
 ## Ordenación y etiquetado visual
 
@@ -31,14 +31,15 @@ Flujo inicial: `download_dataset.py` → `prepare_dataset.py` →, si se necesit
 
 Para cambiar los parámetros de la ordenación, consulta `python scripts/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub.
 
-## Ejemplo de preparación completa
+## Preparación y notebooks
 
 ```bash
 bash scripts/setup_env.sh cu128
 source .venv/bin/activate
-python scripts/download_dataset.py
-python scripts/prepare_dataset.py
-python scripts/deduplicate_train.py
-python scripts/order_train_images_by_similarity.py
-just label
+just weights
+just dataset
+just prepare
+jupyter lab
 ```
+
+Con Jupyter abierto, selecciona el kernel **VISION P5** y continúa con los notebooks de `notebooks/`.
