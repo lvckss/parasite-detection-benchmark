@@ -80,7 +80,7 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 | Ruta | Contenido |
 |---|---|
 | [`configs/`](configs/) | Fuente del dataset y configuración de los experimentos |
-| [`scripts/`](scripts/) | Entorno, descarga y conversión |
+| [`scripts/`](scripts/README.md) | Guía de scripts por categoría |
 | [`src/parasite_detection/`](src/parasite_detection/) | Código compartido entre notebooks |
 | [`notebooks/`](notebooks/) | Exploración y entrenamientos |
 | [`data/raw/`](data/raw/README.md) | Parquet originales |
