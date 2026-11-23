@@ -140,6 +140,11 @@ function showQuick() {
   const id = state.quickOrder[state.quickIndex]; if (!id) return;
   $('quickImage').src = `/full/${id}`; $('quickImage').alt = `Imagen ${id}`; $('quickPosition').textContent = `${state.quickIndex + 1} / ${state.quickOrder.length} · ${id}`;
   const category = state.labels[id]; $('quickLabel').textContent = category ? `Actual: ${categories.find((c) => c.key === category).label}` : 'Pendiente';
+  $('quickChoices').querySelectorAll('.choice').forEach((button) => {
+    const selected = button.dataset.category === category;
+    button.classList.toggle('chosen', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
   $('quickPrev').disabled = state.quickIndex <= 0; $('quickNext').disabled = state.quickIndex >= state.quickOrder.length - 1;
 }
 async function classifyQuick(category) {
