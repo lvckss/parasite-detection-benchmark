@@ -15,8 +15,10 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 IMAGE_DIR = ROOT / "data/preprocessed/parasites-1s07h-dedup/images/train"
 LABEL_FILE = ROOT / "results/visual-labels/train_dedup_labels.json"
+ORDER_FILE = ROOT / "results/visual-labels/dinov2_train_order.json"
 THUMB_DIR = ROOT / ".cache/visual-labels/dedup-thumbs"
 CATEGORIES = ["microscopy", "collage", "slide", "illustration", "uncertain"]
+PEOPLE = ["Alejandro", "Rodrigo", "Lucas"]
 WEB_DIR = ROOT / "scripts/visual_labeler"
 
 
@@ -26,16 +28,42 @@ def image_records() -> list[dict[str, str]]:
             f"No se encuentra el split train deduplicado: {IMAGE_DIR}\n"
             "Ejecuta antes python scripts/prepare_dataset.py y python scripts/deduplicate_train.py"
         )
-    return [
-        {"id": path.stem, "path": path.relative_to(ROOT).as_posix()}
-        for path in sorted(IMAGE_DIR.iterdir())
+    paths = {
+        path.stem: path
+        for path in IMAGE_DIR.iterdir()
         if path.is_file() and path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}
+    }
+    if not ORDER_FILE.is_file():
+        raise SystemExit(
+            f"No se encuentra la ordenación por similitud: {ORDER_FILE}\n"
+            "Ejecuta python scripts/order_train_images_by_similarity.py con CUDA disponible."
+        )
+    try:
+        manifest = json.loads(ORDER_FILE.read_text(encoding="utf-8"))
+        ordered_ids = manifest["ordered_ids"]
+        batches = manifest["batches"]
+        if len(ordered_ids) != 1157 or set(ordered_ids) != set(paths):
+            raise ValueError("La ordenación no coincide con las imágenes del train deduplicado")
+        if set(batches) != set(PEOPLE):
+            raise ValueError("El manifiesto no contiene los tres lotes esperados")
+        assigned = [image_id for person in PEOPLE for image_id in batches[person]]
+        if len(assigned) != len(paths) or set(assigned) != set(paths):
+            raise ValueError("Los lotes no cubren cada imagen exactamente una vez")
+        if [len(batches[person]) for person in PEOPLE] != [386, 386, 385]:
+            raise ValueError("Los tamaños de los lotes deben ser 386, 386 y 385")
+        Handler.batches = batches
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+        raise SystemExit(f"Manifiesto de ordenación no válido: {error}") from error
+    return [
+        {"id": image_id, "path": paths[image_id].relative_to(ROOT).as_posix()}
+        for image_id in ordered_ids
     ]
 
 
 class Handler(BaseHTTPRequestHandler):
     records: list[dict[str, str]] = []
     record_by_id: dict[str, dict[str, str]] = {}
+    batches: dict[str, list[str]] = {}
     lock = threading.Lock()
 
     def log_message(self, fmt: str, *args: object) -> None:
@@ -87,7 +115,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         route = urlparse(self.path)
         if route.path == "/api/images":
-            self.send_json({"images": self.records, "categories": CATEGORIES})
+            self.send_json({"images": self.records, "categories": CATEGORIES, "batches": self.batches})
         elif route.path == "/api/labels":
             with self.lock:
                 self.send_json({"labels": self.read_labels()})

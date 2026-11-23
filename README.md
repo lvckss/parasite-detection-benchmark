@@ -103,10 +103,11 @@ Después de preparar el dataset y generar la variante sin casi duplicados, inici
 
 ```bash
 python scripts/deduplicate_train.py  # si todavía no existe data/preprocessed/parasites-1s07h-dedup/
+python scripts/order_train_images_by_similarity.py  # primera ejecución: requiere CUDA y descarga DINOv2
 just label
 ```
 
-Se abrirá `http://127.0.0.1:8765`. Al entrar, elige tu nombre: Alejandro recibe 385 imágenes, Rodrigo 386 y Lucas 386, en tramos consecutivos sin solapamiento. La clasificación rápida empieza automáticamente y las teclas `1`–`5` asignan una categoría y avanzan; cada asignación da feedback visual y cada 50 imágenes clasificadas aparece confeti con el avance de la persona. También puedes volver a la galería para filtrar, revisar y cambiar etiquetas. El clasificador incluye solo las 1.157 imágenes de `data/preprocessed/parasites-1s07h-dedup/images/train` y no lee ni modifica cajas ni anotaciones. `Ctrl/Cmd + Z` deshace la última asignación. Los cambios se guardan automáticamente en `results/visual-labels/train_dedup_labels.json`; **Exportar JSON** descarga todas las rutas relativas estables con la categoría o `null` si siguen pendientes. Las miniaturas generadas se guardan en `.cache/visual-labels/dedup-thumbs/`.
+Se abrirá `http://127.0.0.1:8765`. La extracción usa DINOv2 ViT-S/14 y guarda los embeddings reutilizables en `.cache/visual-labels/`; el orden y reparto quedan en `results/visual-labels/dinov2_train_order.json`. Alejandro y Rodrigo reciben 386 imágenes cada uno, y Lucas 385. Los tres lotes contienen tramos de cada vecindad visual y recorren esas vecindades en el mismo orden, sin compartir imágenes. El clasificador incluye exclusivamente las 1.157 imágenes de `data/preprocessed/parasites-1s07h-dedup/images/train` y no lee ni modifica cajas ni anotaciones. La clasificación rápida y las teclas `1`–`5` asignan una categoría y avanzan; también puedes filtrar, revisar y cambiar etiquetas en la galería. `Ctrl/Cmd + Z` deshace la última asignación. Los cambios se guardan automáticamente en `results/visual-labels/train_dedup_labels.json`; **Exportar JSON** descarga las rutas relativas estables con categoría o `null` si siguen pendientes. Las miniaturas generadas se guardan en `.cache/visual-labels/dedup-thumbs/`.
 
 ## Equipo
 
