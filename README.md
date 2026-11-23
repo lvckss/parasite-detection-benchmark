@@ -58,12 +58,6 @@ uv sync --no-editable --locked --extra cpu
 .\.venv\Scripts\Activate.ps1
 ```
 
-If you run the package from outside the repository and its virtual environment, set the repository path first:
-
-```powershell
-$env:PARASITE_DETECTION_ROOT = "C:\path\to\parasite-detection-benchmark"
-```
-
 #### Jupyter externo
 
 Con el entorno activado, registra el kernel en tu usuario si vas a abrir los notebooks desde un Jupyter instalado fuera de este entorno:
