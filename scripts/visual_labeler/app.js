@@ -6,7 +6,7 @@ const categories = [
   { key: 'uncertain', label: 'Dudosa', detail: 'Revisar más tarde' },
 ];
 const people = ['Alejandro', 'Rodrigo', 'Lucas'];
-const state = { images: [], labels: {}, rater: null, filter: 'all', query: '', selected: new Set(), lastClicked: null, rendered: 0, undo: [], quickIndex: 0, quickOrder: [], classifying: false };
+const state = { images: [], batches: {}, labels: {}, rater: null, filter: 'all', query: '', selected: new Set(), lastClicked: null, rendered: 0, undo: [], quickIndex: 0, quickOrder: [], classifying: false };
 const $ = (id) => document.getElementById(id);
 const gallery = $('gallery');
 const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -15,19 +15,21 @@ const observer = new IntersectionObserver((entries) => entries.forEach((entry) =
 
 async function init() {
   const [imagesResponse, labelsResponse] = await Promise.all([fetch('/api/images'), fetch('/api/labels')]);
-  state.images = (await imagesResponse.json()).images;
+  const imageData = await imagesResponse.json();
+  state.images = imageData.images;
+  state.batches = imageData.batches;
   state.labels = (await labelsResponse.json()).labels;
   buildPeopleChoices(); buildBulkChoices();
   $('welcomeDialog').showModal();
 }
 function assignedImages(person = state.rater) {
   if (!person) return [];
-  const personIndex = people.indexOf(person), start = Math.floor(state.images.length * personIndex / people.length), end = Math.floor(state.images.length * (personIndex + 1) / people.length);
-  return state.images.slice(start, end);
+  const assigned = new Set(state.batches[person] || []);
+  return state.images.filter((image) => assigned.has(image.id));
 }
 function buildPeopleChoices() {
   $('peopleChoices').innerHTML = people.map((person, index) => {
-    const start = Math.floor(state.images.length * index / people.length), end = Math.floor(state.images.length * (index + 1) / people.length), total = end - start;
+    const total = (state.batches[person] || []).length;
     return `<button class="person-choice" data-person="${person}"><span class="person-avatar">${person[0]}</span><span class="person-choice-copy"><b>${person}</b><small>${total} imágenes asignadas</small></span><span class="person-arrow">→</span></button>`;
   }).join('');
   $('peopleChoices').querySelectorAll('[data-person]').forEach((button) => button.addEventListener('click', () => startAs(button.dataset.person)));
