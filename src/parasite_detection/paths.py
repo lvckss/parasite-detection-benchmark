@@ -31,5 +31,6 @@ ROOT = _find_project_root()
 RAW_DATA = ROOT / "data/raw/parasites-1s07h"
 DATA = ROOT / "data/converted/parasites-1s07h"
 DATASET_YAML = DATA / "dataset.yaml"
+DEDUP_DATA = ROOT / "data/preprocessed/parasites-1s07h-dedup"
 MODELS = ROOT / "models"
 RESULTS = ROOT / "results"

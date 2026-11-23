@@ -30,6 +30,7 @@ source .venv/bin/activate
 # 2. Descargar y convertir el dataset
 python scripts/download_dataset.py
 python scripts/prepare_dataset.py
+python scripts/deduplicate_train.py  # opcional: train sin casi duplicados de val/test
 
 # 3. Abrir Jupyter
 jupyter lab
@@ -79,7 +80,7 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 | [`notebooks/`](notebooks/) | Exploración y entrenamientos |
 | [`data/raw/`](data/raw/README.md) | Parquet originales |
 | [`data/converted/`](data/converted/README.md) | Imágenes extraídas y anotaciones COCO/YOLO |
-| [`data/preprocessed/`](data/preprocessed/README.md) | Reservado para nuestros preprocesamientos |
+| [`data/preprocessed/`](data/preprocessed/README.md) | Nuestras variantes, como train sin casi duplicados |
 | [`models/`](models/) | Pesos y checkpoints locales |
 | [`results/metrics/`](results/metrics/) | Métricas de los experimentos |
 | [`results/figures/`](results/figures/) | Figuras para comparar y presentar resultados |
