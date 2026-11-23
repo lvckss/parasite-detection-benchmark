@@ -97,6 +97,17 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 - [Fases, particiones y diferencia con el tar original](data/README.md)
 - [Formatos de cajas y correspondencia de clases](data/converted/README.md)
 
+## Clasificación visual del train deduplicado
+
+Después de preparar el dataset y generar la variante sin casi duplicados, inicia el clasificador local:
+
+```bash
+python scripts/deduplicate_train.py  # si todavía no existe data/preprocessed/parasites-1s07h-dedup/
+just label
+```
+
+Se abrirá `http://127.0.0.1:8765`. Al entrar, elige tu nombre: Alejandro recibe 385 imágenes, Rodrigo 386 y Lucas 386, en tramos consecutivos sin solapamiento. La clasificación rápida empieza automáticamente y las teclas `1`–`5` asignan una categoría y avanzan; cada asignación da feedback visual y cada 50 imágenes clasificadas aparece confeti con el avance de la persona. También puedes volver a la galería para filtrar, revisar y cambiar etiquetas. El clasificador incluye solo las 1.157 imágenes de `data/preprocessed/parasites-1s07h-dedup/images/train` y no lee ni modifica cajas ni anotaciones. `Ctrl/Cmd + Z` deshace la última asignación. Los cambios se guardan automáticamente en `results/visual-labels/train_dedup_labels.json`; **Exportar JSON** descarga todas las rutas relativas estables con la categoría o `null` si siguen pendientes. Las miniaturas generadas se guardan en `.cache/visual-labels/dedup-thumbs/`.
+
 ## Equipo
 
 | Integrante | Correo |
