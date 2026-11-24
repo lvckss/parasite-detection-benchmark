@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101311">
+  <title>Comparador de augmentación · Parasites</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Inicio"><span class="brand-mark">P</span><span><b>Parasite</b><small>AUGMENTATION REVIEW</small></span></a>
+    <div class="heading"><h1>Comparador de augmentación</h1><p>Imagen original y variantes generadas, con las transformaciones aplicadas.</p></div>
+  </header>
+  <main>
+    <section class="summary" aria-live="polite">
+      <div><strong id="imageCount">—</strong><span>imágenes originales</span></div>
+      <div><strong id="classifiedCount">—</strong><span>con clasificación</span></div>
+      <p>La etiqueta se relaciona por el nombre de la imagen original. Las etiquetas se actualizan desde el clasificador visual.</p>
+    </section>
+    <section class="toolbar">
+      <label class="search"><span>⌕</span><input id="search" placeholder="Buscar ID…" autocomplete="off"></label>
+      <label class="filter-label">Clasificación
+        <select id="categoryFilter"><option value="all">Todas</option></select>
+      </label>
+      <button id="refreshLabels" class="refresh-button" type="button">Actualizar etiquetas</button>
+      <span id="visibleCount"></span>
+    </section>
+    <div id="error" class="error" hidden></div>
+    <section id="gallery" class="gallery" aria-label="Imágenes originales"></section>
+    <div id="sentinel" class="sentinel"></div>
+    <div id="emptyState" class="empty" hidden>No hay imágenes con estos filtros.</div>
+  </main>
+  <dialog id="compareDialog" class="compare-dialog">
+    <div class="dialog-header">
+      <div><span class="eyebrow">COMPARACIÓN</span><h2 id="dialogTitle"></h2></div>
+      <button id="dialogClose" class="close-button" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="classification" class="classification"></div>
+    <div id="comparisonGrid" class="comparison-grid"></div>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>

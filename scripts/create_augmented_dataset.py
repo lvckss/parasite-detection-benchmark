@@ -187,6 +187,7 @@ def _apply_crop(image, boxes, specification, rng, min_visibility):
 
 def _apply_photometric(image, transformations, rng, np_rng):
     image = image.astype(np.float32)
+    applied = []
     brightness = transformations["brightness"]
     contrast = transformations["contrast"]
     apply_brightness = _selected(brightness, rng)
@@ -194,14 +195,17 @@ def _apply_photometric(image, transformations, rng, np_rng):
     if apply_brightness or apply_contrast:
         mean = image.mean(axis=(0, 1), keepdims=True)
         if apply_contrast:
+            applied.append("contrast")
             image = (image - mean) * rng.uniform(*contrast["factor"]) + mean
         if apply_brightness:
+            applied.append("brightness")
             image *= rng.uniform(*brightness["factor"])
 
     image = np.clip(image, 0, 255).astype(np.uint8)
 
     hue_saturation = transformations["hue_saturation"]
     if _selected(hue_saturation, rng):
+        applied.append("hue_saturation")
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV).astype(np.int16)
         hue_delta = rng.uniform(*hue_saturation["hue_degrees"]) / 2
         saturation_delta = rng.uniform(*hue_saturation["saturation_delta"])
@@ -211,10 +215,12 @@ def _apply_photometric(image, transformations, rng, np_rng):
 
     channel_shuffle = transformations["channel_shuffle"]
     if _selected(channel_shuffle, rng):
+        applied.append("channel_shuffle")
         image = image[:, :, np_rng.permutation(3)]
 
     gaussian_noise = transformations["gaussian_noise"]
     if _selected(gaussian_noise, rng):
+        applied.append("gaussian_noise")
         low, high = gaussian_noise["standard_deviation_fraction_of_255"]
         sigma = rng.uniform(low, high) * 255
         noise = np_rng.normal(0, sigma, size=image.shape)
@@ -224,10 +230,12 @@ def _apply_photometric(image, transformations, rng, np_rng):
     if _selected(gaussian_blur, rng):
         sigma = rng.uniform(*gaussian_blur["sigma"])
         if sigma > 0:
+            applied.append("gaussian_blur")
             image = cv2.GaussianBlur(image, (0, 0), sigma)
 
     average_blur = transformations["average_blur"]
     if _selected(average_blur, rng):
+        applied.append("average_blur")
         low, high = average_blur["kernel_size"]
         candidates = [size for size in range(int(low), int(high) + 1) if size % 2 == 1]
         if not candidates:
@@ -237,6 +245,7 @@ def _apply_photometric(image, transformations, rng, np_rng):
 
     sharpen = transformations["sharpen"]
     if _selected(sharpen, rng):
+        applied.append("sharpen")
         alpha = rng.uniform(*sharpen["alpha"])
         lightness = rng.uniform(*sharpen["lightness"])
         blurred = cv2.GaussianBlur(image, (0, 0), 3)
@@ -249,6 +258,7 @@ def _apply_photometric(image, transformations, rng, np_rng):
 
     dropout = transformations["dropout"]
     if _selected(dropout, rng):
+        applied.append("dropout")
         height, width = image.shape[:2]
         min_holes, max_holes = dropout["holes"]
         min_fraction, max_fraction = dropout["hole_size_fraction"]
@@ -260,7 +270,7 @@ def _apply_photometric(image, transformations, rng, np_rng):
             fill = np_rng.integers(0, 256, size=(1, 1, 3), dtype=np.uint8)
             image[y:y + hole_height, x:x + hole_width] = fill
 
-    return image
+    return image, applied
 
 
 def augment_image(image, boxes, config, seed):
@@ -270,6 +280,7 @@ def augment_image(image, boxes, config, seed):
     transformations = config["transformations"]
     height, width = image.shape[:2]
     min_visibility = config["output"]["min_box_visibility"]
+    applied = []
 
     selected = {}
     for name in ("horizontal_flip", "vertical_flip", "rotation", "scale", "shear"):
@@ -289,10 +300,13 @@ def augment_image(image, boxes, config, seed):
         ], dtype=np.float64)
         matrix = np.eye(3, dtype=np.float64)
         if selected["horizontal_flip"]:
+            applied.append("horizontal_flip")
             matrix = matrix @ np.diag([-1, 1, 1])
         if selected["vertical_flip"]:
+            applied.append("vertical_flip")
             matrix = matrix @ np.diag([1, -1, 1])
         if selected["rotation"]:
+            applied.append("rotation")
             angle = math.radians(rng.uniform(*transformations["rotation"]["degrees"]))
             cosine, sine = math.cos(angle), math.sin(angle)
             matrix = matrix @ np.array([
@@ -301,9 +315,11 @@ def augment_image(image, boxes, config, seed):
                 [0, 0, 1],
             ])
         if selected["scale"]:
+            applied.append("scale")
             factor = rng.uniform(*transformations["scale"]["factor"])
             matrix = matrix @ np.diag([factor, factor, 1])
         if selected["shear"]:
+            applied.append("shear")
             shear = transformations["shear"]
             shear_x = math.tan(math.radians(rng.uniform(*shear["x_degrees"])))
             shear_y = math.tan(math.radians(rng.uniform(*shear["y_degrees"])))
@@ -317,10 +333,12 @@ def augment_image(image, boxes, config, seed):
 
     crop = transformations["crop"]
     if _selected(crop, rng):
+        applied.append("crop")
         image, boxes = _apply_crop(image, boxes, crop, rng, min_visibility)
 
     perspective = transformations["perspective"]
     if _selected(perspective, rng):
+        applied.append("perspective")
         max_fraction = rng.uniform(*perspective["max_displacement_fraction"])
         corners = np.array([
             [0, 0],
@@ -338,14 +356,30 @@ def augment_image(image, boxes, config, seed):
 
     elastic = transformations["elastic"]
     if _selected(elastic, rng):
+        applied.append("elastic")
         alpha = rng.uniform(*elastic["alpha"]) if isinstance(elastic["alpha"], list) else elastic["alpha"]
         sigma = rng.uniform(*elastic["sigma"]) if isinstance(elastic["sigma"], list) else elastic["sigma"]
         image, boxes = _apply_elastic(
             image, boxes, alpha, sigma, np_rng, min_visibility
         )
 
-    image = _apply_photometric(image, transformations, rng, np_rng)
-    return image, boxes
+    image, photometric = _apply_photometric(image, transformations, rng, np_rng)
+    applied.extend(photometric)
+    return image, boxes, applied
+
+
+def _augment_variant(image, boxes, config, seed, image_id):
+    for attempt in range(config["output"]["max_attempts_per_variant"]):
+        augmented, augmented_boxes, applied = augment_image(
+            image.copy(), boxes, config, seed + attempt
+        )
+        if boxes and not augmented_boxes:
+            continue
+        return augmented, augmented_boxes, applied
+    raise ValueError(
+        f"All boxes were removed in {config['output']['max_attempts_per_variant']} "
+        f"augmentation attempts for image {image_id}."
+    )
 
 
 def _load_annotations(coco):
@@ -437,18 +471,9 @@ def _write_split(source_dir, output_dir, split, config, rng_seed):
 
         for variant in range(1, config["variants_per_image"] + 1):
             seed = rng_seed + int(image_info["id"]) * 1009 + variant
-            for attempt in range(config["output"]["max_attempts_per_variant"]):
-                augmented, augmented_boxes = augment_image(
-                    image.copy(), source_boxes, config, seed + attempt
-                )
-                if source_boxes and not augmented_boxes:
-                    continue
-                break
-            else:
-                raise ValueError(
-                    f"All boxes were removed in {config['output']['max_attempts_per_variant']} "
-                    f"augmentation attempts for image {image_info['id']}."
-                )
+            augmented, augmented_boxes, applied = _augment_variant(
+                image, source_boxes, config, seed, image_info["id"]
+            )
 
             filename = (
                 f"{Path(image_info['file_name']).stem}_aug{variant:02d}"
@@ -464,6 +489,7 @@ def _write_split(source_dir, output_dir, split, config, rng_seed):
                 "height": height,
                 "source_image_id": image_info["id"],
                 "augmentation_index": variant,
+                "applied_transforms": applied,
             })
             annotation_id = _add_coco_annotations(
                 output_annotations, next_image_id, augmented_boxes, annotation_id
@@ -610,14 +636,106 @@ def create_augmented_dataset(source_dir, output_dir, config_path):
     print(f"Augmented dataset created: {output_dir}")
 
 
+def write_transform_metadata(source_dir, output_dir, config_path):
+    source_dir = source_dir.resolve()
+    output_dir = output_dir.resolve()
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    saved_config = json.loads((output_dir / "augmentation_config.json").read_text(encoding="utf-8"))
+    if saved_config != config:
+        raise ValueError("The existing augmented dataset was created with a different config.")
+
+    source_coco = json.loads(
+        (source_dir / "annotations" / "instances_train.json").read_text(encoding="utf-8")
+    )
+    output_path = output_dir / "annotations" / "instances_train.json"
+    output_coco = json.loads(output_path.read_text(encoding="utf-8"))
+    source_images = {image["id"]: image for image in source_coco["images"]}
+    output_originals = {
+        image["id"]: image for image in output_coco["images"] if "source_image_id" not in image
+    }
+    if {
+        image_id: image["file_name"] for image_id, image in output_originals.items()
+    } != {
+        image_id: image["file_name"] for image_id, image in source_images.items()
+    }:
+        raise ValueError("The augmented originals do not match the converted training split.")
+
+    variants_by_source = defaultdict(list)
+    for image in output_coco["images"]:
+        if "source_image_id" not in image:
+            continue
+        source_id = image["source_image_id"]
+        if source_id not in source_images:
+            raise ValueError(f"Unknown source_image_id in augmented dataset: {source_id}")
+        variants_by_source[source_id].append(image)
+
+    if len(variants_by_source) != len(source_images):
+        raise ValueError("The augmented dataset does not contain variants for every training image.")
+
+    annotations_by_image = _load_annotations(source_coco)
+    total = sum(len(variants) for variants in variants_by_source.values())
+    completed = 0
+    for source_id, source_info in source_images.items():
+        variants = sorted(
+            variants_by_source[source_id], key=lambda image: image["augmentation_index"]
+        )
+        expected_indices = list(range(1, config["variants_per_image"] + 1))
+        if [image.get("augmentation_index") for image in variants] != expected_indices:
+            raise ValueError(f"Unexpected augmentation indices for source image {source_id}.")
+
+        source_path = source_dir / "images" / "train" / source_info["file_name"]
+        image = _read_image(source_path)
+        source_boxes = _to_box_records(annotations_by_image[source_id])
+        for variant in variants:
+            expected_name = (
+                f"{Path(source_info['file_name']).stem}_aug"
+                f"{variant['augmentation_index']:02d}{Path(source_info['file_name']).suffix}"
+            )
+            if variant["file_name"] != expected_name:
+                raise ValueError(f"Unexpected augmented filename: {variant['file_name']}")
+            augmented_path = output_dir / "images" / "train" / variant["file_name"]
+            if not augmented_path.is_file():
+                raise FileNotFoundError(f"Augmented image is missing: {augmented_path}")
+
+            seed = (
+                config["seed"]
+                + int(source_id) * 1009
+                + variant["augmentation_index"]
+            )
+            _, _, applied = _augment_variant(image, source_boxes, config, seed, source_id)
+            variant["applied_transforms"] = applied
+            completed += 1
+            if completed % 250 == 0 or completed == total:
+                print(f"Transform metadata: {completed}/{total}", flush=True)
+
+    temporary_path = output_path.with_suffix(".json.tmp")
+    try:
+        temporary_path.write_text(
+            json.dumps(output_coco, indent=2) + "\n", encoding="utf-8"
+        )
+        temporary_path.replace(output_path)
+    finally:
+        if temporary_path.exists():
+            temporary_path.unlink()
+    print(f"Transform metadata saved to {output_path}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-dir", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument(
+        "--write-transform-metadata",
+        action="store_true",
+        help="Add actual transform names to an existing augmented dataset without rewriting images.",
+    )
     args = parser.parse_args()
     try:
-        create_augmented_dataset(args.source_dir, args.output_dir, args.config)
+        if args.write_transform_metadata:
+            write_transform_metadata(args.source_dir, args.output_dir, args.config)
+        else:
+            create_augmented_dataset(args.source_dir, args.output_dir, args.config)
     except (OSError, ValueError, ImportError, KeyError) as error:
         parser.exit(1, f"Dataset generation failed: {error}\n")
 

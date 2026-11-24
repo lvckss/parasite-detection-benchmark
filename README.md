@@ -88,10 +88,40 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 
 Usamos los **splits Parquet de Hugging Face**: 1484 imágenes de entrenamiento, 215 de validación y 411 de test. La descarga es pública y tiene revisión y checksums fijados en [`configs/dataset.json`](configs/dataset.json).
 
-La conversión conserva las imágenes originales y genera ambos formatos de anotaciones. El preprocesamiento experimental lo haremos después.
+La conversión conserva las imágenes originales y genera ambos formatos de anotaciones. Las variantes experimentales de preprocesamiento se guardan por separado en `data/preprocessed/`.
 
 - [Fases, particiones y diferencia con el tar original](data/README.md)
 - [Formatos de cajas y correspondencia de clases](data/converted/README.md)
+
+## Clasificación visual y comparación de augmentación
+
+La clasificación visual manual describe el **tipo de imagen** (`microscopy`, `collage`, `slide`, `illustration` o `uncertain`); no sustituye a las clases de parásitos ni a las cajas COCO/YOLO. Las etiquetas se guardan localmente en `results/visual-labels/train_dedup_labels.json`.
+
+El comparador muestra cada original junto a sus variantes, las transformaciones que realmente se aplicaron y la etiqueta visual cuando existe. Las variantes heredan la etiqueta de su imagen original para esta visualización; las imágenes aún no clasificadas aparecen como **Sin clasificar**. Para abrirlo en Windows PowerShell desde la raíz del repositorio:
+
+```powershell
+& "$env:LOCALAPPDATA\parasite-detection-benchmark\.venv\Scripts\python.exe" scripts\labeling\compare_train_augmentations.py
+```
+
+La web se abre en `http://127.0.0.1:8766`. Si se añaden etiquetas desde el clasificador mientras está abierta, pulsa **Actualizar etiquetas**. Para iniciar o continuar la clasificación, usa `python scripts/labeling/classify_train_images.py`.
+
+El dataset `data/preprocessed/parasites-1s07h-augmented/` contiene los originales y tres variantes por imagen de train. Validación y test conservan las imágenes originales. El detalle de las transformaciones de cada variante está en `annotations/instances_train.json`. Si se genera el dataset sin ese detalle, puede reconstruirse sin volver a escribir los JPEG:
+
+```powershell
+python scripts\create_augmented_dataset.py --write-transform-metadata
+```
+
+## Segundo entrenamiento con augmentación
+
+Sí: Faster R-CNN puede entrenarse con la variante aumentada y guardar una ejecución separada:
+
+```powershell
+python scripts\training\train_faster_rcnn.py `
+  --data-dir data\preprocessed\parasites-1s07h-augmented `
+  --run-name fasterrcnn_v2_augmented
+```
+
+Para comparar el efecto de la augmentación, mantén los mismos parámetros de entrenamiento que en el baseline y evalúa ambos modelos en la misma validación y el mismo test sin augmentar. La clasificación visual manual es independiente: no hace falta esperar a que Alejandro etiquete para entrenar con todo el dataset aumentado, porque las variantes ya tienen sus cajas de detección. Si se quiere entrenar solo con una categoría visual (por ejemplo, `microscopy`), primero hay que definir ese criterio y clasificar todas las imágenes originales que se quieran incluir; las etiquetas actuales solo cubren el train deduplicado.
 
 ## Equipo
 

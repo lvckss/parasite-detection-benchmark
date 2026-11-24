@@ -15,7 +15,9 @@ scripts/
 ├── labeling/
 │   ├── order_train_images_by_similarity.py
 │   ├── classify_train_images.py
-│   └── visual_labeler/
+│   ├── compare_train_augmentations.py
+│   ├── visual_labeler/
+│   └── augmentation_viewer/
 └── training/
     └── train_faster_rcnn.py
 ```
@@ -80,6 +82,17 @@ Flujo inicial: `just dataset` → `just prepare`.
 | [`order_train_images_by_similarity.py`](labeling/order_train_images_by_similarity.py) | Extrae embeddings DINOv2 ViT-S/14 del train depurado, calcula un recorrido por similitud visual y lo reparte entre Alejandro, Rodrigo y Lucas. Requiere exactamente las 1.157 imágenes depuradas; usa CUDA por defecto. Guarda los embeddings en `.cache/visual-labels/` y el orden y lotes en `results/visual-labels/dinov2_train_order.json`. | `python scripts/labeling/order_train_images_by_similarity.py` |
 | [`classify_train_images.py`](labeling/classify_train_images.py) | Inicia el servidor local de la herramienta de etiquetado. Lee únicamente las imágenes del train depurado y requiere que exista el manifiesto de ordenación. | `just label` |
 | [`visual_labeler/`](labeling/visual_labeler/) | Contiene la página, la lógica de interacción y los estilos que sirve el clasificador. No se ejecutan directamente. | Se cargan al iniciar `classify_train_images.py`. |
+| [`compare_train_augmentations.py`](labeling/compare_train_augmentations.py) | Inicia una web de solo lectura para comparar cada imagen original con sus variantes aumentadas. Muestra las etiquetas visuales clasificadas y las transformaciones aplicadas a cada variante. | `python scripts/labeling/compare_train_augmentations.py` |
+| [`augmentation_viewer/`](labeling/augmentation_viewer/) | Interfaz de comparación de originales y variantes aumentadas; no se ejecuta directamente. | Se carga al iniciar `compare_train_augmentations.py`. |
+
+Para registrar las transformaciones aplicadas en un dataset aumentado ya generado, actualiza sus metadatos COCO sin volver a escribir las imágenes:
+
+```bash
+python scripts/create_augmented_dataset.py --write-transform-metadata
+python scripts/labeling/compare_train_augmentations.py
+```
+
+La web enlaza las etiquetas de `results/visual-labels/train_dedup_labels.json` por el nombre del original; las imágenes sin etiqueta aparecen como **Sin clasificar**. Si cambias etiquetas mientras está abierta, pulsa **Actualizar etiquetas**. El comparador es de solo lectura y no modifica las clasificaciones.
 
 Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub.
 
