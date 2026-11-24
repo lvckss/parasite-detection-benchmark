@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""Local browser tool for visual classification of deduplicated training images."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import mimetypes
+import threading
+import webbrowser
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import unquote, urlparse
+
+# las rutas de datos y resultados se resuelven desde la raíz del proyecto
+ROOT = Path(__file__).resolve().parents[2]
+IMAGE_DIR = ROOT / "data/preprocessed/parasites-1s07h-dedup/images/train"
+LABEL_FILE = ROOT / "results/visual-labels/train_dedup_labels.json"
+ORDER_FILE = ROOT / "results/visual-labels/dinov2_train_order.json"
+THUMB_DIR = ROOT / ".cache/visual-labels/dedup-thumbs"
+CATEGORIES = ["microscopy", "collage", "slide", "illustration", "uncertain"]
+PEOPLE = ["Alejandro", "Rodrigo", "Lucas"]
+# los archivos de la interfaz están junto al servidor
+WEB_DIR = Path(__file__).resolve().parent / "visual_labeler"
+
+
+def image_records() -> list[dict[str, str]]:
+    # usamos las imágenes del train depurado para construir la galería
+    if not IMAGE_DIR.is_dir():
+        raise SystemExit(
+            f"No se encuentra el split train deduplicado: {IMAGE_DIR}\n"
+            "Ejecuta antes python scripts/data/prepare_dataset.py y python scripts/data/deduplicate_train.py"
+        )
+    paths = {
+        path.stem: path
+        for path in IMAGE_DIR.iterdir()
+        if path.is_file() and path.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}
+    }
+    # la galería sigue la ordenación visual generada previamente
+    if not ORDER_FILE.is_file():
+        raise SystemExit(
+            f"No se encuentra la ordenación por similitud: {ORDER_FILE}\n"
+            "Ejecuta python scripts/labeling/order_train_images_by_similarity.py con CUDA disponible."
+        )
+    try:
+        manifest = json.loads(ORDER_FILE.read_text(encoding="utf-8"))
+        ordered_ids = manifest["ordered_ids"]
+        batches = manifest["batches"]
+        # comprobamos que el manifiesto coincide con las imágenes disponibles
+        if len(ordered_ids) != 1157 or set(ordered_ids) != set(paths):
+            raise ValueError("La ordenación no coincide con las imágenes del train deduplicado")
+        if set(batches) != set(PEOPLE):
+            raise ValueError("El manifiesto no contiene los tres lotes esperados")
+        # verificamos que el reparto cubra todas las imágenes una sola vez
+        assigned = [image_id for person in PEOPLE for image_id in batches[person]]
+        if len(assigned) != len(paths) or set(assigned) != set(paths):
+            raise ValueError("Los lotes no cubren cada imagen exactamente una vez")
+        if [len(batches[person]) for person in PEOPLE] != [386, 386, 385]:
+            raise ValueError("Los tamaños de los lotes deben ser 386, 386 y 385")
+        Handler.batches = batches
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+        raise SystemExit(f"Manifiesto de ordenación no válido: {error}") from error
+    # las rutas relativas permiten exportar las etiquetas sin depender de esta máquina
+    return [
+        {"id": image_id, "path": paths[image_id].relative_to(ROOT).as_posix()}
+        for image_id in ordered_ids
+    ]
+
+
+class Handler(BaseHTTPRequestHandler):
+    # compartimos los registros y protegemos los cambios con un bloqueo
+    records: list[dict[str, str]] = []
+    record_by_id: dict[str, dict[str, str]] = {}
+    batches: dict[str, list[str]] = {}
+    lock = threading.Lock()
+
+    def log_message(self, fmt: str, *args: object) -> None:
+        print(f"[{self.log_date_time_string()}] {fmt % args}")
+
+    def send_json(self, payload: object, status: int = 200) -> None:
+        # codificamos las respuestas de la api como json
+        data = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
+    def read_labels(self) -> dict[str, str]:
+        # recuperamos las etiquetas válidas que ya estaban guardadas
+        if LABEL_FILE.exists():
+            try:
+                raw = json.loads(LABEL_FILE.read_text(encoding="utf-8"))
+                labels = raw.get("labels", {})
+                if isinstance(labels, dict):
+                    return {
+                        image_id: category
+                        for image_id, category in labels.items()
+                        if image_id in self.record_by_id and category in CATEGORIES
+                    }
+            except (OSError, json.JSONDecodeError, AttributeError):
+                pass
+        return {}
+
+    def write_labels(self, labels: dict[str, str]) -> None:
+        # incluimos también las imágenes pendientes en la exportación
+        LABEL_FILE.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "dataset": "Francesco/parasites-1s07h",
+            "variant": "deduplicated",
+            "split": "train",
+            "categories": CATEGORIES,
+            "images": len(self.records),
+            "classified": len(labels),
+            "labels": labels,
+            "items": [
+                {**record, "category": labels.get(record["id"])}
+                for record in self.records
+            ],
+        }
+        # escribimos un temporal antes de reemplazar el archivo de etiquetas
+        temporary = LABEL_FILE.with_suffix(".json.tmp")
+        temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temporary.replace(LABEL_FILE)
+
+    def do_GET(self) -> None:
+        # cada ruta devuelve los datos de la galería o un archivo de la interfaz
+        route = urlparse(self.path)
+        if route.path == "/api/images":
+            self.send_json({"images": self.records, "categories": CATEGORIES, "batches": self.batches})
+        elif route.path == "/api/labels":
+            with self.lock:
+                self.send_json({"labels": self.read_labels()})
+        elif route.path.startswith("/image/"):
+            self.serve_image(route.path.removeprefix("/image/"), thumbnail=True)
+        elif route.path.startswith("/full/"):
+            self.serve_image(route.path.removeprefix("/full/"), thumbnail=False)
+        else:
+            name = "index.html" if route.path in {"/", "/index.html"} else route.path.lstrip("/")
+            # comprobamos que el archivo solicitado pertenece a la carpeta de la interfaz
+            candidate = (WEB_DIR / unquote(name)).resolve()
+            if WEB_DIR.resolve() not in candidate.parents or not candidate.is_file():
+                self.send_error(404)
+                return
+            data = candidate.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", mimetypes.guess_type(candidate.name)[0] or "application/octet-stream")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+
+    def serve_image(self, image_id: str, thumbnail: bool) -> None:
+        # buscamos la imagen por su identificador antes de acceder al disco
+        record = self.record_by_id.get(image_id)
+        if not record:
+            self.send_error(404)
+            return
+        path = ROOT / record["path"]
+        # las miniaturas se generan una vez y se reutilizan mientras la imagen siga igual
+        if thumbnail:
+            THUMB_DIR.mkdir(parents=True, exist_ok=True)
+            cached = THUMB_DIR / f"{image_id}.jpg"
+            if not cached.exists() or cached.stat().st_mtime < path.stat().st_mtime:
+                try:
+                    from PIL import Image, ImageOps
+
+                    with Image.open(path) as source:
+                        image = ImageOps.exif_transpose(source).convert("RGB")
+                        image.thumbnail((480, 360), Image.Resampling.LANCZOS)
+                        image.save(cached, "JPEG", quality=82, optimize=True)
+                except ImportError:
+                    cached = path
+            path = cached
+        if not path.is_file():
+            self.send_error(404)
+            return
+        self.send_response(200)
+        self.send_header("Content-Type", mimetypes.guess_type(path.name)[0] or "image/jpeg")
+        self.send_header("Content-Length", str(path.stat().st_size))
+        self.send_header("Cache-Control", "public, max-age=86400")
+        self.end_headers()
+        # enviamos el archivo por bloques para limitar el uso de memoria
+        with path.open("rb") as image:
+            while chunk := image.read(128 * 1024):
+                self.wfile.write(chunk)
+
+    def do_POST(self) -> None:
+        # aceptamos cambios de etiquetas únicamente en la ruta de guardado
+        if urlparse(self.path).path != "/api/labels":
+            self.send_error(404)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            body = json.loads(self.rfile.read(length))
+            changes = body["changes"]
+            # cada cambio debe referirse a una imagen y una categoría conocidas
+            if not isinstance(changes, dict) or any(
+                image_id not in self.record_by_id or (category is not None and category not in CATEGORIES)
+                for image_id, category in changes.items()
+            ):
+                raise ValueError("Etiquetas o imágenes no válidas")
+        except (ValueError, KeyError, json.JSONDecodeError, TypeError):
+            self.send_json({"error": "Solicitud de etiquetas no válida"}, 400)
+            return
+        # el bloqueo evita que dos peticiones de guardado se pisen
+        with self.lock:
+            labels = self.read_labels()
+            for image_id, category in changes.items():
+                if category is None:
+                    labels.pop(image_id, None)
+                else:
+                    labels[image_id] = category
+            self.write_labels(labels)
+            self.send_json({"ok": True, "classified": len(labels)})
+
+
+def main() -> None:
+    # elegimos la dirección y el puerto del servidor local
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--host", default="127.0.0.1", help="Dirección local (por defecto 127.0.0.1)")
+    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--no-browser", action="store_true", help="No abrir el navegador automáticamente")
+    args = parser.parse_args()
+
+    # cargamos las imágenes y preparamos una búsqueda rápida por identificador
+    Handler.records = image_records()
+    Handler.record_by_id = {record["id"]: record for record in Handler.records}
+    server = ThreadingHTTPServer((args.host, args.port), Handler)
+    url = f"http://{args.host}:{args.port}"
+    print(f"Clasificador listo: {url}")
+    print(f"Imágenes train: {len(Handler.records)} | Etiquetas: {LABEL_FILE.relative_to(ROOT)}")
+    print("Pulsa Ctrl+C para detenerlo.")
+    # abrimos el navegador cuando el servidor ya está preparado para escuchar
+    if not args.no_browser:
+        threading.Timer(0.5, webbrowser.open, args=(url,)).start()
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServidor detenido.")
+    finally:
+        # liberamos el puerto al detener el servidor
+        server.server_close()
+
+
+if __name__ == "__main__":
+    main()

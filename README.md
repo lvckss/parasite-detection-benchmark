@@ -4,6 +4,9 @@
 ![uv](https://img.shields.io/badge/dependencies-uv-DE5FE9?logo=uv&logoColor=white)
 ![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-EE4C2C?logo=pytorch&logoColor=white)
 
+> [!NOTE]
+> **Uso de herramientas de IA.** Codex y Claude Code se utilizan como apoyo para organizar el repositorio, configurar el entorno y mantener scripts auxiliares de descarga y conversión de datos. El equipo diseña e implementa manualmente la lógica de preprocesamiento y el pipeline experimental, con razonamiento propio y decisiones justificadas a partir de las hipótesis planteadas y los resultados obtenidos.
+
 **Faster R-CNN v2 vs. YOLOv10-S** sobre imágenes de microscopía de ocho especies de parásitos. Práctica de Visión por Computador I.
 
 [Empezar](#empezar) · [Dataset](data/README.md) · [Exploración](notebooks/01_dataset_overview.ipynb) · [Equipo](#equipo)
@@ -11,7 +14,7 @@
 | Detector | Arquitectura | Implementación |
 |---|---|---|
 | Faster R-CNN v2 | Two-stage · ResNet-50 + FPN | `torchvision.models.detection.fasterrcnn_resnet50_fpn_v2` |
-| YOLOv10-S | One-stage · variante Small | `ultralytics.YOLO("yolov10s.pt")` |
+| YOLOv10-S | One-stage · variante Small | `ultralytics.YOLO("models/pretrained/yolov10s.pt")` |
 
 Ambos parten de pesos preentrenados en COCO. El dataset es [Francesco/parasites-1s07h](https://huggingface.co/datasets/Francesco/parasites-1s07h), de Roboflow-100.
 
@@ -23,21 +26,21 @@ Necesitas [uv](https://docs.astral.sh/uv/getting-started/installation/). Desde u
 git clone https://github.com/lvckss/parasite-detection-benchmark.git
 cd parasite-detection-benchmark
 
-# 1. Crear el entorno y el kernel VISION P5
-./scripts/setup_env.sh cpu
+./scripts/environment/setup_env.sh cpu
 source .venv/bin/activate
 
-# 2. Descargar y convertir el dataset
-python scripts/download_dataset.py
-python scripts/prepare_dataset.py
+# Descargar los pesos y preparar el dataset
+just weights
+just dataset
+just prepare
 
-# 3. Abrir Jupyter
+# Abrir los notebooks
 jupyter lab
 ```
 
-Selecciona **VISION P5** y abre [`01_dataset_overview.ipynb`](notebooks/01_dataset_overview.ipynb): recuentos, distribución de clases y ejemplos con sus cajas.
+`just weights` descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S indicados en el guion de la práctica. Para descargar solo uno, usa `python scripts/models/download_weights.py --only fasterrcnn` o `--only yolo`; añade `--force` para reemplazar un archivo existente. El peso de Faster R-CNN se valida con el prefijo SHA-256 publicado en su nombre; la release de YOLO no incluye una suma de referencia en el guion.
 
-Para preparar el baseline de Faster R-CNN, empieza por [`02_faster_rcnn_data_check.ipynb`](notebooks/02_faster_rcnn_data_check.ipynb), que verifica la carga de imágenes y anotaciones COCO. Después, [`03_faster_rcnn_baseline.ipynb`](notebooks/03_faster_rcnn_baseline.ipynb) contiene el fine-tuning, la selección por validación y la evaluación final en test. Antes, ejecuta los pasos de descarga y conversión indicados arriba.
+Con Jupyter abierto, selecciona el kernel **VISION P5** y sigue los notebooks de `notebooks/` para explorar el dataset y ejecutar los experimentos.
 
 > [!TIP]
 > **¿Vas a usar una GPU NVIDIA?** Cambia `cpu` por `cu128` al crear el entorno. Necesitas un driver compatible con CUDA 12.8; puedes consultarlo con `nvidia-smi`. Elige un backend por entorno.
@@ -55,12 +58,6 @@ uv sync --no-editable --locked --extra cpu
 .\.venv\Scripts\Activate.ps1
 ```
 
-If you run the package from outside the repository and its virtual environment, set the repository path first:
-
-```powershell
-$env:PARASITE_DETECTION_ROOT = "C:\path\to\parasite-detection-benchmark"
-```
-
 #### Jupyter externo
 
 Con el entorno activado, registra el kernel en tu usuario si vas a abrir los notebooks desde un Jupyter instalado fuera de este entorno:
@@ -74,12 +71,12 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 | Ruta | Contenido |
 |---|---|
 | [`configs/`](configs/) | Fuente del dataset y configuración de los experimentos |
-| [`scripts/`](scripts/) | Entorno, descarga y conversión |
+| [`scripts/`](scripts/README.md) | Guía de scripts por categoría |
 | [`src/parasite_detection/`](src/parasite_detection/) | Código compartido entre notebooks |
 | [`notebooks/`](notebooks/) | Exploración y entrenamientos |
 | [`data/raw/`](data/raw/README.md) | Parquet originales |
 | [`data/converted/`](data/converted/README.md) | Imágenes extraídas y anotaciones COCO/YOLO |
-| [`data/preprocessed/`](data/preprocessed/README.md) | Reservado para nuestros preprocesamientos |
+| [`data/preprocessed/`](data/preprocessed/README.md) | Nuestras variantes, como train sin casi duplicados |
 | [`models/`](models/) | Pesos y checkpoints locales |
 | [`results/metrics/`](results/metrics/) | Métricas de los experimentos |
 | [`results/figures/`](results/figures/) | Figuras para comparar y presentar resultados |
@@ -105,9 +102,6 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 | Lucas García Ruiz | [lucas.garcia0@rai.usc.es](mailto:lucas.garcia0@rai.usc.es) |
 
 ### Trabajo con agentes
-
-> [!NOTE]
-> **Uso de herramientas de IA.** Codex y Claude Code se utilizan como apoyo para organizar el repositorio, configurar el entorno y mantener scripts auxiliares de descarga y conversión de datos. El equipo diseña e implementa manualmente la lógica de preprocesamiento y el pipeline experimental, con razonamiento propio y decisiones justificadas a partir de las hipótesis planteadas y los resultados obtenidos.
 
 Codex y Claude Code comparten las reglas de [`AGENTS.md`](AGENTS.md). [`CLAUDE.md`](CLAUDE.md) las importa y las skills de `.claude/` remiten a las de `.agents/`.
 
