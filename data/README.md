@@ -36,8 +36,8 @@ Conservamos estas particiones al convertir los datos.
 Desde la raíz del repo, con el entorno activado (`source .venv/bin/activate`):
 
 ```bash
-python scripts/download_dataset.py
-python scripts/prepare_dataset.py
+python scripts/data/download_dataset.py
+python scripts/data/prepare_dataset.py
 ```
 
 Los archivos de datos están ignorados por Git. Los README de cada fase sí se comparten.

@@ -1,17 +1,17 @@
 set shell := ["bash", "-cu"]
 
-# Inicia el clasificador visual local del split train.
+# inicia el clasificador visual local del conjunto de entrenamiento
 label:
-    python scripts/classify_train_images.py
+    python scripts/labeling/classify_train_images.py
 
-# Descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S.
+# descarga los pesos preentrenados de faster rcnn y yolo
 weights:
-    python scripts/download_weights.py
+    python scripts/models/download_weights.py
 
-# Descarga los splits originales del dataset desde Hugging Face.
+# descarga las particiones originales del dataset desde hugging face
 dataset:
-    python scripts/download_dataset.py
+    python scripts/data/download_dataset.py
 
-# Convierte el dataset descargado a imágenes y anotaciones COCO/YOLO.
+# convierte el dataset descargado a imágenes y anotaciones coco y yolo
 prepare:
-    python scripts/prepare_dataset.py
+    python scripts/data/prepare_dataset.py

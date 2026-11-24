@@ -7,7 +7,7 @@ Extraemos las imágenes de los Parquet y escribimos las anotaciones que necesita
 Desde la raíz del repo, con el entorno activado (`source .venv/bin/activate`) y los datos descargados:
 
 ```bash
-python scripts/prepare_dataset.py
+python scripts/data/prepare_dataset.py
 ```
 
 El script lee los Parquet con **PyArrow** y consulta el formato y las dimensiones de las imágenes con **Pillow**. Conserva las particiones y llama `val` a `validation`.

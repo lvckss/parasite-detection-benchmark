@@ -11,8 +11,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-MODEL_DIR = ROOT / "models"
+# buscamos la raíz desde la nueva carpeta de modelos
+ROOT = Path(__file__).resolve().parents[2]
+MODEL_DIR = ROOT / "models/pretrained"
+# cada modelo tiene su archivo y su dirección oficial de descarga
 WEIGHTS = {
     "fasterrcnn": {
         "filename": "fasterrcnn_resnet50_fpn_v2_coco-dd69338a.pth",
@@ -25,13 +27,21 @@ WEIGHTS = {
         "sha256_prefix": None,
     },
 }
+# descargamos en bloques de un mebibyte para limitar el uso de memoria
 CHUNK_SIZE = 1024 * 1024
 
 
 def download(name: str, force: bool = False) -> bool:
+    # preparamos el destino y el archivo parcial antes de iniciar la descarga
     weight = WEIGHTS[name]
     destination = MODEL_DIR / weight["filename"]
     partial = destination.with_suffix(destination.suffix + ".part")
+    # movemos los pesos descargados con la estructura anterior
+    previous_path = ROOT / "models" / weight["filename"]
+    if not destination.exists() and previous_path.is_file():
+        MODEL_DIR.mkdir(parents=True, exist_ok=True)
+        previous_path.rename(destination)
+    # evitamos repetir una descarga salvo que se pida reemplazar los pesos
     if destination.is_file() and not force:
         print(f"Ya existe: {destination.relative_to(ROOT)} (usa --force para reemplazarlo)")
         return True
@@ -41,6 +51,7 @@ def download(name: str, force: bool = False) -> bool:
         weight["url"],
         headers={"User-Agent": "parasite-detection-benchmark/1.0"},
     )
+    # calculamos la suma de comprobación mientras recibimos el contenido
     digest = hashlib.sha256()
     received = 0
     started = time.monotonic()
@@ -49,11 +60,13 @@ def download(name: str, force: bool = False) -> bool:
     try:
         with urllib.request.urlopen(request, timeout=60) as response, partial.open("wb") as output:
             total = int(response.headers.get("Content-Length", "0"))
+            # escribimos cada bloque directamente en disco
             while chunk := response.read(CHUNK_SIZE):
                 output.write(chunk)
                 digest.update(chunk)
                 received += len(chunk)
                 now = time.monotonic()
+                # actualizamos el progreso una vez por segundo
                 if now - last_update >= 1.0:
                     if total:
                         progress = received / total * 100
@@ -64,6 +77,7 @@ def download(name: str, force: bool = False) -> bool:
     except (OSError, urllib.error.URLError, TimeoutError) as error:
         raise SystemExit(f"Error al descargar {name}: {error}\nEl archivo parcial queda en {partial}") from error
 
+    # comprobamos que el archivo tenga contenido y que la descarga esté completa
     if received == 0:
         partial.unlink(missing_ok=True)
         raise SystemExit(f"La descarga de {name} está vacía.")
@@ -72,6 +86,7 @@ def download(name: str, force: bool = False) -> bool:
 
     actual_sha256 = digest.hexdigest()
     expected_prefix = weight["sha256_prefix"]
+    # el nombre publicado de faster rcnn incluye el prefijo de su suma de comprobación
     if expected_prefix and not actual_sha256.startswith(expected_prefix):
         partial.unlink(missing_ok=True)
         raise SystemExit(
@@ -79,6 +94,7 @@ def download(name: str, force: bool = False) -> bool:
             f"se obtuvo {actual_sha256[:8]}. Se eliminó el archivo descargado."
         )
 
+    # el archivo pasa a su nombre definitivo después de las comprobaciones
     partial.replace(destination)
     elapsed = time.monotonic() - started
     print(f"\nGuardado: {destination.relative_to(ROOT)} ({received / 1024**2:.1f} MiB, {elapsed:.1f} s)")
@@ -88,6 +104,7 @@ def download(name: str, force: bool = False) -> bool:
 
 
 def main() -> None:
+    # podemos descargar ambos modelos o seleccionar uno desde la terminal
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--only",
@@ -99,9 +116,9 @@ def main() -> None:
     selected = [args.only] if args.only else list(WEIGHTS)
     already_downloaded = [download(name, force=args.force) for name in selected]
     if all(already_downloaded):
-        print("\nLos pesos ya están descargados en models/.")
+        print("\nLos pesos ya están descargados en models/pretrained/.")
     else:
-        print("\nListo, los pesos están en models/.")
+        print("\nListo, los pesos están en models/pretrained/.")
 
 
 if __name__ == "__main__":

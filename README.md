@@ -14,7 +14,7 @@
 | Detector | Arquitectura | Implementación |
 |---|---|---|
 | Faster R-CNN v2 | Two-stage · ResNet-50 + FPN | `torchvision.models.detection.fasterrcnn_resnet50_fpn_v2` |
-| YOLOv10-S | One-stage · variante Small | `ultralytics.YOLO("yolov10s.pt")` |
+| YOLOv10-S | One-stage · variante Small | `ultralytics.YOLO("models/pretrained/yolov10s.pt")` |
 
 Ambos parten de pesos preentrenados en COCO. El dataset es [Francesco/parasites-1s07h](https://huggingface.co/datasets/Francesco/parasites-1s07h), de Roboflow-100.
 
@@ -26,7 +26,7 @@ Necesitas [uv](https://docs.astral.sh/uv/getting-started/installation/). Desde u
 git clone https://github.com/lvckss/parasite-detection-benchmark.git
 cd parasite-detection-benchmark
 
-./scripts/setup_env.sh cpu
+./scripts/environment/setup_env.sh cpu
 source .venv/bin/activate
 
 # Descargar los pesos y preparar el dataset
@@ -38,7 +38,7 @@ just prepare
 jupyter lab
 ```
 
-`just weights` descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S indicados en el guion de la práctica. Para descargar solo uno, usa `python scripts/download_weights.py --only fasterrcnn` o `--only yolo`; añade `--force` para reemplazar un archivo existente. El peso de Faster R-CNN se valida con el prefijo SHA-256 publicado en su nombre; la release de YOLO no incluye una suma de referencia en el guion.
+`just weights` descarga los pesos COCO de Faster R-CNN v2 y YOLOv10-S indicados en el guion de la práctica. Para descargar solo uno, usa `python scripts/models/download_weights.py --only fasterrcnn` o `--only yolo`; añade `--force` para reemplazar un archivo existente. El peso de Faster R-CNN se valida con el prefijo SHA-256 publicado en su nombre; la release de YOLO no incluye una suma de referencia en el guion.
 
 Con Jupyter abierto, selecciona el kernel **VISION P5** y sigue los notebooks de `notebooks/` para explorar el dataset y ejecutar los experimentos.
 
