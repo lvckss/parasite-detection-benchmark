@@ -1,0 +1,18 @@
+{
+  "data_dir": "data/preprocessed/parasites-1s07h-dedup",
+  "epochs": 20,
+  "batch_size": 2,
+  "learning_rate": 0.0025,
+  "start_factor": 0.001,
+  "end_factor": 1.0,
+  "warmup_batches": 1000,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "image_size": 640,
+  "patience": 10,
+  "num_workers": 0,
+  "seed": 42,
+  "amp": true,
+  "device": "cuda",
+  "run_name": "baseline"
+}
