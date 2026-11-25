@@ -9,7 +9,7 @@
 
 **Faster R-CNN v2 vs. YOLOv10-S** sobre imágenes de microscopía de ocho especies de parásitos. Práctica de Visión por Computador I.
 
-[Empezar](#empezar) · [Dataset](data/README.md) · [Exploración](notebooks/01_dataset_overview.ipynb) · [Equipo](#equipo)
+[Empezar](#empezar) · [Dataset](data/README.md) · [Exploración](notebooks/eda_preliminar.ipynb) · [Resultados](#resultados) · [Equipo](#equipo)
 
 | Detector | Arquitectura | Implementación |
 |---|---|---|
@@ -33,6 +33,9 @@ source .venv/bin/activate
 just weights
 just dataset
 just prepare
+
+# Quitar del train los casi duplicados de val/test (variante con la que se entrenan los baselines)
+python scripts/data/deduplicate_train.py
 
 # Abrir los notebooks
 jupyter lab
@@ -88,10 +91,36 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 
 Usamos los **splits Parquet de Hugging Face**: 1484 imágenes de entrenamiento, 215 de validación y 411 de test. La descarga es pública y tiene revisión y checksums fijados en [`configs/dataset.json`](configs/dataset.json).
 
-La conversión conserva las imágenes originales y genera ambos formatos de anotaciones. El preprocesamiento experimental lo haremos después.
+La conversión conserva las imágenes originales y genera ambos formatos de anotaciones. Para entrenar usamos una variante con el **train deduplicado**: quitamos las 327 imágenes de train casi idénticas a alguna de val o test (correlación ≥ 0,90 de miniaturas en gris), así que quedan 1157 imágenes y 3015 objetos. Val y test no cambian, de modo que las métricas de test no están infladas por fuga de datos.
 
 - [Fases, particiones y diferencia con el tar original](data/README.md)
 - [Formatos de cajas y correspondencia de clases](data/converted/README.md)
+- [Criterio de deduplicación](data/preprocessed/README.md)
+
+## Flujo experimental
+
+| Paso | Dónde | Qué produce |
+|---|---|---|
+| 1. Exploración del dataset | [`eda_preliminar.ipynb`](notebooks/eda_preliminar.ipynb) | Distribución de clases, tamaños, color y casi duplicados entre particiones |
+| 2. Comprobación de datos para Faster R-CNN | [`02_faster_rcnn_data_check.ipynb`](notebooks/02_faster_rcnn_data_check.ipynb) | Verificación de cajas, tensores y `DataLoader` |
+| 3. Entrenamiento de Faster R-CNN v2 | [`03_faster_rcnn_training.ipynb`](notebooks/03_faster_rcnn_training.ipynb) o `scripts/training/train_faster_rcnn.py` | Checkpoints en `models/trained/fasterrcnn_v2/<run>/`, `training.csv` y `settings.json` |
+| 4. Evaluación en val y test | `scripts/evaluation/evaluate_faster_rcnn.py --split {val,test}` | Métricas COCO, AP por clase, curvas PR, latencia y predicciones en `results/metrics/fasterrcnn_v2/<run>/` |
+| 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
+| 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
+
+Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
+
+## Resultados
+
+Baseline con el train deduplicado: 20 épocas, SGD con lr 0,0025, warmup y coseno, imágenes de 640 px; mejor época por mAP de validación. Las métricas son de `pycocotools`.
+
+| Modelo | Partición | mAP@[.5:.95] | mAP@0.5 | mAP@0.75 | Inferencia |
+|---|---|---|---|---|---|
+| Faster R-CNN v2 | val | 0,663 | 0,809 | 0,791 | — |
+| Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 2,1 s/img (CPU, lote 1) |
+| YOLOv10-S | — | en curso | | | |
+
+Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb). Las estrategias de mejora están pendientes.
 
 ## Equipo
 
