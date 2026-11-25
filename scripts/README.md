@@ -16,9 +16,11 @@ scripts/
 │   ├── order_train_images_by_similarity.py
 │   ├── classify_train_images.py
 │   └── visual_labeler/
-└── training/
-    ├── train_faster_rcnn.py
-    └── train_yolo.py
+├── training/
+│   ├── train_faster_rcnn.py
+│   └── train_yolo.py
+└── evaluation/
+    └── evaluate_faster_rcnn.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -63,6 +65,19 @@ test_loader, = create_dataloaders(config, splits=("test",))
 test_metrics = evaluate_model(model, test_loader)
 test_metrics
 ```
+
+## Evaluación de Faster R-CNN
+
+[`evaluation/evaluate_faster_rcnn.py`](evaluation/evaluate_faster_rcnn.py) carga `best_model.pth` de una ejecución, predice imagen a imagen sobre una partición y la evalúa con `pycocotools`. En `results/metrics/fasterrcnn_v2/<run_name>/` guarda `<split>_metrics.json` (las 12 métricas COCO, umbrales y latencia con lote 1), `<split>_per_class.csv` (AP y AP50 por especie), `<split>_pr_curves.csv` (curvas PR por clase a IoU 0,5 y 0,75) y `<split>_predictions.json` (detecciones en formato COCO para análisis de errores, ajuste de umbrales o ensembles sin repetir la inferencia).
+
+```bash
+python scripts/evaluation/evaluate_faster_rcnn.py --split test
+python scripts/evaluation/evaluate_faster_rcnn.py --split val --run-name baseline --device cpu
+```
+
+A diferencia de `evaluate_model`, guarda las predicciones y el tiempo de inferencia. [`04_faster_rcnn_test_analysis.ipynb`](../notebooks/04_faster_rcnn_test_analysis.ipynb) las usa para las figuras de `results/figures/fasterrcnn_v2/<run_name>/` con las funciones de `src/parasite_detection/analysis.py`.
+
+Por defecto usa el dataset deduplicado, cuyo val y test coinciden con los originales. La latencia depende del hardware y se registra en el JSON: compara tiempos de modelos solo si se midieron en la misma máquina.
 
 ## Entrenamiento de YOLOv10-S
 
