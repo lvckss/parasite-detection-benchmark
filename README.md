@@ -110,6 +110,8 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
+Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo. La [demo con métricas simuladas](notebooks/05_training_dashboard_demo.ipynb) permite probarlo sin entrenar.
+
 ## Resultados
 
 Baseline con el train deduplicado: 20 épocas, SGD con lr 0,0025, warmup y coseno, imágenes de 640 px; mejor época por mAP de validación. Las métricas son de `pycocotools`.

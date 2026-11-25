@@ -1,36 +1,36 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.11, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
 ]
 conflicts = [[
@@ -49,6 +49,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/a1/98/7e457a3b014976887a050561955c0b76e1e7e2d6e27b78ecef2ef80518f2/anyio-4.16.0.tar.gz", hash = "sha256:59bb03251907983d1603d27c3087ddb1e93299ea2163adcdba37899a4fb12ffb", size = 310971, upload-time = "2026-11-01T11:20:07.282Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a9/16/7757fb84c819accc7d7e9af5291b261e4abb8627ee040f99e7d35ef2457a/anyio-4.16.0-py3-none-any.whl", hash = "sha256:c66ae634e0b8228396b801741beb3294326d4b6102f7bba4041c0dfb58c29026", size = 134521, upload-time = "2026-11-01T11:20:05.59Z" },
+]
+
+[[package]]
+name = "anywidget"
+version = "0.11.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "ipywidgets" },
+    { name = "psygnal" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/79/31/0491d707c674b34267f55d96d6a7148e55e7b6718a271686232cf295fbe2/anywidget-0.11.0.tar.gz", hash = "sha256:6695fbef9449cf8c27f421b96c5837aa37f909ec1f60cfa33add333e1b70b169", size = 426999, upload-time = "2026-04-27T23:42:09.576Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8e/c2/8fec8e8e2eb920cc2280f569144080cd58622a2eda83bfa4c0c354a63264/anywidget-0.11.0-py3-none-any.whl", hash = "sha256:c574d9acc6503ad27b37a9acea48f957a8ba7c9c9876cfcb37898931c098ce9d", size = 317341, upload-time = "2026-04-27T23:42:08.356Z" },
 ]
 
 [[package]]
@@ -161,8 +175,8 @@ name = "beautifulsoup4"
 version = "4.15.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "soupsieve", version = "2.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11.5' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "soupsieve", version = "4.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11.5' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "soupsieve", version = "2.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11.5'" },
+    { name = "soupsieve", version = "4.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11.5'" },
     { name = "typing-extensions" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/43/65/318323f98dbee45d42dff61d8f047181bc6f2268a9068cfad035a46be5af/beautifulsoup4-4.15.0.tar.gz", hash = "sha256:288e3ca7d54b06f2ac191970bc275c1939cb46d450b255bf6718b04aa37ab4f7", size = 632571, upload-time = "2026-06-07T16:44:20.453Z" }
@@ -201,7 +215,7 @@ name = "cffi"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser", marker = "implementation_name != 'PyPy' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pycparser", marker = "implementation_name != 'PyPy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz", hash = "sha256:dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be", size = 530807, upload-time = "2026-08-03T21:21:18.939Z" }
 wheels = [
@@ -313,28 +327,28 @@ version = "1.3.3"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/01/1253e6698a07380cd31a736d248a3f2a50a7c88779a1813da27503cadc2a/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880", size = 13466174, upload-time = "2025-07-26T12:03:12.549Z" }
 wheels = [
@@ -376,7 +390,7 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
@@ -384,7 +398,7 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" } },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/83/5a/a55177dd22553a277388e8a1b3220e92de91bacb28356cdc73caa240121d/contourpy-1.4.0.tar.gz", hash = "sha256:20156f5a1ac4f8ce02656e39a61e82164a3d359796dc8026f75b062783d500e1", size = 13323726, upload-time = "2026-09-11T19:05:05.808Z" }
 wheels = [
@@ -559,7 +573,7 @@ name = "ipykernel"
 version = "7.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "appnope", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "appnope", marker = "sys_platform == 'darwin'" },
     { name = "comm" },
     { name = "debugpy" },
     { name = "ipython" },
@@ -582,17 +596,17 @@ name = "ipython"
 version = "9.18.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
     { name = "ipython-pygments-lexers" },
     { name = "jedi" },
     { name = "matplotlib-inline" },
-    { name = "pexpect", marker = "(sys_platform != 'emscripten' and sys_platform != 'win32') or (sys_platform == 'emscripten' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pexpect", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
     { name = "prompt-toolkit" },
-    { name = "psutil", marker = "(sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'emscripten') or (sys_platform == 'android' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'cygwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'emscripten' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "psutil", marker = "sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'emscripten'" },
     { name = "pygments" },
     { name = "stack-data" },
     { name = "traitlets" },
-    { name = "typing-extensions", marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/38/04/0d945c72d5b77527273ecb4c66aa2436de7a3b3bbe3da345bf053232b886/ipython-9.18.1.tar.gz", hash = "sha256:6319c0f5372c196397899479e6db1783dd7937abae06815d1317e8d5d51aaaaf", size = 4437314, upload-time = "2026-11-02T09:19:55.55Z" }
 wheels = [
@@ -809,10 +823,10 @@ dependencies = [
     { name = "jupyter-server-terminals" },
     { name = "nbconvert" },
     { name = "nbformat" },
-    { name = "overrides", marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "overrides", marker = "python_full_version < '3.12'" },
     { name = "packaging" },
     { name = "prometheus-client" },
-    { name = "pywinpty", marker = "(os_name == 'nt' and platform_machine != 'aarch64' and sys_platform == 'linux') or (os_name == 'nt' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (os_name != 'nt' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pywinpty", marker = "os_name == 'nt'" },
     { name = "pyzmq" },
     { name = "send2trash" },
     { name = "terminado" },
@@ -830,7 +844,7 @@ name = "jupyter-server-terminals"
 version = "0.5.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pywinpty", marker = "(os_name == 'nt' and platform_machine != 'aarch64' and sys_platform == 'linux') or (os_name == 'nt' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (os_name != 'nt' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pywinpty", marker = "os_name == 'nt'" },
     { name = "terminado" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f4/a7/bcd0a9b0cbba88986fe944aaaf91bfda603e5a50bda8ed15123f381a3b2f/jupyter_server_terminals-0.5.4.tar.gz", hash = "sha256:bbda128ed41d0be9020349f9f1f2a4ab9952a73ed5f5ac9f1419794761fb87f5", size = 31770, upload-time = "2026-01-14T16:53:20.213Z" }
@@ -856,7 +870,7 @@ dependencies = [
     { name = "packaging" },
     { name = "tornado" },
     { name = "traitlets" },
-    { name = "typing-extensions", marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/51/43/490a500e421a46900c8afb0c912c1bf3c9977c85831a3815e2c2139309a9/jupyterlab-4.6.6.tar.gz", hash = "sha256:5f6fbb409158167aeefb5781d6f0b228e24b493cb6e6f1320fb5bc8897acc223", size = 28406802, upload-time = "2026-11-06T14:02:39.228Z" }
 wheels = [
@@ -997,13 +1011,13 @@ name = "matplotlib"
 version = "3.11.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "contourpy", version = "1.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "contourpy", version = "1.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "contourpy", version = "1.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "contourpy", version = "1.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "cycler" },
     { name = "fonttools" },
     { name = "kiwisolver" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "packaging" },
     { name = "pillow" },
     { name = "pyparsing" },
@@ -1130,24 +1144,24 @@ version = "3.6.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/6a/51/63fe664f3908c97be9d2e4f1158eb633317598cfa6e1fc14af5383f17512/networkx-3.6.1.tar.gz", hash = "sha256:26b7c357accc0c8cde558ad486283728b65b6a95d85ee1cd66bafab4c8168509", size = 2517025, upload-time = "2025-12-08T17:02:39.908Z" }
@@ -1164,7 +1178,7 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
@@ -1194,24 +1208,24 @@ version = "2.4.6"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d0/ad/fed0499ce6a338d2a03ebae59cd15093910c8875328855781952abf6c2fe/numpy-2.4.6.tar.gz", hash = "sha256:f3a3570c4a2a16746ac2c31a7c7c7b0c186b95ce902e33db6f28094ed7387dda", size = 20735807, upload-time = "2026-05-18T23:37:14.07Z" }
@@ -1256,7 +1270,7 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
@@ -1323,7 +1337,7 @@ name = "nvidia-cudnn-cu12"
 version = "9.10.2.21"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cublas-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fa/41/e79269ce215c857c935fd86bcfe91a451a584dfc27f1e068f568b9ad1ab7/nvidia_cudnn_cu12-9.10.2.21-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:c9132cc3f8958447b4910a1720036d9eff5928cc3179b0a51fb6d167c6cc87d8", size = 705026878, upload-time = "2025-06-06T21:52:51.348Z" },
@@ -1336,7 +1350,7 @@ name = "nvidia-cufft-cu12"
 version = "11.3.3.83"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/60/bc/7771846d3a0272026c416fbb7e5f4c1f146d6d80704534d0b187dd6f4800/nvidia_cufft_cu12-11.3.3.83-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:848ef7224d6305cdb2a4df928759dca7b1201874787083b6e7550dd6765ce69a", size = 193109211, upload-time = "2025-03-07T01:44:56.873Z" },
@@ -1368,9 +1382,9 @@ name = "nvidia-cusolver-cu12"
 version = "11.7.3.90"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cusparse-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cublas-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cusparse-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c8/32/f7cd6ce8a7690544d084ea21c26e910a97e077c9b7f07bf5de623ee19981/nvidia_cusolver_cu12-11.7.3.90-py3-none-manylinux_2_27_aarch64.whl", hash = "sha256:db9ed69dbef9715071232caa9b69c52ac7de3a95773c2db65bdba85916e4e5c0", size = 267229841, upload-time = "2025-03-07T01:46:54.356Z" },
@@ -1383,7 +1397,7 @@ name = "nvidia-cusparse-cu12"
 version = "12.5.8.93"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bc/f7/cd777c4109681367721b00a106f491e0d0d15cfa1fd59672ce580ce42a97/nvidia_cusparse_cu12-12.5.8.93-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:9b6c161cb130be1a07a27ea6923df8141f3c295852f4b260c65f18f3e0a091dc", size = 288117129, upload-time = "2025-03-07T01:47:40.407Z" },
@@ -1444,8 +1458,8 @@ name = "opencv-python"
 version = "5.0.0.93"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/79/4c/a438d23e09ce2033c09f7b784ad2fbdb0adf529e434101ed28f142226f98/opencv_python-5.0.0.93.tar.gz", hash = "sha256:66aac3e5b5faa48d4025816592f3af19e4bfc2c68dec067bae2dbb4ca10aa9e2", size = 81802749, upload-time = "2026-07-02T06:59:53.815Z" }
 wheels = [
@@ -1482,8 +1496,8 @@ name = "pandas"
 version = "2.3.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "python-dateutil" },
     { name = "pytz" },
     { name = "tzdata" },
@@ -1520,12 +1534,13 @@ name = "parasite-detection-benchmark"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "anywidget" },
     { name = "ipykernel" },
     { name = "ipywidgets" },
     { name = "jupyterlab" },
     { name = "matplotlib" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pandas" },
     { name = "pillow" },
     { name = "pyarrow" },
@@ -1539,19 +1554,20 @@ dependencies = [
 cpu = [
     { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torchvision", version = "0.23.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torchvision", version = "0.23.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' or platform_python_implementation != 'CPython') and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 cu128 = [
-    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "(sys_platform == 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torchvision", version = "0.23.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "anywidget", specifier = ">=0.9,<1" },
     { name = "ipykernel", specifier = ">=6.29,<8" },
     { name = "ipywidgets", specifier = ">=8.1,<9" },
     { name = "jupyterlab", specifier = ">=4.3,<5" },
@@ -1589,7 +1605,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess", marker = "sys_platform != 'win32' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "ptyprocess" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
@@ -1707,6 +1723,25 @@ wheels = [
 ]
 
 [[package]]
+name = "psygnal"
+version = "0.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/15/db/28806ea82cd8a3da0d3529b86b3aeefccd961cc2a5d022fb38bc051c13cd/psygnal-0.17.0.tar.gz", hash = "sha256:6fc6d071724cf4ca8a35f1f0d0c3c953518bcb0253ccb4fcc5ea54faf4aabfad", size = 131690, upload-time = "2026-11-17T14:16:25.596Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e5/c5/41c92aa7c6362f48f84702df92f755c4dd55d7e00e07b6ce5ef9ec37d44d/psygnal-0.17.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:faab187916c485eb2a17137cc0ebfa5069721fe36188744b6a1b7835b9a20246", size = 1375884, upload-time = "2026-11-17T14:15:41.939Z" },
+    { url = "https://files.pythonhosted.org/packages/c1/63/3656e4db51100a2c19be4d659b13553f4d205eb7fae8028b3aa322ccaa4d/psygnal-0.17.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:eb45be80570f1d46507d250de5bb0a64476f1f160a99c37ff365e43c6aa630b5", size = 1316999, upload-time = "2026-11-17T14:15:43.721Z" },
+    { url = "https://files.pythonhosted.org/packages/95/bd/41041e20f77415a0b116c6fcb399449d823e7d5b095bc7172d597c9e01a0/psygnal-0.17.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:f637e68bab1b1296a5da1f7c64d6578b50043a79b1a1278ad5ef4104e9d60b2a", size = 1758481, upload-time = "2026-11-17T14:15:45.202Z" },
+    { url = "https://files.pythonhosted.org/packages/c6/e9/96c718a86765a924c64ccd615dac03000563fbd4fc833449e444a877cc20/psygnal-0.17.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:f35df563a9e4cb1dbcf7146a93e71a1d51313c313535db117bc19b7d3200c495", size = 1714670, upload-time = "2026-11-17T14:15:47.235Z" },
+    { url = "https://files.pythonhosted.org/packages/75/01/000c2d18f91a68f92abee94312bb2bfb0e171eecc69781a949297a47fa5d/psygnal-0.17.0-cp311-cp311-win_amd64.whl", hash = "sha256:a43c5be97554ed7f02b7871fdf9255cb73759eeda169f94fe3195b9de1d124a6", size = 936422, upload-time = "2026-11-17T14:15:48.945Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/00/a2d79008330fb77461769dac0c99c0eb84059d4d41650b8098725b18a716/psygnal-0.17.0-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:cab4f3570ce2d0a1580da2db7f856facf9396bf17c01dc1e4fdb52e7eb9aec27", size = 1397022, upload-time = "2026-11-17T14:15:50.429Z" },
+    { url = "https://files.pythonhosted.org/packages/7e/41/0b29ad2d9cbc8295da0228918bed56a5f6ee8eefad4a1d3fd162396267f1/psygnal-0.17.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:969e15a7f491387bdc992c1e4ce388652c164240761e5661289ac5e1fa437982", size = 1327777, upload-time = "2026-11-17T14:15:52.385Z" },
+    { url = "https://files.pythonhosted.org/packages/3e/fe/eccb12a0fd5636e894a943f541fe0a632904ec5b6c300c6296cffcf95665/psygnal-0.17.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:54c37ef5ca6be1413aa907085dbc2e0cb18e0cc9aa54c8febb2787381be1f470", size = 1798244, upload-time = "2026-11-17T14:15:53.829Z" },
+    { url = "https://files.pythonhosted.org/packages/d6/d0/8db6d47f30f417edc5500123640501e2bffde6d7db192173a2d006587b89/psygnal-0.17.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:b68103e109bf37522e807862f16835077f302c4457c90f264cef721ccb2d0e2d", size = 1761256, upload-time = "2026-11-17T14:15:55.493Z" },
+    { url = "https://files.pythonhosted.org/packages/95/24/fbc3ff57628281f12e414480272b31facba1579082b2741245ae3e2a0e21/psygnal-0.17.0-cp312-cp312-win_amd64.whl", hash = "sha256:98795df2b16d35d63f181133e9a03a80e8930472f1825bae1521699fca80d499", size = 940961, upload-time = "2026-11-17T14:15:57.16Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/43/f95c6a8c34de8ee34aa537b787c6a90cdbc31de3584b83f63dddccfc0ace/psygnal-0.17.0-py3-none-any.whl", hash = "sha256:65ccbeffccd958cf83790bb1f91756affff644d94fd66a214c080f2bd27d4d85", size = 95032, upload-time = "2026-11-17T14:16:24.249Z" },
+]
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1751,8 +1786,8 @@ name = "pycocotools"
 version = "2.0.11"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a2/df/32354b5dda963ffdfc8f75c9acf8828ef7890723a4ed57bb3ff2dc1d6f7e/pycocotools-2.0.11.tar.gz", hash = "sha256:34254d76da85576fcaf5c1f3aa9aae16b8cb15418334ba4283b800796bd1993d", size = 25381, upload-time = "2025-12-15T22:31:46.148Z" }
 wheels = [
@@ -1873,7 +1908,7 @@ name = "pyzmq"
 version = "27.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "implementation_name == 'pypy' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "cffi", marker = "implementation_name == 'pypy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/e2/e1/ea46ab0d707219c098065a37d2add5b53d3b124241aa19429bcd0863e5b4/pyzmq-27.3.0.tar.gz", hash = "sha256:bbedb3d1d99babc625f1dd9d7438acefd442b36b75073fd6bc1ef7c0a4b96d56", size = 293249, upload-time = "2026-11-04T00:31:33.068Z" }
 wheels = [
@@ -2072,7 +2107,7 @@ resolution-markers = [
     "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version < '3.11.5' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
@@ -2091,21 +2126,21 @@ source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'))",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128'",
@@ -2146,8 +2181,8 @@ name = "terminado"
 version = "0.18.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "ptyprocess", marker = "os_name != 'nt' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "pywinpty", marker = "(os_name == 'nt' and platform_machine != 'aarch64' and sys_platform == 'linux') or (os_name == 'nt' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (os_name == 'nt' and sys_platform != 'darwin' and sys_platform != 'linux') or (os_name == 'nt' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (os_name != 'nt' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "ptyprocess", marker = "os_name != 'nt'" },
+    { name = "pywinpty", marker = "os_name == 'nt'" },
     { name = "tornado" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/8a/11/965c6fd8e5cc254f1fe142d547387da17a8ebfd75a3455f637c663fb38a0/terminado-0.18.1.tar.gz", hash = "sha256:de09f2c4b85de4765f7714688fff57d3e75bad1f909b589fde880460c753fd2e", size = 32701, upload-time = "2024-03-12T14:34:39.026Z" }
@@ -2173,21 +2208,21 @@ version = "2.8.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'darwin'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin'",
     "python_full_version >= '3.12' and sys_platform == 'win32'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "filelock", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "fsspec", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "jinja2", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform == 'darwin') or (python_full_version < '3.12' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'darwin') or (python_full_version >= '3.12' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "filelock", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "fsspec", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "jinja2", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' and (sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' and (sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
     { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
@@ -2202,10 +2237,10 @@ dependencies = [
     { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "setuptools", marker = "(python_full_version >= '3.12' and sys_platform == 'darwin') or (python_full_version >= '3.12' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "sympy", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "setuptools", marker = "python_full_version >= '3.12' and (sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "sympy", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "typing-extensions", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "typing-extensions", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8f/c4/3e7a3887eba14e815e614db70b3b529112d1513d9dae6f4d43e373360b7f/torch-2.8.0-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:220a06fd7af8b653c35d359dfe1aaf32f65aa85befa342629f716acb134b9710", size = 102073391, upload-time = "2025-08-06T14:53:20.937Z" },
@@ -2224,22 +2259,22 @@ version = "2.8.0+cpu"
 source = { registry = "https://download.pytorch.org/whl/cpu" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
     "python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32'",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
     "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
 ]
 dependencies = [
     { name = "filelock", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "fsspec", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "jinja2", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version >= '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "setuptools", marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "setuptools", marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "sympy", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "typing-extensions", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
@@ -2264,34 +2299,34 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "filelock", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "fsspec", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "jinja2", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cuda-runtime-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cufft-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cufile-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-curand-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cusolver-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cusparse-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-cusparselt-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "setuptools", marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "sympy", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'x86_64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "typing-extensions", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "filelock", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "fsspec", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "jinja2", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "networkx", version = "3.6.1", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "networkx", version = "3.7", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cublas-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cuda-cupti-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cuda-nvrtc-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cuda-runtime-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cufft-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cufile-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-curand-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cusolver-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cusparse-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-cusparselt-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nvjitlink-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "nvidia-nvtx-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "setuptools", marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "sympy", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "triton", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "typing-extensions", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cu128/torch-2.8.0%2Bcu128-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:039b9dcdd6bdbaa10a8a5cd6be22c4cb3e3589a341e5f904cbb571ca28f55bed", upload-time = "2025-10-01T23:49:06Z" },
@@ -2310,10 +2345,10 @@ resolution-markers = [
     "python_full_version < '3.11.5' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version >= '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "pillow", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pillow", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cpu/torchvision-0.23.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:49aa20e21f0c2bd458c71d7b449776cbd5f16693dd5807195a820612b8a229b7", upload-time = "2025-08-05T20:11:47Z" },
@@ -2328,20 +2363,20 @@ version = "0.23.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'darwin'",
-    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin'",
-    "python_full_version < '3.11.5' and sys_platform == 'darwin'",
     "python_full_version >= '3.12' and sys_platform == 'win32'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'darwin'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version < '3.11.5' and sys_platform == 'darwin'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform == 'darwin') or (python_full_version < '3.12' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'darwin') or (python_full_version >= '3.12' and extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "pillow", marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' and (sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' and (sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "pillow", marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f0/d7/15d3d7bd8d0239211b21673d1bac7bc345a4ad904a8e25bb3fd8a9cf1fbc/torchvision-0.23.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:49aa20e21f0c2bd458c71d7b449776cbd5f16693dd5807195a820612b8a229b7", size = 1856884, upload-time = "2025-08-06T14:58:00.237Z" },
@@ -2360,17 +2395,17 @@ version = "0.23.0+cpu"
 source = { registry = "https://download.pytorch.org/whl/cpu" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
-    "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
+    "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
+    "python_full_version >= '3.11.5' and python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
     "python_full_version < '3.11.5' and sys_platform == 'win32'",
-    "(python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
-    "(python_full_version < '3.11.5' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11.5' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32')",
+    "python_full_version < '3.11.5' and ((platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux' and sys_platform != 'win32'))",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version >= '3.12' and platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version >= '3.12' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (python_full_version < '3.12' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "pillow", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' and ((platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu')) or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "pillow", marker = "(platform_machine != 'aarch64' or platform_python_implementation != 'CPython') and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' or platform_python_implementation != 'CPython') and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cpu/torchvision-0.23.0%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:d83d8075db43b8ca89680bdeb2f100c832e2a3aa61ee42c038b1a146e5e511b6", upload-time = "2025-08-05T20:11:47Z" },
@@ -2387,15 +2422,15 @@ resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
     "python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version >= '3.11.5' and python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'win32'",
+    "python_full_version < '3.11.5' and sys_platform == 'win32'",
     "python_full_version < '3.11.5' and sys_platform != 'darwin' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version >= '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (python_full_version < '3.12' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "pillow", marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "pillow", marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cu128/torchvision-0.23.0%2Bcu128-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:93f1b5f56b20cd6869bca40943de4fd3ca9ccc56e1b57f47c671de1cdab39cdb", upload-time = "2025-08-05T20:11:52Z" },
@@ -2431,7 +2466,7 @@ name = "tqdm"
 version = "4.70.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0d/ea/b2a5bd54b28a324dae8211928b2d730b6547500342c7e6c6dea08bd0a485/tqdm-4.70.1.tar.gz", hash = "sha256:cefd0eca11b2a37a3aee776544d4f4ae913f02688135b5556b8788dfa474afc4", size = 171846, upload-time = "2026-09-11T07:25:16.601Z" }
 wheels = [
@@ -2452,7 +2487,7 @@ name = "triton"
 version = "3.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "setuptools", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'win32' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "setuptools", marker = "(sys_platform != 'darwin' and sys_platform != 'win32' and extra != 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7d/39/43325b3b651d50187e591eefa22e236b2981afcebaefd4f2fc0ea99df191/triton-3.4.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7b70f5e6a41e52e48cfc087436c8a28c17ff98db369447bcaff3b887a3ab4467", size = 155531138, upload-time = "2025-07-30T19:58:29.908Z" },
@@ -2483,21 +2518,21 @@ version = "8.4.215"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "nvidia-ml-py" },
     { name = "opencv-python" },
     { name = "pillow" },
     { name = "polars" },
     { name = "psutil" },
     { name = "requests" },
-    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_machine != 'aarch64' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (platform_python_implementation != 'CPython' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (sys_platform == 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torchvision", version = "0.23.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torchvision", version = "0.23.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torchvision", version = "0.23.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torchvision", version = "0.23.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(platform_machine != 'aarch64' or platform_python_implementation != 'CPython') and sys_platform == 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-28-parasite-detection-benchmark-cpu' or extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
+    { name = "torchvision", version = "0.23.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
     { name = "ultralytics-platform" },
     { name = "ultralytics-thop" },
 ]
@@ -2523,11 +2558,11 @@ name = "ultralytics-thop"
 version = "2.2.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "torch", version = "2.8.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform == 'darwin' or (extra != 'extra-28-parasite-detection-benchmark-cpu' and extra != 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
     { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cpu') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
-    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' and extra == 'extra-28-parasite-detection-benchmark-cu128') or (extra == 'extra-28-parasite-detection-benchmark-cpu' and extra == 'extra-28-parasite-detection-benchmark-cu128')" },
+    { name = "torch", version = "2.8.0+cu128", source = { registry = "https://download.pytorch.org/whl/cu128" }, marker = "(sys_platform != 'darwin' or extra == 'extra-28-parasite-detection-benchmark-cpu') and extra == 'extra-28-parasite-detection-benchmark-cu128'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/af/36/d7fdbcd8b19a78fc7f8d8c5398af9c7049d3faa1a0a7c08c377f5af2fdfa/ultralytics_thop-2.2.5.tar.gz", hash = "sha256:ad2ed5b829497b541cdf3b1aaa0dc82c468ad5eb77ba8a999f84e31da1b70984", size = 40247, upload-time = "2026-11-04T09:49:45.809Z" }
 wheels = [

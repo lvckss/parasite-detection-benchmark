@@ -7,8 +7,6 @@ from pathlib import Path
 from parasite_detection.yolo import (
     TrainConfig,
     build_model,
-    create_dataloaders,
-    evaluate_loss,
     evaluate_model,
     load_trained_model,
     train_model,
@@ -16,13 +14,12 @@ from parasite_detection.yolo import (
 
 
 __all__ = [
-    "TrainConfig", "build_model", "create_dataloaders", "evaluate_loss",
-    "evaluate_model", "load_trained_model", "train_model",
+    "TrainConfig", "build_model", "evaluate_model", "load_trained_model", "train_model",
 ]
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Entrena YOLOv10-S con el protocolo de Faster R-CNN.")
+    parser = argparse.ArgumentParser(description="Entrena YOLOv10-S con Ultralytics y evaluación COCO.")
 
     # si omitimos un argumento se conserva el valor definido en trainconfig
     parser.add_argument("--data-dir", type=Path)
@@ -32,10 +29,13 @@ def main():
     parser.add_argument("--momentum", type=float)
     parser.add_argument("--weight-decay", type=float)
 
-    # el warmup y el scheduler coseno siguen el mismo esquema que rcnn
-    parser.add_argument("--start-factor", type=float)
-    parser.add_argument("--end-factor", type=float)
-    parser.add_argument("--warmup-batches", type=int)
+    # usamos los parámetros nativos de warmup y acumulación de ultralytics
+    parser.add_argument("--nominal-batch-size", type=int)
+    parser.add_argument("--warmup-epochs", type=float)
+    parser.add_argument("--warmup-momentum", type=float)
+    parser.add_argument("--warmup-bias-lr", type=float)
+    parser.add_argument("--final-lr-factor", type=float)
+    parser.add_argument("--cos-lr", action=argparse.BooleanOptionalAction, default=None)
     parser.add_argument("--patience", type=int, help="Usa 0 para desactivar la parada temprana.")
 
     # yolo requiere un tamaño de entrada múltiplo de treinta y dos
@@ -52,7 +52,7 @@ def main():
     parser.add_argument("--run-name")
 
     # el checkpoint se pasa aparte para recuperar también el estado del optimizador
-    parser.add_argument("--resume", type=Path, help="Ruta a last_checkpoint.pth de esta ejecución.")
+    parser.add_argument("--resume", type=Path, help="Ruta a weights/last.pt de una ejecución interrumpida.")
     options = vars(parser.parse_args())
     resume = options.pop("resume")
     config = TrainConfig(**{name: value for name, value in options.items() if value is not None})

@@ -81,47 +81,73 @@ Por defecto usa el dataset deduplicado, cuyo val y test coinciden con los origin
 
 ## Entrenamiento de YOLOv10-S
 
-[`training/train_yolo.py`](training/train_yolo.py) usa las funciones de [`src/parasite_detection/yolo.py`](../src/parasite_detection/yolo.py). Comparte con RCNN los dataloaders COCO, el paso de entrenamiento, la medición de pérdida de validación y la evaluación con `pycocotools`. Por defecto exige las mismas 1.157 imágenes definitivas del train depurado, comprobando sus identificadores contra el manifiesto de ordenación visual. No mezcla train, validation ni test.
+[`training/train_yolo.py`](training/train_yolo.py) lanza el entrenador oficial de Ultralytics desde [`src/parasite_detection/yolo.py`](../src/parasite_detection/yolo.py). Usa la versión `8.4.215` fijada en `uv.lock`. El motor oficial gestiona la transferencia COCO, la pérdida, los grupos del optimizador, Nesterov, acumulación de gradientes, clipping y EMA.
 
 ```bash
 python scripts/training/train_yolo.py --device cuda
 ```
 
-Los valores iniciales coinciden con el experimento registrado de RCNN: 20 épocas, batch 2, SGD con LR `0.0025`, momentum `0.9`, weight decay `0.0005`, imagen de 640 px, semilla 42 y paciencia 10. El warmup usa los mismos factores `0.001` y `1.0` y se limita a 1.000 lotes de la primera época; después se aplica `CosineAnnealingLR`. `--patience 0` desactiva la parada temprana y `--no-amp` desactiva la precisión mixta.
+El nombre predeterminado es `baseline_ultralytics`, separado del baseline anterior con el bucle personalizado. Antes de entrenar se comprueba que el train contiene exactamente las 1.157 imágenes depuradas del manifiesto y sus etiquetas. El dataloader vuelve a comprobar los IDs después de cargar las imágenes. Train y validation necesitan imágenes, anotaciones YOLO y anotaciones COCO.
 
-El adaptador carga los pesos de `models/pretrained/yolov10s.pt`, transfiere los tensores compatibles y adapta la clasificación a ocho clases. Conserva las dos ramas de asignación y la pérdida `E2EDetectLoss` de YOLOv10, con ganancias `box=7.5`, `cls=0.5` y `dfl=1.5`. Se pueden cambiar con `--box-gain`, `--cls-gain` y `--dfl-gain`. La entrada se escala conservando su proporción y se completa con relleno hasta un cuadrado. No se aplican aumentos aleatorios, EMA ni acumulación de gradientes.
+El baseline no aplica aumentos aleatorios. El dataloader de train usa exclusivamente `LetterBox` y `Format`, y se comprueba esa lista de transformaciones. Los parámetros de augmentations se guardan a cero en los argumentos de la ejecución.
 
-La evaluación convierte las cajas a las coordenadas originales y las clases YOLO 0–7 a COCO 1–8. Usa un umbral de confianza de `0.05` y hasta 100 detecciones por imagen, como RCNN; la rama de inferencia de YOLOv10 no necesita NMS. El mejor modelo y la parada temprana se deciden por mAP COCO de validación. Las pérdidas son propias de cada arquitectura y sus valores absolutos no son comparables entre detectores.
+| Parámetro | Valor predeterminado |
+|---|---|
+| Épocas y batch | 100 y 8 |
+| Entrada y semilla | 640 px y 42 |
+| Optimizador | SGD, LR 0.01, momentum 0.9, weight decay 0.0005 |
+| Batch nominal para acumulación | 64 |
+| Warmup | 3 épocas, momentum inicial 0.8, LR inicial de biases 0.1 |
+| Scheduler | Coseno, fracción final de LR 0.01 |
+| Paciencia | 20 épocas sin mejorar el mAP COCO |
+| Precisión | AMP en GPU |
 
-Los checkpoints se guardan en `models/trained/yolov10s/<run_name>/` como `best_model.pth` y `last_checkpoint.pth`. Son checkpoints de este módulo y se cargan con `load_trained_model`, no con `ultralytics.YOLO`. Las métricas quedan en `results/metrics/yolov10s/<run_name>/training.csv`, con las mismas columnas `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`. `settings.json` registra los parámetros y las versiones de PyTorch y Ultralytics. Para un nuevo experimento, cambia `--run-name`.
+La pérdida se elige mediante la implementación oficial de la arquitectura; en esta versión es `E2ELoss`. No se divide su escalar de backward por el batch. `--patience 0` desactiva la parada temprana y `--no-amp` desactiva AMP. Consulta el resto de parámetros con `python scripts/training/train_yolo.py --help`.
+
+La validación fija un lienzo cuadrado del tamaño indicado, tanto durante el entrenamiento como al evaluar por separado. Usa la EMA y la cabeza one-to-one con `nms=False`, confianza `0.001` y hasta 100 detecciones por imagen. `CocoValidator` conserva el postprocesado oficial, convierte las predicciones a los IDs y coordenadas originales y aplica `pycocotools.COCOeval`. Su mAP determina tanto el mejor checkpoint como la parada temprana. La consola muestra además las métricas nativas de Ultralytics; el resumen identificado como **COCO** corresponde al evaluador común con RCNN.
+
+Los checkpoints oficiales quedan en `models/trained/yolov10s/<run_name>/weights/` como `best.pt` y `last.pt`. El directorio también contiene `args.yaml`, `dataset.yaml` con las rutas locales y el `results.csv` nativo. Los pesos permanecen excluidos de nuevos commits.
+
+El historial para los notebooks queda en `results/metrics/yolov10s/<run_name>/training.csv`. Conserva `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`; añade las componentes de pérdida, los LR por grupo y el mAP nativo bajo `ultralytics_map` y `ultralytics_map50`. `map` y `map50` siempre son COCO. Las pérdidas suman las componentes registradas por el motor oficial y no representan su escalar de backward; no deben compararse numéricamente con las del bucle antiguo. `settings.json` guarda los argumentos efectivos, versiones y criterios de evaluación y selección. `best_validation.json` contiene la evaluación final de los pesos guardados; puede diferir ligeramente del historial porque la serialización nativa usa FP16.
+
+Para reanudar una ejecución interrumpida, conserva el dataset, el nombre, el horizonte de épocas y los hiperparámetros originales:
 
 ```bash
 python scripts/training/train_yolo.py \
-    --resume models/trained/yolov10s/baseline/last_checkpoint.pth --epochs 30
+    --resume models/trained/yolov10s/baseline_ultralytics/weights/last.pt
 ```
 
-La reanudación recupera modelo, optimizador, scheduler, scaler e historial. Si amplías las épocas, recalcula la curva coseno igual que RCNN. Conserva los parámetros del experimento y las versiones de las bibliotecas.
+Ultralytics recupera optimizador, scaler y EMA. Al finalizar normalmente, el motor retira el optimizador de los checkpoints: esos archivos sirven para inferencia, pero no para reanudar esta misma ejecución. Para otro experimento, usa un nuevo `run_name`. Los antiguos `.pth` se pueden leer con `load_trained_model` para evaluar sus pesos, pero no reanudar con el nuevo motor.
 
-La inferencia activa expresamente la rama `one2one` y comprueba que devuelve detecciones con seis valores por fila. Los checkpoints anteriores a esta corrección pueden cargarse para reevaluar sus pesos, pero sus mAP registrados no son válidos. Para generar un historial comparable, repite el entrenamiento con otro `run_name`; la reanudación rechaza esos historiales antiguos.
-
-Desde un notebook puedes usar la misma interfaz de configuración y entrenamiento:
+Desde [`04_yolov10s_training.ipynb`](../notebooks/04_yolov10s_training.ipynb), reinicia el kernel para cargar el módulo actualizado:
 
 ```python
 from parasite_detection.yolo import TrainConfig, train_model
 
-config = TrainConfig(device="cuda", run_name="baseline")
+config = TrainConfig(device="cuda", run_name="baseline_ultralytics")
 model, history = train_model(config)
 ```
 
-Test se evalúa expresamente al terminar los ajustes, sin intervenir en la selección del modelo:
+`model` es una instancia de `ultralytics.YOLO` con los mejores pesos seleccionados por COCO. `history` sigue disponible para las gráficas. Los parámetros antiguos `start_factor`, `end_factor` y `warmup_batches` se sustituyen por `warmup_epochs`, `warmup_momentum` y `warmup_bias_lr`.
+
+Test se evalúa expresamente cuando hayan terminado los ajustes:
 
 ```python
-from parasite_detection.yolo import create_dataloaders, evaluate_model, load_trained_model
+from parasite_detection.yolo import evaluate_model, load_trained_model
 
 model = load_trained_model(device="cuda")
-test_loader, = create_dataloaders(config, splits=("test",))
-test_metrics = evaluate_model(model, test_loader)
+test_metrics = evaluate_model(model, data_dir=config.data_dir, split="test", device="cuda")
 ```
+
+## Dashboard de entrenamiento
+
+[`demo_dashboard.py`](training/demo_dashboard.py) genera un informe autocontenido con métricas simuladas, sin cargar modelos ni datos:
+
+```bash
+python scripts/training/demo_dashboard.py --output /tmp/dashboard-demo --delay 0
+```
+
+Abre `/tmp/dashboard-demo/report.html` directamente en un navegador. La carpeta debe estar vacía. Para probar el modo LIVE, usa [`05_training_dashboard_demo.ipynb`](../notebooks/05_training_dashboard_demo.ipynb). Ambos entrenadores admiten `train_model(config, dashboard=dashboard)`; el historial CSV y los checkpoints siguen siendo los originales. [API, persistencia y pruebas](../src/parasite_detection/dashboard/README.md).
 
 ## Descarga y preparación del dataset
 

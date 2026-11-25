@@ -128,7 +128,7 @@ def build_model(image_size=640, weights_path=COCO_WEIGHTS):
 
 def train_one_epoch(
     model, loader, optimizer, scaler, device, description,
-    start_factor=0.001, end_factor=1.0, total_iters=0,
+    start_factor=0.001, end_factor=1.0, total_iters=0, monitor=None,
 ):
     model.train()
     # el warmup sube el learning rate de forma lineal durante los primeros lotes
@@ -138,7 +138,7 @@ def train_one_epoch(
             optimizer, start_factor=start_factor, end_factor=end_factor, total_iters=total_iters
         )
     total_loss = 0.0
-    with tqdm(loader, desc=description, unit="lote", leave=False) as progress:
+    with tqdm(loader, desc=description, unit="lote", leave=False, disable=monitor is not None) as progress:
         for step, (images, targets) in enumerate(progress, start=1):
             images = [image.to(device) for image in images]
             targets = [{key: value.to(device) for key, value in target.items()} for target in targets]
@@ -162,11 +162,13 @@ def train_one_epoch(
             progress.set_postfix(
                 perdida=f"{total_loss / step:.4f}", lr=f"{optimizer.param_groups[0]['lr']:.6f}"
             )
+            if monitor is not None:
+                monitor.progress(step, len(loader))
     return total_loss / len(loader)
 
 
 @torch.no_grad()
-def evaluate_loss(model, loader):
+def evaluate_loss(model, loader, monitor=None):
     device = next(model.parameters()).device
     previous_modes = [(layer, layer.training) for layer in model.modules()]
     # faster rcnn devuelve las pérdidas cuando está en modo entrenamiento
@@ -178,7 +180,7 @@ def evaluate_loss(model, loader):
 
     total_loss = 0.0
     try:
-        with tqdm(loader, desc="Pérdida de validación", unit="lote", leave=False) as progress:
+        with tqdm(loader, desc="Pérdida de validación", unit="lote", leave=False, disable=monitor is not None) as progress:
             for step, (images, targets) in enumerate(progress, start=1):
                 images = [image.to(device) for image in images]
                 targets = [
@@ -191,6 +193,8 @@ def evaluate_loss(model, loader):
                     raise RuntimeError(f"Pérdida de validación no finita en el lote {step}.")
                 total_loss += batch_loss
                 progress.set_postfix(perdida=f"{total_loss / step:.4f}")
+                if monitor is not None:
+                    monitor.progress(step, len(loader))
     finally:
         for layer, was_training in previous_modes:
             layer.training = was_training
@@ -198,11 +202,12 @@ def evaluate_loss(model, loader):
 
 
 @torch.inference_mode()
-def evaluate_model(model, loader):
+def evaluate_model(model, loader, monitor=None):
     model.eval()
     device = next(model.parameters()).device
     predictions, image_ids = [], []
-    for images, targets in tqdm(loader, desc="Evaluación", unit="lote", leave=False):
+    progress = tqdm(loader, desc="Evaluación", unit="lote", leave=False, disable=monitor is not None)
+    for step, (images, targets) in enumerate(progress, start=1):
         outputs = model([image.to(device) for image in images])
         for target, output in zip(targets, outputs):
             image_id = target["image_id"].item()
@@ -216,6 +221,8 @@ def evaluate_model(model, loader):
                 predictions.append(
                     {"image_id": image_id, "category_id": label, "bbox": box, "score": score}
                 )
+        if monitor is not None:
+            monitor.progress(step, len(loader))
 
     ground_truth = loader.dataset.coco
     with redirect_stdout(StringIO()):
@@ -248,7 +255,19 @@ def load_trained_model(
     return model.to(resolve_device(device)).eval()
 
 
-def train_model(config, resume=None):
+def train_model(config, resume=None, dashboard=None):
+    # sin observador mantenemos la salida de terminal y el mismo recorrido de entrenamiento
+    if dashboard is None:
+        return _train_model(config, resume)
+    from parasite_detection.dashboard.adapters import TrainingSession
+
+    with TrainingSession(dashboard, config) as monitor:
+        model, history = _train_model(config, resume, monitor)
+        monitor.finish(history, MODELS / "trained/fasterrcnn_v2" / config.run_name / "best_model.pth")
+        return model, history
+
+
+def _train_model(config, resume=None, monitor=None):
     if config.epochs < 1 or config.batch_size < 1 or config.image_size < 1 or config.patience < 0:
         raise ValueError("Revisa epochs, batch_size, image_size y patience en la configuración.")
     if config.warmup_batches < 0 or not 0 < config.start_factor <= 1 or not 0 <= config.end_factor <= 1:
@@ -338,22 +357,40 @@ def train_model(config, resume=None):
     model_dir.mkdir(parents=True, exist_ok=True)
     metrics_dir.mkdir(parents=True, exist_ok=True)
     settings_path.write_text(json.dumps(settings, indent=2) + "\n", encoding="utf-8")
+    if monitor is not None:
+        # describimos los filtros efectivos del detector sin tocar su configuración
+        monitor.bind(metrics_dir, resume=resume is not None, evaluation={
+            "label": "COCOeval · bbox · val", "evaluator": "pycocotools COCOeval",
+            "split": "val", "iou": "0.50:0.95", "max_dets": [1, 10, 100],
+            "inference": "torchvision roi_heads", "nms": True,
+            "nms_iou": model.roi_heads.nms_thresh, "score_threshold": model.roi_heads.score_thresh,
+            "detections_per_image": model.roi_heads.detections_per_img,
+            "loss_reporting": "media de la suma de pérdidas por batch",
+        }, metric_sources={"map": "COCOeval · val", "map50": "COCOeval · val"})
+        monitor.restore(history, {"map": best_map, "epoch": best_epoch})
     print(f"Dispositivo: {device} | Train: {len(train_loader.dataset)} | Val: {len(val_loader.dataset)}")
 
     for epoch in range(first_epoch, config.epochs + 1):
         torch.manual_seed(config.seed + epoch)
         description = f"Época {epoch}/{config.epochs}"
+        if monitor is not None:
+            monitor.status("training", "Entrenando", epoch=epoch)
         # igual que torchvision limitamos el warmup a la primera época
         total_iters = min(config.warmup_batches, len(train_loader) - 1) if epoch == 1 else 0
         train_loss = train_one_epoch(
             model, train_loader, optimizer, scaler, device, description,
             start_factor=config.start_factor, end_factor=config.end_factor, total_iters=total_iters,
+            monitor=monitor,
         )
         if epoch == 1 and total_iters > 0:
             # el coseno parte del learning rate alcanzado al terminar el warmup
             scheduler.base_lrs = [group["lr"] for group in optimizer.param_groups]
-        val_loss = evaluate_loss(model, val_loader)
-        metrics = evaluate_model(model, val_loader)
+        if monitor is not None:
+            monitor.status("validating", "Pérdida de validación")
+        val_loss = evaluate_loss(model, val_loader, monitor=monitor)
+        if monitor is not None:
+            monitor.status("validating", "Evaluación COCO")
+        metrics = evaluate_model(model, val_loader, monitor=monitor)
         lr = optimizer.param_groups[0]["lr"]
         history.append({
             "epoch": epoch, "train_loss": train_loss, "val_loss": val_loss, **metrics, "lr": lr
@@ -387,6 +424,10 @@ def train_model(config, resume=None):
             writer = csv.DictWriter(file, fieldnames=list(history[-1]))
             writer.writeheader()
             writer.writerows(history)
+
+        # el panel observa métricas que ya han quedado guardadas en sus archivos originales
+        if monitor is not None:
+            monitor.epoch(history[-1], {"map": best_map, "epoch": best_epoch}, best_path)
 
         if config.patience and epoch - best_epoch >= config.patience:
             print(f"Parada temprana tras {config.patience} épocas sin mejorar.")

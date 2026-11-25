@@ -1,360 +1,411 @@
-"""entrenamiento de yolov10 s con el protocolo experimental de faster rcnn"""
+"""entrenamiento oficial de yolov10 s con validación coco"""
 
 import csv
 import json
 import math
-from dataclasses import asdict, dataclass
+import tempfile
+from contextlib import redirect_stdout
+from copy import copy
+from dataclasses import dataclass
+from io import StringIO
 from pathlib import Path
 
 import torch
-import torch.nn.functional as functional
 import ultralytics
+import yaml
+from pycocotools.coco import COCO
+from pycocotools.cocoeval import COCOeval
 from ultralytics import YOLO
 from ultralytics.cfg import get_cfg
+from ultralytics.data.augment import Format, LetterBox
+from ultralytics.models.yolo.detect import DetectionTrainer, DetectionValidator
 from ultralytics.nn.tasks import DetectionModel
-from ultralytics.utils.loss import E2EDetectLoss
 
-# compartimos la carga de coco y las funciones que ya usa el entrenamiento de rcnn
-from parasite_detection.faster_rcnn import (
-    TrainConfig as FasterRCNNConfig,
-    create_dataloaders,
-    evaluate_loss,
-    evaluate_model,
-    resolve_device,
-    save_checkpoint,
-    train_one_epoch,
-)
+from ultralytics.utils import ops
 from parasite_detection.paths import DEDUP_DATA, MODELS, RESULTS, ROOT
 
 
 COCO_WEIGHTS = MODELS / "pretrained/yolov10s.pt"
-NUM_CLASSES = 8
-SCORE_THRESHOLD = 0.05
+TRAIN_MANIFEST = ROOT / "results/visual-labels/dinov2_train_order.json"
+SCORE_THRESHOLD = 0.001
 MAX_DETECTIONS = 100
+SUPPORTED_VERSION = "8.4.215"
 
 
 @dataclass
-class TrainConfig(FasterRCNNConfig):
-    # usamos por defecto el mismo train depurado que en el experimento de rcnn
+class TrainConfig:
+    # el nombre nuevo separa esta ejecución de los experimentos con el bucle anterior
     data_dir: Path = DEDUP_DATA
-    patience: int = 10
+    run_name: str = "baseline_ultralytics"
+    epochs: int = 100
+    batch_size: int = 8
+    image_size: int = 640
 
-    # estas ganancias corresponden a la pérdida de detección de yolo
+    # ultralytics crea los grupos de sgd y gestiona la acumulación de gradientes
+    learning_rate: float = 0.01
+    momentum: float = 0.9
+    weight_decay: float = 0.0005
+    nominal_batch_size: int = 64
+
+    # el warmup oficial distingue los biases y también ajusta el momentum
+    warmup_epochs: float = 3.0
+    warmup_momentum: float = 0.8
+    warmup_bias_lr: float = 0.1
+    cos_lr: bool = True
+    final_lr_factor: float = 0.01
+
+    # usamos el criterio que selecciona la arquitectura en la versión fijada de ultralytics
     box_gain: float = 7.5
     cls_gain: float = 0.5
     dfl_gain: float = 1.5
 
-
-class YOLODetector(torch.nn.Module):
-    def __init__(self, image_size=640, weights_path=COCO_WEIGHTS, loss_gains=(7.5, 0.5, 1.5)):
-        super().__init__()
-        self.image_size = image_size
-
-        # construimos únicamente la variante s con ocho clases de salida
-        self.detector = DetectionModel("yolov10s.yaml", nc=NUM_CLASSES, verbose=False)
-        if weights_path is not None:
-            if not Path(weights_path).is_file():
-                raise FileNotFoundError(f"Faltan los pesos en {weights_path}. Ejecuta just weights.")
-            pretrained = YOLO(str(weights_path)).model
-            source = pretrained.float().state_dict()
-            destination = self.detector.state_dict()
-
-            # transferimos los tensores compatibles y dejamos nuevas las salidas de clase
-            compatible = {
-                name: value for name, value in source.items()
-                if name in destination and value.shape == destination[name].shape
-            }
-            self.detector.load_state_dict(compatible, strict=False)
-            print(f"Pesos COCO transferidos: {len(compatible)}/{len(destination)} tensores")
-
-        # fijamos las ganancias de la pérdida sin activar el entrenador automático
-        box_gain, cls_gain, dfl_gain = loss_gains
-        self.detector.args = get_cfg(overrides={"box": box_gain, "cls": cls_gain, "dfl": dfl_gain})
-        self.detector.criterion = None
-
-        # activamos explícitamente la rama final de yolov10 para la inferencia
-        # algunas versiones de ultralytics la desactivan al construir desde el yaml
-        self.detector.model[-1].end2end = True
-
-        # conservamos el límite de cien detecciones por imagen que usa rcnn
-        self.detector.model[-1].max_det = MAX_DETECTIONS
-
-    def prepare_batch(self, images, targets=None):
-        batch_images, geometry = [], []
-        boxes, classes, batch_indices = [], [], []
-        for index, image in enumerate(images):
-            height, width = image.shape[-2:]
-            ratio = self.image_size / max(height, width)
-            new_height = max(1, round(height * ratio))
-            new_width = max(1, round(width * ratio))
-            scale_x, scale_y = new_width / width, new_height / height
-            left = (self.image_size - new_width) // 2
-            top = (self.image_size - new_height) // 2
-
-            # ajustamos el lado mayor y rellenamos sin recortar contenido de la imagen
-            resized = functional.interpolate(
-                image.unsqueeze(0), size=(new_height, new_width),
-                mode="bilinear", align_corners=False, antialias=True,
-            ).squeeze(0)
-            padded = functional.pad(
-                resized,
-                (left, self.image_size - new_width - left, top, self.image_size - new_height - top),
-                value=114 / 255,
-            )
-            batch_images.append(padded)
-            geometry.append((height, width, scale_x, scale_y, left, top))
-            if targets is None:
-                continue
-
-            # convertimos las clases de coco de uno a ocho a las clases de yolo de cero a siete
-            labels = targets[index]["labels"] - 1
-            if ((labels < 0) | (labels >= NUM_CLASSES)).any():
-                raise ValueError("Las categorías COCO deben estar entre 1 y 8.")
-            image_boxes = targets[index]["boxes"].clone()
-            image_boxes[:, 0::2] = image_boxes[:, 0::2] * scale_x + left
-            image_boxes[:, 1::2] = image_boxes[:, 1::2] * scale_y + top
-
-            # yolo recibe centro ancho y alto normalizados respecto al lienzo cuadrado
-            centers = (image_boxes[:, :2] + image_boxes[:, 2:]) / 2
-            sizes = image_boxes[:, 2:] - image_boxes[:, :2]
-            boxes.append(torch.cat((centers, sizes), dim=1) / self.image_size)
-            classes.append(labels.reshape(-1, 1).float())
-            batch_indices.append(torch.full_like(labels, index))
-
-        batch = {"img": torch.stack(batch_images)}
-        if targets is not None:
-            batch.update({
-                "bboxes": torch.cat(boxes),
-                "cls": torch.cat(classes),
-                "batch_idx": torch.cat(batch_indices),
-            })
-        return batch, geometry
-
-    def forward(self, images, targets=None):
-        batch, geometry = self.prepare_batch(images, targets)
-        if targets is not None:
-            # mantenemos la pérdida dual original de yolov10 en ambas ramas de asignación
-            if self.detector.criterion is None:
-                self.detector.criterion = E2EDetectLoss(self.detector)
-            losses, _ = self.detector.loss(batch)
-
-            # ultralytics escala la pérdida por batch y aquí usamos su media por imagen
-            return {"loss_yolo": losses.sum() / len(images)}
-
-        # yolov10 devuelve cajas finales de la rama one to one sin aplicar nms
-        predictions = self.detector(batch["img"])
-        predictions = predictions[0] if isinstance(predictions, tuple) else predictions
-        # comprobamos el formato para no confundir mapas intermedios con detecciones finales
-        if predictions.ndim != 3 or predictions.shape[0] != len(images) or predictions.shape[-1] != 6:
-            raise RuntimeError(
-                f"Salida de YOLOv10 no válida: {tuple(predictions.shape)}. "
-                "Se esperaba un tensor con forma batch por detecciones por 6."
-            )
-        if not torch.isfinite(predictions).all() or ((predictions[..., 4] < 0) | (predictions[..., 4] > 1)).any():
-            raise RuntimeError("YOLOv10 devolvió detecciones no finitas o confianzas fuera de [0, 1].")
-        outputs = []
-        for detections, (height, width, scale_x, scale_y, left, top) in zip(predictions, geometry):
-            # usamos el mismo umbral de confianza que el detector de rcnn
-            detections = detections[detections[:, 4] >= SCORE_THRESHOLD]
-            image_boxes = detections[:, :4].clone()
-
-            # deshacemos el relleno y el escalado antes de evaluar sobre el coco original
-            image_boxes[:, 0::2] = ((image_boxes[:, 0::2] - left) / scale_x).clamp(0, width)
-            image_boxes[:, 1::2] = ((image_boxes[:, 1::2] - top) / scale_y).clamp(0, height)
-            valid = (image_boxes[:, 2:] > image_boxes[:, :2]).all(dim=1)
-            outputs.append({
-                "boxes": image_boxes[valid],
-                "scores": detections[valid, 4],
-                "labels": detections[valid, 5].long() + 1,
-            })
-        return outputs
+    # la parada temprana y el mejor checkpoint dependen del map coco de validación
+    patience: int = 20
+    num_workers: int = 0
+    seed: int = 42
+    amp: bool = True
+    device: str = "auto"
 
 
-def build_model(image_size=640, weights_path=COCO_WEIGHTS, loss_gains=(7.5, 0.5, 1.5)):
-    # el adaptador permite usar las mismas funciones de entrenamiento y evaluación
-    return YOLODetector(image_size, weights_path, loss_gains)
+def _check_version():
+    # estas adaptaciones se han comprobado contra la versión de uv lock
+    if ultralytics.__version__ != SUPPORTED_VERSION:
+        raise RuntimeError(f"Usa Ultralytics {SUPPORTED_VERSION}, la versión fijada en uv.lock.")
 
 
-def load_trained_model(path=MODELS / "trained/yolov10s/baseline/best_model.pth", device="auto"):
-    # reconstruimos la arquitectura y cargamos solo tensores sin necesitar pesos de coco
-    checkpoint = torch.load(path, map_location="cpu", weights_only=True)
-    model = build_model(checkpoint["image_size"], weights_path=None, loss_gains=checkpoint["loss_gains"])
-    model.load_state_dict(checkpoint["model"])
-    return model.to(resolve_device(device)).eval()
+def _device(device):
+    if "," in str(device):
+        raise ValueError("Este flujo de evaluación COCO admite una sola GPU por ejecución.")
+    if device == "auto":
+        return "0" if torch.cuda.is_available() else "cpu"
+    if device == "cuda":
+        return "0"
+    if str(device).startswith("cuda:"):
+        return str(device).split(":", 1)[1]
+    return str(device)
 
 
-def train_model(config, resume=None):
-    # validamos los parámetros antes de crear carpetas o cargar pesos
+def _data_spec(data_dir):
+    # reconstruimos las rutas locales sin depender de la máquina que convirtió el dataset
+    data_dir = Path(data_dir).resolve()
+    mapping = json.loads((data_dir / "class_mapping.json").read_text())
+    if sorted((r["yolo_id"], r["coco_id"]) for r in mapping) != [(i, i + 1) for i in range(8)]:
+        raise ValueError("Se esperan clases YOLO 0–7 y COCO 1–8 en class_mapping.json.")
+    return {
+        "path": str(data_dir), "train": "images/train", "val": "images/val", "test": "images/test",
+        "names": {r["yolo_id"]: r["name"] for r in mapping},
+    }
+
+
+def _check_dataset(data_dir):
+    data_dir = Path(data_dir).resolve()
+    spec = _data_spec(data_dir)
+    expected = set(json.loads(TRAIN_MANIFEST.read_text())["ordered_ids"])
+    for split in ("train", "val"):
+        coco = json.loads((data_dir / "annotations" / f"instances_{split}.json").read_text())
+        if sorted(c["id"] for c in coco["categories"]) != list(range(1, 9)):
+            raise ValueError(f"Las clases COCO de {split} deben ser 1–8.")
+        names = {Path(r["file_name"]).stem for r in coco["images"]}
+        if split == "train" and (len(coco["images"]) != 1157 or names != expected):
+            raise ValueError("El train debe contener las 1.157 imágenes definitivas depuradas.")
+        actual = {p.stem for p in (data_dir / "images" / split).iterdir()
+                  if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}}
+        if actual != names:
+            raise ValueError(f"Las imágenes de {split} no coinciden con sus anotaciones COCO.")
+        for record in coco["images"]:
+            label = data_dir / "labels" / split / f"{Path(record['file_name']).stem}.txt"
+            if not label.is_file():
+                raise FileNotFoundError(f"Falta la anotación YOLO: {label}")
+    return spec
+
+
+class CocoValidator(DetectionValidator):
+    def init_metrics(self, model):
+        super().init_metrics(model)
+        # usamos las anotaciones originales y los ids estables del split evaluado
+        annotation_file = Path(self.data["path"]) / "annotations" / f"instances_{self.args.split}.json"
+        with redirect_stdout(StringIO()):
+            self.coco = COCO(str(annotation_file))
+        self.image_by_name = {Path(r["file_name"]).name: r["id"] for r in self.coco.dataset["images"]}
+        self.coco_predictions = []
+        self.coco_image_ids = []
+        self.coco_results = {}
+
+    def update_metrics(self, preds, batch):
+        # conservamos las métricas nativas para poder comparar ambos evaluadores
+        super().update_metrics(preds, batch)
+        for index, pred in enumerate(preds):
+            prepared = self._prepare_batch(index, batch)
+            image_id = self.image_by_name[Path(prepared["im_file"]).name]
+            self.coco_image_ids.append(image_id)
+
+            # el escalado oficial deshace el letterbox antes de pasar las cajas a coco
+            scaled = self.scale_preds(self._prepare_pred(pred), prepared)
+            boxes = ops.xyxy2ltwh(scaled["bboxes"]).tolist()
+            for box, score, label in zip(boxes, scaled["conf"].tolist(), scaled["cls"].tolist()):
+                if box[2] > 0 and box[3] > 0:
+                    self.coco_predictions.append({
+                        "image_id": image_id, "category_id": int(label) + 1,
+                        "bbox": box, "score": score,
+                    })
+
+    def get_stats(self):
+        stats = super().get_stats()
+        # evitamos elegir modelos con una validación incompleta o imágenes repetidas
+        if len(self.coco_image_ids) != len(set(self.coco_image_ids)) or set(self.coco_image_ids) != set(self.coco.imgs):
+            raise ValueError("La evaluación debe recorrer una vez todas las imágenes del split COCO.")
+        with redirect_stdout(StringIO()):
+            if self.coco_predictions:
+                detections = self.coco.loadRes(self.coco_predictions)
+            else:
+                detections = COCO()
+                detections.dataset = {**self.coco.dataset, "annotations": []}
+                detections.createIndex()
+            evaluator = COCOeval(self.coco, detections, "bbox")
+            evaluator.params.imgIds = self.coco_image_ids
+            evaluator.evaluate()
+            evaluator.accumulate()
+            evaluator.summarize()
+        self.coco_results = {"map": float(evaluator.stats[0]), "map50": float(evaluator.stats[1])}
+
+        # fitness controla best pt y la parada temprana del entrenador oficial
+        stats.update({"coco/map": self.coco_results["map"], "coco/map50": self.coco_results["map50"],
+                      "fitness": self.coco_results["map"]})
+        print(f"COCO | mAP {self.coco_results['map']:.4f} | mAP50 {self.coco_results['map50']:.4f}")
+        return stats
+
+
+class ParasiteTrainer(DetectionTrainer):
+    def build_dataset(self, img_path, mode="train", batch=None):
+        dataset = super().build_dataset(img_path, mode, batch)
+        # fijamos el lienzo cuadrado también en validación para igualar la evaluación independiente
+        # el modo rectangular nativo añade margen y puede cambiar el tamaño real de entrada
+        dataset.rect = False
+        if mode == "train":
+            # augment false en model train no desactiva todos los aumentos del dataset
+            # sustituimos sus transformaciones por letterbox y formateo deterministas
+            dataset.augment = False
+            dataset.transforms = dataset.build_transforms(hyp=copy(self.args))
+            if not all(isinstance(t, (LetterBox, Format)) for t in dataset.transforms.transforms):
+                raise RuntimeError("El baseline solo admite letterbox y formateo de targets.")
+            expected = set(json.loads(TRAIN_MANIFEST.read_text())["ordered_ids"])
+            if len(dataset) != 1157 or {Path(p).stem for p in dataset.im_files} != expected:
+                raise ValueError("El dataloader debe conservar las 1.157 imágenes depuradas.")
+        return dataset
+
+    def get_validator(self):
+        # el resto del entrenamiento conserva el bucle oficial sin sustituirlo
+        return CocoValidator(self.test_loader, save_dir=self.save_dir, args=copy(self.args), _callbacks=self.callbacks)
+
+
+def _metrics_dir(trainer):
+    return RESULTS / "metrics/yolov10s" / trainer.save_dir.name
+
+
+def _record_settings(trainer):
+    # guardamos los argumentos efectivos después de resolver dispositivo y reanudación
+    directory = _metrics_dir(trainer)
+    directory.mkdir(parents=True, exist_ok=True)
+    args = trainer.args
+    settings = {
+        "engine": "ultralytics", "ultralytics_version": str(ultralytics.__version__),
+        "torch_version": str(torch.__version__), "architecture": "yolov10s",
+        "data_dir": str(trainer.data["path"]), "run_name": trainer.save_dir.name,
+        "epochs": trainer.epochs, "batch_size": trainer.batch_size, "image_size": args.imgsz,
+        "learning_rate": args.lr0, "momentum": args.momentum, "weight_decay": args.weight_decay,
+        "warmup_epochs": args.warmup_epochs, "nominal_batch_size": args.nbs,
+        "seed": args.seed, "device": str(trainer.device), "amp": bool(trainer.amp),
+        "augmentation": "none", "criterion": type(trainer.model.init_criterion()).__name__,
+        "inference": "one2one", "evaluation": "pycocotools COCOeval bbox",
+        "score_threshold": args.conf, "max_detections": args.max_det,
+        "selection": "COCO mAP on validation EMA", "native_args": vars(args),
+        "validation_shape": "square imgsz with rect disabled",
+        "loss_reporting": "sum of native logged components, separate from the backward scalar",
+    }
+    (directory / "settings.json").write_text(json.dumps(settings, indent=2, default=str) + "\n", encoding="utf-8")
+
+
+def _record_epoch(trainer):
+    # la evaluación final del mejor modelo no representa una época adicional
+    if not trainer.validator.training or not trainer.csv.is_file():
+        return
+    with trainer.csv.open(newline="", encoding="utf-8") as file:
+        native_rows = [{k.strip(): v for k, v in row.items()} for row in csv.DictReader(file)]
+    # una interrupción tras escribir el csv puede dejar una época que se repite al reanudar
+    by_epoch = {int(row["epoch"]): row for row in native_rows if int(row["epoch"]) <= trainer.epoch + 1}
+    rows = []
+    for epoch in sorted(by_epoch):
+        native = by_epoch[epoch]
+        # registramos las componentes publicadas sin cambiar el escalar del backward
+        parts = {k: float(v) for k, v in native.items() if k.startswith(("train/", "val/")) and k.endswith("loss")}
+        row = {
+            "epoch": int(native["epoch"]),
+            "train_loss": sum(v for k, v in parts.items() if k.startswith("train/")),
+            "val_loss": sum(v for k, v in parts.items() if k.startswith("val/")),
+            "map": float(native["coco/map"]), "map50": float(native["coco/map50"]),
+            "lr": float(native["lr/pg0"]),
+            "ultralytics_map": float(native["metrics/mAP50-95(B)"]),
+            "ultralytics_map50": float(native["metrics/mAP50(B)"]),
+        }
+        row.update(parts)
+        row.update({k: float(v) for k, v in native.items() if k.startswith("lr/pg")})
+        rows.append(row)
+
+    # reconstruir el csv nativo cubre una interrupción entre callbacks
+    path = _metrics_dir(trainer) / "training.csv"
+    temporary = path.with_suffix(".csv.tmp")
+    with temporary.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    temporary.replace(path)
+
+
+def build_model(weights_path=COCO_WEIGHTS):
+    # la transferencia y la adaptación de clases quedan a cargo del entrenador oficial
+    if not Path(weights_path).is_file():
+        raise FileNotFoundError(f"Faltan los pesos en {weights_path}. Ejecuta just weights.")
+    return YOLO(str(weights_path))
+
+
+def load_trained_model(path=None, device="auto"):
+    path = Path(path) if path is not None else MODELS / "trained/yolov10s/baseline_ultralytics/weights/best.pt"
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    if path.suffix == ".pth":
+        # conservamos la lectura de los checkpoints antiguos para comparar predicciones
+        checkpoint = torch.load(path, map_location="cpu", weights_only=True)
+        raw = DetectionModel("yolov10s.yaml", nc=8, verbose=False)
+        raw.load_state_dict({k.removeprefix("detector."): v for k, v in checkpoint["model"].items()})
+        raw.names = {int(k) - 1: v for k, v in json.loads((ROOT / "configs/dataset.json").read_text())["classes"].items()}
+        raw.args = vars(get_cfg())
+        model = YOLO("yolov10s.yaml")
+        model.model = raw
+        model.overrides = {"task": "detect", "imgsz": checkpoint["image_size"]}
+    else:
+        model = build_model(path)
+    resolved = _device(device)
+    model.to(resolved if resolved in {"cpu", "mps"} else f"cuda:{resolved}")
+    model.model.float().eval()
+    model.model.end2end = True
+    return model
+
+
+def evaluate_model(model, data_dir=DEDUP_DATA, split="val", image_size=None, batch_size=8, device="auto"):
+    _check_version()
+    if split not in {"val", "test"}:
+        raise ValueError("Evalúa val o test explícitamente.")
+    if image_size is None:
+        image_size = model.overrides.get("imgsz", 640)
+    # la evaluación independiente comparte el postprocesado y el evaluador del entrenamiento
+    with tempfile.TemporaryDirectory(prefix="parasites-yolo-eval-") as temporary:
+        directory = Path(temporary)
+        data_file = directory / "dataset.yaml"
+        data_file.write_text(yaml.safe_dump(_data_spec(data_dir)), encoding="utf-8")
+        validator = CocoValidator(save_dir=directory, args={
+            "data": str(data_file), "split": split, "imgsz": image_size, "batch": batch_size,
+            "device": _device(device), "workers": 0, "conf": SCORE_THRESHOLD,
+            "max_det": MAX_DETECTIONS, "nms": False, "rect": False, "plots": False, "save_json": False,
+        })
+        validator(model=model.model)
+        return validator.coco_results
+
+
+def train_model(config, resume=None, dashboard=None):
+    if dashboard is None:
+        return _train_model(config, resume)
+    from parasite_detection.dashboard.adapters import TrainingSession
+
+    with TrainingSession(dashboard, config) as monitor:
+        model, history = _train_model(config, resume, monitor)
+        monitor.finish(history, model.trainer.best)
+        return model, history
+
+
+def _train_model(config, resume=None, monitor=None):
+    _check_version()
+    if not config.run_name or Path(config.run_name).name != config.run_name or config.run_name in {".", ".."}:
+        raise ValueError("Usa un nombre de experimento sin rutas.")
     if config.epochs < 1 or config.batch_size < 1 or config.patience < 0 or config.num_workers < 0:
         raise ValueError("Revisa epochs, batch_size, patience y num_workers.")
     if config.image_size < 32 or config.image_size % 32:
         raise ValueError("image_size debe ser un múltiplo de 32.")
-    if config.learning_rate <= 0 or config.weight_decay < 0 or not 0 <= config.momentum < 1:
-        raise ValueError("Revisa los parámetros de SGD.")
-    if config.warmup_batches < 0 or not 0 < config.start_factor <= 1 or not 0 <= config.end_factor <= 1:
-        raise ValueError("Revisa warmup_batches, start_factor y end_factor.")
-    if any(gain <= 0 for gain in (config.box_gain, config.cls_gain, config.dfl_gain)):
-        raise ValueError("Las ganancias de la pérdida deben ser positivas.")
-    if not config.run_name or Path(config.run_name).name != config.run_name or config.run_name in {".", ".."}:
-        raise ValueError("Usa un nombre de experimento sin rutas.")
-
-    device = resolve_device(config.device)
-    model_dir = MODELS / "trained/yolov10s" / config.run_name
+    if config.nominal_batch_size < config.batch_size or config.warmup_epochs < 0:
+        raise ValueError("Revisa nominal_batch_size y warmup_epochs.")
+    if not all(math.isfinite(v) for v in (config.learning_rate, config.momentum, config.weight_decay, config.final_lr_factor)):
+        raise ValueError("Los hiperparámetros deben ser finitos.")
+    if config.learning_rate <= 0 or config.weight_decay < 0 or not 0 <= config.momentum < 1 or not 0 <= config.final_lr_factor <= 1:
+        raise ValueError("Revisa los parámetros del optimizador y final_lr_factor.")
+    spec = _check_dataset(config.data_dir)
+    directory = MODELS / "trained/yolov10s" / config.run_name
     metrics_dir = RESULTS / "metrics/yolov10s" / config.run_name
-    last_path, best_path = model_dir / "last_checkpoint.pth", model_dir / "best_model.pth"
-    history_path = metrics_dir / "training.csv"
-    settings_path = metrics_dir / "settings.json"
-
-    # una ejecución nueva no puede reemplazar checkpoints o métricas de otra ejecución
-    if resume is None and (model_dir.exists() or metrics_dir.exists()):
-        raise FileExistsError("Ya existe esta ejecución. Reanuda el entrenamiento o cambia run_name.")
-    if resume is not None and Path(resume).resolve() != last_path.resolve():
-        raise ValueError(f"Para reanudar esta ejecución, usa {last_path}.")
-
-    # registramos la versión de ultralytics porque implementa la arquitectura y su pérdida
-    data_dir = Path(config.data_dir).resolve()
-    settings = asdict(config)
-    settings["data_dir"] = str(data_dir.relative_to(ROOT) if data_dir.is_relative_to(ROOT) else data_dir)
-    settings["device"] = str(device)
-    settings["amp"] = config.amp and device.type == "cuda"
-    settings["ultralytics_version"] = str(ultralytics.__version__)
-    settings["torch_version"] = str(torch.__version__)
-    settings["augmentation"] = "none"
-    settings["criterion"] = "E2EDetectLoss"
-    settings["evaluation"] = "pycocotools COCOeval bbox"
-    settings["inference"] = "one2one"
-    settings["architecture"] = "yolov10s"
-    settings["preprocessing"] = "resize preserving aspect ratio and letterbox padding"
-    settings["score_threshold"] = SCORE_THRESHOLD
-    settings["max_detections"] = MAX_DETECTIONS
-    settings["optimizer"] = "SGD"
-
-    torch.manual_seed(config.seed)
-    train_loader, val_loader = create_dataloaders(config)
-
-    # comprobamos la identidad del train definitivo para evitar reintroducir imágenes eliminadas
-    manifest_path = RESULTS / "visual-labels/dinov2_train_order.json"
-    expected_ids = set(json.loads(manifest_path.read_text(encoding="utf-8"))["ordered_ids"])
-    actual_ids = {Path(image["file_name"]).stem for image in train_loader.dataset.images}
-    if len(train_loader.dataset) != 1157 or actual_ids != expected_ids:
-        raise ValueError("El train debe contener exactamente las 1.157 imágenes definitivas depuradas.")
-    for loader in (train_loader, val_loader):
-        if sorted(loader.dataset.coco.cats) != list(range(1, NUM_CLASSES + 1)):
-            raise ValueError("Las categorías COCO deben estar entre 1 y 8.")
-
-    gains = (config.box_gain, config.cls_gain, config.dfl_gain)
-    model = build_model(config.image_size, COCO_WEIGHTS if resume is None else None, gains).to(device)
-
-    # igual que rcnn usamos sgd sin nesterov y sin acumulación automática de gradientes
-    optimizer = torch.optim.SGD(
-        model.parameters(), lr=config.learning_rate,
-        momentum=config.momentum, weight_decay=config.weight_decay,
-    )
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.epochs)
-    scaler = torch.amp.GradScaler("cuda", enabled=settings["amp"])
-    history, best_map, best_epoch = [], -math.inf, 0
-
+    if resume is None and (directory.exists() or metrics_dir.exists()):
+        raise FileExistsError("Ya existe esta ejecución. Usa otro run_name o reanuda un last.pt interrumpido.")
     if resume is not None:
-        checkpoint = torch.load(resume, map_location="cpu", weights_only=True)
+        if Path(resume).resolve() != (directory / "weights/last.pt").resolve():
+            raise ValueError(f"Para reanudar esta ejecución, usa {directory / 'weights/last.pt'}.")
+        saved = json.loads((metrics_dir / "settings.json").read_text())
+        if saved.get("engine") != "ultralytics" or saved["ultralytics_version"] != SUPPORTED_VERSION:
+            raise ValueError("Solo se reanudan ejecuciones del nuevo entrenador y de la misma versión.")
+        if Path(saved["data_dir"]).resolve() != Path(config.data_dir).resolve() or saved["epochs"] != config.epochs:
+            raise ValueError("Conserva el dataset y el horizonte de épocas original para reanudar.")
+        # evitamos que los valores por defecto de la terminal alteren un experimento al reanudarlo
+        native_keys = {
+            "batch_size": "batch", "image_size": "imgsz", "learning_rate": "lr0", "momentum": "momentum",
+            "weight_decay": "weight_decay", "seed": "seed", "nominal_batch_size": "nbs",
+            "warmup_epochs": "warmup_epochs", "warmup_momentum": "warmup_momentum",
+            "warmup_bias_lr": "warmup_bias_lr", "cos_lr": "cos_lr", "final_lr_factor": "lrf",
+            "box_gain": "box", "cls_gain": "cls", "dfl_gain": "dfl", "amp": "amp",
+        }
+        for name, key in native_keys.items():
+            if getattr(config, name) != saved["native_args"][key]:
+                raise ValueError(f"Conserva {name}={saved['native_args'][key]} para reanudar esta ejecución.")
 
-        # las métricas anteriores a la corrección de inferencia no sirven para elegir el mejor modelo
-        if checkpoint["settings"].get("inference") != "one2one":
-            raise ValueError(
-                "Este checkpoint se guardó antes de corregir la inferencia one2one. "
-                "Puedes cargar sus pesos con load_trained_model para reevaluarlos, "
-                "pero repite el baseline con otro run_name para obtener un historial válido."
-            )
+    model = build_model(resume if resume is not None else COCO_WEIGHTS)
+    if resume is not None and (model.ckpt.get("epoch", -1) < 0 or model.ckpt.get("optimizer") is None):
+        raise ValueError("El checkpoint ya terminó y Ultralytics retiró el optimizador. Inicia otra ejecución.")
+    directory.mkdir(parents=True, exist_ok=True)
+    data_file = directory / "dataset.yaml"
+    data_file.write_text(yaml.safe_dump(spec), encoding="utf-8")
+    model.add_callback("on_train_start", _record_settings)
+    model.add_callback("on_fit_epoch_end", _record_epoch)
+    if monitor is not None:
+        from parasite_detection.dashboard.adapters import UltralyticsEvents
 
-        # reanudar exige conservar los ajustes que determinan los datos y la optimización
-        keys = (
-            "data_dir", "image_size", "seed", "batch_size", "learning_rate", "momentum",
-            "weight_decay", "start_factor", "end_factor", "warmup_batches", "box_gain",
-            "cls_gain", "dfl_gain", "amp", "ultralytics_version", "torch_version",
-        )
-        for key in keys:
-            if settings[key] != checkpoint["settings"][key]:
-                raise ValueError(f"Conserva el valor original de {key} para reanudar.")
-        model.load_state_dict(checkpoint["model"])
-        optimizer.load_state_dict(checkpoint["optimizer"])
-        scheduler.load_state_dict(checkpoint["scheduler"])
-        if scaler.is_enabled():
-            scaler.load_state_dict(checkpoint["scaler"])
-        history = checkpoint["history"]
-        best_map, best_epoch = checkpoint["best_map"], checkpoint["best_epoch"]
+        UltralyticsEvents(monitor, metrics_dir, resume=resume is not None, evaluation={
+            "label": "COCOeval · one-to-one · val", "evaluator": "pycocotools COCOeval",
+            "split": "val", "iou": "0.50:0.95", "max_dets": [1, 10, 100],
+            "inference": "one2one", "nms": False, "score_threshold": SCORE_THRESHOLD,
+            "max_detections": MAX_DETECTIONS, "weights": "EMA",
+            "ultralytics_version": SUPPORTED_VERSION,
+            "precision_recall": "métricas nativas de Ultralytics, no COCOeval",
+            "loss_reporting": "suma de componentes nativas publicadas, no escalar del backward",
+        }).install(model)
 
-        # si ampliamos las épocas recalculamos la posición actual dentro de la curva coseno
-        if scheduler.T_max != config.epochs:
-            state = scheduler.state_dict()
-            state["T_max"], state["last_epoch"] = config.epochs, len(history)
-            state["_last_lr"] = [
-                lr * (1 + math.cos(math.pi * len(history) / config.epochs)) / 2
-                for lr in state["base_lrs"]
-            ]
-            scheduler.load_state_dict(state)
-            for group, lr in zip(optimizer.param_groups, scheduler.get_last_lr()):
-                group["lr"] = lr
-        if not best_path.is_file():
-            raise FileNotFoundError(f"Falta el mejor modelo de esta ejecución: {best_path}")
-        del checkpoint
-
-    first_epoch = len(history) + 1
-    if first_epoch > config.epochs:
-        raise ValueError("El checkpoint ya completó las épocas pedidas. Aumenta epochs.")
-    model_dir.mkdir(parents=True, exist_ok=True)
-    metrics_dir.mkdir(parents=True, exist_ok=True)
-    settings_path.write_text(json.dumps(settings, indent=2) + "\n", encoding="utf-8")
-    print(f"Dispositivo: {device} | Train: {len(train_loader.dataset)} | Val: {len(val_loader.dataset)}")
-
-    for epoch in range(first_epoch, config.epochs + 1):
-        torch.manual_seed(config.seed + epoch)
-        description = f"Época {epoch}/{config.epochs}"
-
-        # el warmup solo ocupa los primeros lotes de la primera época
-        total_iters = min(config.warmup_batches, len(train_loader) - 1) if epoch == 1 else 0
-        train_loss = train_one_epoch(
-            model, train_loader, optimizer, scaler, device, description,
-            config.start_factor, config.end_factor, total_iters,
-        )
-        if epoch == 1 and total_iters > 0:
-            scheduler.base_lrs = [group["lr"] for group in optimizer.param_groups]
-
-        # medimos la pérdida de validación en fp32 con batchnorm congelado como en rcnn
-        val_loss = evaluate_loss(model, val_loader)
-
-        # evaluamos con los mismos ids y el mismo evaluador coco que el otro detector
-        metrics = evaluate_model(model, val_loader)
-        lr = optimizer.param_groups[0]["lr"]
-        history.append({"epoch": epoch, "train_loss": train_loss, "val_loss": val_loss, **metrics, "lr": lr})
-        print(
-            f"{description} | train loss {train_loss:.4f} | val loss {val_loss:.4f}"
-            f" | mAP {metrics['map']:.4f} | mAP50 {metrics['map50']:.4f} | lr {lr:.6f}"
-        )
-        scheduler.step()
-
-        # guardamos los metadatos mínimos para reconstruir el modelo en otra sesión
-        model_state = {"model": model.state_dict(), "image_size": config.image_size, "loss_gains": gains}
-        if metrics["map"] > best_map:
-            best_map, best_epoch = metrics["map"], epoch
-            save_checkpoint(model_state, best_path)
-
-        # el último checkpoint incluye todo lo necesario para continuar el entrenamiento
-        save_checkpoint({
-            **model_state, "optimizer": optimizer.state_dict(), "scheduler": scheduler.state_dict(),
-            "scaler": scaler.state_dict(), "history": history, "best_map": best_map,
-            "best_epoch": best_epoch, "settings": settings,
-        }, last_path)
-        with history_path.open("w", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=list(history[-1]))
-            writer.writeheader()
-            writer.writerows(history)
-
-        # la parada temprana depende únicamente del map de validación
-        if config.patience and epoch - best_epoch >= config.patience:
-            print(f"Parada temprana tras {config.patience} épocas sin mejorar.")
-            break
-
-    # devolvemos el mejor modelo para que el notebook pueda evaluarlo más adelante
-    best = torch.load(best_path, map_location="cpu", weights_only=True)
-    model.load_state_dict(best["model"])
-    print(f"Mejor época: {best_epoch} | mAP {best_map:.4f} | {best_path}")
-    return model.eval(), history
+    # los ceros documentan el baseline y el dataloader impide aplicar aumentos aleatorios
+    model.train(
+        trainer=ParasiteTrainer, data=str(data_file), project=str(directory.parent), name=config.run_name,
+        exist_ok=True, resume=resume is not None, epochs=config.epochs, batch=config.batch_size,
+        imgsz=config.image_size, device=_device(config.device), workers=config.num_workers,
+        seed=config.seed, deterministic=True, amp=config.amp, optimizer="SGD",
+        lr0=config.learning_rate, momentum=config.momentum, weight_decay=config.weight_decay,
+        nbs=config.nominal_batch_size, warmup_epochs=config.warmup_epochs,
+        warmup_momentum=config.warmup_momentum, warmup_bias_lr=config.warmup_bias_lr,
+        cos_lr=config.cos_lr, lrf=config.final_lr_factor, patience=config.patience,
+        box=config.box_gain, cls=config.cls_gain, dfl=config.dfl_gain,
+        conf=SCORE_THRESHOLD, max_det=MAX_DETECTIONS, nms=False, val=True, split="val",
+        plots=False, save=True, save_json=False, fraction=1.0, close_mosaic=0,
+        mosaic=0.0, mixup=0.0, cutmix=0.0, copy_paste=0.0, hsv_h=0.0, hsv_s=0.0, hsv_v=0.0,
+        degrees=0.0, translate=0.0, scale=0.0, shear=0.0, perspective=0.0,
+        flipud=0.0, fliplr=0.0, bgr=0.0, multi_scale=0.0, auto_augment=None, erasing=0.0,
+    )
+    with (metrics_dir / "training.csv").open(newline="", encoding="utf-8") as file:
+        history = [{k: int(v) if k == "epoch" else float(v) for k, v in row.items()} for row in csv.DictReader(file)]
+    # la serialización nativa usa fp16 y la evaluación final refleja los pesos realmente guardados
+    final_validation = {
+        "checkpoint": str(model.trainer.best), "split": "val", "inference": "one2one",
+        "score_threshold": SCORE_THRESHOLD, "max_detections": MAX_DETECTIONS,
+        **model.trainer.validator.coco_results,
+    }
+    (metrics_dir / "best_validation.json").write_text(json.dumps(final_validation, indent=2) + "\n", encoding="utf-8")
+    return model, history
