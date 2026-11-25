@@ -1,0 +1,5799 @@
+{
+  "dataset": "Francesco/parasites-1s07h",
+  "variant": "deduplicated",
+  "split": "train",
+  "categories": [
+    "microscopy",
+    "collage",
+    "slide",
+    "illustration",
+    "uncertain"
+  ],
+  "items": [
+    {
+      "id": "000812",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000812.jpg",
+      "category": null
+    },
+    {
+      "id": "001176",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001176.jpg",
+      "category": null
+    },
+    {
+      "id": "001232",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001232.jpg",
+      "category": null
+    },
+    {
+      "id": "000939",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000939.jpg",
+      "category": null
+    },
+    {
+      "id": "000157",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000157.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001180",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001180.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001122",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001122.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000232",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000232.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001360",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001360.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001014",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001014.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001033",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001033.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000043",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000043.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000310",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000310.jpg",
+      "category": null
+    },
+    {
+      "id": "001292",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001292.jpg",
+      "category": null
+    },
+    {
+      "id": "000579",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000579.jpg",
+      "category": null
+    },
+    {
+      "id": "000824",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000824.jpg",
+      "category": null
+    },
+    {
+      "id": "001325",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001325.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000888",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000888.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001080",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001080.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000467",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000467.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000839",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000839.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000497",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000497.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000345",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000345.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000869",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000869.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000568",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000568.jpg",
+      "category": null
+    },
+    {
+      "id": "000329",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000329.jpg",
+      "category": null
+    },
+    {
+      "id": "000949",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000949.jpg",
+      "category": null
+    },
+    {
+      "id": "000940",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000940.jpg",
+      "category": null
+    },
+    {
+      "id": "000978",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000978.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001359",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001359.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000920",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000920.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001124",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001124.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001001",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001001.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001209",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001209.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000738",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000738.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001182",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001182.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001302",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001302.jpg",
+      "category": null
+    },
+    {
+      "id": "000631",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000631.jpg",
+      "category": null
+    },
+    {
+      "id": "000211",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000211.jpg",
+      "category": null
+    },
+    {
+      "id": "001226",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001226.jpg",
+      "category": null
+    },
+    {
+      "id": "000780",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000780.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001231",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001231.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001349",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001349.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000244",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000244.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000278",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000278.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000213",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000213.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001448",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001448.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000742",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000742.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001037",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001037.jpg",
+      "category": null
+    },
+    {
+      "id": "000831",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000831.jpg",
+      "category": null
+    },
+    {
+      "id": "000886",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000886.jpg",
+      "category": null
+    },
+    {
+      "id": "000690",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000690.jpg",
+      "category": null
+    },
+    {
+      "id": "000417",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000417.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000942",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000942.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000853",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000853.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000786",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000786.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000570",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000570.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001424",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001424.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000715",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000715.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001296",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001296.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000019",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000019.jpg",
+      "category": null
+    },
+    {
+      "id": "001101",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001101.jpg",
+      "category": null
+    },
+    {
+      "id": "000682",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000682.jpg",
+      "category": null
+    },
+    {
+      "id": "000759",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000759.jpg",
+      "category": null
+    },
+    {
+      "id": "000989",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000989.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000960",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000960.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000535",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000535.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000710",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000710.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001024",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001024.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000548",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000548.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000793",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000793.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000980",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000980.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000647",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000647.jpg",
+      "category": null
+    },
+    {
+      "id": "001378",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001378.jpg",
+      "category": null
+    },
+    {
+      "id": "001211",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001211.jpg",
+      "category": null
+    },
+    {
+      "id": "000641",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000641.jpg",
+      "category": null
+    },
+    {
+      "id": "001419",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001419.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000750",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000750.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001195",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001195.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001311",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001311.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000463",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000463.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000531",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000531.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000277",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000277.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001339",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001339.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000382",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000382.jpg",
+      "category": null
+    },
+    {
+      "id": "000117",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000117.jpg",
+      "category": null
+    },
+    {
+      "id": "000225",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000225.jpg",
+      "category": null
+    },
+    {
+      "id": "001083",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001083.jpg",
+      "category": null
+    },
+    {
+      "id": "000556",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000556.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000454",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000454.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001450",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001450.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000164",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000164.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000149",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000149.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000622",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000622.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000741",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000741.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000923",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000923.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000946",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000946.jpg",
+      "category": null
+    },
+    {
+      "id": "000363",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000363.jpg",
+      "category": null
+    },
+    {
+      "id": "000549",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000549.jpg",
+      "category": null
+    },
+    {
+      "id": "000587",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000587.jpg",
+      "category": null
+    },
+    {
+      "id": "000914",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000914.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001085",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001085.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000284",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000284.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001300",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001300.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001167",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001167.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000360",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000360.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001254",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001254.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001043",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001043.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000082",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000082.jpg",
+      "category": null
+    },
+    {
+      "id": "001283",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001283.jpg",
+      "category": null
+    },
+    {
+      "id": "001308",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001308.jpg",
+      "category": null
+    },
+    {
+      "id": "001151",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001151.jpg",
+      "category": null
+    },
+    {
+      "id": "000911",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000911.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000340",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000340.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000137",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000137.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001270",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001270.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001082",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001082.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000962",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000962.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000609",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000609.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000731",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000731.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001442",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001442.jpg",
+      "category": null
+    },
+    {
+      "id": "000723",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000723.jpg",
+      "category": null
+    },
+    {
+      "id": "000038",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000038.jpg",
+      "category": null
+    },
+    {
+      "id": "000181",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000181.jpg",
+      "category": null
+    },
+    {
+      "id": "001065",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001065.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000185",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000185.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000292",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000292.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000673",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000673.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000782",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000782.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000772",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000772.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000430",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000430.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000969",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000969.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000769",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000769.jpg",
+      "category": null
+    },
+    {
+      "id": "000575",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000575.jpg",
+      "category": null
+    },
+    {
+      "id": "000732",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000732.jpg",
+      "category": null
+    },
+    {
+      "id": "001129",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001129.jpg",
+      "category": null
+    },
+    {
+      "id": "000095",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000095.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001220",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001220.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001073",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001073.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000968",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000968.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000761",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000761.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000396",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000396.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000884",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000884.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000487",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000487.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001362",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001362.jpg",
+      "category": null
+    },
+    {
+      "id": "000437",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000437.jpg",
+      "category": null
+    },
+    {
+      "id": "001358",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001358.jpg",
+      "category": null
+    },
+    {
+      "id": "001119",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001119.jpg",
+      "category": null
+    },
+    {
+      "id": "001163",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001163.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000580",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000580.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000630",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000630.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000077",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000077.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001004",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001004.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001111",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001111.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001174",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001174.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000787",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000787.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000558",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000558.jpg",
+      "category": null
+    },
+    {
+      "id": "000754",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000754.jpg",
+      "category": null
+    },
+    {
+      "id": "000351",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000351.jpg",
+      "category": null
+    },
+    {
+      "id": "001168",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001168.jpg",
+      "category": null
+    },
+    {
+      "id": "000245",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000245.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000143",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000143.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001397",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001397.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000806",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000806.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000305",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000305.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000283",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000283.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001342",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001342.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000722",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000722.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000930",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000930.jpg",
+      "category": null
+    },
+    {
+      "id": "000752",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000752.jpg",
+      "category": null
+    },
+    {
+      "id": "001078",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001078.jpg",
+      "category": null
+    },
+    {
+      "id": "000933",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000933.jpg",
+      "category": null
+    },
+    {
+      "id": "001253",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001253.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000805",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000805.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000892",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000892.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000945",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000945.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000017",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000017.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000852",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000852.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000331",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000331.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000640",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000640.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000060",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000060.jpg",
+      "category": null
+    },
+    {
+      "id": "000627",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000627.jpg",
+      "category": null
+    },
+    {
+      "id": "001183",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001183.jpg",
+      "category": null
+    },
+    {
+      "id": "001400",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001400.jpg",
+      "category": null
+    },
+    {
+      "id": "000775",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000775.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000492",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000492.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000704",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000704.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000419",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000419.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000271",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000271.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000397",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000397.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001081",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001081.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000268",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000268.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000675",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000675.jpg",
+      "category": null
+    },
+    {
+      "id": "000402",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000402.jpg",
+      "category": null
+    },
+    {
+      "id": "001059",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001059.jpg",
+      "category": null
+    },
+    {
+      "id": "000115",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000115.jpg",
+      "category": null
+    },
+    {
+      "id": "001473",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001473.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000097",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000097.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000674",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000674.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000917",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000917.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000519",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000519.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000105",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000105.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000142",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000142.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001061",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001061.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000830",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000830.jpg",
+      "category": null
+    },
+    {
+      "id": "000424",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000424.jpg",
+      "category": null
+    },
+    {
+      "id": "000200",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000200.jpg",
+      "category": null
+    },
+    {
+      "id": "000126",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000126.jpg",
+      "category": null
+    },
+    {
+      "id": "001375",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001375.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001426",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001426.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000561",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000561.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000952",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000952.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000990",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000990.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000717",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000717.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000103",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000103.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000584",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000584.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000330",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000330.jpg",
+      "category": null
+    },
+    {
+      "id": "001345",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001345.jpg",
+      "category": null
+    },
+    {
+      "id": "001451",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001451.jpg",
+      "category": null
+    },
+    {
+      "id": "001234",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001234.jpg",
+      "category": null
+    },
+    {
+      "id": "000199",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000199.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000589",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000589.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001341",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001341.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001265",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001265.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000890",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000890.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000395",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000395.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001042",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001042.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001105",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001105.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000364",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000364.jpg",
+      "category": null
+    },
+    {
+      "id": "001250",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001250.jpg",
+      "category": null
+    },
+    {
+      "id": "001396",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001396.jpg",
+      "category": null
+    },
+    {
+      "id": "000365",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000365.jpg",
+      "category": null
+    },
+    {
+      "id": "000224",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000224.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000015",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000015.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000976",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000976.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000603",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000603.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000536",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000536.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000130",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000130.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000569",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000569.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001160",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001160.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000226",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000226.jpg",
+      "category": null
+    },
+    {
+      "id": "000725",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000725.jpg",
+      "category": null
+    },
+    {
+      "id": "000524",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000524.jpg",
+      "category": null
+    },
+    {
+      "id": "000163",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000163.jpg",
+      "category": null
+    },
+    {
+      "id": "001203",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001203.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001216",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001216.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001106",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001106.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001187",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001187.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000743",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000743.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000380",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000380.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000811",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000811.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000192",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000192.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000686",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000686.jpg",
+      "category": null
+    },
+    {
+      "id": "001204",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001204.jpg",
+      "category": null
+    },
+    {
+      "id": "000483",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000483.jpg",
+      "category": null
+    },
+    {
+      "id": "000838",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000838.jpg",
+      "category": null
+    },
+    {
+      "id": "001089",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001089.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000614",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000614.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001249",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001249.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001240",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001240.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000667",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000667.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001335",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001335.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000973",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000973.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001337",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001337.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000194",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000194.jpg",
+      "category": null
+    },
+    {
+      "id": "000229",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000229.jpg",
+      "category": null
+    },
+    {
+      "id": "000983",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000983.jpg",
+      "category": null
+    },
+    {
+      "id": "001384",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001384.jpg",
+      "category": null
+    },
+    {
+      "id": "000426",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000426.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000059",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000059.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001394",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001394.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000818",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000818.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000779",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000779.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000182",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000182.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001025",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001025.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000208",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000208.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000068",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000068.jpg",
+      "category": null
+    },
+    {
+      "id": "000827",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000827.jpg",
+      "category": null
+    },
+    {
+      "id": "001135",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001135.jpg",
+      "category": null
+    },
+    {
+      "id": "000533",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000533.jpg",
+      "category": null
+    },
+    {
+      "id": "000683",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000683.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000210",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000210.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000122",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000122.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001422",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001422.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000564",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000564.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001145",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001145.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000107",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000107.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000919",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000919.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000335",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000335.jpg",
+      "category": null
+    },
+    {
+      "id": "000859",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000859.jpg",
+      "category": null
+    },
+    {
+      "id": "000218",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000218.jpg",
+      "category": null
+    },
+    {
+      "id": "000227",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000227.jpg",
+      "category": null
+    },
+    {
+      "id": "000909",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000909.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000094",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000094.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000977",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000977.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001319",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001319.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001398",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001398.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000084",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000084.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001482",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001482.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000072",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000072.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000915",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000915.jpg",
+      "category": null
+    },
+    {
+      "id": "000943",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000943.jpg",
+      "category": null
+    },
+    {
+      "id": "001461",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001461.jpg",
+      "category": null
+    },
+    {
+      "id": "000699",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000699.jpg",
+      "category": null
+    },
+    {
+      "id": "000664",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000664.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000242",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000242.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000588",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000588.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000264",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000264.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000172",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000172.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000238",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000238.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000611",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000611.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001221",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001221.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000606",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000606.jpg",
+      "category": null
+    },
+    {
+      "id": "000322",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000322.jpg",
+      "category": null
+    },
+    {
+      "id": "000860",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000860.jpg",
+      "category": null
+    },
+    {
+      "id": "001050",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001050.jpg",
+      "category": null
+    },
+    {
+      "id": "001428",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001428.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000734",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000734.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000032",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000032.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000306",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000306.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000307",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000307.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000698",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000698.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000649",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000649.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000255",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000255.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000355",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000355.jpg",
+      "category": null
+    },
+    {
+      "id": "001315",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001315.jpg",
+      "category": null
+    },
+    {
+      "id": "000491",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000491.jpg",
+      "category": null
+    },
+    {
+      "id": "000014",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000014.jpg",
+      "category": null
+    },
+    {
+      "id": "000006",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000006.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001467",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001467.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001264",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001264.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001370",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001370.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000685",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000685.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000020",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000020.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000018",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000018.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001091",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001091.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000326",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000326.jpg",
+      "category": null
+    },
+    {
+      "id": "001316",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001316.jpg",
+      "category": null
+    },
+    {
+      "id": "000963",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000963.jpg",
+      "category": null
+    },
+    {
+      "id": "000166",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000166.jpg",
+      "category": null
+    },
+    {
+      "id": "001458",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001458.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001282",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001282.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001281",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001281.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000785",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000785.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000183",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000183.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000389",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000389.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000328",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000328.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001107",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001107.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000815",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000815.jpg",
+      "category": null
+    },
+    {
+      "id": "000404",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000404.jpg",
+      "category": null
+    },
+    {
+      "id": "000392",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000392.jpg",
+      "category": null
+    },
+    {
+      "id": "000496",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000496.jpg",
+      "category": null
+    },
+    {
+      "id": "000904",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000904.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000925",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000925.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000661",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000661.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001086",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001086.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000808",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000808.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000756",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000756.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000834",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000834.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001269",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001269.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001259",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001259.jpg",
+      "category": null
+    },
+    {
+      "id": "000386",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000386.jpg",
+      "category": null
+    },
+    {
+      "id": "000895",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000895.jpg",
+      "category": null
+    },
+    {
+      "id": "000008",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000008.jpg",
+      "category": null
+    },
+    {
+      "id": "000475",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000475.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000635",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000635.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001055",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001055.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001156",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001156.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000924",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000924.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000705",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000705.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001079",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001079.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001389",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001389.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000546",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000546.jpg",
+      "category": null
+    },
+    {
+      "id": "000896",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000896.jpg",
+      "category": null
+    },
+    {
+      "id": "000485",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000485.jpg",
+      "category": null
+    },
+    {
+      "id": "000650",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000650.jpg",
+      "category": null
+    },
+    {
+      "id": "000727",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000727.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001225",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001225.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000465",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000465.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001173",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001173.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000901",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000901.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001425",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001425.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000862",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000862.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001072",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001072.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000205",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000205.jpg",
+      "category": null
+    },
+    {
+      "id": "000488",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000488.jpg",
+      "category": null
+    },
+    {
+      "id": "000953",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000953.jpg",
+      "category": null
+    },
+    {
+      "id": "001469",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001469.jpg",
+      "category": null
+    },
+    {
+      "id": "001366",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001366.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000050",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000050.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000526",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000526.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000044",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000044.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000065",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000065.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000624",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000624.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000559",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000559.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000471",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000471.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000285",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000285.jpg",
+      "category": null
+    },
+    {
+      "id": "000689",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000689.jpg",
+      "category": null
+    },
+    {
+      "id": "000432",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000432.jpg",
+      "category": null
+    },
+    {
+      "id": "000344",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000344.jpg",
+      "category": null
+    },
+    {
+      "id": "000655",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000655.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000387",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000387.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000572",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000572.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000967",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000967.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001074",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001074.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000120",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000120.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001109",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001109.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000236",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000236.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001309",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001309.jpg",
+      "category": null
+    },
+    {
+      "id": "001092",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001092.jpg",
+      "category": null
+    },
+    {
+      "id": "001157",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001157.jpg",
+      "category": null
+    },
+    {
+      "id": "000958",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000958.jpg",
+      "category": null
+    },
+    {
+      "id": "001153",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001153.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000494",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000494.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000648",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000648.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000301",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000301.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001312",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001312.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001058",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001058.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000937",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000937.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001140",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001140.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001121",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001121.jpg",
+      "category": null
+    },
+    {
+      "id": "001087",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001087.jpg",
+      "category": null
+    },
+    {
+      "id": "001165",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001165.jpg",
+      "category": null
+    },
+    {
+      "id": "001373",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001373.jpg",
+      "category": null
+    },
+    {
+      "id": "000825",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000825.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000081",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000081.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000822",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000822.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000333",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000333.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000777",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000777.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000900",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000900.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001481",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001481.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000776",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000776.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000755",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000755.jpg",
+      "category": null
+    },
+    {
+      "id": "001464",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001464.jpg",
+      "category": null
+    },
+    {
+      "id": "000222",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000222.jpg",
+      "category": null
+    },
+    {
+      "id": "001008",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001008.jpg",
+      "category": null
+    },
+    {
+      "id": "001395",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001395.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000490",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000490.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001015",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001015.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000323",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000323.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001346",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001346.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001215",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001215.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001030",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001030.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001271",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001271.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001420",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001420.jpg",
+      "category": null
+    },
+    {
+      "id": "000858",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000858.jpg",
+      "category": null
+    },
+    {
+      "id": "000855",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000855.jpg",
+      "category": null
+    },
+    {
+      "id": "001310",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001310.jpg",
+      "category": null
+    },
+    {
+      "id": "001403",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001403.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000316",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000316.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000899",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000899.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000844",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000844.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001229",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001229.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000459",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000459.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000421",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000421.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000885",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000885.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000408",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000408.jpg",
+      "category": null
+    },
+    {
+      "id": "001006",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001006.jpg",
+      "category": null
+    },
+    {
+      "id": "000804",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000804.jpg",
+      "category": null
+    },
+    {
+      "id": "000428",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000428.jpg",
+      "category": null
+    },
+    {
+      "id": "001127",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001127.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001277",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001277.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000541",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000541.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000880",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000880.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001040",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001040.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000551",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000551.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000987",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000987.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001393",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001393.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000247",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000247.jpg",
+      "category": null
+    },
+    {
+      "id": "000697",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000697.jpg",
+      "category": null
+    },
+    {
+      "id": "000036",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000036.jpg",
+      "category": null
+    },
+    {
+      "id": "000854",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000854.jpg",
+      "category": null
+    },
+    {
+      "id": "000929",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000929.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000466",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000466.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001336",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001336.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000832",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000832.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000608",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000608.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000449",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000449.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001201",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001201.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000721",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000721.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000024",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000024.jpg",
+      "category": null
+    },
+    {
+      "id": "001184",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001184.jpg",
+      "category": null
+    },
+    {
+      "id": "000877",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000877.jpg",
+      "category": null
+    },
+    {
+      "id": "000085",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000085.jpg",
+      "category": null
+    },
+    {
+      "id": "000500",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000500.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001118",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001118.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000594",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000594.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001051",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001051.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000941",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000941.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001363",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001363.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000474",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000474.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000823",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000823.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000617",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000617.jpg",
+      "category": null
+    },
+    {
+      "id": "001198",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001198.jpg",
+      "category": null
+    },
+    {
+      "id": "000696",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000696.jpg",
+      "category": null
+    },
+    {
+      "id": "001123",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001123.jpg",
+      "category": null
+    },
+    {
+      "id": "000736",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000736.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000694",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000694.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000700",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000700.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000207",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000207.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000712",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000712.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001333",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001333.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001075",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001075.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000462",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000462.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001418",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001418.jpg",
+      "category": null
+    },
+    {
+      "id": "000703",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000703.jpg",
+      "category": null
+    },
+    {
+      "id": "001021",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001021.jpg",
+      "category": null
+    },
+    {
+      "id": "000128",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000128.jpg",
+      "category": null
+    },
+    {
+      "id": "001069",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001069.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001084",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001084.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001344",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001344.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000612",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000612.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001275",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001275.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000367",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000367.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000547",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000547.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000708",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000708.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001116",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001116.jpg",
+      "category": null
+    },
+    {
+      "id": "000746",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000746.jpg",
+      "category": null
+    },
+    {
+      "id": "000318",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000318.jpg",
+      "category": null
+    },
+    {
+      "id": "000167",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000167.jpg",
+      "category": null
+    },
+    {
+      "id": "001437",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001437.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000385",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000385.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001252",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001252.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001045",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001045.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000234",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000234.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000201",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000201.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000458",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000458.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000139",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000139.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000412",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000412.jpg",
+      "category": null
+    },
+    {
+      "id": "000464",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000464.jpg",
+      "category": null
+    },
+    {
+      "id": "000790",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000790.jpg",
+      "category": null
+    },
+    {
+      "id": "000495",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000495.jpg",
+      "category": null
+    },
+    {
+      "id": "000745",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000745.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000514",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000514.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000865",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000865.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000646",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000646.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000110",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000110.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000660",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000660.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000605",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000605.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001321",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001321.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000480",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000480.jpg",
+      "category": null
+    },
+    {
+      "id": "001329",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001329.jpg",
+      "category": null
+    },
+    {
+      "id": "000282",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000282.jpg",
+      "category": null
+    },
+    {
+      "id": "001139",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001139.jpg",
+      "category": null
+    },
+    {
+      "id": "001483",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001483.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001390",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001390.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001381",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001381.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000420",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000420.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000789",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000789.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001071",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001071.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001003",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001003.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000186",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000186.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000623",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000623.jpg",
+      "category": null
+    },
+    {
+      "id": "000394",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000394.jpg",
+      "category": null
+    },
+    {
+      "id": "000233",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000233.jpg",
+      "category": null
+    },
+    {
+      "id": "000597",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000597.jpg",
+      "category": null
+    },
+    {
+      "id": "001459",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001459.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000651",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000651.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001455",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001455.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000998",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000998.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000970",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000970.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001257",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001257.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001326",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001326.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000336",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000336.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000287",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000287.jpg",
+      "category": null
+    },
+    {
+      "id": "000620",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000620.jpg",
+      "category": null
+    },
+    {
+      "id": "000873",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000873.jpg",
+      "category": null
+    },
+    {
+      "id": "001002",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001002.jpg",
+      "category": null
+    },
+    {
+      "id": "001134",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001134.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000676",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000676.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000152",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000152.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000525",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000525.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000254",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000254.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000737",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000737.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000629",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000629.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000332",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000332.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000193",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000193.jpg",
+      "category": null
+    },
+    {
+      "id": "000792",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000792.jpg",
+      "category": null
+    },
+    {
+      "id": "000879",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000879.jpg",
+      "category": null
+    },
+    {
+      "id": "000505",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000505.jpg",
+      "category": null
+    },
+    {
+      "id": "000109",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000109.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000654",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000654.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001192",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001192.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001164",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001164.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001392",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001392.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001463",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001463.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001052",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001052.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001097",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001097.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001468",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001468.jpg",
+      "category": null
+    },
+    {
+      "id": "001272",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001272.jpg",
+      "category": null
+    },
+    {
+      "id": "001189",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001189.jpg",
+      "category": null
+    },
+    {
+      "id": "000290",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000290.jpg",
+      "category": null
+    },
+    {
+      "id": "000031",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000031.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001179",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001179.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000659",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000659.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000246",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000246.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000388",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000388.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000684",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000684.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000669",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000669.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000972",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000972.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000298",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000298.jpg",
+      "category": null
+    },
+    {
+      "id": "000504",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000504.jpg",
+      "category": null
+    },
+    {
+      "id": "000358",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000358.jpg",
+      "category": null
+    },
+    {
+      "id": "001172",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001172.jpg",
+      "category": null
+    },
+    {
+      "id": "000802",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000802.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000071",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000071.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001399",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001399.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001244",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001244.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001456",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001456.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001471",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001471.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001117",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001117.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001016",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001016.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000557",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000557.jpg",
+      "category": null
+    },
+    {
+      "id": "000585",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000585.jpg",
+      "category": null
+    },
+    {
+      "id": "001438",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001438.jpg",
+      "category": null
+    },
+    {
+      "id": "000311",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000311.jpg",
+      "category": null
+    },
+    {
+      "id": "000636",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000636.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001115",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001115.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001266",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001266.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000027",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000027.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000080",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000080.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000577",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000577.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000571",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000571.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001102",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001102.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001313",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001313.jpg",
+      "category": null
+    },
+    {
+      "id": "000870",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000870.jpg",
+      "category": null
+    },
+    {
+      "id": "001046",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001046.jpg",
+      "category": null
+    },
+    {
+      "id": "001218",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001218.jpg",
+      "category": null
+    },
+    {
+      "id": "001128",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001128.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001159",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001159.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000253",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000253.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000833",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000833.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000359",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000359.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000438",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000438.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000315",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000315.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000154",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000154.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000248",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000248.jpg",
+      "category": null
+    },
+    {
+      "id": "000063",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000063.jpg",
+      "category": null
+    },
+    {
+      "id": "000867",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000867.jpg",
+      "category": null
+    },
+    {
+      "id": "000451",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000451.jpg",
+      "category": null
+    },
+    {
+      "id": "001431",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001431.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001028",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001028.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000506",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000506.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000714",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000714.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001303",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001303.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001150",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001150.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001131",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001131.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001429",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001429.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000971",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000971.jpg",
+      "category": null
+    },
+    {
+      "id": "001100",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001100.jpg",
+      "category": null
+    },
+    {
+      "id": "000239",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000239.jpg",
+      "category": null
+    },
+    {
+      "id": "000269",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000269.jpg",
+      "category": null
+    },
+    {
+      "id": "000348",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000348.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000950",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000950.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000932",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000932.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000145",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000145.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000125",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000125.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000728",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000728.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001186",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001186.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001193",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001193.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000440",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000440.jpg",
+      "category": null
+    },
+    {
+      "id": "000266",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000266.jpg",
+      "category": null
+    },
+    {
+      "id": "000223",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000223.jpg",
+      "category": null
+    },
+    {
+      "id": "000607",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000607.jpg",
+      "category": null
+    },
+    {
+      "id": "000228",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000228.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001020",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001020.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001334",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001334.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000821",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000821.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000905",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000905.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001233",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001233.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001474",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001474.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000538",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000538.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001322",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001322.jpg",
+      "category": null
+    },
+    {
+      "id": "001427",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001427.jpg",
+      "category": null
+    },
+    {
+      "id": "000029",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000029.jpg",
+      "category": null
+    },
+    {
+      "id": "000701",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000701.jpg",
+      "category": null
+    },
+    {
+      "id": "000517",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000517.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000258",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000258.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001406",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001406.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000074",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000074.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000849",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000849.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000871",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000871.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000308",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000308.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000190",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000190.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000791",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000791.jpg",
+      "category": null
+    },
+    {
+      "id": "000220",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000220.jpg",
+      "category": null
+    },
+    {
+      "id": "000643",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000643.jpg",
+      "category": null
+    },
+    {
+      "id": "001177",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001177.jpg",
+      "category": null
+    },
+    {
+      "id": "001099",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001099.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001432",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001432.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000778",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000778.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000004",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000004.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001194",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001194.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000299",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000299.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001405",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001405.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000141",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000141.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000992",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000992.jpg",
+      "category": null
+    },
+    {
+      "id": "001383",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001383.jpg",
+      "category": null
+    },
+    {
+      "id": "001103",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001103.jpg",
+      "category": null
+    },
+    {
+      "id": "000221",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000221.jpg",
+      "category": null
+    },
+    {
+      "id": "000979",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000979.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000610",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000610.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001148",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001148.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000000",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000000.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001352",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001352.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001104",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001104.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000702",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000702.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000767",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000767.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000314",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000314.jpg",
+      "category": null
+    },
+    {
+      "id": "000338",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000338.jpg",
+      "category": null
+    },
+    {
+      "id": "001066",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001066.jpg",
+      "category": null
+    },
+    {
+      "id": "000578",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000578.jpg",
+      "category": null
+    },
+    {
+      "id": "001351",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001351.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001466",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001466.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000795",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000795.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000362",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000362.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001404",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001404.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001096",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001096.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000022",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000022.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000175",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000175.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000240",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000240.jpg",
+      "category": null
+    },
+    {
+      "id": "000592",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000592.jpg",
+      "category": null
+    },
+    {
+      "id": "000446",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000446.jpg",
+      "category": null
+    },
+    {
+      "id": "000262",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000262.jpg",
+      "category": null
+    },
+    {
+      "id": "000304",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000304.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001070",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001070.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000545",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000545.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001228",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001228.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001423",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001423.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000537",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000537.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000289",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000289.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000931",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000931.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000178",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000178.jpg",
+      "category": null
+    },
+    {
+      "id": "001306",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001306.jpg",
+      "category": null
+    },
+    {
+      "id": "001276",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001276.jpg",
+      "category": null
+    },
+    {
+      "id": "000951",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000951.jpg",
+      "category": null
+    },
+    {
+      "id": "000510",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000510.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000726",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000726.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000957",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000957.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000763",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000763.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000165",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000165.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000803",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000803.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001039",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001039.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000527",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000527.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000797",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000797.jpg",
+      "category": null
+    },
+    {
+      "id": "000984",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000984.jpg",
+      "category": null
+    },
+    {
+      "id": "000383",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000383.jpg",
+      "category": null
+    },
+    {
+      "id": "000498",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000498.jpg",
+      "category": null
+    },
+    {
+      "id": "001152",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001152.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000511",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000511.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001064",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001064.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001402",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001402.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000633",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000633.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000486",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000486.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000441",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000441.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000257",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000257.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000935",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000935.jpg",
+      "category": null
+    },
+    {
+      "id": "001480",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001480.jpg",
+      "category": null
+    },
+    {
+      "id": "000461",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000461.jpg",
+      "category": null
+    },
+    {
+      "id": "001354",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001354.jpg",
+      "category": null
+    },
+    {
+      "id": "000693",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000693.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001412",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001412.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001299",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001299.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000272",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000272.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000241",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000241.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000999",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000999.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000653",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000653.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000100",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000100.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000893",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000893.jpg",
+      "category": null
+    },
+    {
+      "id": "000959",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000959.jpg",
+      "category": null
+    },
+    {
+      "id": "001057",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001057.jpg",
+      "category": null
+    },
+    {
+      "id": "000522",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000522.jpg",
+      "category": null
+    },
+    {
+      "id": "000542",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000542.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001288",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001288.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001044",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001044.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000857",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000857.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000354",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000354.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000889",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000889.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000147",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000147.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001293",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001293.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000160",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000160.jpg",
+      "category": null
+    },
+    {
+      "id": "000472",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000472.jpg",
+      "category": null
+    },
+    {
+      "id": "000656",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000656.jpg",
+      "category": null
+    },
+    {
+      "id": "001242",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001242.jpg",
+      "category": null
+    },
+    {
+      "id": "000184",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000184.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000891",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000891.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000662",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000662.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001010",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001010.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001060",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001060.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001372",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001372.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001041",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001041.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001317",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001317.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000783",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000783.jpg",
+      "category": null
+    },
+    {
+      "id": "000469",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000469.jpg",
+      "category": null
+    },
+    {
+      "id": "001320",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001320.jpg",
+      "category": null
+    },
+    {
+      "id": "000856",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000856.jpg",
+      "category": null
+    },
+    {
+      "id": "000089",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000089.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000996",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000996.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001407",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001407.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000410",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000410.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000431",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000431.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001136",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001136.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000501",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000501.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000613",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000613.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001063",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001063.jpg",
+      "category": null
+    },
+    {
+      "id": "000294",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000294.jpg",
+      "category": null
+    },
+    {
+      "id": "000021",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000021.jpg",
+      "category": null
+    },
+    {
+      "id": "000692",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000692.jpg",
+      "category": null
+    },
+    {
+      "id": "001120",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001120.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000863",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000863.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000965",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000965.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001094",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001094.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001295",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001295.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000621",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000621.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000231",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000231.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000644",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000644.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000146",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000146.jpg",
+      "category": null
+    },
+    {
+      "id": "000850",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000850.jpg",
+      "category": null
+    },
+    {
+      "id": "000090",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000090.jpg",
+      "category": null
+    },
+    {
+      "id": "001248",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001248.jpg",
+      "category": null
+    },
+    {
+      "id": "001013",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001013.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000274",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000274.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000680",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000680.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000921",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000921.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000302",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000302.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000590",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000590.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000600",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000600.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001023",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001023.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000576",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000576.jpg",
+      "category": null
+    },
+    {
+      "id": "000371",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000371.jpg",
+      "category": null
+    },
+    {
+      "id": "000403",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000403.jpg",
+      "category": null
+    },
+    {
+      "id": "000252",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000252.jpg",
+      "category": null
+    },
+    {
+      "id": "001388",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001388.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000416",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000416.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000013",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000013.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000113",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000113.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000678",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000678.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000928",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000928.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000875",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000875.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000293",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000293.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000679",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000679.jpg",
+      "category": null
+    },
+    {
+      "id": "000948",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000948.jpg",
+      "category": null
+    },
+    {
+      "id": "000810",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000810.jpg",
+      "category": null
+    },
+    {
+      "id": "000435",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000435.jpg",
+      "category": null
+    },
+    {
+      "id": "001032",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001032.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000243",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000243.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001170",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001170.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000374",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000374.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000927",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000927.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001223",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001223.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000390",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000390.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000114",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000114.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000874",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000874.jpg",
+      "category": null
+    },
+    {
+      "id": "001324",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001324.jpg",
+      "category": null
+    },
+    {
+      "id": "000087",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000087.jpg",
+      "category": null
+    },
+    {
+      "id": "000219",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000219.jpg",
+      "category": null
+    },
+    {
+      "id": "000554",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000554.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000405",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000405.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000442",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000442.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001076",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001076.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001227",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001227.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000851",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000851.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001130",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001130.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000868",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000868.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000768",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000768.jpg",
+      "category": null
+    },
+    {
+      "id": "000581",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000581.jpg",
+      "category": null
+    },
+    {
+      "id": "000280",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000280.jpg",
+      "category": null
+    },
+    {
+      "id": "000813",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000813.jpg",
+      "category": null
+    },
+    {
+      "id": "000180",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000180.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000508",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000508.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000482",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000482.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001343",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001343.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000744",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000744.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000158",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000158.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000286",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000286.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001368",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001368.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000955",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000955.jpg",
+      "category": null
+    },
+    {
+      "id": "001447",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001447.jpg",
+      "category": null
+    },
+    {
+      "id": "000751",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000751.jpg",
+      "category": null
+    },
+    {
+      "id": "000512",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000512.jpg",
+      "category": null
+    },
+    {
+      "id": "000312",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000312.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001007",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001007.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000067",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000067.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000098",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000098.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000602",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000602.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000250",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000250.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000663",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000663.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000961",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000961.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000033",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000033.jpg",
+      "category": null
+    },
+    {
+      "id": "000764",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000764.jpg",
+      "category": null
+    },
+    {
+      "id": "001056",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001056.jpg",
+      "category": null
+    },
+    {
+      "id": "000796",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000796.jpg",
+      "category": null
+    },
+    {
+      "id": "000591",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000591.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000230",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000230.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001421",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001421.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000758",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000758.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001369",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001369.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001243",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001243.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000733",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000733.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000997",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000997.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001416",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001416.jpg",
+      "category": null
+    },
+    {
+      "id": "000203",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000203.jpg",
+      "category": null
+    },
+    {
+      "id": "000645",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000645.jpg",
+      "category": null
+    },
+    {
+      "id": "001379",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001379.jpg",
+      "category": null
+    },
+    {
+      "id": "000573",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000573.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000161",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000161.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001274",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001274.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001347",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001347.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000843",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000843.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000327",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000327.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001126",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001126.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000434",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000434.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001155",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001155.jpg",
+      "category": null
+    },
+    {
+      "id": "001401",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001401.jpg",
+      "category": null
+    },
+    {
+      "id": "000028",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000028.jpg",
+      "category": null
+    },
+    {
+      "id": "000075",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000075.jpg",
+      "category": null
+    },
+    {
+      "id": "000604",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000604.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000528",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000528.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001166",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001166.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001434",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001434.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001207",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001207.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000179",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000179.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000882",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000882.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000794",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000794.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001348",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001348.jpg",
+      "category": null
+    },
+    {
+      "id": "000658",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000658.jpg",
+      "category": null
+    },
+    {
+      "id": "000964",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000964.jpg",
+      "category": null
+    },
+    {
+      "id": "001239",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001239.jpg",
+      "category": null
+    },
+    {
+      "id": "000618",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000618.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000070",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000070.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001453",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001453.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001054",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001054.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000691",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000691.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000729",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000729.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000842",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000842.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000132",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000132.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000711",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000711.jpg",
+      "category": null
+    },
+    {
+      "id": "000671",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000671.jpg",
+      "category": null
+    },
+    {
+      "id": "000064",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000064.jpg",
+      "category": null
+    },
+    {
+      "id": "000325",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000325.jpg",
+      "category": null
+    },
+    {
+      "id": "000819",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000819.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000379",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000379.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000076",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000076.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000035",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000035.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001098",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001098.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000781",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000781.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000826",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000826.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000814",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000814.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000119",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000119.jpg",
+      "category": null
+    },
+    {
+      "id": "000918",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000918.jpg",
+      "category": null
+    },
+    {
+      "id": "001219",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001219.jpg",
+      "category": null
+    },
+    {
+      "id": "001035",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001035.jpg",
+      "category": null
+    },
+    {
+      "id": "000144",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000144.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000507",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000507.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000171",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000171.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000521",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000521.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000502",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000502.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001454",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001454.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000841",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000841.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000993",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000993.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000747",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000747.jpg",
+      "category": null
+    },
+    {
+      "id": "000757",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000757.jpg",
+      "category": null
+    },
+    {
+      "id": "000908",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000908.jpg",
+      "category": null
+    },
+    {
+      "id": "001413",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001413.jpg",
+      "category": null
+    },
+    {
+      "id": "000155",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000155.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001457",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001457.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000361",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000361.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001391",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001391.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000995",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000995.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001125",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001125.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000276",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000276.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000907",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000907.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001411",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001411.jpg",
+      "category": null
+    },
+    {
+      "id": "000788",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000788.jpg",
+      "category": null
+    },
+    {
+      "id": "000005",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000005.jpg",
+      "category": null
+    },
+    {
+      "id": "000619",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000619.jpg",
+      "category": null
+    },
+    {
+      "id": "000994",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000994.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000427",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000427.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001202",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001202.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001149",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001149.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000985",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000985.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000051",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000051.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000912",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000912.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "001478",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001478.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000975",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000975.jpg",
+      "category": null
+    },
+    {
+      "id": "000321",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000321.jpg",
+      "category": null
+    },
+    {
+      "id": "001238",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001238.jpg",
+      "category": null
+    },
+    {
+      "id": "001241",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001241.jpg",
+      "category": null
+    },
+    {
+      "id": "000456",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000456.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000864",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000864.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000688",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000688.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "001245",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001245.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000237",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000237.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000096",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000096.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "001417",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001417.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "001318",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001318.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000529",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000529.jpg",
+      "category": null
+    },
+    {
+      "id": "000124",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000124.jpg",
+      "category": null
+    },
+    {
+      "id": "001256",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001256.jpg",
+      "category": null
+    },
+    {
+      "id": "001305",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001305.jpg",
+      "category": null
+    },
+    {
+      "id": "000373",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000373.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000046",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000046.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001297",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001297.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000377",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000377.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001475",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001475.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000151",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000151.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000398",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000398.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001371",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001371.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000057",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000057.jpg",
+      "category": null
+    },
+    {
+      "id": "000337",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000337.jpg",
+      "category": null
+    },
+    {
+      "id": "000553",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000553.jpg",
+      "category": null
+    },
+    {
+      "id": "000774",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000774.jpg",
+      "category": null
+    },
+    {
+      "id": "000628",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000628.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001314",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001314.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001197",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001197.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000665",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000665.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000135",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000135.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000401",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000401.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000470",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000470.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001112",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001112.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001353",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001353.jpg",
+      "category": null
+    },
+    {
+      "id": "001141",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001141.jpg",
+      "category": null
+    },
+    {
+      "id": "000352",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000352.jpg",
+      "category": null
+    },
+    {
+      "id": "000615",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000615.jpg",
+      "category": null
+    },
+    {
+      "id": "000353",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000353.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000370",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000370.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001361",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001361.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000720",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000720.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000235",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000235.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000652",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000652.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000563",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000563.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000672",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000672.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000088",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000088.jpg",
+      "category": null
+    },
+    {
+      "id": "001350",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001350.jpg",
+      "category": null
+    },
+    {
+      "id": "000349",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000349.jpg",
+      "category": null
+    },
+    {
+      "id": "000910",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000910.jpg",
+      "category": null
+    },
+    {
+      "id": "000966",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000966.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000988",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000988.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000053",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000053.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000273",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000273.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001214",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001214.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000718",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000718.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000493",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000493.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000638",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000638.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000898",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000898.jpg",
+      "category": null
+    },
+    {
+      "id": "001364",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001364.jpg",
+      "category": null
+    },
+    {
+      "id": "001433",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001433.jpg",
+      "category": null
+    },
+    {
+      "id": "001133",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001133.jpg",
+      "category": null
+    },
+    {
+      "id": "000393",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000393.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000784",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000784.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000443",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000443.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000049",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000049.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001012",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001012.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000047",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000047.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000061",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000061.jpg",
+      "category": "uncertain"
+    },
+    {
+      "id": "001449",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001449.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001142",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001142.jpg",
+      "category": null
+    },
+    {
+      "id": "000433",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000433.jpg",
+      "category": null
+    },
+    {
+      "id": "001062",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001062.jpg",
+      "category": null
+    },
+    {
+      "id": "000263",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000263.jpg",
+      "category": null
+    },
+    {
+      "id": "001291",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001291.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000384",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000384.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000625",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000625.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000418",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000418.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000991",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000991.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000102",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000102.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000807",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000807.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001175",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001175.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000477",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000477.jpg",
+      "category": null
+    },
+    {
+      "id": "000593",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000593.jpg",
+      "category": null
+    },
+    {
+      "id": "000532",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000532.jpg",
+      "category": null
+    },
+    {
+      "id": "000518",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000518.jpg",
+      "category": null
+    },
+    {
+      "id": "000936",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000936.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000288",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000288.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001330",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001330.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000550",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000550.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000642",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000642.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000981",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000981.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000131",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000131.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001000",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001000.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001049",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001049.jpg",
+      "category": null
+    },
+    {
+      "id": "000595",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000595.jpg",
+      "category": null
+    },
+    {
+      "id": "000342",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000342.jpg",
+      "category": null
+    },
+    {
+      "id": "000468",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000468.jpg",
+      "category": null
+    },
+    {
+      "id": "000346",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000346.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000341",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000341.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000209",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000209.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001143",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001143.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001017",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001017.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000030",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000030.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "001452",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001452.jpg",
+      "category": "collage"
+    },
+    {
+      "id": "000894",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000894.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000026",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000026.jpg",
+      "category": null
+    },
+    {
+      "id": "001222",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001222.jpg",
+      "category": null
+    },
+    {
+      "id": "000091",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000091.jpg",
+      "category": null
+    },
+    {
+      "id": "000425",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000425.jpg",
+      "category": null
+    },
+    {
+      "id": "000279",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000279.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000039",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000039.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001355",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001355.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001340",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001340.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001476",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001476.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000565",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000565.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000174",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000174.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001263",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001263.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000840",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000840.jpg",
+      "category": null
+    },
+    {
+      "id": "000444",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000444.jpg",
+      "category": null
+    },
+    {
+      "id": "000214",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000214.jpg",
+      "category": null
+    },
+    {
+      "id": "001294",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001294.jpg",
+      "category": null
+    },
+    {
+      "id": "001009",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001009.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001034",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001034.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000296",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000296.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001154",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001154.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001289",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001289.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000170",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000170.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000215",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000215.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001110",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001110.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000138",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000138.jpg",
+      "category": null
+    },
+    {
+      "id": "000275",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000275.jpg",
+      "category": null
+    },
+    {
+      "id": "000093",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000093.jpg",
+      "category": null
+    },
+    {
+      "id": "000639",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000639.jpg",
+      "category": null
+    },
+    {
+      "id": "000771",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000771.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000429",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000429.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001068",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001068.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001386",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001386.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001208",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001208.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000713",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000713.jpg",
+      "category": "uncertain"
+    },
+    {
+      "id": "001205",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001205.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000902",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000902.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "001047",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001047.jpg",
+      "category": null
+    },
+    {
+      "id": "000544",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000544.jpg",
+      "category": null
+    },
+    {
+      "id": "001251",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001251.jpg",
+      "category": null
+    },
+    {
+      "id": "000455",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000455.jpg",
+      "category": null
+    },
+    {
+      "id": "001067",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001067.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "000423",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000423.jpg",
+      "category": "microscopy"
+    },
+    {
+      "id": "001036",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001036.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000350",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000350.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000010",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000010.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000297",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000297.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000399",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000399.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000188",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000188.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000836",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000836.jpg",
+      "category": null
+    },
+    {
+      "id": "000409",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000409.jpg",
+      "category": null
+    },
+    {
+      "id": "000118",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000118.jpg",
+      "category": null
+    },
+    {
+      "id": "000202",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000202.jpg",
+      "category": null
+    },
+    {
+      "id": "001019",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001019.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000489",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000489.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000719",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000719.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001435",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001435.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000516",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000516.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001178",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001178.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000513",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000513.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000356",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000356.jpg",
+      "category": "illustration"
+    },
+    {
+      "id": "000366",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000366.jpg",
+      "category": null
+    },
+    {
+      "id": "000872",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000872.jpg",
+      "category": null
+    },
+    {
+      "id": "001255",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001255.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "000881",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000881.jpg",
+      "category": "slide"
+    },
+    {
+      "id": "001053",
+      "path": "data/preprocessed/parasites-1s07h-dedup/images/train/001053.jpg",
+      "category": "slide"
+    }
+  ]
+}

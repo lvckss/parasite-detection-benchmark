@@ -10,7 +10,7 @@
     "uncertain"
   ],
   "images": 1157,
-  "classified": 770,
+  "classified": 771,
   "labels": {
     "001360": "microscopy",
     "001014": "microscopy",
@@ -781,7 +781,8 @@
     "000719": "slide",
     "001435": "slide",
     "001255": "slide",
-    "000881": "slide"
+    "000881": "slide",
+    "000795": "microscopy"
   },
   "items": [
     {
@@ -4357,7 +4358,7 @@
     {
       "id": "000795",
       "path": "data/preprocessed/parasites-1s07h-dedup/images/train/000795.jpg",
-      "category": null
+      "category": "microscopy"
     },
     {
       "id": "000362",
