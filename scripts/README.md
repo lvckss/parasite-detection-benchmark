@@ -15,7 +15,9 @@ scripts/
 ├── labeling/
 │   ├── order_train_images_by_similarity.py
 │   ├── classify_train_images.py
-│   └── visual_labeler/
+│   ├── compare_train_augmentations.py
+│   ├── visual_labeler/
+│   └── augmentation_viewer/
 ├── training/
 │   ├── train_faster_rcnn.py
 │   └── train_yolo.py
@@ -166,9 +168,11 @@ Flujo inicial: `just dataset` → `just prepare`.
 |---|---|---|
 | [`order_train_images_by_similarity.py`](labeling/order_train_images_by_similarity.py) | Extrae embeddings DINOv2 ViT-S/14 del train depurado, calcula un recorrido por similitud visual y lo reparte entre Alejandro, Rodrigo y Lucas. Requiere exactamente las 1.157 imágenes depuradas; usa CUDA por defecto. Guarda los embeddings en `.cache/visual-labels/` y el orden y lotes en `results/visual-labels/dinov2_train_order.json`. | `python scripts/labeling/order_train_images_by_similarity.py` |
 | [`classify_train_images.py`](labeling/classify_train_images.py) | Inicia el servidor local de la herramienta de etiquetado. Lee únicamente las imágenes del train depurado y requiere que exista el manifiesto de ordenación. | `just label` |
+| [`compare_train_augmentations.py`](labeling/compare_train_augmentations.py) | Abre la web local para revisar originales y variantes de una carpeta aumentada que incluya `applied_transforms`. | `python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented-v1` |
 | [`visual_labeler/`](labeling/visual_labeler/) | Contiene la página, la lógica de interacción y los estilos que sirve el clasificador. No se ejecutan directamente. | Se cargan al iniciar `classify_train_images.py`. |
+| [`augmentation_viewer/`](labeling/augmentation_viewer/) | Contiene la página, la lógica de comparación y los estilos del visor de augmentaciones. No se ejecutan directamente. | Se sirven al iniciar `compare_train_augmentations.py`. |
 
-Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub.
+Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub. Ambos servidores se detienen con `Ctrl+C`; puedes consultar sus opciones con `--help`.
 
 ## Preparación y notebooks
 

@@ -97,6 +97,45 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 - [Formatos de cajas y correspondencia de clases](data/converted/README.md)
 - [Criterio de deduplicación](data/preprocessed/README.md)
 
+## Webs de etiquetado y revisión visual
+
+Ejecuta los comandos desde la raíz del repositorio con el entorno virtual activo. Si aún no tienes el train deduplicado y su orden visual, prepara los datos y genera el manifiesto:
+
+```bash
+just dataset
+just prepare
+python scripts/data/deduplicate_train.py
+python scripts/labeling/order_train_images_by_similarity.py --device cuda
+```
+
+Si no tienes GPU NVIDIA, cambia `--device cuda` por `--device cpu`. La ordenación se necesita una sola vez, salvo que cambie el conjunto deduplicado.
+
+### Etiquetar imágenes del train
+
+```bash
+just label
+```
+
+Esto inicia `scripts/labeling/classify_train_images.py`, abre la web local en `http://127.0.0.1:8765` y guarda las etiquetas en `results/visual-labels/train_dedup_labels.json`. Detén el servidor con **Ctrl+C**. También puedes ejecutarlo directamente con `python scripts/labeling/classify_train_images.py`; usa `--port` para elegir otro puerto y `--no-browser` para no abrir el navegador automáticamente.
+
+### Revisar originales y augmentaciones
+
+Genera primero una variante aumentada —por defecto, desde el train deduplicado— y luego arranca el comparador:
+
+```bash
+python scripts/create_augmented_dataset.py
+python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented-v1
+```
+
+La web local se abre en `http://127.0.0.1:8766`. Permite comparar cada original con sus variantes y ver qué transformaciones se aplicaron. Si ya clasificaste las imágenes, el comparador también puede filtrar por esas etiquetas; no es obligatorio ejecutar primero la web de etiquetado. El dataset debe incluir metadatos de transformaciones, que genera automáticamente la versión actual del script. Detén el servidor con **Ctrl+C**; puedes cambiar el puerto con `--port` o evitar la apertura automática con `--no-browser`.
+
+Para inspeccionar un dataset antiguo que no guarde `applied_transforms`, añade esos metadatos indicando el mismo origen, salida y configuración con que se creó (esto no modifica las imágenes):
+
+```bash
+python scripts/create_augmented_dataset.py --source-dir data/converted/parasites-1s07h --output-dir data/preprocessed/parasites-1s07h-augmented --write-transform-metadata
+python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented
+```
+
 ## Flujo experimental
 
 | Paso | Dónde | Qué produce |

@@ -13,8 +13,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT / "data/preprocessed/parasites-1s07h-augmented"
-ANNOTATIONS_FILE = DATA_DIR / "annotations/instances_train.json"
+DEFAULT_DATA_DIR = ROOT / "data/preprocessed/parasites-1s07h-augmented-v1"
 LABEL_FILE = ROOT / "results/visual-labels/train_dedup_labels.json"
 WEB_DIR = Path(__file__).resolve().parent / "augmentation_viewer"
 
@@ -27,20 +26,22 @@ LABELS = {
 }
 
 
-def load_records() -> tuple[list[dict], dict[str, Path]]:
-    if not ANNOTATIONS_FILE.is_file():
+def load_records(data_dir: Path = DEFAULT_DATA_DIR) -> tuple[list[dict], dict[str, Path]]:
+    data_dir = Path(data_dir)
+    annotations_file = data_dir / "annotations/instances_train.json"
+    if not annotations_file.is_file():
         raise SystemExit(
-            f"No se encuentra el dataset aumentado: {ANNOTATIONS_FILE}\n"
+            f"No se encuentra el dataset aumentado: {annotations_file}\n"
             "Ejecuta python scripts/create_augmented_dataset.py primero."
         )
 
-    coco = json.loads(ANNOTATIONS_FILE.read_text(encoding="utf-8"))
+    coco = json.loads(annotations_file.read_text(encoding="utf-8"))
     originals = {}
     variants_by_source = {}
     image_paths = {}
     for image in coco["images"]:
         filename = image["file_name"]
-        path = DATA_DIR / "images/train" / filename
+        path = data_dir / "images/train" / filename
         if not path.is_file():
             raise SystemExit(f"Falta una imagen del dataset aumentado: {path}")
         if filename in image_paths:
@@ -161,10 +162,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8766)
+    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--no-browser", action="store_true")
     args = parser.parse_args()
 
-    Handler.records, Handler.image_paths = load_records()
+    Handler.records, Handler.image_paths = load_records(args.data_dir)
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     url = f"http://{args.host}:{args.port}"
     print(f"Comparador listo: {url}")

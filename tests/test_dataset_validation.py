@@ -115,9 +115,14 @@ class DatasetValidationTests(unittest.TestCase):
             manifest_path = root / "train_manifest.json"
             manifest_path.write_text(json.dumps({"ordered_ids": ["train"]}), encoding="utf-8")
             from parasite_detection import yolo
+            from scripts.labeling.compare_train_augmentations import load_records
 
             with patch.object(yolo, "TRAIN_MANIFEST", manifest_path):
                 self.assertEqual(set(yolo._check_dataset(output)["names"]), set(range(8)))
+            records, image_paths = load_records(output)
+            self.assertEqual(len(records), 1)
+            self.assertEqual(len(records[0]["variants"]), 1)
+            self.assertEqual(len(image_paths), 2)
             records = json.loads(
                 (output / "annotations" / "instances_train.json").read_text(encoding="utf-8")
             )["images"]
