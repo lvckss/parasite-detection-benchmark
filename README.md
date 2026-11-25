@@ -107,10 +107,49 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 | 4. Evaluación en val y test | `scripts/evaluation/evaluate_faster_rcnn.py --split {val,test}` | Métricas COCO, AP por clase, curvas PR, latencia y predicciones en `results/metrics/fasterrcnn_v2/<run>/` |
 | 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
+| 7. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
+| 8. Comparar ambos detectores por variante | Notebooks de entrenamiento en Colab/Kaggle | Una ejecución y un nombre de run distintos por modelo y variante |
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
 Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo. La [demo con métricas simuladas](notebooks/05_training_dashboard_demo.ipynb) permite probarlo sin entrenar.
+
+## Experimentos de aumentación en Colab/Kaggle
+
+El siguiente bloque de trabajo es medir cómo cambia el rendimiento de **Faster R-CNN v2** y **YOLOv10-S** al ampliar progresivamente las augmentaciones. Es un plan experimental: las ejecuciones de esta sección aún no se consideran resultados hasta que sus métricas se registren.
+
+### Preparar variantes
+
+Partir del train deduplicado evita volver a introducir en train imágenes casi duplicadas de val o test. El generador conserva los originales, aplica las transformaciones únicamente a train y copia val/test sin modificar. Cada configuración debe tener su propio directorio de salida; el generador no sobrescribe uno existente.
+
+La configuración actual de [`configs/augmentation.json`](configs/augmentation.json) crea tres variantes por imagen de train, además de conservar cada original. Si se aplica al train deduplicado de 1.157 imágenes, el resultado esperado es 4.628 imágenes de train. La configuración actual activa flips horizontal y vertical, rotación, escala, cambios de brillo y contraste y desenfoque gaussiano. Las demás transformaciones están desactivadas. El directorio antiguo `parasites-1s07h-augmented/` se generó desde el train completo de 1.484 imágenes; para mantener la evaluación sin duplicados, genera una variante nueva desde el train deduplicado.
+
+```bash
+python scripts/create_augmented_dataset.py \
+    --source-dir data/preprocessed/parasites-1s07h-dedup \
+    --output-dir data/preprocessed/parasites-1s07h-augmented-v1 \
+    --config configs/augmentation.json
+```
+
+Para cada variante posterior, guardar una configuración identificable y usar otra ruta de salida, por ejemplo `parasites-1s07h-augmented-v2`. Añadir una transformación o un grupo cada vez facilita relacionar los cambios con las métricas; mantener iguales las transformaciones ya probadas y documentar las probabilidades y rangos usados. La carpeta de datos generada no se sube a Git.
+
+### Entrenar en la nube y comparar
+
+1. Subir al almacenamiento privado de Colab o Kaggle el código/configuración del experimento y la variante de datos preparada. Descargar o montar los pesos preentrenados por separado; no guardar datasets ni checkpoints en el repositorio.
+2. Seleccionar la variante antes de importar los módulos en el notebook, por ejemplo con `PARASITE_DATA_DIR=/ruta/al/dataset`; usar `PARASITE_RUN_NAME=aug_v1` para identificar la ejecución. Ambos notebooks consultan estas variables y, si no están definidas, usan el train deduplicado y el nombre del baseline. En los scripts de terminal también se pueden indicar `--data-dir` y `--run-name`. Usar los mismos splits, pesos iniciales, semilla e hiperparámetros del baseline correspondiente. Cambiar solo la variante de augmentación que se está evaluando.
+3. Entrenar los dos modelos con nombres de ejecución únicos, por ejemplo `fasterrcnn_aug_v1` y `yolov10s_aug_v1` (o `aug_v1` en `PARASITE_RUN_NAME`; cada modelo guarda en su propio directorio). Conservar por separado checkpoints, `settings.json`, CSV de entrenamiento y métricas; anotar también el commit del código y la configuración utilizada.
+4. Usar **validation** para elegir época/checkpoint y tomar decisiones. Evaluar **test** solo después de cerrar esas decisiones, con las imágenes y anotaciones originales sin augmentar. No ajustar configuraciones mirando resultados de test.
+5. Repetir el proceso con la siguiente variante y comparar cada detector con su propio baseline y sus ejecuciones anteriores. Registrar mAP COCO@[.5:.95] como métrica principal, además de mAP50, AP por clase y, si se compara latencia, el hardware usado.
+
+> [!IMPORTANT]
+> Ambos entrenadores validan la consistencia de las anotaciones e imágenes. YOLO acepta el baseline del manifiesto o una variante generada que conserva la correspondencia de las imágenes fuente y `augmentation_config.json`; también comprueba que las cajas COCO y YOLO coincidan. Las transformaciones de Ultralytics en tiempo de entrenamiento siguen desactivadas: las augmentaciones de estas pruebas son las materializadas en el dataset.
+
+Registro de las ejecuciones de augmentación (rellenar solo cuando se hayan completado):
+
+| Variante | Cambios respecto a la anterior | Ejecución Faster R-CNN | Ejecución YOLOv10-S | Val mAP COCO | Test mAP COCO | Estado |
+|---|---|---|---|---:|---:|---|
+| `aug-v1` | Configuración actual de `augmentation.json` | — | — | — | — | Pendiente |
+| `aug-v2` | Indicar transformaciones y parámetros añadidos | — | — | — | — | Pendiente |
 
 ## Resultados
 

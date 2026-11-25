@@ -15,7 +15,15 @@ from pycocotools.cocoeval import COCOeval
 from tqdm.auto import tqdm
 
 from parasite_detection.faster_rcnn import CocoDetectionDataset, load_trained_model, resolve_device
-from parasite_detection.paths import DEDUP_DATA, MODELS, RESULTS, ROOT
+from parasite_detection.dataset_validation import validate_coco_dataset
+from parasite_detection.paths import (
+    DEDUP_DATA,
+    MODELS,
+    RESULTS,
+    ROOT,
+    get_experiment_data_dir,
+    get_experiment_run_name,
+)
 
 # nombres de las 12 métricas que imprime cocoeval.summarize
 STAT_NAMES = [
@@ -107,10 +115,10 @@ def write_csv(path, rows):
 
 def main():
     parser = argparse.ArgumentParser(description="Evalúa Faster R-CNN v2 con COCOeval.")
-    parser.add_argument("--run-name", default="baseline")
+    parser.add_argument("--run-name", default=get_experiment_run_name("baseline"))
     parser.add_argument("--checkpoint", type=Path, help="Por defecto models/trained/fasterrcnn_v2/<run>/best_model.pth.")
     parser.add_argument("--split", default="test", choices=["train", "val", "test"])
-    parser.add_argument("--data-dir", type=Path, default=DEDUP_DATA)
+    parser.add_argument("--data-dir", type=Path, default=get_experiment_data_dir(DEDUP_DATA))
     parser.add_argument("--device", default="auto")
     options = parser.parse_args()
 
@@ -120,6 +128,7 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     torch.manual_seed(42)
+    validate_coco_dataset(options.data_dir, splits=(options.split,))
     model = load_trained_model(checkpoint, device=device)
     dataset = CocoDetectionDataset(options.data_dir, options.split)
     print(f"Dispositivo: {device} | {options.split}: {len(dataset)} imágenes | {checkpoint}")

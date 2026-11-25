@@ -154,6 +154,7 @@ class TrainerParityTests(unittest.TestCase):
                 observer = TrainingDashboard("Tiny detector", "toy") if name == "dashboard" else None
                 with patch.object(rcnn, "MODELS", run / "models"), patch.object(rcnn, "RESULTS", run / "results"), \
                      patch.object(rcnn, "build_model", side_effect=lambda *a, **k: _TinyDetector()), \
+                     patch.object(rcnn, "validate_coco_dataset"), \
                      patch.object(rcnn, "create_dataloaders", return_value=(loader, loader)), \
                      patch.object(rcnn, "evaluate_model", return_value={"map": .5, "map50": .7}), \
                      contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):

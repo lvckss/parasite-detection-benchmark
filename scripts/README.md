@@ -87,7 +87,7 @@ Por defecto usa el dataset deduplicado, cuyo val y test coinciden con los origin
 python scripts/training/train_yolo.py --device cuda
 ```
 
-El nombre predeterminado es `baseline_ultralytics`, separado del baseline anterior con el bucle personalizado. Antes de entrenar se comprueba que el train contiene exactamente las 1.157 imágenes depuradas del manifiesto y sus etiquetas. El dataloader vuelve a comprobar los IDs después de cargar las imágenes. Train y validation necesitan imágenes, anotaciones YOLO y anotaciones COCO.
+El nombre predeterminado es `baseline_ultralytics`, separado del baseline anterior con el bucle personalizado. Antes de entrenar se comprueba que las imágenes, anotaciones COCO y etiquetas YOLO coincidan en train y validation, incluidas las cajas y clases. Test se valida al evaluarlo. El train debe ser el del manifiesto depurado o una variante creada por `create_augmented_dataset.py`, con sus imágenes fuente y `augmentation_config.json` coherentes. El dataloader comprueba además que Ultralytics conserve todos los archivos anotados. Puedes seleccionar el mismo dataset para ambos entrenadores con `PARASITE_DATA_DIR` o indicar `--data-dir`.
 
 El baseline no aplica aumentos aleatorios. El dataloader de train usa exclusivamente `LetterBox` y `Format`, y se comprueba esa lista de transformaciones. Los parámetros de augmentations se guardan a cero en los argumentos de la ejecución.
 
@@ -156,6 +156,7 @@ Abre `/tmp/dashboard-demo/report.html` directamente en un navegador. La carpeta 
 | [`download_dataset.py`](data/download_dataset.py) | Descarga los Parquet originales de Hugging Face según la revisión y los checksums fijados en `configs/dataset.json`. Los guarda en `data/raw/parasites-1s07h/`. | `just dataset` |
 | [`prepare_dataset.py`](data/prepare_dataset.py) | Extrae las imágenes y exporta las anotaciones a formatos COCO y YOLO en `data/converted/parasites-1s07h/`. Conserva las particiones originales. | `just prepare` |
 | [`deduplicate_train.py`](data/deduplicate_train.py) | Genera `data/preprocessed/parasites-1s07h-dedup/`, quitando del train imágenes casi duplicadas de validation o test. Mantiene validation y test y guarda el registro en `results/metrics/deduplication/train_removed_near_duplicates.csv`. El umbral predeterminado es `0.90`. | `python scripts/data/deduplicate_train.py` |
+| [`create_augmented_dataset.py`](create_augmented_dataset.py) | Genera `data/preprocessed/parasites-1s07h-augmented-v1/` desde el train deduplicado, conserva los originales, añade las variantes de `configs/augmentation.json` y deja val/test intactos. | `python scripts/create_augmented_dataset.py` |
 
 Flujo inicial: `just dataset` → `just prepare`.
 
