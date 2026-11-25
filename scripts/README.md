@@ -17,7 +17,8 @@ scripts/
 │   ├── classify_train_images.py
 │   └── visual_labeler/
 └── training/
-    └── train_faster_rcnn.py
+    ├── train_faster_rcnn.py
+    └── train_yolo.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -61,6 +62,50 @@ from parasite_detection.faster_rcnn import create_dataloaders, evaluate_model
 test_loader, = create_dataloaders(config, splits=("test",))
 test_metrics = evaluate_model(model, test_loader)
 test_metrics
+```
+
+## Entrenamiento de YOLOv10-S
+
+[`training/train_yolo.py`](training/train_yolo.py) usa las funciones de [`src/parasite_detection/yolo.py`](../src/parasite_detection/yolo.py). Comparte con RCNN los dataloaders COCO, el paso de entrenamiento, la medición de pérdida de validación y la evaluación con `pycocotools`. Por defecto exige las mismas 1.157 imágenes definitivas del train depurado, comprobando sus identificadores contra el manifiesto de ordenación visual. No mezcla train, validation ni test.
+
+```bash
+python scripts/training/train_yolo.py --device cuda
+```
+
+Los valores iniciales coinciden con el experimento registrado de RCNN: 20 épocas, batch 2, SGD con LR `0.0025`, momentum `0.9`, weight decay `0.0005`, imagen de 640 px, semilla 42 y paciencia 10. El warmup usa los mismos factores `0.001` y `1.0` y se limita a 1.000 lotes de la primera época; después se aplica `CosineAnnealingLR`. `--patience 0` desactiva la parada temprana y `--no-amp` desactiva la precisión mixta.
+
+El adaptador carga los pesos de `models/pretrained/yolov10s.pt`, transfiere los tensores compatibles y adapta la clasificación a ocho clases. Conserva las dos ramas de asignación y la pérdida `E2EDetectLoss` de YOLOv10, con ganancias `box=7.5`, `cls=0.5` y `dfl=1.5`. Se pueden cambiar con `--box-gain`, `--cls-gain` y `--dfl-gain`. La entrada se escala conservando su proporción y se completa con relleno hasta un cuadrado. No se aplican aumentos aleatorios, EMA ni acumulación de gradientes.
+
+La evaluación convierte las cajas a las coordenadas originales y las clases YOLO 0–7 a COCO 1–8. Usa un umbral de confianza de `0.05` y hasta 100 detecciones por imagen, como RCNN; la rama de inferencia de YOLOv10 no necesita NMS. El mejor modelo y la parada temprana se deciden por mAP COCO de validación. Las pérdidas son propias de cada arquitectura y sus valores absolutos no son comparables entre detectores.
+
+Los checkpoints se guardan en `models/trained/yolov10s/<run_name>/` como `best_model.pth` y `last_checkpoint.pth`. Son checkpoints de este módulo y se cargan con `load_trained_model`, no con `ultralytics.YOLO`. Las métricas quedan en `results/metrics/yolov10s/<run_name>/training.csv`, con las mismas columnas `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`. `settings.json` registra los parámetros y las versiones de PyTorch y Ultralytics. Para un nuevo experimento, cambia `--run-name`.
+
+```bash
+python scripts/training/train_yolo.py \
+    --resume models/trained/yolov10s/baseline/last_checkpoint.pth --epochs 30
+```
+
+La reanudación recupera modelo, optimizador, scheduler, scaler e historial. Si amplías las épocas, recalcula la curva coseno igual que RCNN. Conserva los parámetros del experimento y las versiones de las bibliotecas.
+
+La inferencia activa expresamente la rama `one2one` y comprueba que devuelve detecciones con seis valores por fila. Los checkpoints anteriores a esta corrección pueden cargarse para reevaluar sus pesos, pero sus mAP registrados no son válidos. Para generar un historial comparable, repite el entrenamiento con otro `run_name`; la reanudación rechaza esos historiales antiguos.
+
+Desde un notebook puedes usar la misma interfaz de configuración y entrenamiento:
+
+```python
+from parasite_detection.yolo import TrainConfig, train_model
+
+config = TrainConfig(device="cuda", run_name="baseline")
+model, history = train_model(config)
+```
+
+Test se evalúa expresamente al terminar los ajustes, sin intervenir en la selección del modelo:
+
+```python
+from parasite_detection.yolo import create_dataloaders, evaluate_model, load_trained_model
+
+model = load_trained_model(device="cuda")
+test_loader, = create_dataloaders(config, splits=("test",))
+test_metrics = evaluate_model(model, test_loader)
 ```
 
 ## Descarga y preparación del dataset
