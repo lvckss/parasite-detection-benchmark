@@ -15,11 +15,12 @@ scripts/
 ├── labeling/
 │   ├── order_train_images_by_similarity.py
 │   ├── classify_train_images.py
-│   ├── compare_train_augmentations.py
-│   ├── visual_labeler/
-│   └── augmentation_viewer/
-└── training/
-    └── train_faster_rcnn.py
+│   └── visual_labeler/
+├── training/
+│   ├── train_faster_rcnn.py
+│   └── train_yolo.py
+└── evaluation/
+    └── evaluate_faster_rcnn.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -65,6 +66,63 @@ test_metrics = evaluate_model(model, test_loader)
 test_metrics
 ```
 
+## Evaluación de Faster R-CNN
+
+[`evaluation/evaluate_faster_rcnn.py`](evaluation/evaluate_faster_rcnn.py) carga `best_model.pth` de una ejecución, predice imagen a imagen sobre una partición y la evalúa con `pycocotools`. En `results/metrics/fasterrcnn_v2/<run_name>/` guarda `<split>_metrics.json` (las 12 métricas COCO, umbrales y latencia con lote 1), `<split>_per_class.csv` (AP y AP50 por especie), `<split>_pr_curves.csv` (curvas PR por clase a IoU 0,5 y 0,75) y `<split>_predictions.json` (detecciones en formato COCO para análisis de errores, ajuste de umbrales o ensembles sin repetir la inferencia).
+
+```bash
+python scripts/evaluation/evaluate_faster_rcnn.py --split test
+python scripts/evaluation/evaluate_faster_rcnn.py --split val --run-name baseline --device cpu
+```
+
+A diferencia de `evaluate_model`, guarda las predicciones y el tiempo de inferencia. [`04_faster_rcnn_test_analysis.ipynb`](../notebooks/04_faster_rcnn_test_analysis.ipynb) las usa para las figuras de `results/figures/fasterrcnn_v2/<run_name>/` con las funciones de `src/parasite_detection/analysis.py`.
+
+Por defecto usa el dataset deduplicado, cuyo val y test coinciden con los originales. La latencia depende del hardware y se registra en el JSON: compara tiempos de modelos solo si se midieron en la misma máquina.
+
+## Entrenamiento de YOLOv10-S
+
+[`training/train_yolo.py`](training/train_yolo.py) usa las funciones de [`src/parasite_detection/yolo.py`](../src/parasite_detection/yolo.py). Comparte con RCNN los dataloaders COCO, el paso de entrenamiento, la medición de pérdida de validación y la evaluación con `pycocotools`. Por defecto exige las mismas 1.157 imágenes definitivas del train depurado, comprobando sus identificadores contra el manifiesto de ordenación visual. No mezcla train, validation ni test.
+
+```bash
+python scripts/training/train_yolo.py --device cuda
+```
+
+Los valores iniciales coinciden con el experimento registrado de RCNN: 20 épocas, batch 2, SGD con LR `0.0025`, momentum `0.9`, weight decay `0.0005`, imagen de 640 px, semilla 42 y paciencia 10. El warmup usa los mismos factores `0.001` y `1.0` y se limita a 1.000 lotes de la primera época; después se aplica `CosineAnnealingLR`. `--patience 0` desactiva la parada temprana y `--no-amp` desactiva la precisión mixta.
+
+El adaptador carga los pesos de `models/pretrained/yolov10s.pt`, transfiere los tensores compatibles y adapta la clasificación a ocho clases. Conserva las dos ramas de asignación y la pérdida `E2EDetectLoss` de YOLOv10, con ganancias `box=7.5`, `cls=0.5` y `dfl=1.5`. Se pueden cambiar con `--box-gain`, `--cls-gain` y `--dfl-gain`. La entrada se escala conservando su proporción y se completa con relleno hasta un cuadrado. No se aplican aumentos aleatorios, EMA ni acumulación de gradientes.
+
+La evaluación convierte las cajas a las coordenadas originales y las clases YOLO 0–7 a COCO 1–8. Usa un umbral de confianza de `0.05` y hasta 100 detecciones por imagen, como RCNN; la rama de inferencia de YOLOv10 no necesita NMS. El mejor modelo y la parada temprana se deciden por mAP COCO de validación. Las pérdidas son propias de cada arquitectura y sus valores absolutos no son comparables entre detectores.
+
+Los checkpoints se guardan en `models/trained/yolov10s/<run_name>/` como `best_model.pth` y `last_checkpoint.pth`. Son checkpoints de este módulo y se cargan con `load_trained_model`, no con `ultralytics.YOLO`. Las métricas quedan en `results/metrics/yolov10s/<run_name>/training.csv`, con las mismas columnas `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`. `settings.json` registra los parámetros y las versiones de PyTorch y Ultralytics. Para un nuevo experimento, cambia `--run-name`.
+
+```bash
+python scripts/training/train_yolo.py \
+    --resume models/trained/yolov10s/baseline/last_checkpoint.pth --epochs 30
+```
+
+La reanudación recupera modelo, optimizador, scheduler, scaler e historial. Si amplías las épocas, recalcula la curva coseno igual que RCNN. Conserva los parámetros del experimento y las versiones de las bibliotecas.
+
+La inferencia activa expresamente la rama `one2one` y comprueba que devuelve detecciones con seis valores por fila. Los checkpoints anteriores a esta corrección pueden cargarse para reevaluar sus pesos, pero sus mAP registrados no son válidos. Para generar un historial comparable, repite el entrenamiento con otro `run_name`; la reanudación rechaza esos historiales antiguos.
+
+Desde un notebook puedes usar la misma interfaz de configuración y entrenamiento:
+
+```python
+from parasite_detection.yolo import TrainConfig, train_model
+
+config = TrainConfig(device="cuda", run_name="baseline")
+model, history = train_model(config)
+```
+
+Test se evalúa expresamente al terminar los ajustes, sin intervenir en la selección del modelo:
+
+```python
+from parasite_detection.yolo import create_dataloaders, evaluate_model, load_trained_model
+
+model = load_trained_model(device="cuda")
+test_loader, = create_dataloaders(config, splits=("test",))
+test_metrics = evaluate_model(model, test_loader)
+```
+
 ## Descarga y preparación del dataset
 
 | Archivo | Función | Uso |
@@ -82,17 +140,6 @@ Flujo inicial: `just dataset` → `just prepare`.
 | [`order_train_images_by_similarity.py`](labeling/order_train_images_by_similarity.py) | Extrae embeddings DINOv2 ViT-S/14 del train depurado, calcula un recorrido por similitud visual y lo reparte entre Alejandro, Rodrigo y Lucas. Requiere exactamente las 1.157 imágenes depuradas; usa CUDA por defecto. Guarda los embeddings en `.cache/visual-labels/` y el orden y lotes en `results/visual-labels/dinov2_train_order.json`. | `python scripts/labeling/order_train_images_by_similarity.py` |
 | [`classify_train_images.py`](labeling/classify_train_images.py) | Inicia el servidor local de la herramienta de etiquetado. Lee únicamente las imágenes del train depurado y requiere que exista el manifiesto de ordenación. | `just label` |
 | [`visual_labeler/`](labeling/visual_labeler/) | Contiene la página, la lógica de interacción y los estilos que sirve el clasificador. No se ejecutan directamente. | Se cargan al iniciar `classify_train_images.py`. |
-| [`compare_train_augmentations.py`](labeling/compare_train_augmentations.py) | Inicia una web de solo lectura para comparar cada imagen original con sus variantes aumentadas. Muestra las etiquetas visuales clasificadas y las transformaciones aplicadas a cada variante. | `python scripts/labeling/compare_train_augmentations.py` |
-| [`augmentation_viewer/`](labeling/augmentation_viewer/) | Interfaz de comparación de originales y variantes aumentadas; no se ejecuta directamente. | Se carga al iniciar `compare_train_augmentations.py`. |
-
-Para registrar las transformaciones aplicadas en un dataset aumentado ya generado, actualiza sus metadatos COCO sin volver a escribir las imágenes:
-
-```bash
-python scripts/create_augmented_dataset.py --write-transform-metadata
-python scripts/labeling/compare_train_augmentations.py
-```
-
-La web enlaza las etiquetas de `results/visual-labels/train_dedup_labels.json` por el nombre del original; las imágenes sin etiqueta aparecen como **Sin clasificar**. Si cambias etiquetas mientras está abierta, pulsa **Actualizar etiquetas**. El comparador es de solo lectura y no modifica las clasificaciones.
 
 Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub.
 
