@@ -114,13 +114,21 @@ Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite
 
 ## Resultados
 
-Baseline con el train deduplicado: 20 épocas, SGD con lr 0,0025, warmup y coseno, imágenes de 640 px; mejor época por mAP de validación. Las métricas son de `pycocotools`.
+Baselines con el train deduplicado, imágenes de 640 px y semilla 42; mejor checkpoint por mAP de validación. Las métricas mAP son de `pycocotools`.
+
+- **Faster R-CNN v2:** 20 épocas, lote 2, SGD con lr 0,0025, warmup y coseno.
+- **YOLOv10-S:** 100 épocas previstas, 60 completadas con parada temprana tras 20 sin mejora; mejor época: 40. Lote 8, SGD con lr 0,01, warmup de 3 épocas y coseno, sin aumentos de datos. Entrenado con AMP en una NVIDIA GeForce RTX 3080.
 
 | Modelo | Partición | mAP@[.5:.95] | mAP@0.5 | mAP@0.75 | Inferencia |
 |---|---|---|---|---|---|
 | Faster R-CNN v2 | val | 0,663 | 0,809 | 0,791 | — |
 | Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 2,1 s/img (CPU, lote 1) |
-| YOLOv10-S | — | en curso | | | |
+| YOLOv10-S | val | 0,613 | 0,764 | — | 21,4 ms/img (RTX 3080, validación Ultralytics) |
+| YOLOv10-S | test | pendiente | — | — | — |
+
+Los tiempos de inferencia se han medido con hardware y protocolos distintos (CPU para Faster R-CNN y GPU para YOLO), por lo que no son directamente comparables. El mAP@0.75 de YOLO no está registrado en el resumen disponible; su evaluación en test está pendiente.
+
+Los resultados de YOLO están en [`best_validation.json`](results/metrics/yolov10s/baseline/best_validation.json), con la configuración en [`settings.json`](results/metrics/yolov10s/baseline/settings.json), la evolución por época en [`training.csv`](results/metrics/yolov10s/baseline/training.csv) y el informe en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb).
 
 Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb). Las estrategias de mejora están pendientes.
 
