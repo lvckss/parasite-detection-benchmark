@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "model_name": "Faster R-CNN v2",
+  "run_name": "baseline",
+  "mode": "report",
+  "phase": "finished",
+  "phase_label": "Evaluación COCO",
+  "epoch": 20,
+  "total_epochs": 20,
+  "batch": 108,
+  "batches": 108,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5599469824698923,
+      "val_loss": 0.2531396808723609,
+      "map": 0.36044803024721606,
+      "map50": 0.5096125044819594,
+      "lr": 0.002499999999999996
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.24601792845238057,
+      "val_loss": 0.21423503145989445,
+      "map": 0.5146864303239822,
+      "map50": 0.6734407855135078,
+      "lr": 0.0024846104257439184
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.19187274846426872,
+      "val_loss": 0.16398073831159207,
+      "map": 0.5991162119002976,
+      "map50": 0.7659192626092449,
+      "lr": 0.0024388206453689384
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.15320738215829424,
+      "val_loss": 0.17096681575532313,
+      "map": 0.5982684069505292,
+      "map50": 0.7896845819054497,
+      "lr": 0.002363758155235456
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.12634599088837548,
+      "val_loss": 0.15468812675249796,
+      "map": 0.6242350845535516,
+      "map50": 0.7874226842885887,
+      "lr": 0.002261271242968681
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.10827769691346532,
+      "val_loss": 0.15580919496197668,
+      "map": 0.6308419501997751,
+      "map50": 0.8057764203846797,
+      "lr": 0.002133883476483181
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.09397632743526307,
+      "val_loss": 0.16696948947867862,
+      "map": 0.6075696504215172,
+      "map50": 0.787637684869815,
+      "lr": 0.0019847315653655885
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.08026492903379012,
+      "val_loss": 0.1651323540136218,
+      "map": 0.6297417545561064,
+      "map50": 0.7896498649409189,
+      "lr": 0.0018174881246744309
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.07255125103360734,
+      "val_loss": 0.15672442034162856,
+      "map": 0.6346645595808401,
+      "map50": 0.7950147563907148,
+      "lr": 0.001636271242968682
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.06624152342304716,
+      "val_loss": 0.15882639981875266,
+      "map": 0.6362384777276673,
+      "map50": 0.7929255711434703,
+      "lr": 0.0014455430813002867
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.05991681936858077,
+      "val_loss": 0.1716724763089722,
+      "map": 0.623408147412032,
+      "map50": 0.7793599771927852,
+      "lr": 0.0012499999999999983
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.055395268638890126,
+      "val_loss": 0.16196829116799766,
+      "map": 0.6414441329649045,
+      "map50": 0.7938758370571226,
+      "lr": 0.0010544569186997103
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.0496412323424287,
+      "val_loss": 0.16795844080237052,
+      "map": 0.6411972464722349,
+      "map50": 0.7936673779069027,
+      "lr": 0.0008637287570313146
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.04583050013762707,
+      "val_loss": 0.1674299168193506,
+      "map": 0.6525034213926005,
+      "map50": 0.7996705368340713,
+      "lr": 0.0006825118753255656
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.04250389565544811,
+      "val_loss": 0.1630870527415364,
+      "map": 0.652908691276664,
+      "map50": 0.808324033225763,
+      "lr": 0.000515268434634408
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.04063915393986001,
+      "val_loss": 0.16887710344356796,
+      "map": 0.6502230933686998,
+      "map50": 0.7973494968186653,
+      "lr": 0.0003661165235168152
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.039071418261332425,
+      "val_loss": 0.1642981746699661,
+      "map": 0.6572521218490112,
+      "map50": 0.8045656758853674,
+      "lr": 0.0002387287570313155
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.038029078555829016,
+      "val_loss": 0.16936481024862993,
+      "map": 0.6505248322754884,
+      "map50": 0.7953361060454031,
+      "lr": 0.00013624184476454008
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.03758385232754296,
+      "val_loss": 0.16546543675509315,
+      "map": 0.6550932655505244,
+      "map50": 0.8045171572795367,
+      "lr": 6.1179354631058e-05
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.037686776780782326,
+      "val_loss": 0.16819905660425624,
+      "map": 0.6502924325202125,
+      "map50": 0.795891143362855,
+      "lr": 1.5389574256077906e-05
+    }
+  ],
+  "best": {
+    "map": 0.6572521218490112,
+    "epoch": 17
+  },
+  "elapsed_seconds": 1718.314653204001,
+  "eta_seconds": null,
+  "evaluation": {
+    "label": "COCOeval · bbox · val",
+    "evaluator": "pycocotools COCOeval",
+    "split": "val",
+    "iou": "0.50:0.95",
+    "max_dets": [
+      1,
+      10,
+      100
+    ],
+    "inference": "torchvision roi_heads",
+    "nms": true,
+    "nms_iou": 0.5,
+    "score_threshold": 0.05,
+    "detections_per_image": 100,
+    "loss_reporting": "media de la suma de pérdidas por batch"
+  },
+  "metric_sources": {
+    "map": "COCOeval · val",
+    "map50": "COCOeval · val"
+  },
+  "config": {
+    "data_dir": "data/preprocessed/parasites-1s07h-dedup",
+    "epochs": 20,
+    "batch_size": 2,
+    "learning_rate": 0.0025,
+    "start_factor": 0.001,
+    "end_factor": 1.0,
+    "warmup_batches": 1000,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "image_size": 640,
+    "patience": 10,
+    "num_workers": 0,
+    "seed": 42,
+    "amp": true,
+    "device": "cuda",
+    "run_name": "baseline"
+  },
+  "views": [
+    {
+      "id": "performance",
+      "title": "Evolución del rendimiento",
+      "description": "Validación · mAP@50:95 y mAP@50",
+      "series": [
+        {
+          "key": "map",
+          "label": "mAP@50:95",
+          "color": "#777cf4"
+        },
+        {
+          "key": "map50",
+          "label": "mAP@50",
+          "color": "#25b4a4"
+        }
+      ]
+    },
+    {
+      "id": "loss",
+      "title": "Evolución de pérdidas",
+      "description": "Las pérdidas pertenecen a este experimento y a su definición de loss",
+      "series": [
+        {
+          "key": "train_loss",
+          "label": "Train loss",
+          "color": "#777cf4"
+        },
+        {
+          "key": "val_loss",
+          "label": "Validation loss",
+          "color": "#e9a15f"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    "Dispositivo: cuda | Train: 1157 | Val: 215",
+    "Época 1/20 | train loss 0.5599 | val loss 0.2531 | mAP 0.3604 | mAP50 0.5096 | lr 0.002500",
+    "Época 2/20 | train loss 0.2460 | val loss 0.2142 | mAP 0.5147 | mAP50 0.6734 | lr 0.002485",
+    "Época 3/20 | train loss 0.1919 | val loss 0.1640 | mAP 0.5991 | mAP50 0.7659 | lr 0.002439",
+    "Época 4/20 | train loss 0.1532 | val loss 0.1710 | mAP 0.5983 | mAP50 0.7897 | lr 0.002364",
+    "Época 5/20 | train loss 0.1263 | val loss 0.1547 | mAP 0.6242 | mAP50 0.7874 | lr 0.002261",
+    "Época 6/20 | train loss 0.1083 | val loss 0.1558 | mAP 0.6308 | mAP50 0.8058 | lr 0.002134",
+    "Época 7/20 | train loss 0.0940 | val loss 0.1670 | mAP 0.6076 | mAP50 0.7876 | lr 0.001985",
+    "Época 8/20 | train loss 0.0803 | val loss 0.1651 | mAP 0.6297 | mAP50 0.7896 | lr 0.001817",
+    "Época 9/20 | train loss 0.0726 | val loss 0.1567 | mAP 0.6347 | mAP50 0.7950 | lr 0.001636",
+    "Época 10/20 | train loss 0.0662 | val loss 0.1588 | mAP 0.6362 | mAP50 0.7929 | lr 0.001446",
+    "Época 11/20 | train loss 0.0599 | val loss 0.1717 | mAP 0.6234 | mAP50 0.7794 | lr 0.001250",
+    "Época 12/20 | train loss 0.0554 | val loss 0.1620 | mAP 0.6414 | mAP50 0.7939 | lr 0.001054",
+    "Época 13/20 | train loss 0.0496 | val loss 0.1680 | mAP 0.6412 | mAP50 0.7937 | lr 0.000864",
+    "Época 14/20 | train loss 0.0458 | val loss 0.1674 | mAP 0.6525 | mAP50 0.7997 | lr 0.000683",
+    "Época 15/20 | train loss 0.0425 | val loss 0.1631 | mAP 0.6529 | mAP50 0.8083 | lr 0.000515",
+    "Época 16/20 | train loss 0.0406 | val loss 0.1689 | mAP 0.6502 | mAP50 0.7973 | lr 0.000366",
+    "Época 17/20 | train loss 0.0391 | val loss 0.1643 | mAP 0.6573 | mAP50 0.8046 | lr 0.000239",
+    "Época 18/20 | train loss 0.0380 | val loss 0.1694 | mAP 0.6505 | mAP50 0.7953 | lr 0.000136",
+    "Época 19/20 | train loss 0.0376 | val loss 0.1655 | mAP 0.6551 | mAP50 0.8045 | lr 0.000061",
+    "Época 20/20 | train loss 0.0377 | val loss 0.1682 | mAP 0.6503 | mAP50 0.7959 | lr 0.000015",
+    "Mejor época: 17 | mAP 0.6573 | /home/lvcks/Documents/CUARTO/VISION1/PRACTICAS/P5/parasite-detection-benchmark/models/trained/fasterrcnn_v2/baseline/best_model.pth"
+  ],
+  "checkpoint": "/home/lvcks/Documents/CUARTO/VISION1/PRACTICAS/P5/parasite-detection-benchmark/models/trained/fasterrcnn_v2/baseline/best_model.pth",
+  "outcome": "completed",
+  "error": null
+}
