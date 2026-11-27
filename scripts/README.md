@@ -20,7 +20,8 @@ scripts/
 │   ├── train_faster_rcnn.py
 │   └── train_yolo.py
 └── evaluation/
-    └── evaluate_faster_rcnn.py
+    ├── evaluate_faster_rcnn.py
+    └── evaluate_yolo.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -138,6 +139,17 @@ from parasite_detection.yolo import evaluate_model, load_trained_model
 model = load_trained_model(device="cuda")
 test_metrics = evaluate_model(model, data_dir=config.data_dir, split="test", device="cuda")
 ```
+
+## Evaluación de YOLOv10-S
+
+[`evaluation/evaluate_yolo.py`](evaluation/evaluate_yolo.py) evalúa `best.pt` igual que `evaluate_faster_rcnn.py` y guarda los mismos cuatro archivos con el mismo formato en `results/metrics/yolov10s/<run_name>/`: `<split>_metrics.json`, `<split>_per_class.csv`, `<split>_pr_curves.csv` y `<split>_predictions.json` (IDs COCO 1–8). Las funciones comunes de COCOeval están en [`src/parasite_detection/evaluation.py`](../src/parasite_detection/evaluation.py).
+
+```bash
+python scripts/evaluation/evaluate_yolo.py --split val
+python scripts/evaluation/evaluate_yolo.py --split test
+```
+
+Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la misma salida one-to-one sin NMS (confianza `0.001`, 100 detecciones) con los que se eligió el checkpoint, así que el mAP de val debe coincidir con `best_validation.json`. La latencia se mide en una pasada aparte con lote 1: preprocesado, red y postprocesado, sin la lectura de la imagen y sin las 3 primeras imágenes. Usa los mismos hilos de CPU que torch por defecto (Ultralytics los limita a 8), para compararla con Faster R-CNN medido en la misma máquina. [`05_yolov10s_test_analysis.ipynb`](../notebooks/05_yolov10s_test_analysis.ipynb) genera las figuras en `results/figures/yolov10s/<run_name>/`.
 
 ## Dashboard de entrenamiento
 

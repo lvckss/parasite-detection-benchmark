@@ -107,6 +107,8 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 | 4. Evaluación en val y test | `scripts/evaluation/evaluate_faster_rcnn.py --split {val,test}` | Métricas COCO, AP por clase, curvas PR, latencia y predicciones en `results/metrics/fasterrcnn_v2/<run>/` |
 | 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
+| 7. Evaluación de YOLOv10-S en val y test | `scripts/evaluation/evaluate_yolo.py --split {val,test}` | Los mismos archivos que el paso 4 en `results/metrics/yolov10s/<run>/` |
+| 8. Análisis de errores de YOLOv10-S | [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
