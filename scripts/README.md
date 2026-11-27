@@ -31,7 +31,7 @@ scripts/
 | [`setup_env.sh`](environment/setup_env.sh) | Crea o actualiza `.venv`, instala las dependencias y registra el kernel de Jupyter. Acepta `cpu` o `cu128`. | `bash scripts/environment/setup_env.sh cu128` |
 | [`download_weights.py`](models/download_weights.py) | Descarga a `models/pretrained/` los pesos COCO de Faster R-CNN v2 y YOLOv10-S. Omite los archivos existentes y mueve los de la estructura anterior a esta carpeta; `--force` los reemplaza y `--only fasterrcnn` o `--only yolo` descarga un solo modelo. | `just weights` |
 
-Los pesos y archivos descargados se mantienen localmente y no se incluyen en Git.
+Los pesos preentrenados y archivos descargados se mantienen localmente. Los checkpoints entrenados de los baselines se comparten mediante Git LFS; usa `git lfs pull` para descargarlos.
 
 ## Entrenamiento de Faster R-CNN
 
@@ -107,7 +107,7 @@ La pérdida se elige mediante la implementación oficial de la arquitectura; en 
 
 La validación fija un lienzo cuadrado del tamaño indicado, tanto durante el entrenamiento como al evaluar por separado. Usa la EMA y la cabeza one-to-one con `nms=False`, confianza `0.001` y hasta 100 detecciones por imagen. `CocoValidator` conserva el postprocesado oficial, convierte las predicciones a los IDs y coordenadas originales y aplica `pycocotools.COCOeval`. Su mAP determina tanto el mejor checkpoint como la parada temprana. La consola muestra además las métricas nativas de Ultralytics; el resumen identificado como **COCO** corresponde al evaluador común con RCNN.
 
-Los checkpoints oficiales quedan en `models/trained/yolov10s/<run_name>/weights/` como `best.pt` y `last.pt`. El directorio también contiene `args.yaml`, `dataset.yaml` con las rutas locales y el `results.csv` nativo. Los pesos permanecen excluidos de nuevos commits.
+Los checkpoints oficiales quedan en `models/trained/yolov10s/<run_name>/weights/` como `best.pt` y `last.pt`. Los de `baseline` se comparten mediante Git LFS. El directorio también contiene `args.yaml`, `dataset.yaml` con las rutas locales y el `results.csv` nativo; estos archivos auxiliares y las demás ejecuciones permanecen locales.
 
 El historial para los notebooks queda en `results/metrics/yolov10s/<run_name>/training.csv`. Conserva `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`; añade las componentes de pérdida, los LR por grupo y el mAP nativo bajo `ultralytics_map` y `ultralytics_map50`. `map` y `map50` siempre son COCO. Las pérdidas suman las componentes registradas por el motor oficial y no representan su escalar de backward; no deben compararse numéricamente con las del bucle antiguo. `settings.json` guarda los argumentos efectivos, versiones y criterios de evaluación y selección. `best_validation.json` contiene la evaluación final de los pesos guardados; puede diferir ligeramente del historial porque la serialización nativa usa FP16.
 
