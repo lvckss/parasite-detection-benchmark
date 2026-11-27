@@ -192,7 +192,8 @@ def plot_training(history, path=None):
     for ax in (ax_loss, ax_map):
         ax.axvline(best["epoch"], color=AXIS, lw=1, ls="--", zorder=0)
         ax.set_xlabel("Época")
-        ax.set_xticks(history["epoch"][::2])
+        # unas diez marcas: cada 2 épocas con 20 (faster rcnn), cada 6 con 60 (yolo)
+        ax.set_xticks(history["epoch"][::max(1, len(history) // 10)])
     ax_loss.plot(history["epoch"], history["train_loss"], color=BLUE, marker="o", ms=4, label="Train")
     ax_loss.plot(history["epoch"], history["val_loss"], color=ORANGE, marker="o", ms=4, label="Validación")
     ax_loss.set_title("Pérdida por época")

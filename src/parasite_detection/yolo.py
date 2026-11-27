@@ -291,7 +291,7 @@ def load_trained_model(path=None, device="auto"):
     return model
 
 
-def evaluate_model(model, data_dir=DEDUP_DATA, split="val", image_size=None, batch_size=8, device="auto"):
+def _run_validator(model, data_dir, split, image_size, batch_size, device):
     _check_version()
     if split not in {"val", "test"}:
         raise ValueError("Evalúa val o test explícitamente.")
@@ -308,7 +308,19 @@ def evaluate_model(model, data_dir=DEDUP_DATA, split="val", image_size=None, bat
             "max_det": MAX_DETECTIONS, "nms": False, "rect": False, "plots": False, "save_json": False,
         })
         validator(model=model.model)
-        return validator.coco_results
+        return validator
+
+
+def evaluate_model(model, data_dir=DEDUP_DATA, split="val", image_size=None, batch_size=8, device="auto"):
+    return _run_validator(model, data_dir, split, image_size, batch_size, device).coco_results
+
+
+def predict_coco(model, data_dir=DEDUP_DATA, split="test", image_size=None, batch_size=8, device="auto"):
+    """detecciones en formato coco (ids 1-8) con el mismo letterbox y postprocesado que la validación"""
+    validator = _run_validator(model, data_dir, split, image_size, batch_size, device)
+    predictions = [{**p, "bbox": [round(v, 2) for v in p["bbox"]], "score": round(p["score"], 5)}
+                   for p in validator.coco_predictions]
+    return predictions, validator.coco_image_ids
 
 
 def train_model(config, resume=None, dashboard=None):
