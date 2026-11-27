@@ -80,12 +80,21 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 | [`data/raw/`](data/raw/README.md) | Parquet originales |
 | [`data/converted/`](data/converted/README.md) | Imágenes extraídas y anotaciones COCO/YOLO |
 | [`data/preprocessed/`](data/preprocessed/README.md) | Nuestras variantes, como train sin casi duplicados |
-| [`models/`](models/) | Pesos y checkpoints locales |
+| [`models/`](models/) | Checkpoints de los baselines en Git LFS y pesos preentrenados locales |
 | [`results/metrics/`](results/metrics/) | Métricas de los experimentos |
 | [`results/figures/`](results/figures/) | Figuras para comparar y presentar resultados |
 
 > [!NOTE]
-> Los datos, los pesos y `.venv` se quedan en cada máquina. Git comparte el código, la configuración, los README y las métricas y figuras que añadamos.
+> Los datos, los pesos preentrenados y `.venv` se quedan en cada máquina. Git comparte el código, la configuración, los README, las métricas y figuras, y los checkpoints de los baselines mediante Git LFS.
+
+Instala Git LFS antes de clonar para recibir los checkpoints entrenados. Si ya tienes el repo clonado, ejecuta:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+Se comparten `best_model.pth` y `last_checkpoint.pth` de Faster R-CNN en `models/trained/fasterrcnn_v2/baseline/`, y `best.pt` y `last.pt` de YOLO en `models/trained/yolov10s/baseline/weights/`. Los archivos auxiliares de entrenamiento y las demás ejecuciones permanecen locales. `just weights` descarga únicamente los pesos preentrenados en COCO.
 
 ## Dataset
 
