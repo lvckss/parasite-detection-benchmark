@@ -1,0 +1,347 @@
+{
+  "engine": "ultralytics",
+  "ultralytics_version": "8.4.215",
+  "torch_version": "2.8.0+cu128",
+  "architecture": "yolov10s",
+  "data_dir": "/content/parasite-detection-benchmark/data/preprocessed/parasites-1s07h-augmented-v1",
+  "run_name": "aug_v1",
+  "epochs": 100,
+  "batch_size": 8,
+  "image_size": 640,
+  "learning_rate": 0.01,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "warmup_epochs": 3.0,
+  "nominal_batch_size": 64,
+  "seed": 42,
+  "device": "cuda:0",
+  "amp": true,
+  "augmentation": {
+    "online": "none",
+    "offline_config": {
+      "name": "paper-inspired-conservative-v1",
+      "source_paper": "docs/journal.pone.0313734.pdf",
+      "source_dataset": "data/converted/parasites-1s07h",
+      "implementation_library": "OpenCV",
+      "paper_reference": {
+        "library": "imgaug",
+        "original_images": 27558,
+        "reported_augmented_images": 606276,
+        "reported_images_per_class": 303138,
+        "resize": [
+          224,
+          224
+        ],
+        "note": "The paper's dataset size and resize are reference details, not applied to this detection dataset."
+      },
+      "probability_note": "Only channel_shuffle probability 0.35 is explicit in the paper; other probabilities here are experiment defaults.",
+      "seed": 42,
+      "variants_per_image": 3,
+      "include_originals": true,
+      "apply_to": [
+        "train"
+      ],
+      "output": {
+        "min_box_visibility": 0.25,
+        "max_attempts_per_variant": 10,
+        "jpeg_quality": 95
+      },
+      "transformations": {
+        "horizontal_flip": {
+          "enabled": true,
+          "probability": 0.5
+        },
+        "vertical_flip": {
+          "enabled": true,
+          "probability": 0.5
+        },
+        "rotation": {
+          "enabled": true,
+          "probability": 0.5,
+          "degrees": [
+            -45,
+            45
+          ],
+          "paper_degrees": [
+            -45,
+            45
+          ]
+        },
+        "scale": {
+          "enabled": true,
+          "probability": 0.5,
+          "factor": [
+            0.8,
+            1.2
+          ],
+          "paper_factor": [
+            0.5,
+            1.5
+          ]
+        },
+        "shear": {
+          "enabled": false,
+          "probability": 0.3,
+          "x_degrees": [
+            -10,
+            10
+          ],
+          "y_degrees": [
+            -10,
+            10
+          ],
+          "parameter_note": "The paper does not give a shear range; these are proposed values."
+        },
+        "crop": {
+          "enabled": false,
+          "probability": 0.2,
+          "removed_fraction_per_side": [
+            0.02,
+            0.1
+          ],
+          "parameter_note": "The paper says 0.02 to 0.1 pixels; this config interprets it as a fraction per edge."
+        },
+        "elastic": {
+          "enabled": false,
+          "probability": 0.2,
+          "alpha": 50,
+          "sigma": 5
+        },
+        "perspective": {
+          "enabled": false,
+          "probability": 0.2,
+          "max_displacement_fraction": [
+            0.01,
+            0.05
+          ],
+          "parameter_note": "The paper mentions perspective deformation but gives no magnitude."
+        },
+        "brightness": {
+          "enabled": true,
+          "probability": 0.5,
+          "factor": [
+            0.8,
+            1.2
+          ],
+          "paper_factor": [
+            0.8,
+            1.2
+          ]
+        },
+        "contrast": {
+          "enabled": true,
+          "probability": 0.5,
+          "factor": [
+            0.8,
+            1.2
+          ],
+          "paper_factor": [
+            0.8,
+            1.2
+          ]
+        },
+        "hue_saturation": {
+          "enabled": false,
+          "probability": 0.3,
+          "hue_degrees": [
+            -20,
+            20
+          ],
+          "saturation_delta": [
+            -20,
+            20
+          ],
+          "saturation_units": "OpenCV HSV channel units (0-255)"
+        },
+        "channel_shuffle": {
+          "enabled": false,
+          "probability": 0.35
+        },
+        "gaussian_noise": {
+          "enabled": false,
+          "probability": 0.2,
+          "standard_deviation_fraction_of_255": [
+            0.01,
+            0.05
+          ],
+          "parameter_note": "Range from the supplied summary; not specified in the paper passage reviewed."
+        },
+        "gaussian_blur": {
+          "enabled": true,
+          "probability": 0.25,
+          "sigma": [
+            0.1,
+            1.0
+          ],
+          "paper_sigma": [
+            0,
+            3
+          ]
+        },
+        "average_blur": {
+          "enabled": false,
+          "probability": 0.2,
+          "kernel_size": [
+            3,
+            7
+          ],
+          "paper_sigma": [
+            0,
+            3
+          ],
+          "parameter_note": "Kernel range is proposed; the paper reports sigma <= 3 but does not specify an average-blur kernel."
+        },
+        "sharpen": {
+          "enabled": false,
+          "probability": 0.2,
+          "alpha": [
+            0,
+            1
+          ],
+          "lightness": [
+            0.75,
+            1.5
+          ]
+        },
+        "dropout": {
+          "enabled": false,
+          "probability": 0.1,
+          "holes": [
+            1,
+            8
+          ],
+          "hole_size_fraction": [
+            0.01,
+            0.05
+          ],
+          "parameter_note": "Hole count/size are proposed because the paper does not specify them."
+        }
+      }
+    }
+  },
+  "criterion": "E2ELoss",
+  "inference": "one2one",
+  "evaluation": "pycocotools COCOeval bbox",
+  "score_threshold": 0.001,
+  "max_detections": 100,
+  "selection": "COCO mAP on validation EMA",
+  "native_args": {
+    "task": "detect",
+    "mode": "train",
+    "model": "/content/parasite-detection-benchmark/models/pretrained/yolov10s.pt",
+    "data": "/content/parasite-detection-benchmark/models/trained/yolov10s/aug_v1/dataset.yaml",
+    "epochs": 100,
+    "time": null,
+    "patience": 20,
+    "batch": 8,
+    "imgsz": 640,
+    "save": true,
+    "save_period": -1,
+    "cache": false,
+    "device": "0",
+    "workers": 0,
+    "project": "/content/parasite-detection-benchmark/models/trained/yolov10s",
+    "name": "aug_v1",
+    "exist_ok": true,
+    "pretrained": true,
+    "cls_remap": true,
+    "optimizer": "SGD",
+    "verbose": true,
+    "seed": 42,
+    "deterministic": true,
+    "single_cls": false,
+    "rect": false,
+    "cos_lr": true,
+    "close_mosaic": 0,
+    "resume": false,
+    "amp": true,
+    "fraction": 1.0,
+    "profile": false,
+    "freeze": null,
+    "multi_scale": 0.0,
+    "compile": false,
+    "channels_last": null,
+    "overlap_mask": true,
+    "mask_ratio": 4,
+    "dropout": 0.0,
+    "val": true,
+    "split": "val",
+    "save_json": false,
+    "conf": 0.001,
+    "iou": null,
+    "max_det": 100,
+    "quantize": null,
+    "dnn": false,
+    "plots": false,
+    "nms": false,
+    "tile": false,
+    "source": null,
+    "vid_stride": 1,
+    "stream_buffer": false,
+    "visualize": false,
+    "augment": false,
+    "agnostic_nms": false,
+    "classes": null,
+    "retina_masks": false,
+    "embed": null,
+    "show": false,
+    "save_frames": false,
+    "save_txt": false,
+    "save_conf": false,
+    "save_crop": false,
+    "show_labels": true,
+    "show_conf": true,
+    "show_boxes": true,
+    "line_width": null,
+    "format": "torchscript",
+    "optimize": false,
+    "dynamic": false,
+    "simplify": true,
+    "opset": null,
+    "workspace": null,
+    "lr0": 0.01,
+    "lrf": 0.01,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "warmup_epochs": 3.0,
+    "warmup_momentum": 0.8,
+    "warmup_bias_lr": 0.1,
+    "distill_model": null,
+    "dis": 6.0,
+    "box": 7.5,
+    "cls": 0.5,
+    "cls_pw": 0.0,
+    "dfl": 1.5,
+    "pose": 12.0,
+    "kobj": 1.0,
+    "rle": 1.0,
+    "angle": 1.0,
+    "dlog": 1.0,
+    "dgrad": 0.5,
+    "dlam": 1.0,
+    "nbs": 64,
+    "hsv_h": 0.0,
+    "hsv_s": 0.0,
+    "hsv_v": 0.0,
+    "degrees": 0.0,
+    "translate": 0.0,
+    "scale": 0.0,
+    "shear": 0.0,
+    "perspective": 0.0,
+    "flipud": 0.0,
+    "fliplr": 0.0,
+    "bgr": 0.0,
+    "mosaic": 0.0,
+    "mixup": 0.0,
+    "cutmix": 0.0,
+    "copy_paste": 0.0,
+    "copy_paste_mode": "flip",
+    "auto_augment": null,
+    "erasing": 0.0,
+    "cfg": null,
+    "tracker": "tracktrack.yaml",
+    "save_dir": "/content/parasite-detection-benchmark/models/trained/yolov10s/aug_v1"
+  },
+  "validation_shape": "square imgsz with rect disabled",
+  "loss_reporting": "sum of native logged components, separate from the backward scalar"
+}

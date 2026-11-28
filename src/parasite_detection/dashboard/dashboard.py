@@ -252,8 +252,8 @@ class TrainingDashboard:
             state["phase"] = "unknown"
             state["phase_label"] = "Última validación guardada"
         serialized = json.dumps(state, ensure_ascii=False, allow_nan=False).replace("<", "\\u003c")
-        script = (ASSETS / "frontend.js").read_text()
-        css = (ASSETS / "style.css").read_text()
+        script = (ASSETS / "frontend.js").read_text(encoding="utf-8")
+        css = (ASSETS / "style.css").read_text(encoding="utf-8")
         # el html incluye todos sus datos y recursos y no importa módulos desde la red
         document = ('<!doctype html><html lang="es"><meta charset="utf-8">'
                     '<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -328,7 +328,7 @@ class TrainingDashboard:
             link = os.path.relpath(self.report_dir / "report.html", Path.cwd()).replace(os.sep, "/")
             from urllib.parse import quote
             footer = f'<a href="{quote(link)}" target="_blank" rel="noopener">Abrir informe interactivo ↗</a>'
-        markup = (f'<style>{(ASSETS / "style.css").read_text()}{rules}</style>'
+        markup = (f'<style>{(ASSETS / "style.css").read_text(encoding="utf-8")}{rules}</style>'
                 f'<article class="td" data-phase="{esc(state["phase"])}"><header class="td-top"><div>'
                 f'<h2>{esc(state["model_name"])}</h2>'
                 f'<div class="td-run">{esc(state["run_name"])}</div></div><div class="td-status">{labels[state["phase"]]}</div></header>'
@@ -342,7 +342,7 @@ class TrainingDashboard:
             # algunos visores permiten javascript en html confiable y otros solo muestran el fallback
             # la copia estática permanece hasta que el frontend se haya construido correctamente
             data = json.dumps(clean(state), ensure_ascii=False, allow_nan=False).replace("<", "\\u003c")
-            script = (ASSETS / "frontend.js").read_text()
+            script = (ASSETS / "frontend.js").read_text(encoding="utf-8")
             style_end = markup.index("</style>") + len("</style>")
             return (markup[:style_end] + f'<div id="{identifier}">{markup[style_end:]}</div><script type="module">{script}\n'
                     f'const savedHost=document.getElementById("{identifier}");'
@@ -354,9 +354,9 @@ class TrainingDashboard:
     def from_run(cls, directory, *, model_name=None, outcome=None):
         directory = Path(directory)
         settings_path = directory / "settings.json"
-        settings = json.loads(settings_path.read_text()) if settings_path.exists() else {}
+        settings = json.loads(settings_path.read_text(encoding="utf-8")) if settings_path.exists() else {}
         snapshot = directory / "dashboard_state.json"
-        saved = json.loads(snapshot.read_text()) if snapshot.exists() else {}
+        saved = json.loads(snapshot.read_text(encoding="utf-8")) if snapshot.exists() else {}
         dashboard = cls(model_name or saved.get("model_name", "Experimento"),
                         saved.get("run_name", directory.name), total_epochs=settings.get("epochs", saved.get("total_epochs", 0)))
         dashboard.state.update(saved)

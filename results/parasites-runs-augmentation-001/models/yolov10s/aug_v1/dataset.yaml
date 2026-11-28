@@ -1,0 +1,13 @@
+names:
+  0: Ancylostoma Spp
+  1: Ascaris Lumbricoides
+  2: Enterobius Vermicularis
+  3: Fasciola Hepatica
+  4: Hymenolepis
+  5: Schistosoma
+  6: Taenia Sp
+  7: Trichuris Trichiura
+path: /content/parasite-detection-benchmark/data/preprocessed/parasites-1s07h-augmented-v1
+test: images/test
+train: images/train
+val: images/val

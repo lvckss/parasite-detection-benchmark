@@ -1,0 +1,9 @@
+{
+  "checkpoint": "/home/lvcks/Documents/CUARTO/VISION1/PRACTICAS/P5/parasite-detection-benchmark/models/trained/yolov10s/baseline/weights/best.pt",
+  "split": "val",
+  "inference": "one2one",
+  "score_threshold": 0.001,
+  "max_detections": 100,
+  "map": 0.6130976864846225,
+  "map50": 0.7637940056473203
+}

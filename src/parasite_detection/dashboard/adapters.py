@@ -95,12 +95,12 @@ class TrainingSession:
         saved = Path(directory) / "dashboard_state.json"
         if resume and saved.exists():
             try:
-                self.dashboard._offset = float(json.loads(saved.read_text()).get("elapsed_seconds", 0))
+                self.dashboard._offset = float(json.loads(saved.read_text(encoding="utf-8")).get("elapsed_seconds", 0))
             except (ValueError, OSError):
                 pass
         self.call("bind", directory, resume=resume)
         settings = Path(directory) / "settings.json"
-        config = json.loads(settings.read_text()) if settings.exists() else {}
+        config = json.loads(settings.read_text(encoding="utf-8")) if settings.exists() else {}
         self.call("emit", "start", evaluation=evaluation, metric_sources=metric_sources, config=config)
 
     def restore(self, history, best=None):
