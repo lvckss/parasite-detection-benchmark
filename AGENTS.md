@@ -10,6 +10,6 @@ This is an experimental university assignment. Keep changes simple and useful fo
 - Data stages: `data/raw/` contains original downloads; `data/converted/` contains extracted images and COCO/YOLO annotations with unchanged image content. `data/preprocessed/` holds the team's variants; `scripts/data/deduplicate_train.py` writes `parasites-1s07h-dedup/` (train without near duplicates of val/test; val/test unchanged).
 - COCO/torchvision use class IDs 1–8 (0 is background); YOLO uses 0–7. The generated `class_mapping.json` records both.
 - Put notebooks in `notebooks/`, shared Python in `src/parasite_detection/`, and experiment settings in `configs/`.
-- Store lightweight metrics and figures in `results/`, and local weights in `models/`. Keep downloads, weights, caches, and credentials out of new commits.
+- Store lightweight metrics and figures in `results/`, and weights in `models/`. Share the selected baseline checkpoints in `models/trained/` through Git LFS, as allowed in `.gitignore`. Keep pretrained downloads, other local runs, caches, and credentials out of new commits.
 - Record actual experiment settings and results; distinguish runs completed from plans. Respect teammates' changes.
 - The shared `semantic-commits-and-push` skill is in `.agents/skills/`; Claude's adapter is in `.claude/skills/`.

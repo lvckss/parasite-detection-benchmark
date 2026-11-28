@@ -22,7 +22,8 @@ scripts/
 │   ├── train_faster_rcnn.py
 │   └── train_yolo.py
 └── evaluation/
-    └── evaluate_faster_rcnn.py
+    ├── evaluate_faster_rcnn.py
+    └── evaluate_yolo.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -32,7 +33,7 @@ scripts/
 | [`setup_env.sh`](environment/setup_env.sh) | Crea o actualiza `.venv`, instala las dependencias y registra el kernel de Jupyter. Acepta `cpu` o `cu128`. | `bash scripts/environment/setup_env.sh cu128` |
 | [`download_weights.py`](models/download_weights.py) | Descarga a `models/pretrained/` los pesos COCO de Faster R-CNN v2 y YOLOv10-S. Omite los archivos existentes y mueve los de la estructura anterior a esta carpeta; `--force` los reemplaza y `--only fasterrcnn` o `--only yolo` descarga un solo modelo. | `just weights` |
 
-Los pesos y archivos descargados se mantienen localmente y no se incluyen en Git.
+Los pesos preentrenados y archivos descargados se mantienen localmente. Los checkpoints entrenados de los baselines se comparten mediante Git LFS; usa `git lfs pull` para descargarlos.
 
 ## Entrenamiento de Faster R-CNN
 
@@ -108,7 +109,7 @@ La pérdida se elige mediante la implementación oficial de la arquitectura; en 
 
 La validación fija un lienzo cuadrado del tamaño indicado, tanto durante el entrenamiento como al evaluar por separado. Usa la EMA y la cabeza one-to-one con `nms=False`, confianza `0.001` y hasta 100 detecciones por imagen. `CocoValidator` conserva el postprocesado oficial, convierte las predicciones a los IDs y coordenadas originales y aplica `pycocotools.COCOeval`. Su mAP determina tanto el mejor checkpoint como la parada temprana. La consola muestra además las métricas nativas de Ultralytics; el resumen identificado como **COCO** corresponde al evaluador común con RCNN.
 
-Los checkpoints oficiales quedan en `models/trained/yolov10s/<run_name>/weights/` como `best.pt` y `last.pt`. El directorio también contiene `args.yaml`, `dataset.yaml` con las rutas locales y el `results.csv` nativo. Los pesos permanecen excluidos de nuevos commits.
+Los checkpoints oficiales quedan en `models/trained/yolov10s/<run_name>/weights/` como `best.pt` y `last.pt`. Los de `baseline` se comparten mediante Git LFS. El directorio también contiene `args.yaml`, `dataset.yaml` con las rutas locales y el `results.csv` nativo; estos archivos auxiliares y las demás ejecuciones permanecen locales.
 
 El historial para los notebooks queda en `results/metrics/yolov10s/<run_name>/training.csv`. Conserva `epoch`, `train_loss`, `val_loss`, `map`, `map50` y `lr`; añade las componentes de pérdida, los LR por grupo y el mAP nativo bajo `ultralytics_map` y `ultralytics_map50`. `map` y `map50` siempre son COCO. Las pérdidas suman las componentes registradas por el motor oficial y no representan su escalar de backward; no deben compararse numéricamente con las del bucle antiguo. `settings.json` guarda los argumentos efectivos, versiones y criterios de evaluación y selección. `best_validation.json` contiene la evaluación final de los pesos guardados; puede diferir ligeramente del historial porque la serialización nativa usa FP16.
 
@@ -140,6 +141,17 @@ from parasite_detection.yolo import evaluate_model, load_trained_model
 model = load_trained_model(device="cuda")
 test_metrics = evaluate_model(model, data_dir=config.data_dir, split="test", device="cuda")
 ```
+
+## Evaluación de YOLOv10-S
+
+[`evaluation/evaluate_yolo.py`](evaluation/evaluate_yolo.py) evalúa `best.pt` igual que `evaluate_faster_rcnn.py` y guarda los mismos cuatro archivos con el mismo formato en `results/metrics/yolov10s/<run_name>/`: `<split>_metrics.json`, `<split>_per_class.csv`, `<split>_pr_curves.csv` y `<split>_predictions.json` (IDs COCO 1–8). Las funciones comunes de COCOeval están en [`src/parasite_detection/evaluation.py`](../src/parasite_detection/evaluation.py).
+
+```bash
+python scripts/evaluation/evaluate_yolo.py --split val
+python scripts/evaluation/evaluate_yolo.py --split test
+```
+
+Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la misma salida one-to-one sin NMS (confianza `0.001`, 100 detecciones) con los que se eligió el checkpoint, así que el mAP de val debe coincidir con `best_validation.json`. La latencia se mide en una pasada aparte con lote 1: preprocesado, red y postprocesado, sin la lectura de la imagen y sin las 3 primeras imágenes. Usa los mismos hilos de CPU que torch por defecto (Ultralytics los limita a 8), para compararla con Faster R-CNN medido en la misma máquina. [`05_yolov10s_test_analysis.ipynb`](../notebooks/05_yolov10s_test_analysis.ipynb) genera las figuras en `results/figures/yolov10s/<run_name>/`.
 
 ## Dashboard de entrenamiento
 

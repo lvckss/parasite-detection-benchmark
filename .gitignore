@@ -14,10 +14,18 @@ data/preprocessed/*
 !data/preprocessed/README.md
 models/*
 !models/.gitkeep
+!models/trained/
+models/trained/**
+!models/trained/**/
 runs/
 *.pt
 *.pth
 *.ckpt
+# Compartimos los checkpoints de los baselines mediante Git LFS.
+!models/trained/fasterrcnn_v2/baseline/best_model.pth
+!models/trained/fasterrcnn_v2/baseline/last_checkpoint.pth
+!models/trained/yolov10s/baseline/weights/best.pt
+!models/trained/yolov10s/baseline/weights/last.pt
 *.log
 .cache/
 .claude/settings.local.json

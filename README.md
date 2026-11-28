@@ -80,12 +80,21 @@ python -m ipykernel install --user --name vision-p5 --display-name "VISION P5"
 | [`data/raw/`](data/raw/README.md) | Parquet originales |
 | [`data/converted/`](data/converted/README.md) | Imágenes extraídas y anotaciones COCO/YOLO |
 | [`data/preprocessed/`](data/preprocessed/README.md) | Nuestras variantes, como train sin casi duplicados |
-| [`models/`](models/) | Pesos y checkpoints locales |
+| [`models/`](models/) | Checkpoints de los baselines en Git LFS y pesos preentrenados locales |
 | [`results/metrics/`](results/metrics/) | Métricas de los experimentos |
 | [`results/figures/`](results/figures/) | Figuras para comparar y presentar resultados |
 
 > [!NOTE]
-> Los datos, los pesos y `.venv` se quedan en cada máquina. Git comparte el código, la configuración, los README y las métricas y figuras que añadamos.
+> Los datos, los pesos preentrenados y `.venv` se quedan en cada máquina. Git comparte el código, la configuración, los README, las métricas y figuras, y los checkpoints de los baselines mediante Git LFS.
+
+Instala Git LFS antes de clonar para recibir los checkpoints entrenados. Si ya tienes el repo clonado, ejecuta:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+Se comparten `best_model.pth` y `last_checkpoint.pth` de Faster R-CNN en `models/trained/fasterrcnn_v2/baseline/`, y `best.pt` y `last.pt` de YOLO en `models/trained/yolov10s/baseline/weights/`. Los archivos auxiliares de entrenamiento y las demás ejecuciones permanecen locales. `just weights` descarga únicamente los pesos preentrenados en COCO.
 
 ## Dataset
 
@@ -146,12 +155,14 @@ python scripts/labeling/compare_train_augmentations.py --data-dir data/preproces
 | 4. Evaluación en val y test | `scripts/evaluation/evaluate_faster_rcnn.py --split {val,test}` | Métricas COCO, AP por clase, curvas PR, latencia y predicciones en `results/metrics/fasterrcnn_v2/<run>/` |
 | 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
-| 7. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
-| 8. Comparar ambos detectores por variante | Notebooks de entrenamiento en Colab/Kaggle | Una ejecución y un nombre de run distintos por modelo y variante |
+| 7. Evaluación de YOLOv10-S en val y test | `scripts/evaluation/evaluate_yolo.py --split {val,test}` | Los mismos archivos que el paso 4 en `results/metrics/yolov10s/<run>/` |
+| 8. Análisis de errores de YOLOv10-S | [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
+| 9. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
+| 10. Comparar ambos detectores por variante | [Guía de Colab](#guía-paso-a-paso-en-google-colab) | Una ejecución y un nombre de run distintos por modelo y variante |
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
-Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo. La [demo con métricas simuladas](notebooks/05_training_dashboard_demo.ipynb) permite probarlo sin entrenar.
+Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo.
 
 ## Experimentos de aumentación en Colab/Kaggle
 
@@ -185,27 +196,31 @@ Para cada variante posterior, guardar una configuración identificable y usar ot
 
 Registro de las ejecuciones (rellenar solo cuando se hayan completado):
 
-| Variante | Cambios respecto a la anterior | Ejecución Faster R-CNN | Ejecución YOLOv10-S | Val mAP COCO | Test mAP COCO | Estado |
+| Variante | Cambios respecto a la anterior | Ejecución Faster R-CNN | Ejecución YOLOv10-S | Val mAP COCO (FRCNN / YOLO) | Test mAP COCO (FRCNN / YOLO) | Estado |
 |---|---|---|---|---:|---:|---|
-| `baseline` | Train deduplicado, sin augmentación | `baseline` | `baseline_ultralytics` | 0,663 / — | 0,623 / — | Faster R-CNN hecho · YOLO pendiente |
-| `aug-v1` | Configuración actual de `augmentation.json` | — | — | — | — | Pendiente |
+| `baseline` | Train deduplicado, sin augmentación | `baseline` | `baseline` | 0,663 / 0,613 | 0,623 / — | Hecho · falta test de YOLO |
+| `aug-v1` | Configuración actual de `augmentation.json` | `aug_v1` | `aug_v1` | — | — | Pendiente |
 | `aug-v2` | Indicar transformaciones y parámetros añadidos | — | — | — | — | Pendiente |
 
 ### Guía paso a paso en Google Colab
 
-Pensada para una GPU de Colab (T4 o superior). Los datos se regeneran dentro de Colab con los mismos scripts y la semilla 42, así que no hace falta subir el dataset. Los checkpoints se guardan en Google Drive para no perderlos si se corta la sesión.
+Experimento `aug_v1`: **dos entrenamientos**, uno por detector, con el train aumentado. Los baselines de ambos modelos ya están entrenados y son la referencia. Todos los hiperparámetros coinciden con los de su baseline y solo cambia el dataset de train. Val y test son los mismos.
+
+El notebook está pensado para una GPU de Colab (T4 o superior). Los datos se regeneran dentro de Colab con los mismos scripts y la semilla 42, así que no hace falta subir el dataset. Una copia periódica guarda checkpoints y métricas en Google Drive para no perderlos si se corta la sesión.
 
 **0. Entorno de ejecución → Cambiar tipo de entorno → GPU.** Después, en celdas sucesivas:
 
 ```python
-# 1. Montar Drive (aquí quedarán pesos y métricas)
+# 1. Montar Drive y definir rutas
 from google.colab import drive
 drive.mount("/content/drive")
+REPO = "/content/parasite-detection-benchmark"
+BACKUP = "/content/drive/MyDrive/parasites-runs"
 ```
 
 ```bash
 %%bash
-# 2. Clonar el repo (sin descargar los .pth de Git LFS, que no hacen falta para entrenar)
+# 2. Clonar el repo (sin bajar los checkpoints de Git LFS, que no hacen falta para entrenar)
 cd /content
 GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/lvckss/parasite-detection-benchmark.git
 cd parasite-detection-benchmark
@@ -231,39 +246,32 @@ $PY scripts/create_augmented_dataset.py \
     --config configs/augmentation.json          # 4628 imágenes de train
 ```
 
-```bash
-%%bash
-# 5. Guardar en Drive las carpetas de cada ejecución (enlaces simbólicos)
-cd /content/parasite-detection-benchmark
-D=/content/drive/MyDrive/parasites-runs
-mkdir -p $D/models/yolov10s $D/models/fasterrcnn_v2/aug_v1 $D/results
-ln -sfn $D/models/yolov10s models/trained/yolov10s
-ln -sfn $D/models/fasterrcnn_v2/aug_v1 models/trained/fasterrcnn_v2/aug_v1
+```python
+# 5. Copia de seguridad en Drive cada 5 minutos, en segundo plano, mientras entrena
+import subprocess, threading, time
+def backup():
+    while True:
+        subprocess.run(f"mkdir -p {BACKUP}/models {BACKUP}/metrics && "
+                       f"cp -a {REPO}/models/trained/. {BACKUP}/models/ && "
+                       f"cp -a {REPO}/results/metrics/. {BACKUP}/metrics/", shell=True)
+        time.sleep(300)
+threading.Thread(target=backup, daemon=True).start()
 ```
 
-**6. Entrenamientos.** Cambiar solo el dataset; el resto de hiperparámetros coincide con el baseline de cada modelo. Lanzar cada uno en su propia celda:
+> [!NOTE]
+> No se usan enlaces simbólicos a Drive: `train_yolo.py` rechaza empezar una ejecución si su carpeta ya existe, para no mezclar experimentos.
 
-```bash
-%%bash
-cd /content/parasite-detection-benchmark
-# a) Baseline de YOLOv10-S (aún no se ha entrenado): train deduplicado, sin augmentación
-.venv/bin/python scripts/training/train_yolo.py --device cuda \
-    --data-dir data/preprocessed/parasites-1s07h-dedup --run-name baseline_ultralytics
-```
+**6. Entrenamientos.** Cada uno en su propia celda, en el mismo kernel que la celda 5 para que la copia siga activa:
 
-```bash
-%%bash
-cd /content/parasite-detection-benchmark
-# b) YOLOv10-S con la variante aumentada
-.venv/bin/python scripts/training/train_yolo.py --device cuda \
+```python
+# a) YOLOv10-S + aug_v1 (por defecto: 100 épocas, lote 8, SGD lr 0,01, paciencia 20, como el baseline)
+!cd {REPO} && .venv/bin/python scripts/training/train_yolo.py --device cuda \
     --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1
 ```
 
-```bash
-%%bash
-cd /content/parasite-detection-benchmark
-# c) Faster R-CNN v2 con la variante aumentada (mismos ajustes que results/metrics/fasterrcnn_v2/baseline/settings.json)
-.venv/bin/python scripts/training/train_faster_rcnn.py --device cuda \
+```python
+# b) Faster R-CNN v2 + aug_v1 (mismos ajustes que results/metrics/fasterrcnn_v2/baseline/settings.json)
+!cd {REPO} && .venv/bin/python scripts/training/train_faster_rcnn.py --device cuda \
     --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 \
     --epochs 20 --batch-size 2 --patience 10
 ```
@@ -271,56 +279,49 @@ cd /content/parasite-detection-benchmark
 > [!WARNING]
 > En `train_faster_rcnn.py`, `--data-dir` por defecto apunta al train **original** (`data/converted/...`), no al deduplicado. Indícalo siempre de forma explícita. El baseline de Faster R-CNN se entrenó con `--patience 10`; el valor por defecto actual es 5.
 
-Si Colab corta la sesión, repetir los pasos 1–5 (el paso 4 tarda unos minutos) y reanudar:
+Si Colab corta la sesión, repetir los pasos 1–4, recuperar la copia de Drive, lanzar de nuevo la celda 5 y reanudar el entrenamiento que estuviera a medias:
 
-```bash
-.venv/bin/python scripts/training/train_yolo.py --resume models/trained/yolov10s/aug_v1/weights/last.pt
-.venv/bin/python scripts/training/train_faster_rcnn.py --resume models/trained/fasterrcnn_v2/aug_v1/last_checkpoint.pth \
+```python
+!cp -a {BACKUP}/models/. {REPO}/models/trained/ && cp -a {BACKUP}/metrics/. {REPO}/results/metrics/
+# YOLO
+!cd {REPO} && .venv/bin/python scripts/training/train_yolo.py --resume models/trained/yolov10s/aug_v1/weights/last.pt
+# Faster R-CNN
+!cd {REPO} && .venv/bin/python scripts/training/train_faster_rcnn.py \
+    --resume models/trained/fasterrcnn_v2/aug_v1/last_checkpoint.pth \
     --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 --epochs 20 --patience 10
 ```
 
-**7. Evaluar en val y test** (solo al terminar, sin volver a ajustar nada mirando test):
+**7. Evaluar en val y test** solo al terminar y sin volver a ajustar nada mirando test. Val y test no tienen augmentación, así que basta con el dataset deduplicado por defecto:
 
-```bash
-%%bash
-cd /content/parasite-detection-benchmark
-for s in val test; do
-  .venv/bin/python scripts/evaluation/evaluate_faster_rcnn.py --split $s --run-name aug_v1
-done
+```python
+!cd {REPO} && for s in val test; do \
+    .venv/bin/python scripts/evaluation/evaluate_faster_rcnn.py --run-name aug_v1 --split $s --device cuda; \
+    .venv/bin/python scripts/evaluation/evaluate_yolo.py --run-name aug_v1 --split $s --device cuda; \
+  done
 ```
 
-```bash
-%%bash
-# YOLO no tiene script de evaluación: se llama al módulo con el Python del entorno (.venv),
-# no con el kernel de Colab, que no tiene la versión fijada de Ultralytics
-cd /content/parasite-detection-benchmark
-.venv/bin/python - <<'EOF'
-import json
-from parasite_detection.yolo import evaluate_model, load_trained_model
-for run in ["baseline_ultralytics", "aug_v1"]:
-    model = load_trained_model(f"models/trained/yolov10s/{run}/weights/best.pt", device="cuda")
-    for split in ["val", "test"]:
-        metrics = evaluate_model(model, split=split, device="cuda")
-        print(run, split, metrics)
-        with open(f"results/metrics/yolov10s/{run}/{split}_metrics.json", "w") as f:
-            json.dump(metrics, f, indent=2, default=str)
-EOF
-```
-
-**8. Llevarse los resultados.** Copiar `results/metrics/` (CSV y JSON ligeros) a Drive con `cp -r results/metrics /content/drive/MyDrive/parasites-runs/results/`, pasarlos al repo local y rellenar la tabla de arriba. Los pesos (`.pt`, `.pth`) se quedan en Drive.
+**8. Llevarse los resultados.** Esperar a que la copia de la celda 5 se ejecute una última vez, o forzarla con `!cp -a {REPO}/results/metrics/. {BACKUP}/metrics/`. Pasar a `results/metrics/` del repo local los archivos ligeros (CSV, JSON y HTML) de `fasterrcnn_v2/aug_v1/` y `yolov10s/aug_v1/`, y rellenar la tabla de arriba. Los pesos (`.pt`, `.pth`) se quedan en Drive.
 
 > [!TIP]
-> Duración orientativa en una T4: Faster R-CNN con 4628 imágenes y lote 2 son unas 2300 iteraciones por época, así que 20 épocas pueden llevar varias horas. Si el tiempo no da, entrenar primero los dos YOLO (más rápidos) y dejar Faster R-CNN para una sesión aparte; con Colab Pro se puede elegir una GPU L4 o A100.
+> Con 4628 imágenes de train, cada época dura unas 4 veces más que en el baseline. Calculo de forma aproximada varias horas por modelo en una T4. Si no hay tiempo para todo, entrena primero YOLO y deja Faster R-CNN para otra sesión. Con Colab Pro puedes elegir una GPU L4 o A100. Al comparar, ten en cuenta que en el mismo número de épocas el modelo aumentado da 4 veces más pasos de gradiente.
 
 ## Resultados
 
-Baseline con el train deduplicado: 20 épocas, SGD con lr 0,0025, warmup y coseno, imágenes de 640 px; mejor época por mAP de validación. Las métricas son de `pycocotools`.
+Baselines con el train deduplicado, imágenes de 640 px y semilla 42; mejor checkpoint por mAP de validación. Las métricas mAP son de `pycocotools`.
+
+- **Faster R-CNN v2:** 20 épocas, lote 2, SGD con lr 0,0025, warmup y coseno.
+- **YOLOv10-S:** 100 épocas previstas, 60 completadas con parada temprana tras 20 sin mejora; mejor época: 40. Lote 8, SGD con lr 0,01, warmup de 3 épocas y coseno, sin aumentos de datos. Entrenado con AMP en una NVIDIA GeForce RTX 3080.
 
 | Modelo | Partición | mAP@[.5:.95] | mAP@0.5 | mAP@0.75 | Inferencia |
 |---|---|---|---|---|---|
 | Faster R-CNN v2 | val | 0,663 | 0,809 | 0,791 | — |
 | Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 2,1 s/img (CPU, lote 1) |
-| YOLOv10-S | — | en curso | | | |
+| YOLOv10-S | val | 0,613 | 0,764 | — | 21,4 ms/img (RTX 3080, validación Ultralytics) |
+| YOLOv10-S | test | pendiente | — | — | — |
+
+Los tiempos de inferencia se han medido con hardware y protocolos distintos (CPU para Faster R-CNN y GPU para YOLO), por lo que no son directamente comparables. El mAP@0.75 de YOLO no está registrado en el resumen disponible; su evaluación en test está pendiente.
+
+Los resultados de YOLO están en [`best_validation.json`](results/metrics/yolov10s/baseline/best_validation.json), con la configuración en [`settings.json`](results/metrics/yolov10s/baseline/settings.json), la evolución por época en [`training.csv`](results/metrics/yolov10s/baseline/training.csv) y el informe en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb).
 
 Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb). Las estrategias de mejora están pendientes.
 
@@ -333,15 +334,15 @@ Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas 
 - Entorno reproducible con `uv`, descarga fijada del dataset y conversión a COCO/YOLO.
 - EDA y deduplicado del train frente a val/test (1484 → 1157 imágenes) para evitar fuga de datos.
 - Faster R-CNN v2: entrenamiento completo (todas las capas), validación con `val_loss`, parada temprana, evaluación en val/test y análisis de errores con figuras. **Baseline terminado.**
-- YOLOv10-S: entrenador con el motor oficial de Ultralytics y evaluación COCO común con Faster R-CNN.
+- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`) y notebook de análisis de errores. **Baseline entrenado** (val mAP 0,613).
+- Checkpoints de ambos baselines compartidos con Git LFS.
 - Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
 - Dashboard de entrenamiento compartido por ambos modelos.
 
 ### Pendiente
 
-- [ ] **Baseline de YOLOv10-S** (entrenar y evaluar en val/test).
+- [ ] Evaluar el baseline de YOLOv10-S en test.
 - [ ] **`aug_v1` en ambos detectores** y comparación con su baseline ([guía de Colab](#guía-paso-a-paso-en-google-colab)).
-- [ ] Análisis de errores y figuras de YOLO equivalentes a las de Faster R-CNN (curvas PR, AP por clase, matriz de confusión).
 - [ ] Tiempos de inferencia de ambos modelos medidos en la **misma** máquina.
 - [ ] Al menos una o dos estrategias de mejora más allá de la augmentación (ver ideas).
 - [ ] Tabla y gráficas finales baseline vs. mejoras (mAP@0.5, mAP@[.5:.95], latencia).
