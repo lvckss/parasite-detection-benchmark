@@ -29,3 +29,6 @@ runs/
 *.log
 .cache/
 .claude/settings.local.json
+
+# copias completas de ejecuciones descargadas de Drive (incluyen pesos)
+results/*.zip
