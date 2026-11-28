@@ -1,0 +1,1617 @@
+iou,category_id,name,recall,precision
+0.5,1,Ancylostoma Spp,0.0,1.0
+0.5,1,Ancylostoma Spp,0.01,1.0
+0.5,1,Ancylostoma Spp,0.02,1.0
+0.5,1,Ancylostoma Spp,0.03,1.0
+0.5,1,Ancylostoma Spp,0.04,1.0
+0.5,1,Ancylostoma Spp,0.05,1.0
+0.5,1,Ancylostoma Spp,0.06,1.0
+0.5,1,Ancylostoma Spp,0.07,1.0
+0.5,1,Ancylostoma Spp,0.08,1.0
+0.5,1,Ancylostoma Spp,0.09,1.0
+0.5,1,Ancylostoma Spp,0.1,1.0
+0.5,1,Ancylostoma Spp,0.11,1.0
+0.5,1,Ancylostoma Spp,0.12,1.0
+0.5,1,Ancylostoma Spp,0.13,1.0
+0.5,1,Ancylostoma Spp,0.14,1.0
+0.5,1,Ancylostoma Spp,0.15,1.0
+0.5,1,Ancylostoma Spp,0.16,1.0
+0.5,1,Ancylostoma Spp,0.17,1.0
+0.5,1,Ancylostoma Spp,0.18,1.0
+0.5,1,Ancylostoma Spp,0.19,1.0
+0.5,1,Ancylostoma Spp,0.2,1.0
+0.5,1,Ancylostoma Spp,0.21,1.0
+0.5,1,Ancylostoma Spp,0.22,1.0
+0.5,1,Ancylostoma Spp,0.23,1.0
+0.5,1,Ancylostoma Spp,0.24,1.0
+0.5,1,Ancylostoma Spp,0.25,1.0
+0.5,1,Ancylostoma Spp,0.26,1.0
+0.5,1,Ancylostoma Spp,0.27,1.0
+0.5,1,Ancylostoma Spp,0.28,1.0
+0.5,1,Ancylostoma Spp,0.29,1.0
+0.5,1,Ancylostoma Spp,0.3,1.0
+0.5,1,Ancylostoma Spp,0.31,1.0
+0.5,1,Ancylostoma Spp,0.32,1.0
+0.5,1,Ancylostoma Spp,0.33,1.0
+0.5,1,Ancylostoma Spp,0.34,1.0
+0.5,1,Ancylostoma Spp,0.35,1.0
+0.5,1,Ancylostoma Spp,0.36,1.0
+0.5,1,Ancylostoma Spp,0.37,1.0
+0.5,1,Ancylostoma Spp,0.38,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.39,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.4,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.41,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.42,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.43,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.44,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.45,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.46,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.47,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.48,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.49,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.5,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.51,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.52,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.53,0.9583333333333334
+0.5,1,Ancylostoma Spp,0.54,0.9259259259259259
+0.5,1,Ancylostoma Spp,0.55,0.9259259259259259
+0.5,1,Ancylostoma Spp,0.56,0.9259259259259259
+0.5,1,Ancylostoma Spp,0.57,0.9259259259259259
+0.5,1,Ancylostoma Spp,0.58,0.9259259259259259
+0.5,1,Ancylostoma Spp,0.59,0.9
+0.5,1,Ancylostoma Spp,0.6,0.9
+0.5,1,Ancylostoma Spp,0.61,0.9
+0.5,1,Ancylostoma Spp,0.62,0.9
+0.5,1,Ancylostoma Spp,0.63,0.875
+0.5,1,Ancylostoma Spp,0.64,0.875
+0.5,1,Ancylostoma Spp,0.65,0.875
+0.5,1,Ancylostoma Spp,0.66,0.7837837837837838
+0.5,1,Ancylostoma Spp,0.67,0.7837837837837838
+0.5,1,Ancylostoma Spp,0.68,0.7692307692307693
+0.5,1,Ancylostoma Spp,0.69,0.7692307692307693
+0.5,1,Ancylostoma Spp,0.7,0.5849056603773585
+0.5,1,Ancylostoma Spp,0.71,0.5849056603773585
+0.5,1,Ancylostoma Spp,0.72,0.5849056603773585
+0.5,1,Ancylostoma Spp,0.73,0.47058823529411764
+0.5,1,Ancylostoma Spp,0.74,0.47058823529411764
+0.5,1,Ancylostoma Spp,0.75,0.39759036144578314
+0.5,1,Ancylostoma Spp,0.76,0.39759036144578314
+0.5,1,Ancylostoma Spp,0.77,0.3695652173913043
+0.5,1,Ancylostoma Spp,0.78,0.3695652173913043
+0.5,1,Ancylostoma Spp,0.79,0.3695652173913043
+0.5,1,Ancylostoma Spp,0.8,0.3333333333333333
+0.5,1,Ancylostoma Spp,0.81,0.3333333333333333
+0.5,1,Ancylostoma Spp,0.82,0.3333333333333333
+0.5,1,Ancylostoma Spp,0.83,0.3333333333333333
+0.5,1,Ancylostoma Spp,0.84,0.32456140350877194
+0.5,1,Ancylostoma Spp,0.85,0.32456140350877194
+0.5,1,Ancylostoma Spp,0.86,0.32456140350877194
+0.5,1,Ancylostoma Spp,0.87,0.3114754098360656
+0.5,1,Ancylostoma Spp,0.88,0.3114754098360656
+0.5,1,Ancylostoma Spp,0.89,0.29545454545454547
+0.5,1,Ancylostoma Spp,0.9,0.29545454545454547
+0.5,1,Ancylostoma Spp,0.91,0.2597402597402597
+0.5,1,Ancylostoma Spp,0.92,0.2597402597402597
+0.5,1,Ancylostoma Spp,0.93,0.2597402597402597
+0.5,1,Ancylostoma Spp,0.94,0.0
+0.5,1,Ancylostoma Spp,0.95,0.0
+0.5,1,Ancylostoma Spp,0.96,0.0
+0.5,1,Ancylostoma Spp,0.97,0.0
+0.5,1,Ancylostoma Spp,0.98,0.0
+0.5,1,Ancylostoma Spp,0.99,0.0
+0.5,1,Ancylostoma Spp,1.0,0.0
+0.5,2,Ascaris Lumbricoides,0.0,1.0
+0.5,2,Ascaris Lumbricoides,0.01,1.0
+0.5,2,Ascaris Lumbricoides,0.02,1.0
+0.5,2,Ascaris Lumbricoides,0.03,1.0
+0.5,2,Ascaris Lumbricoides,0.04,1.0
+0.5,2,Ascaris Lumbricoides,0.05,1.0
+0.5,2,Ascaris Lumbricoides,0.06,1.0
+0.5,2,Ascaris Lumbricoides,0.07,1.0
+0.5,2,Ascaris Lumbricoides,0.08,1.0
+0.5,2,Ascaris Lumbricoides,0.09,1.0
+0.5,2,Ascaris Lumbricoides,0.1,1.0
+0.5,2,Ascaris Lumbricoides,0.11,1.0
+0.5,2,Ascaris Lumbricoides,0.12,1.0
+0.5,2,Ascaris Lumbricoides,0.13,1.0
+0.5,2,Ascaris Lumbricoides,0.14,1.0
+0.5,2,Ascaris Lumbricoides,0.15,1.0
+0.5,2,Ascaris Lumbricoides,0.16,1.0
+0.5,2,Ascaris Lumbricoides,0.17,1.0
+0.5,2,Ascaris Lumbricoides,0.18,1.0
+0.5,2,Ascaris Lumbricoides,0.19,1.0
+0.5,2,Ascaris Lumbricoides,0.2,1.0
+0.5,2,Ascaris Lumbricoides,0.21,1.0
+0.5,2,Ascaris Lumbricoides,0.22,1.0
+0.5,2,Ascaris Lumbricoides,0.23,1.0
+0.5,2,Ascaris Lumbricoides,0.24,1.0
+0.5,2,Ascaris Lumbricoides,0.25,1.0
+0.5,2,Ascaris Lumbricoides,0.26,1.0
+0.5,2,Ascaris Lumbricoides,0.27,1.0
+0.5,2,Ascaris Lumbricoides,0.28,1.0
+0.5,2,Ascaris Lumbricoides,0.29,1.0
+0.5,2,Ascaris Lumbricoides,0.3,1.0
+0.5,2,Ascaris Lumbricoides,0.31,1.0
+0.5,2,Ascaris Lumbricoides,0.32,1.0
+0.5,2,Ascaris Lumbricoides,0.33,1.0
+0.5,2,Ascaris Lumbricoides,0.34,1.0
+0.5,2,Ascaris Lumbricoides,0.35,1.0
+0.5,2,Ascaris Lumbricoides,0.36,1.0
+0.5,2,Ascaris Lumbricoides,0.37,1.0
+0.5,2,Ascaris Lumbricoides,0.38,1.0
+0.5,2,Ascaris Lumbricoides,0.39,1.0
+0.5,2,Ascaris Lumbricoides,0.4,1.0
+0.5,2,Ascaris Lumbricoides,0.41,1.0
+0.5,2,Ascaris Lumbricoides,0.42,1.0
+0.5,2,Ascaris Lumbricoides,0.43,1.0
+0.5,2,Ascaris Lumbricoides,0.44,1.0
+0.5,2,Ascaris Lumbricoides,0.45,1.0
+0.5,2,Ascaris Lumbricoides,0.46,1.0
+0.5,2,Ascaris Lumbricoides,0.47,1.0
+0.5,2,Ascaris Lumbricoides,0.48,1.0
+0.5,2,Ascaris Lumbricoides,0.49,1.0
+0.5,2,Ascaris Lumbricoides,0.5,1.0
+0.5,2,Ascaris Lumbricoides,0.51,1.0
+0.5,2,Ascaris Lumbricoides,0.52,1.0
+0.5,2,Ascaris Lumbricoides,0.53,1.0
+0.5,2,Ascaris Lumbricoides,0.54,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.55,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.56,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.57,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.58,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.59,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.6,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.61,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.62,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.63,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.64,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.65,0.9696969696969697
+0.5,2,Ascaris Lumbricoides,0.66,0.925
+0.5,2,Ascaris Lumbricoides,0.67,0.925
+0.5,2,Ascaris Lumbricoides,0.68,0.925
+0.5,2,Ascaris Lumbricoides,0.69,0.925
+0.5,2,Ascaris Lumbricoides,0.7,0.925
+0.5,2,Ascaris Lumbricoides,0.71,0.925
+0.5,2,Ascaris Lumbricoides,0.72,0.925
+0.5,2,Ascaris Lumbricoides,0.73,0.925
+0.5,2,Ascaris Lumbricoides,0.74,0.925
+0.5,2,Ascaris Lumbricoides,0.75,0.925
+0.5,2,Ascaris Lumbricoides,0.76,0.8837209302325582
+0.5,2,Ascaris Lumbricoides,0.77,0.8837209302325582
+0.5,2,Ascaris Lumbricoides,0.78,0.639344262295082
+0.5,2,Ascaris Lumbricoides,0.79,0.639344262295082
+0.5,2,Ascaris Lumbricoides,0.8,0.6060606060606061
+0.5,2,Ascaris Lumbricoides,0.81,0.6060606060606061
+0.5,2,Ascaris Lumbricoides,0.82,0.5774647887323944
+0.5,2,Ascaris Lumbricoides,0.83,0.5774647887323944
+0.5,2,Ascaris Lumbricoides,0.84,0.48863636363636365
+0.5,2,Ascaris Lumbricoides,0.85,0.48863636363636365
+0.5,2,Ascaris Lumbricoides,0.86,0.48863636363636365
+0.5,2,Ascaris Lumbricoides,0.87,0.48863636363636365
+0.5,2,Ascaris Lumbricoides,0.88,0.0
+0.5,2,Ascaris Lumbricoides,0.89,0.0
+0.5,2,Ascaris Lumbricoides,0.9,0.0
+0.5,2,Ascaris Lumbricoides,0.91,0.0
+0.5,2,Ascaris Lumbricoides,0.92,0.0
+0.5,2,Ascaris Lumbricoides,0.93,0.0
+0.5,2,Ascaris Lumbricoides,0.94,0.0
+0.5,2,Ascaris Lumbricoides,0.95,0.0
+0.5,2,Ascaris Lumbricoides,0.96,0.0
+0.5,2,Ascaris Lumbricoides,0.97,0.0
+0.5,2,Ascaris Lumbricoides,0.98,0.0
+0.5,2,Ascaris Lumbricoides,0.99,0.0
+0.5,2,Ascaris Lumbricoides,1.0,0.0
+0.5,3,Enterobius Vermicularis,0.0,1.0
+0.5,3,Enterobius Vermicularis,0.01,1.0
+0.5,3,Enterobius Vermicularis,0.02,1.0
+0.5,3,Enterobius Vermicularis,0.03,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.04,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.05,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.06,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.07,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.08,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.09,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.1,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.11,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.12,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.13,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.14,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.15,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.16,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.17,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.18,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.19,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.2,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.21,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.22,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.23,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.24,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.25,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.26,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.27,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.28,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.29,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.3,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.31,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.32,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.33,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.34,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.35,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.36,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.37,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.38,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.39,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.4,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.41,0.9777777777777777
+0.5,3,Enterobius Vermicularis,0.42,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.43,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.44,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.45,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.46,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.47,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.48,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.49,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.5,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.51,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.52,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.53,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.54,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.55,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.56,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.57,0.9682539682539683
+0.5,3,Enterobius Vermicularis,0.58,0.9538461538461539
+0.5,3,Enterobius Vermicularis,0.59,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.6,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.61,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.62,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.63,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.64,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.65,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.66,0.9466666666666667
+0.5,3,Enterobius Vermicularis,0.67,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.68,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.69,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.7,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.71,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.72,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.73,0.9176470588235294
+0.5,3,Enterobius Vermicularis,0.74,0.9080459770114943
+0.5,3,Enterobius Vermicularis,0.75,0.8888888888888888
+0.5,3,Enterobius Vermicularis,0.76,0.8723404255319149
+0.5,3,Enterobius Vermicularis,0.77,0.8723404255319149
+0.5,3,Enterobius Vermicularis,0.78,0.8556701030927835
+0.5,3,Enterobius Vermicularis,0.79,0.8316831683168316
+0.5,3,Enterobius Vermicularis,0.8,0.8173076923076923
+0.5,3,Enterobius Vermicularis,0.81,0.7857142857142857
+0.5,3,Enterobius Vermicularis,0.82,0.7857142857142857
+0.5,3,Enterobius Vermicularis,0.83,0.7857142857142857
+0.5,3,Enterobius Vermicularis,0.84,0.7317073170731707
+0.5,3,Enterobius Vermicularis,0.85,0.6946564885496184
+0.5,3,Enterobius Vermicularis,0.86,0.6715328467153284
+0.5,3,Enterobius Vermicularis,0.87,0.6595744680851063
+0.5,3,Enterobius Vermicularis,0.88,0.6527777777777778
+0.5,3,Enterobius Vermicularis,0.89,0.6506849315068494
+0.5,3,Enterobius Vermicularis,0.9,0.588957055214724
+0.5,3,Enterobius Vermicularis,0.91,0.5843373493975904
+0.5,3,Enterobius Vermicularis,0.92,0.5632183908045977
+0.5,3,Enterobius Vermicularis,0.93,0.5561797752808989
+0.5,3,Enterobius Vermicularis,0.94,0.4672897196261682
+0.5,3,Enterobius Vermicularis,0.95,0.0
+0.5,3,Enterobius Vermicularis,0.96,0.0
+0.5,3,Enterobius Vermicularis,0.97,0.0
+0.5,3,Enterobius Vermicularis,0.98,0.0
+0.5,3,Enterobius Vermicularis,0.99,0.0
+0.5,3,Enterobius Vermicularis,1.0,0.0
+0.5,4,Fasciola Hepatica,0.0,1.0
+0.5,4,Fasciola Hepatica,0.01,1.0
+0.5,4,Fasciola Hepatica,0.02,1.0
+0.5,4,Fasciola Hepatica,0.03,1.0
+0.5,4,Fasciola Hepatica,0.04,1.0
+0.5,4,Fasciola Hepatica,0.05,1.0
+0.5,4,Fasciola Hepatica,0.06,1.0
+0.5,4,Fasciola Hepatica,0.07,1.0
+0.5,4,Fasciola Hepatica,0.08,1.0
+0.5,4,Fasciola Hepatica,0.09,1.0
+0.5,4,Fasciola Hepatica,0.1,1.0
+0.5,4,Fasciola Hepatica,0.11,1.0
+0.5,4,Fasciola Hepatica,0.12,1.0
+0.5,4,Fasciola Hepatica,0.13,1.0
+0.5,4,Fasciola Hepatica,0.14,1.0
+0.5,4,Fasciola Hepatica,0.15,1.0
+0.5,4,Fasciola Hepatica,0.16,1.0
+0.5,4,Fasciola Hepatica,0.17,1.0
+0.5,4,Fasciola Hepatica,0.18,1.0
+0.5,4,Fasciola Hepatica,0.19,1.0
+0.5,4,Fasciola Hepatica,0.2,1.0
+0.5,4,Fasciola Hepatica,0.21,1.0
+0.5,4,Fasciola Hepatica,0.22,1.0
+0.5,4,Fasciola Hepatica,0.23,1.0
+0.5,4,Fasciola Hepatica,0.24,1.0
+0.5,4,Fasciola Hepatica,0.25,1.0
+0.5,4,Fasciola Hepatica,0.26,1.0
+0.5,4,Fasciola Hepatica,0.27,1.0
+0.5,4,Fasciola Hepatica,0.28,1.0
+0.5,4,Fasciola Hepatica,0.29,1.0
+0.5,4,Fasciola Hepatica,0.3,1.0
+0.5,4,Fasciola Hepatica,0.31,1.0
+0.5,4,Fasciola Hepatica,0.32,1.0
+0.5,4,Fasciola Hepatica,0.33,1.0
+0.5,4,Fasciola Hepatica,0.34,1.0
+0.5,4,Fasciola Hepatica,0.35,1.0
+0.5,4,Fasciola Hepatica,0.36,1.0
+0.5,4,Fasciola Hepatica,0.37,1.0
+0.5,4,Fasciola Hepatica,0.38,1.0
+0.5,4,Fasciola Hepatica,0.39,1.0
+0.5,4,Fasciola Hepatica,0.4,1.0
+0.5,4,Fasciola Hepatica,0.41,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.42,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.43,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.44,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.45,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.46,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.47,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.48,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.49,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.5,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.51,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.52,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.53,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.54,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.55,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.56,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.57,0.9583333333333334
+0.5,4,Fasciola Hepatica,0.58,0.9259259259259259
+0.5,4,Fasciola Hepatica,0.59,0.9259259259259259
+0.5,4,Fasciola Hepatica,0.6,0.9259259259259259
+0.5,4,Fasciola Hepatica,0.61,0.9259259259259259
+0.5,4,Fasciola Hepatica,0.62,0.9259259259259259
+0.5,4,Fasciola Hepatica,0.63,0.84375
+0.5,4,Fasciola Hepatica,0.64,0.84375
+0.5,4,Fasciola Hepatica,0.65,0.84375
+0.5,4,Fasciola Hepatica,0.66,0.84375
+0.5,4,Fasciola Hepatica,0.67,0.84375
+0.5,4,Fasciola Hepatica,0.68,0.7567567567567568
+0.5,4,Fasciola Hepatica,0.69,0.7567567567567568
+0.5,4,Fasciola Hepatica,0.7,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.71,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.72,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.73,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.74,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.75,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.76,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.77,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.78,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.79,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.8,0.5517241379310345
+0.5,4,Fasciola Hepatica,0.81,0.4927536231884058
+0.5,4,Fasciola Hepatica,0.82,0.4927536231884058
+0.5,4,Fasciola Hepatica,0.83,0.4927536231884058
+0.5,4,Fasciola Hepatica,0.84,0.4927536231884058
+0.5,4,Fasciola Hepatica,0.85,0.4927536231884058
+0.5,4,Fasciola Hepatica,0.86,0.3977272727272727
+0.5,4,Fasciola Hepatica,0.87,0.3977272727272727
+0.5,4,Fasciola Hepatica,0.88,0.391304347826087
+0.5,4,Fasciola Hepatica,0.89,0.391304347826087
+0.5,4,Fasciola Hepatica,0.9,0.391304347826087
+0.5,4,Fasciola Hepatica,0.91,0.33636363636363636
+0.5,4,Fasciola Hepatica,0.92,0.33636363636363636
+0.5,4,Fasciola Hepatica,0.93,0.0
+0.5,4,Fasciola Hepatica,0.94,0.0
+0.5,4,Fasciola Hepatica,0.95,0.0
+0.5,4,Fasciola Hepatica,0.96,0.0
+0.5,4,Fasciola Hepatica,0.97,0.0
+0.5,4,Fasciola Hepatica,0.98,0.0
+0.5,4,Fasciola Hepatica,0.99,0.0
+0.5,4,Fasciola Hepatica,1.0,0.0
+0.5,5,Hymenolepis,0.0,1.0
+0.5,5,Hymenolepis,0.01,1.0
+0.5,5,Hymenolepis,0.02,1.0
+0.5,5,Hymenolepis,0.03,1.0
+0.5,5,Hymenolepis,0.04,1.0
+0.5,5,Hymenolepis,0.05,1.0
+0.5,5,Hymenolepis,0.06,1.0
+0.5,5,Hymenolepis,0.07,1.0
+0.5,5,Hymenolepis,0.08,1.0
+0.5,5,Hymenolepis,0.09,1.0
+0.5,5,Hymenolepis,0.1,1.0
+0.5,5,Hymenolepis,0.11,1.0
+0.5,5,Hymenolepis,0.12,1.0
+0.5,5,Hymenolepis,0.13,1.0
+0.5,5,Hymenolepis,0.14,1.0
+0.5,5,Hymenolepis,0.15,1.0
+0.5,5,Hymenolepis,0.16,1.0
+0.5,5,Hymenolepis,0.17,1.0
+0.5,5,Hymenolepis,0.18,1.0
+0.5,5,Hymenolepis,0.19,1.0
+0.5,5,Hymenolepis,0.2,1.0
+0.5,5,Hymenolepis,0.21,1.0
+0.5,5,Hymenolepis,0.22,1.0
+0.5,5,Hymenolepis,0.23,1.0
+0.5,5,Hymenolepis,0.24,1.0
+0.5,5,Hymenolepis,0.25,1.0
+0.5,5,Hymenolepis,0.26,1.0
+0.5,5,Hymenolepis,0.27,1.0
+0.5,5,Hymenolepis,0.28,1.0
+0.5,5,Hymenolepis,0.29,1.0
+0.5,5,Hymenolepis,0.3,1.0
+0.5,5,Hymenolepis,0.31,1.0
+0.5,5,Hymenolepis,0.32,1.0
+0.5,5,Hymenolepis,0.33,1.0
+0.5,5,Hymenolepis,0.34,1.0
+0.5,5,Hymenolepis,0.35,1.0
+0.5,5,Hymenolepis,0.36,1.0
+0.5,5,Hymenolepis,0.37,1.0
+0.5,5,Hymenolepis,0.38,1.0
+0.5,5,Hymenolepis,0.39,1.0
+0.5,5,Hymenolepis,0.4,1.0
+0.5,5,Hymenolepis,0.41,1.0
+0.5,5,Hymenolepis,0.42,1.0
+0.5,5,Hymenolepis,0.43,1.0
+0.5,5,Hymenolepis,0.44,1.0
+0.5,5,Hymenolepis,0.45,1.0
+0.5,5,Hymenolepis,0.46,1.0
+0.5,5,Hymenolepis,0.47,1.0
+0.5,5,Hymenolepis,0.48,1.0
+0.5,5,Hymenolepis,0.49,1.0
+0.5,5,Hymenolepis,0.5,1.0
+0.5,5,Hymenolepis,0.51,1.0
+0.5,5,Hymenolepis,0.52,1.0
+0.5,5,Hymenolepis,0.53,1.0
+0.5,5,Hymenolepis,0.54,1.0
+0.5,5,Hymenolepis,0.55,1.0
+0.5,5,Hymenolepis,0.56,1.0
+0.5,5,Hymenolepis,0.57,1.0
+0.5,5,Hymenolepis,0.58,1.0
+0.5,5,Hymenolepis,0.59,1.0
+0.5,5,Hymenolepis,0.6,1.0
+0.5,5,Hymenolepis,0.61,0.972972972972973
+0.5,5,Hymenolepis,0.62,0.972972972972973
+0.5,5,Hymenolepis,0.63,0.972972972972973
+0.5,5,Hymenolepis,0.64,0.972972972972973
+0.5,5,Hymenolepis,0.65,0.972972972972973
+0.5,5,Hymenolepis,0.66,0.972972972972973
+0.5,5,Hymenolepis,0.67,0.972972972972973
+0.5,5,Hymenolepis,0.68,0.972972972972973
+0.5,5,Hymenolepis,0.69,0.972972972972973
+0.5,5,Hymenolepis,0.7,0.972972972972973
+0.5,5,Hymenolepis,0.71,0.972972972972973
+0.5,5,Hymenolepis,0.72,0.972972972972973
+0.5,5,Hymenolepis,0.73,0.972972972972973
+0.5,5,Hymenolepis,0.74,0.972972972972973
+0.5,5,Hymenolepis,0.75,0.972972972972973
+0.5,5,Hymenolepis,0.76,0.972972972972973
+0.5,5,Hymenolepis,0.77,0.972972972972973
+0.5,5,Hymenolepis,0.78,0.972972972972973
+0.5,5,Hymenolepis,0.79,0.972972972972973
+0.5,5,Hymenolepis,0.8,0.972972972972973
+0.5,5,Hymenolepis,0.81,0.972972972972973
+0.5,5,Hymenolepis,0.82,0.972972972972973
+0.5,5,Hymenolepis,0.83,0.972972972972973
+0.5,5,Hymenolepis,0.84,0.9512195121951219
+0.5,5,Hymenolepis,0.85,0.9512195121951219
+0.5,5,Hymenolepis,0.86,0.9512195121951219
+0.5,5,Hymenolepis,0.87,0.9512195121951219
+0.5,5,Hymenolepis,0.88,0.9512195121951219
+0.5,5,Hymenolepis,0.89,0.9512195121951219
+0.5,5,Hymenolepis,0.9,0.9512195121951219
+0.5,5,Hymenolepis,0.91,0.9111111111111111
+0.5,5,Hymenolepis,0.92,0.9111111111111111
+0.5,5,Hymenolepis,0.93,0.9111111111111111
+0.5,5,Hymenolepis,0.94,0.9111111111111111
+0.5,5,Hymenolepis,0.95,0.9111111111111111
+0.5,5,Hymenolepis,0.96,0.5526315789473685
+0.5,5,Hymenolepis,0.97,0.5526315789473685
+0.5,5,Hymenolepis,0.98,0.0
+0.5,5,Hymenolepis,0.99,0.0
+0.5,5,Hymenolepis,1.0,0.0
+0.5,6,Schistosoma,0.0,1.0
+0.5,6,Schistosoma,0.01,1.0
+0.5,6,Schistosoma,0.02,1.0
+0.5,6,Schistosoma,0.03,1.0
+0.5,6,Schistosoma,0.04,1.0
+0.5,6,Schistosoma,0.05,1.0
+0.5,6,Schistosoma,0.06,1.0
+0.5,6,Schistosoma,0.07,1.0
+0.5,6,Schistosoma,0.08,1.0
+0.5,6,Schistosoma,0.09,1.0
+0.5,6,Schistosoma,0.1,1.0
+0.5,6,Schistosoma,0.11,1.0
+0.5,6,Schistosoma,0.12,1.0
+0.5,6,Schistosoma,0.13,1.0
+0.5,6,Schistosoma,0.14,1.0
+0.5,6,Schistosoma,0.15,1.0
+0.5,6,Schistosoma,0.16,1.0
+0.5,6,Schistosoma,0.17,1.0
+0.5,6,Schistosoma,0.18,1.0
+0.5,6,Schistosoma,0.19,1.0
+0.5,6,Schistosoma,0.2,1.0
+0.5,6,Schistosoma,0.21,1.0
+0.5,6,Schistosoma,0.22,1.0
+0.5,6,Schistosoma,0.23,1.0
+0.5,6,Schistosoma,0.24,1.0
+0.5,6,Schistosoma,0.25,1.0
+0.5,6,Schistosoma,0.26,1.0
+0.5,6,Schistosoma,0.27,1.0
+0.5,6,Schistosoma,0.28,1.0
+0.5,6,Schistosoma,0.29,1.0
+0.5,6,Schistosoma,0.3,1.0
+0.5,6,Schistosoma,0.31,1.0
+0.5,6,Schistosoma,0.32,1.0
+0.5,6,Schistosoma,0.33,1.0
+0.5,6,Schistosoma,0.34,1.0
+0.5,6,Schistosoma,0.35,1.0
+0.5,6,Schistosoma,0.36,1.0
+0.5,6,Schistosoma,0.37,1.0
+0.5,6,Schistosoma,0.38,1.0
+0.5,6,Schistosoma,0.39,1.0
+0.5,6,Schistosoma,0.4,1.0
+0.5,6,Schistosoma,0.41,0.9696969696969697
+0.5,6,Schistosoma,0.42,0.9696969696969697
+0.5,6,Schistosoma,0.43,0.9696969696969697
+0.5,6,Schistosoma,0.44,0.9696969696969697
+0.5,6,Schistosoma,0.45,0.9696969696969697
+0.5,6,Schistosoma,0.46,0.9696969696969697
+0.5,6,Schistosoma,0.47,0.9696969696969697
+0.5,6,Schistosoma,0.48,0.9696969696969697
+0.5,6,Schistosoma,0.49,0.9487179487179487
+0.5,6,Schistosoma,0.5,0.9487179487179487
+0.5,6,Schistosoma,0.51,0.9487179487179487
+0.5,6,Schistosoma,0.52,0.9487179487179487
+0.5,6,Schistosoma,0.53,0.9487179487179487
+0.5,6,Schistosoma,0.54,0.9487179487179487
+0.5,6,Schistosoma,0.55,0.9487179487179487
+0.5,6,Schistosoma,0.56,0.9487179487179487
+0.5,6,Schistosoma,0.57,0.9069767441860465
+0.5,6,Schistosoma,0.58,0.9069767441860465
+0.5,6,Schistosoma,0.59,0.9069767441860465
+0.5,6,Schistosoma,0.6,0.8695652173913043
+0.5,6,Schistosoma,0.61,0.8541666666666666
+0.5,6,Schistosoma,0.62,0.8541666666666666
+0.5,6,Schistosoma,0.63,0.8490566037735849
+0.5,6,Schistosoma,0.64,0.8490566037735849
+0.5,6,Schistosoma,0.65,0.8490566037735849
+0.5,6,Schistosoma,0.66,0.8490566037735849
+0.5,6,Schistosoma,0.67,0.8490566037735849
+0.5,6,Schistosoma,0.68,0.8490566037735849
+0.5,6,Schistosoma,0.69,0.8064516129032258
+0.5,6,Schistosoma,0.7,0.8064516129032258
+0.5,6,Schistosoma,0.71,0.8064516129032258
+0.5,6,Schistosoma,0.72,0.8064516129032258
+0.5,6,Schistosoma,0.73,0.8064516129032258
+0.5,6,Schistosoma,0.74,0.8064516129032258
+0.5,6,Schistosoma,0.75,0.8064516129032258
+0.5,6,Schistosoma,0.76,0.7611940298507462
+0.5,6,Schistosoma,0.77,0.7611940298507462
+0.5,6,Schistosoma,0.78,0.7536231884057971
+0.5,6,Schistosoma,0.79,0.7162162162162162
+0.5,6,Schistosoma,0.8,0.7162162162162162
+0.5,6,Schistosoma,0.81,0.7012987012987013
+0.5,6,Schistosoma,0.82,0.6588235294117647
+0.5,6,Schistosoma,0.83,0.6588235294117647
+0.5,6,Schistosoma,0.84,0.6588235294117647
+0.5,6,Schistosoma,0.85,0.6263736263736264
+0.5,6,Schistosoma,0.86,0.6263736263736264
+0.5,6,Schistosoma,0.87,0.6105263157894737
+0.5,6,Schistosoma,0.88,0.5221238938053098
+0.5,6,Schistosoma,0.89,0.5221238938053098
+0.5,6,Schistosoma,0.9,0.5172413793103449
+0.5,6,Schistosoma,0.91,0.5
+0.5,6,Schistosoma,0.92,0.5
+0.5,6,Schistosoma,0.93,0.484375
+0.5,6,Schistosoma,0.94,0.0
+0.5,6,Schistosoma,0.95,0.0
+0.5,6,Schistosoma,0.96,0.0
+0.5,6,Schistosoma,0.97,0.0
+0.5,6,Schistosoma,0.98,0.0
+0.5,6,Schistosoma,0.99,0.0
+0.5,6,Schistosoma,1.0,0.0
+0.5,7,Taenia Sp,0.0,1.0
+0.5,7,Taenia Sp,0.01,1.0
+0.5,7,Taenia Sp,0.02,1.0
+0.5,7,Taenia Sp,0.03,1.0
+0.5,7,Taenia Sp,0.04,1.0
+0.5,7,Taenia Sp,0.05,1.0
+0.5,7,Taenia Sp,0.06,1.0
+0.5,7,Taenia Sp,0.07,1.0
+0.5,7,Taenia Sp,0.08,1.0
+0.5,7,Taenia Sp,0.09,1.0
+0.5,7,Taenia Sp,0.1,1.0
+0.5,7,Taenia Sp,0.11,1.0
+0.5,7,Taenia Sp,0.12,1.0
+0.5,7,Taenia Sp,0.13,1.0
+0.5,7,Taenia Sp,0.14,1.0
+0.5,7,Taenia Sp,0.15,1.0
+0.5,7,Taenia Sp,0.16,1.0
+0.5,7,Taenia Sp,0.17,1.0
+0.5,7,Taenia Sp,0.18,1.0
+0.5,7,Taenia Sp,0.19,1.0
+0.5,7,Taenia Sp,0.2,1.0
+0.5,7,Taenia Sp,0.21,0.9655172413793104
+0.5,7,Taenia Sp,0.22,0.9655172413793104
+0.5,7,Taenia Sp,0.23,0.9655172413793104
+0.5,7,Taenia Sp,0.24,0.9655172413793104
+0.5,7,Taenia Sp,0.25,0.9655172413793104
+0.5,7,Taenia Sp,0.26,0.9655172413793104
+0.5,7,Taenia Sp,0.27,0.9655172413793104
+0.5,7,Taenia Sp,0.28,0.9655172413793104
+0.5,7,Taenia Sp,0.29,0.9655172413793104
+0.5,7,Taenia Sp,0.3,0.9655172413793104
+0.5,7,Taenia Sp,0.31,0.9655172413793104
+0.5,7,Taenia Sp,0.32,0.9655172413793104
+0.5,7,Taenia Sp,0.33,0.9655172413793104
+0.5,7,Taenia Sp,0.34,0.9655172413793104
+0.5,7,Taenia Sp,0.35,0.9655172413793104
+0.5,7,Taenia Sp,0.36,0.9655172413793104
+0.5,7,Taenia Sp,0.37,0.9655172413793104
+0.5,7,Taenia Sp,0.38,0.9655172413793104
+0.5,7,Taenia Sp,0.39,0.9655172413793104
+0.5,7,Taenia Sp,0.4,0.9655172413793104
+0.5,7,Taenia Sp,0.41,0.9655172413793104
+0.5,7,Taenia Sp,0.42,0.9655172413793104
+0.5,7,Taenia Sp,0.43,0.9655172413793104
+0.5,7,Taenia Sp,0.44,0.9655172413793104
+0.5,7,Taenia Sp,0.45,0.9655172413793104
+0.5,7,Taenia Sp,0.46,0.9655172413793104
+0.5,7,Taenia Sp,0.47,0.9655172413793104
+0.5,7,Taenia Sp,0.48,0.9655172413793104
+0.5,7,Taenia Sp,0.49,0.9655172413793104
+0.5,7,Taenia Sp,0.5,0.9655172413793104
+0.5,7,Taenia Sp,0.51,0.9655172413793104
+0.5,7,Taenia Sp,0.52,0.9655172413793104
+0.5,7,Taenia Sp,0.53,0.9117647058823529
+0.5,7,Taenia Sp,0.54,0.9117647058823529
+0.5,7,Taenia Sp,0.55,0.9117647058823529
+0.5,7,Taenia Sp,0.56,0.9117647058823529
+0.5,7,Taenia Sp,0.57,0.9117647058823529
+0.5,7,Taenia Sp,0.58,0.9117647058823529
+0.5,7,Taenia Sp,0.59,0.8888888888888888
+0.5,7,Taenia Sp,0.6,0.8888888888888888
+0.5,7,Taenia Sp,0.61,0.8717948717948718
+0.5,7,Taenia Sp,0.62,0.8717948717948718
+0.5,7,Taenia Sp,0.63,0.8717948717948718
+0.5,7,Taenia Sp,0.64,0.8717948717948718
+0.5,7,Taenia Sp,0.65,0.8636363636363636
+0.5,7,Taenia Sp,0.66,0.8636363636363636
+0.5,7,Taenia Sp,0.67,0.8636363636363636
+0.5,7,Taenia Sp,0.68,0.8636363636363636
+0.5,7,Taenia Sp,0.69,0.8636363636363636
+0.5,7,Taenia Sp,0.7,0.8636363636363636
+0.5,7,Taenia Sp,0.71,0.8636363636363636
+0.5,7,Taenia Sp,0.72,0.8478260869565217
+0.5,7,Taenia Sp,0.73,0.8478260869565217
+0.5,7,Taenia Sp,0.74,0.8235294117647058
+0.5,7,Taenia Sp,0.75,0.8235294117647058
+0.5,7,Taenia Sp,0.76,0.8235294117647058
+0.5,7,Taenia Sp,0.77,0.8235294117647058
+0.5,7,Taenia Sp,0.78,0.8235294117647058
+0.5,7,Taenia Sp,0.79,0.8235294117647058
+0.5,7,Taenia Sp,0.8,0.8113207547169812
+0.5,7,Taenia Sp,0.81,0.8113207547169812
+0.5,7,Taenia Sp,0.82,0.8
+0.5,7,Taenia Sp,0.83,0.8
+0.5,7,Taenia Sp,0.84,0.7758620689655172
+0.5,7,Taenia Sp,0.85,0.7419354838709677
+0.5,7,Taenia Sp,0.86,0.7419354838709677
+0.5,7,Taenia Sp,0.87,0.734375
+0.5,7,Taenia Sp,0.88,0.734375
+0.5,7,Taenia Sp,0.89,0.6075949367088608
+0.5,7,Taenia Sp,0.9,0.6075949367088608
+0.5,7,Taenia Sp,0.91,0.5975609756097561
+0.5,7,Taenia Sp,0.92,0.5975609756097561
+0.5,7,Taenia Sp,0.93,0.0
+0.5,7,Taenia Sp,0.94,0.0
+0.5,7,Taenia Sp,0.95,0.0
+0.5,7,Taenia Sp,0.96,0.0
+0.5,7,Taenia Sp,0.97,0.0
+0.5,7,Taenia Sp,0.98,0.0
+0.5,7,Taenia Sp,0.99,0.0
+0.5,7,Taenia Sp,1.0,0.0
+0.5,8,Trichuris Trichiura,0.0,1.0
+0.5,8,Trichuris Trichiura,0.01,1.0
+0.5,8,Trichuris Trichiura,0.02,1.0
+0.5,8,Trichuris Trichiura,0.03,1.0
+0.5,8,Trichuris Trichiura,0.04,1.0
+0.5,8,Trichuris Trichiura,0.05,1.0
+0.5,8,Trichuris Trichiura,0.06,1.0
+0.5,8,Trichuris Trichiura,0.07,1.0
+0.5,8,Trichuris Trichiura,0.08,1.0
+0.5,8,Trichuris Trichiura,0.09,1.0
+0.5,8,Trichuris Trichiura,0.1,1.0
+0.5,8,Trichuris Trichiura,0.11,1.0
+0.5,8,Trichuris Trichiura,0.12,1.0
+0.5,8,Trichuris Trichiura,0.13,1.0
+0.5,8,Trichuris Trichiura,0.14,1.0
+0.5,8,Trichuris Trichiura,0.15,1.0
+0.5,8,Trichuris Trichiura,0.16,1.0
+0.5,8,Trichuris Trichiura,0.17,1.0
+0.5,8,Trichuris Trichiura,0.18,1.0
+0.5,8,Trichuris Trichiura,0.19,1.0
+0.5,8,Trichuris Trichiura,0.2,1.0
+0.5,8,Trichuris Trichiura,0.21,1.0
+0.5,8,Trichuris Trichiura,0.22,1.0
+0.5,8,Trichuris Trichiura,0.23,1.0
+0.5,8,Trichuris Trichiura,0.24,1.0
+0.5,8,Trichuris Trichiura,0.25,1.0
+0.5,8,Trichuris Trichiura,0.26,1.0
+0.5,8,Trichuris Trichiura,0.27,1.0
+0.5,8,Trichuris Trichiura,0.28,1.0
+0.5,8,Trichuris Trichiura,0.29,1.0
+0.5,8,Trichuris Trichiura,0.3,1.0
+0.5,8,Trichuris Trichiura,0.31,1.0
+0.5,8,Trichuris Trichiura,0.32,1.0
+0.5,8,Trichuris Trichiura,0.33,1.0
+0.5,8,Trichuris Trichiura,0.34,1.0
+0.5,8,Trichuris Trichiura,0.35,1.0
+0.5,8,Trichuris Trichiura,0.36,1.0
+0.5,8,Trichuris Trichiura,0.37,1.0
+0.5,8,Trichuris Trichiura,0.38,1.0
+0.5,8,Trichuris Trichiura,0.39,1.0
+0.5,8,Trichuris Trichiura,0.4,1.0
+0.5,8,Trichuris Trichiura,0.41,1.0
+0.5,8,Trichuris Trichiura,0.42,1.0
+0.5,8,Trichuris Trichiura,0.43,1.0
+0.5,8,Trichuris Trichiura,0.44,1.0
+0.5,8,Trichuris Trichiura,0.45,1.0
+0.5,8,Trichuris Trichiura,0.46,1.0
+0.5,8,Trichuris Trichiura,0.47,1.0
+0.5,8,Trichuris Trichiura,0.48,1.0
+0.5,8,Trichuris Trichiura,0.49,1.0
+0.5,8,Trichuris Trichiura,0.5,1.0
+0.5,8,Trichuris Trichiura,0.51,1.0
+0.5,8,Trichuris Trichiura,0.52,1.0
+0.5,8,Trichuris Trichiura,0.53,1.0
+0.5,8,Trichuris Trichiura,0.54,1.0
+0.5,8,Trichuris Trichiura,0.55,1.0
+0.5,8,Trichuris Trichiura,0.56,1.0
+0.5,8,Trichuris Trichiura,0.57,1.0
+0.5,8,Trichuris Trichiura,0.58,1.0
+0.5,8,Trichuris Trichiura,0.59,1.0
+0.5,8,Trichuris Trichiura,0.6,1.0
+0.5,8,Trichuris Trichiura,0.61,1.0
+0.5,8,Trichuris Trichiura,0.62,1.0
+0.5,8,Trichuris Trichiura,0.63,1.0
+0.5,8,Trichuris Trichiura,0.64,1.0
+0.5,8,Trichuris Trichiura,0.65,1.0
+0.5,8,Trichuris Trichiura,0.66,1.0
+0.5,8,Trichuris Trichiura,0.67,1.0
+0.5,8,Trichuris Trichiura,0.68,1.0
+0.5,8,Trichuris Trichiura,0.69,1.0
+0.5,8,Trichuris Trichiura,0.7,1.0
+0.5,8,Trichuris Trichiura,0.71,1.0
+0.5,8,Trichuris Trichiura,0.72,1.0
+0.5,8,Trichuris Trichiura,0.73,1.0
+0.5,8,Trichuris Trichiura,0.74,1.0
+0.5,8,Trichuris Trichiura,0.75,1.0
+0.5,8,Trichuris Trichiura,0.76,0.9791666666666666
+0.5,8,Trichuris Trichiura,0.77,0.9791666666666666
+0.5,8,Trichuris Trichiura,0.78,0.9791666666666666
+0.5,8,Trichuris Trichiura,0.79,0.8448275862068966
+0.5,8,Trichuris Trichiura,0.8,0.8448275862068966
+0.5,8,Trichuris Trichiura,0.81,0.8448275862068966
+0.5,8,Trichuris Trichiura,0.82,0.8360655737704918
+0.5,8,Trichuris Trichiura,0.83,0.8360655737704918
+0.5,8,Trichuris Trichiura,0.84,0.8360655737704918
+0.5,8,Trichuris Trichiura,0.85,0.8360655737704918
+0.5,8,Trichuris Trichiura,0.86,0.7428571428571429
+0.5,8,Trichuris Trichiura,0.87,0.654320987654321
+0.5,8,Trichuris Trichiura,0.88,0.654320987654321
+0.5,8,Trichuris Trichiura,0.89,0.0
+0.5,8,Trichuris Trichiura,0.9,0.0
+0.5,8,Trichuris Trichiura,0.91,0.0
+0.5,8,Trichuris Trichiura,0.92,0.0
+0.5,8,Trichuris Trichiura,0.93,0.0
+0.5,8,Trichuris Trichiura,0.94,0.0
+0.5,8,Trichuris Trichiura,0.95,0.0
+0.5,8,Trichuris Trichiura,0.96,0.0
+0.5,8,Trichuris Trichiura,0.97,0.0
+0.5,8,Trichuris Trichiura,0.98,0.0
+0.5,8,Trichuris Trichiura,0.99,0.0
+0.5,8,Trichuris Trichiura,1.0,0.0
+0.75,1,Ancylostoma Spp,0.0,1.0
+0.75,1,Ancylostoma Spp,0.01,1.0
+0.75,1,Ancylostoma Spp,0.02,1.0
+0.75,1,Ancylostoma Spp,0.03,1.0
+0.75,1,Ancylostoma Spp,0.04,1.0
+0.75,1,Ancylostoma Spp,0.05,1.0
+0.75,1,Ancylostoma Spp,0.06,1.0
+0.75,1,Ancylostoma Spp,0.07,1.0
+0.75,1,Ancylostoma Spp,0.08,1.0
+0.75,1,Ancylostoma Spp,0.09,1.0
+0.75,1,Ancylostoma Spp,0.1,1.0
+0.75,1,Ancylostoma Spp,0.11,1.0
+0.75,1,Ancylostoma Spp,0.12,1.0
+0.75,1,Ancylostoma Spp,0.13,1.0
+0.75,1,Ancylostoma Spp,0.14,1.0
+0.75,1,Ancylostoma Spp,0.15,1.0
+0.75,1,Ancylostoma Spp,0.16,1.0
+0.75,1,Ancylostoma Spp,0.17,1.0
+0.75,1,Ancylostoma Spp,0.18,1.0
+0.75,1,Ancylostoma Spp,0.19,1.0
+0.75,1,Ancylostoma Spp,0.2,1.0
+0.75,1,Ancylostoma Spp,0.21,1.0
+0.75,1,Ancylostoma Spp,0.22,1.0
+0.75,1,Ancylostoma Spp,0.23,1.0
+0.75,1,Ancylostoma Spp,0.24,1.0
+0.75,1,Ancylostoma Spp,0.25,1.0
+0.75,1,Ancylostoma Spp,0.26,1.0
+0.75,1,Ancylostoma Spp,0.27,1.0
+0.75,1,Ancylostoma Spp,0.28,1.0
+0.75,1,Ancylostoma Spp,0.29,1.0
+0.75,1,Ancylostoma Spp,0.3,1.0
+0.75,1,Ancylostoma Spp,0.31,1.0
+0.75,1,Ancylostoma Spp,0.32,1.0
+0.75,1,Ancylostoma Spp,0.33,1.0
+0.75,1,Ancylostoma Spp,0.34,1.0
+0.75,1,Ancylostoma Spp,0.35,1.0
+0.75,1,Ancylostoma Spp,0.36,1.0
+0.75,1,Ancylostoma Spp,0.37,1.0
+0.75,1,Ancylostoma Spp,0.38,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.39,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.4,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.41,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.42,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.43,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.44,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.45,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.46,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.47,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.48,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.49,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.5,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.51,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.52,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.53,0.9583333333333334
+0.75,1,Ancylostoma Spp,0.54,0.9259259259259259
+0.75,1,Ancylostoma Spp,0.55,0.9259259259259259
+0.75,1,Ancylostoma Spp,0.56,0.9259259259259259
+0.75,1,Ancylostoma Spp,0.57,0.9259259259259259
+0.75,1,Ancylostoma Spp,0.58,0.9259259259259259
+0.75,1,Ancylostoma Spp,0.59,0.9
+0.75,1,Ancylostoma Spp,0.6,0.9
+0.75,1,Ancylostoma Spp,0.61,0.9
+0.75,1,Ancylostoma Spp,0.62,0.9
+0.75,1,Ancylostoma Spp,0.63,0.875
+0.75,1,Ancylostoma Spp,0.64,0.875
+0.75,1,Ancylostoma Spp,0.65,0.875
+0.75,1,Ancylostoma Spp,0.66,0.7837837837837838
+0.75,1,Ancylostoma Spp,0.67,0.7837837837837838
+0.75,1,Ancylostoma Spp,0.68,0.7692307692307693
+0.75,1,Ancylostoma Spp,0.69,0.7692307692307693
+0.75,1,Ancylostoma Spp,0.7,0.5849056603773585
+0.75,1,Ancylostoma Spp,0.71,0.5849056603773585
+0.75,1,Ancylostoma Spp,0.72,0.5849056603773585
+0.75,1,Ancylostoma Spp,0.73,0.47058823529411764
+0.75,1,Ancylostoma Spp,0.74,0.47058823529411764
+0.75,1,Ancylostoma Spp,0.75,0.39759036144578314
+0.75,1,Ancylostoma Spp,0.76,0.39759036144578314
+0.75,1,Ancylostoma Spp,0.77,0.3695652173913043
+0.75,1,Ancylostoma Spp,0.78,0.3695652173913043
+0.75,1,Ancylostoma Spp,0.79,0.3695652173913043
+0.75,1,Ancylostoma Spp,0.8,0.3333333333333333
+0.75,1,Ancylostoma Spp,0.81,0.3333333333333333
+0.75,1,Ancylostoma Spp,0.82,0.3333333333333333
+0.75,1,Ancylostoma Spp,0.83,0.3333333333333333
+0.75,1,Ancylostoma Spp,0.84,0.32456140350877194
+0.75,1,Ancylostoma Spp,0.85,0.32456140350877194
+0.75,1,Ancylostoma Spp,0.86,0.32456140350877194
+0.75,1,Ancylostoma Spp,0.87,0.3114754098360656
+0.75,1,Ancylostoma Spp,0.88,0.3114754098360656
+0.75,1,Ancylostoma Spp,0.89,0.29545454545454547
+0.75,1,Ancylostoma Spp,0.9,0.29545454545454547
+0.75,1,Ancylostoma Spp,0.91,0.2597402597402597
+0.75,1,Ancylostoma Spp,0.92,0.2597402597402597
+0.75,1,Ancylostoma Spp,0.93,0.2597402597402597
+0.75,1,Ancylostoma Spp,0.94,0.0
+0.75,1,Ancylostoma Spp,0.95,0.0
+0.75,1,Ancylostoma Spp,0.96,0.0
+0.75,1,Ancylostoma Spp,0.97,0.0
+0.75,1,Ancylostoma Spp,0.98,0.0
+0.75,1,Ancylostoma Spp,0.99,0.0
+0.75,1,Ancylostoma Spp,1.0,0.0
+0.75,2,Ascaris Lumbricoides,0.0,1.0
+0.75,2,Ascaris Lumbricoides,0.01,1.0
+0.75,2,Ascaris Lumbricoides,0.02,1.0
+0.75,2,Ascaris Lumbricoides,0.03,1.0
+0.75,2,Ascaris Lumbricoides,0.04,1.0
+0.75,2,Ascaris Lumbricoides,0.05,1.0
+0.75,2,Ascaris Lumbricoides,0.06,1.0
+0.75,2,Ascaris Lumbricoides,0.07,1.0
+0.75,2,Ascaris Lumbricoides,0.08,1.0
+0.75,2,Ascaris Lumbricoides,0.09,1.0
+0.75,2,Ascaris Lumbricoides,0.1,1.0
+0.75,2,Ascaris Lumbricoides,0.11,1.0
+0.75,2,Ascaris Lumbricoides,0.12,1.0
+0.75,2,Ascaris Lumbricoides,0.13,1.0
+0.75,2,Ascaris Lumbricoides,0.14,1.0
+0.75,2,Ascaris Lumbricoides,0.15,1.0
+0.75,2,Ascaris Lumbricoides,0.16,1.0
+0.75,2,Ascaris Lumbricoides,0.17,1.0
+0.75,2,Ascaris Lumbricoides,0.18,1.0
+0.75,2,Ascaris Lumbricoides,0.19,1.0
+0.75,2,Ascaris Lumbricoides,0.2,1.0
+0.75,2,Ascaris Lumbricoides,0.21,1.0
+0.75,2,Ascaris Lumbricoides,0.22,1.0
+0.75,2,Ascaris Lumbricoides,0.23,1.0
+0.75,2,Ascaris Lumbricoides,0.24,1.0
+0.75,2,Ascaris Lumbricoides,0.25,1.0
+0.75,2,Ascaris Lumbricoides,0.26,1.0
+0.75,2,Ascaris Lumbricoides,0.27,1.0
+0.75,2,Ascaris Lumbricoides,0.28,1.0
+0.75,2,Ascaris Lumbricoides,0.29,1.0
+0.75,2,Ascaris Lumbricoides,0.3,1.0
+0.75,2,Ascaris Lumbricoides,0.31,1.0
+0.75,2,Ascaris Lumbricoides,0.32,1.0
+0.75,2,Ascaris Lumbricoides,0.33,1.0
+0.75,2,Ascaris Lumbricoides,0.34,1.0
+0.75,2,Ascaris Lumbricoides,0.35,1.0
+0.75,2,Ascaris Lumbricoides,0.36,1.0
+0.75,2,Ascaris Lumbricoides,0.37,1.0
+0.75,2,Ascaris Lumbricoides,0.38,1.0
+0.75,2,Ascaris Lumbricoides,0.39,1.0
+0.75,2,Ascaris Lumbricoides,0.4,1.0
+0.75,2,Ascaris Lumbricoides,0.41,1.0
+0.75,2,Ascaris Lumbricoides,0.42,1.0
+0.75,2,Ascaris Lumbricoides,0.43,1.0
+0.75,2,Ascaris Lumbricoides,0.44,1.0
+0.75,2,Ascaris Lumbricoides,0.45,1.0
+0.75,2,Ascaris Lumbricoides,0.46,1.0
+0.75,2,Ascaris Lumbricoides,0.47,1.0
+0.75,2,Ascaris Lumbricoides,0.48,1.0
+0.75,2,Ascaris Lumbricoides,0.49,1.0
+0.75,2,Ascaris Lumbricoides,0.5,1.0
+0.75,2,Ascaris Lumbricoides,0.51,1.0
+0.75,2,Ascaris Lumbricoides,0.52,1.0
+0.75,2,Ascaris Lumbricoides,0.53,1.0
+0.75,2,Ascaris Lumbricoides,0.54,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.55,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.56,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.57,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.58,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.59,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.6,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.61,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.62,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.63,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.64,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.65,0.9696969696969697
+0.75,2,Ascaris Lumbricoides,0.66,0.925
+0.75,2,Ascaris Lumbricoides,0.67,0.925
+0.75,2,Ascaris Lumbricoides,0.68,0.925
+0.75,2,Ascaris Lumbricoides,0.69,0.925
+0.75,2,Ascaris Lumbricoides,0.7,0.925
+0.75,2,Ascaris Lumbricoides,0.71,0.925
+0.75,2,Ascaris Lumbricoides,0.72,0.925
+0.75,2,Ascaris Lumbricoides,0.73,0.925
+0.75,2,Ascaris Lumbricoides,0.74,0.925
+0.75,2,Ascaris Lumbricoides,0.75,0.925
+0.75,2,Ascaris Lumbricoides,0.76,0.8837209302325582
+0.75,2,Ascaris Lumbricoides,0.77,0.8837209302325582
+0.75,2,Ascaris Lumbricoides,0.78,0.639344262295082
+0.75,2,Ascaris Lumbricoides,0.79,0.639344262295082
+0.75,2,Ascaris Lumbricoides,0.8,0.6060606060606061
+0.75,2,Ascaris Lumbricoides,0.81,0.6060606060606061
+0.75,2,Ascaris Lumbricoides,0.82,0.5774647887323944
+0.75,2,Ascaris Lumbricoides,0.83,0.5774647887323944
+0.75,2,Ascaris Lumbricoides,0.84,0.48863636363636365
+0.75,2,Ascaris Lumbricoides,0.85,0.48863636363636365
+0.75,2,Ascaris Lumbricoides,0.86,0.48863636363636365
+0.75,2,Ascaris Lumbricoides,0.87,0.48863636363636365
+0.75,2,Ascaris Lumbricoides,0.88,0.0
+0.75,2,Ascaris Lumbricoides,0.89,0.0
+0.75,2,Ascaris Lumbricoides,0.9,0.0
+0.75,2,Ascaris Lumbricoides,0.91,0.0
+0.75,2,Ascaris Lumbricoides,0.92,0.0
+0.75,2,Ascaris Lumbricoides,0.93,0.0
+0.75,2,Ascaris Lumbricoides,0.94,0.0
+0.75,2,Ascaris Lumbricoides,0.95,0.0
+0.75,2,Ascaris Lumbricoides,0.96,0.0
+0.75,2,Ascaris Lumbricoides,0.97,0.0
+0.75,2,Ascaris Lumbricoides,0.98,0.0
+0.75,2,Ascaris Lumbricoides,0.99,0.0
+0.75,2,Ascaris Lumbricoides,1.0,0.0
+0.75,3,Enterobius Vermicularis,0.0,1.0
+0.75,3,Enterobius Vermicularis,0.01,1.0
+0.75,3,Enterobius Vermicularis,0.02,1.0
+0.75,3,Enterobius Vermicularis,0.03,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.04,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.05,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.06,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.07,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.08,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.09,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.1,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.11,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.12,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.13,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.14,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.15,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.16,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.17,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.18,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.19,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.2,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.21,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.22,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.23,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.24,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.25,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.26,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.27,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.28,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.29,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.3,0.9696969696969697
+0.75,3,Enterobius Vermicularis,0.31,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.32,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.33,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.34,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.35,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.36,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.37,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.38,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.39,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.4,0.9555555555555556
+0.75,3,Enterobius Vermicularis,0.41,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.42,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.43,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.44,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.45,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.46,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.47,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.48,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.49,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.5,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.51,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.52,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.53,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.54,0.9206349206349206
+0.75,3,Enterobius Vermicularis,0.55,0.9076923076923077
+0.75,3,Enterobius Vermicularis,0.56,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.57,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.58,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.59,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.6,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.61,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.62,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.63,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.64,0.9066666666666666
+0.75,3,Enterobius Vermicularis,0.65,0.8795180722891566
+0.75,3,Enterobius Vermicularis,0.66,0.8795180722891566
+0.75,3,Enterobius Vermicularis,0.67,0.8795180722891566
+0.75,3,Enterobius Vermicularis,0.68,0.8795180722891566
+0.75,3,Enterobius Vermicularis,0.69,0.8705882352941177
+0.75,3,Enterobius Vermicularis,0.7,0.8620689655172413
+0.75,3,Enterobius Vermicularis,0.71,0.8444444444444444
+0.75,3,Enterobius Vermicularis,0.72,0.8297872340425532
+0.75,3,Enterobius Vermicularis,0.73,0.8297872340425532
+0.75,3,Enterobius Vermicularis,0.74,0.8144329896907216
+0.75,3,Enterobius Vermicularis,0.75,0.7920792079207921
+0.75,3,Enterobius Vermicularis,0.76,0.7788461538461539
+0.75,3,Enterobius Vermicularis,0.77,0.75
+0.75,3,Enterobius Vermicularis,0.78,0.75
+0.75,3,Enterobius Vermicularis,0.79,0.75
+0.75,3,Enterobius Vermicularis,0.8,0.7142857142857143
+0.75,3,Enterobius Vermicularis,0.81,0.6991869918699187
+0.75,3,Enterobius Vermicularis,0.82,0.6641221374045801
+0.75,3,Enterobius Vermicularis,0.83,0.6423357664233577
+0.75,3,Enterobius Vermicularis,0.84,0.625
+0.75,3,Enterobius Vermicularis,0.85,0.6232876712328768
+0.75,3,Enterobius Vermicularis,0.86,0.5542168674698795
+0.75,3,Enterobius Vermicularis,0.87,0.48947368421052634
+0.75,3,Enterobius Vermicularis,0.88,0.4392523364485981
+0.75,3,Enterobius Vermicularis,0.89,0.0
+0.75,3,Enterobius Vermicularis,0.9,0.0
+0.75,3,Enterobius Vermicularis,0.91,0.0
+0.75,3,Enterobius Vermicularis,0.92,0.0
+0.75,3,Enterobius Vermicularis,0.93,0.0
+0.75,3,Enterobius Vermicularis,0.94,0.0
+0.75,3,Enterobius Vermicularis,0.95,0.0
+0.75,3,Enterobius Vermicularis,0.96,0.0
+0.75,3,Enterobius Vermicularis,0.97,0.0
+0.75,3,Enterobius Vermicularis,0.98,0.0
+0.75,3,Enterobius Vermicularis,0.99,0.0
+0.75,3,Enterobius Vermicularis,1.0,0.0
+0.75,4,Fasciola Hepatica,0.0,1.0
+0.75,4,Fasciola Hepatica,0.01,1.0
+0.75,4,Fasciola Hepatica,0.02,1.0
+0.75,4,Fasciola Hepatica,0.03,1.0
+0.75,4,Fasciola Hepatica,0.04,1.0
+0.75,4,Fasciola Hepatica,0.05,1.0
+0.75,4,Fasciola Hepatica,0.06,1.0
+0.75,4,Fasciola Hepatica,0.07,1.0
+0.75,4,Fasciola Hepatica,0.08,1.0
+0.75,4,Fasciola Hepatica,0.09,1.0
+0.75,4,Fasciola Hepatica,0.1,1.0
+0.75,4,Fasciola Hepatica,0.11,1.0
+0.75,4,Fasciola Hepatica,0.12,1.0
+0.75,4,Fasciola Hepatica,0.13,1.0
+0.75,4,Fasciola Hepatica,0.14,1.0
+0.75,4,Fasciola Hepatica,0.15,1.0
+0.75,4,Fasciola Hepatica,0.16,1.0
+0.75,4,Fasciola Hepatica,0.17,1.0
+0.75,4,Fasciola Hepatica,0.18,1.0
+0.75,4,Fasciola Hepatica,0.19,1.0
+0.75,4,Fasciola Hepatica,0.2,1.0
+0.75,4,Fasciola Hepatica,0.21,1.0
+0.75,4,Fasciola Hepatica,0.22,1.0
+0.75,4,Fasciola Hepatica,0.23,1.0
+0.75,4,Fasciola Hepatica,0.24,1.0
+0.75,4,Fasciola Hepatica,0.25,1.0
+0.75,4,Fasciola Hepatica,0.26,1.0
+0.75,4,Fasciola Hepatica,0.27,1.0
+0.75,4,Fasciola Hepatica,0.28,1.0
+0.75,4,Fasciola Hepatica,0.29,1.0
+0.75,4,Fasciola Hepatica,0.3,1.0
+0.75,4,Fasciola Hepatica,0.31,1.0
+0.75,4,Fasciola Hepatica,0.32,1.0
+0.75,4,Fasciola Hepatica,0.33,1.0
+0.75,4,Fasciola Hepatica,0.34,1.0
+0.75,4,Fasciola Hepatica,0.35,1.0
+0.75,4,Fasciola Hepatica,0.36,1.0
+0.75,4,Fasciola Hepatica,0.37,1.0
+0.75,4,Fasciola Hepatica,0.38,1.0
+0.75,4,Fasciola Hepatica,0.39,1.0
+0.75,4,Fasciola Hepatica,0.4,1.0
+0.75,4,Fasciola Hepatica,0.41,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.42,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.43,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.44,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.45,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.46,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.47,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.48,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.49,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.5,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.51,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.52,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.53,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.54,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.55,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.56,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.57,0.9583333333333334
+0.75,4,Fasciola Hepatica,0.58,0.9259259259259259
+0.75,4,Fasciola Hepatica,0.59,0.9259259259259259
+0.75,4,Fasciola Hepatica,0.6,0.9259259259259259
+0.75,4,Fasciola Hepatica,0.61,0.9259259259259259
+0.75,4,Fasciola Hepatica,0.62,0.9259259259259259
+0.75,4,Fasciola Hepatica,0.63,0.84375
+0.75,4,Fasciola Hepatica,0.64,0.84375
+0.75,4,Fasciola Hepatica,0.65,0.84375
+0.75,4,Fasciola Hepatica,0.66,0.84375
+0.75,4,Fasciola Hepatica,0.67,0.84375
+0.75,4,Fasciola Hepatica,0.68,0.7567567567567568
+0.75,4,Fasciola Hepatica,0.69,0.7567567567567568
+0.75,4,Fasciola Hepatica,0.7,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.71,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.72,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.73,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.74,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.75,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.76,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.77,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.78,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.79,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.8,0.5517241379310345
+0.75,4,Fasciola Hepatica,0.81,0.4927536231884058
+0.75,4,Fasciola Hepatica,0.82,0.4927536231884058
+0.75,4,Fasciola Hepatica,0.83,0.4927536231884058
+0.75,4,Fasciola Hepatica,0.84,0.4927536231884058
+0.75,4,Fasciola Hepatica,0.85,0.4927536231884058
+0.75,4,Fasciola Hepatica,0.86,0.3977272727272727
+0.75,4,Fasciola Hepatica,0.87,0.3977272727272727
+0.75,4,Fasciola Hepatica,0.88,0.391304347826087
+0.75,4,Fasciola Hepatica,0.89,0.391304347826087
+0.75,4,Fasciola Hepatica,0.9,0.391304347826087
+0.75,4,Fasciola Hepatica,0.91,0.33636363636363636
+0.75,4,Fasciola Hepatica,0.92,0.33636363636363636
+0.75,4,Fasciola Hepatica,0.93,0.0
+0.75,4,Fasciola Hepatica,0.94,0.0
+0.75,4,Fasciola Hepatica,0.95,0.0
+0.75,4,Fasciola Hepatica,0.96,0.0
+0.75,4,Fasciola Hepatica,0.97,0.0
+0.75,4,Fasciola Hepatica,0.98,0.0
+0.75,4,Fasciola Hepatica,0.99,0.0
+0.75,4,Fasciola Hepatica,1.0,0.0
+0.75,5,Hymenolepis,0.0,1.0
+0.75,5,Hymenolepis,0.01,1.0
+0.75,5,Hymenolepis,0.02,1.0
+0.75,5,Hymenolepis,0.03,1.0
+0.75,5,Hymenolepis,0.04,1.0
+0.75,5,Hymenolepis,0.05,1.0
+0.75,5,Hymenolepis,0.06,1.0
+0.75,5,Hymenolepis,0.07,1.0
+0.75,5,Hymenolepis,0.08,1.0
+0.75,5,Hymenolepis,0.09,1.0
+0.75,5,Hymenolepis,0.1,1.0
+0.75,5,Hymenolepis,0.11,1.0
+0.75,5,Hymenolepis,0.12,1.0
+0.75,5,Hymenolepis,0.13,1.0
+0.75,5,Hymenolepis,0.14,1.0
+0.75,5,Hymenolepis,0.15,1.0
+0.75,5,Hymenolepis,0.16,1.0
+0.75,5,Hymenolepis,0.17,1.0
+0.75,5,Hymenolepis,0.18,1.0
+0.75,5,Hymenolepis,0.19,1.0
+0.75,5,Hymenolepis,0.2,1.0
+0.75,5,Hymenolepis,0.21,1.0
+0.75,5,Hymenolepis,0.22,1.0
+0.75,5,Hymenolepis,0.23,1.0
+0.75,5,Hymenolepis,0.24,1.0
+0.75,5,Hymenolepis,0.25,1.0
+0.75,5,Hymenolepis,0.26,1.0
+0.75,5,Hymenolepis,0.27,1.0
+0.75,5,Hymenolepis,0.28,1.0
+0.75,5,Hymenolepis,0.29,1.0
+0.75,5,Hymenolepis,0.3,1.0
+0.75,5,Hymenolepis,0.31,1.0
+0.75,5,Hymenolepis,0.32,1.0
+0.75,5,Hymenolepis,0.33,1.0
+0.75,5,Hymenolepis,0.34,1.0
+0.75,5,Hymenolepis,0.35,1.0
+0.75,5,Hymenolepis,0.36,1.0
+0.75,5,Hymenolepis,0.37,1.0
+0.75,5,Hymenolepis,0.38,1.0
+0.75,5,Hymenolepis,0.39,1.0
+0.75,5,Hymenolepis,0.4,1.0
+0.75,5,Hymenolepis,0.41,1.0
+0.75,5,Hymenolepis,0.42,1.0
+0.75,5,Hymenolepis,0.43,1.0
+0.75,5,Hymenolepis,0.44,1.0
+0.75,5,Hymenolepis,0.45,1.0
+0.75,5,Hymenolepis,0.46,1.0
+0.75,5,Hymenolepis,0.47,1.0
+0.75,5,Hymenolepis,0.48,1.0
+0.75,5,Hymenolepis,0.49,1.0
+0.75,5,Hymenolepis,0.5,1.0
+0.75,5,Hymenolepis,0.51,1.0
+0.75,5,Hymenolepis,0.52,1.0
+0.75,5,Hymenolepis,0.53,1.0
+0.75,5,Hymenolepis,0.54,1.0
+0.75,5,Hymenolepis,0.55,1.0
+0.75,5,Hymenolepis,0.56,1.0
+0.75,5,Hymenolepis,0.57,1.0
+0.75,5,Hymenolepis,0.58,1.0
+0.75,5,Hymenolepis,0.59,1.0
+0.75,5,Hymenolepis,0.6,1.0
+0.75,5,Hymenolepis,0.61,0.972972972972973
+0.75,5,Hymenolepis,0.62,0.972972972972973
+0.75,5,Hymenolepis,0.63,0.972972972972973
+0.75,5,Hymenolepis,0.64,0.972972972972973
+0.75,5,Hymenolepis,0.65,0.972972972972973
+0.75,5,Hymenolepis,0.66,0.972972972972973
+0.75,5,Hymenolepis,0.67,0.972972972972973
+0.75,5,Hymenolepis,0.68,0.972972972972973
+0.75,5,Hymenolepis,0.69,0.972972972972973
+0.75,5,Hymenolepis,0.7,0.972972972972973
+0.75,5,Hymenolepis,0.71,0.972972972972973
+0.75,5,Hymenolepis,0.72,0.972972972972973
+0.75,5,Hymenolepis,0.73,0.972972972972973
+0.75,5,Hymenolepis,0.74,0.972972972972973
+0.75,5,Hymenolepis,0.75,0.972972972972973
+0.75,5,Hymenolepis,0.76,0.972972972972973
+0.75,5,Hymenolepis,0.77,0.972972972972973
+0.75,5,Hymenolepis,0.78,0.972972972972973
+0.75,5,Hymenolepis,0.79,0.972972972972973
+0.75,5,Hymenolepis,0.8,0.972972972972973
+0.75,5,Hymenolepis,0.81,0.972972972972973
+0.75,5,Hymenolepis,0.82,0.972972972972973
+0.75,5,Hymenolepis,0.83,0.972972972972973
+0.75,5,Hymenolepis,0.84,0.9512195121951219
+0.75,5,Hymenolepis,0.85,0.9512195121951219
+0.75,5,Hymenolepis,0.86,0.9512195121951219
+0.75,5,Hymenolepis,0.87,0.9512195121951219
+0.75,5,Hymenolepis,0.88,0.9512195121951219
+0.75,5,Hymenolepis,0.89,0.9512195121951219
+0.75,5,Hymenolepis,0.9,0.9512195121951219
+0.75,5,Hymenolepis,0.91,0.9111111111111111
+0.75,5,Hymenolepis,0.92,0.9111111111111111
+0.75,5,Hymenolepis,0.93,0.9111111111111111
+0.75,5,Hymenolepis,0.94,0.9111111111111111
+0.75,5,Hymenolepis,0.95,0.9111111111111111
+0.75,5,Hymenolepis,0.96,0.5526315789473685
+0.75,5,Hymenolepis,0.97,0.5526315789473685
+0.75,5,Hymenolepis,0.98,0.0
+0.75,5,Hymenolepis,0.99,0.0
+0.75,5,Hymenolepis,1.0,0.0
+0.75,6,Schistosoma,0.0,1.0
+0.75,6,Schistosoma,0.01,1.0
+0.75,6,Schistosoma,0.02,1.0
+0.75,6,Schistosoma,0.03,1.0
+0.75,6,Schistosoma,0.04,1.0
+0.75,6,Schistosoma,0.05,1.0
+0.75,6,Schistosoma,0.06,1.0
+0.75,6,Schistosoma,0.07,1.0
+0.75,6,Schistosoma,0.08,1.0
+0.75,6,Schistosoma,0.09,1.0
+0.75,6,Schistosoma,0.1,1.0
+0.75,6,Schistosoma,0.11,1.0
+0.75,6,Schistosoma,0.12,1.0
+0.75,6,Schistosoma,0.13,1.0
+0.75,6,Schistosoma,0.14,1.0
+0.75,6,Schistosoma,0.15,1.0
+0.75,6,Schistosoma,0.16,1.0
+0.75,6,Schistosoma,0.17,1.0
+0.75,6,Schistosoma,0.18,1.0
+0.75,6,Schistosoma,0.19,1.0
+0.75,6,Schistosoma,0.2,1.0
+0.75,6,Schistosoma,0.21,1.0
+0.75,6,Schistosoma,0.22,1.0
+0.75,6,Schistosoma,0.23,1.0
+0.75,6,Schistosoma,0.24,1.0
+0.75,6,Schistosoma,0.25,1.0
+0.75,6,Schistosoma,0.26,1.0
+0.75,6,Schistosoma,0.27,1.0
+0.75,6,Schistosoma,0.28,1.0
+0.75,6,Schistosoma,0.29,1.0
+0.75,6,Schistosoma,0.3,1.0
+0.75,6,Schistosoma,0.31,1.0
+0.75,6,Schistosoma,0.32,1.0
+0.75,6,Schistosoma,0.33,1.0
+0.75,6,Schistosoma,0.34,1.0
+0.75,6,Schistosoma,0.35,1.0
+0.75,6,Schistosoma,0.36,1.0
+0.75,6,Schistosoma,0.37,1.0
+0.75,6,Schistosoma,0.38,1.0
+0.75,6,Schistosoma,0.39,1.0
+0.75,6,Schistosoma,0.4,1.0
+0.75,6,Schistosoma,0.41,0.96875
+0.75,6,Schistosoma,0.42,0.96875
+0.75,6,Schistosoma,0.43,0.96875
+0.75,6,Schistosoma,0.44,0.96875
+0.75,6,Schistosoma,0.45,0.96875
+0.75,6,Schistosoma,0.46,0.96875
+0.75,6,Schistosoma,0.47,0.9230769230769231
+0.75,6,Schistosoma,0.48,0.9230769230769231
+0.75,6,Schistosoma,0.49,0.9230769230769231
+0.75,6,Schistosoma,0.5,0.9230769230769231
+0.75,6,Schistosoma,0.51,0.9230769230769231
+0.75,6,Schistosoma,0.52,0.9230769230769231
+0.75,6,Schistosoma,0.53,0.9230769230769231
+0.75,6,Schistosoma,0.54,0.9230769230769231
+0.75,6,Schistosoma,0.55,0.8837209302325582
+0.75,6,Schistosoma,0.56,0.8837209302325582
+0.75,6,Schistosoma,0.57,0.8837209302325582
+0.75,6,Schistosoma,0.58,0.8478260869565217
+0.75,6,Schistosoma,0.59,0.8478260869565217
+0.75,6,Schistosoma,0.6,0.8333333333333334
+0.75,6,Schistosoma,0.61,0.8301886792452831
+0.75,6,Schistosoma,0.62,0.8301886792452831
+0.75,6,Schistosoma,0.63,0.8301886792452831
+0.75,6,Schistosoma,0.64,0.8301886792452831
+0.75,6,Schistosoma,0.65,0.8301886792452831
+0.75,6,Schistosoma,0.66,0.8301886792452831
+0.75,6,Schistosoma,0.67,0.7741935483870968
+0.75,6,Schistosoma,0.68,0.7741935483870968
+0.75,6,Schistosoma,0.69,0.7741935483870968
+0.75,6,Schistosoma,0.7,0.7741935483870968
+0.75,6,Schistosoma,0.71,0.7741935483870968
+0.75,6,Schistosoma,0.72,0.7741935483870968
+0.75,6,Schistosoma,0.73,0.7313432835820896
+0.75,6,Schistosoma,0.74,0.7313432835820896
+0.75,6,Schistosoma,0.75,0.7246376811594203
+0.75,6,Schistosoma,0.76,0.6891891891891891
+0.75,6,Schistosoma,0.77,0.6891891891891891
+0.75,6,Schistosoma,0.78,0.6753246753246753
+0.75,6,Schistosoma,0.79,0.6352941176470588
+0.75,6,Schistosoma,0.8,0.6352941176470588
+0.75,6,Schistosoma,0.81,0.6352941176470588
+0.75,6,Schistosoma,0.82,0.6043956043956044
+0.75,6,Schistosoma,0.83,0.6043956043956044
+0.75,6,Schistosoma,0.84,0.5894736842105263
+0.75,6,Schistosoma,0.85,0.504424778761062
+0.75,6,Schistosoma,0.86,0.504424778761062
+0.75,6,Schistosoma,0.87,0.5
+0.75,6,Schistosoma,0.88,0.48360655737704916
+0.75,6,Schistosoma,0.89,0.48360655737704916
+0.75,6,Schistosoma,0.9,0.46875
+0.75,6,Schistosoma,0.91,0.0
+0.75,6,Schistosoma,0.92,0.0
+0.75,6,Schistosoma,0.93,0.0
+0.75,6,Schistosoma,0.94,0.0
+0.75,6,Schistosoma,0.95,0.0
+0.75,6,Schistosoma,0.96,0.0
+0.75,6,Schistosoma,0.97,0.0
+0.75,6,Schistosoma,0.98,0.0
+0.75,6,Schistosoma,0.99,0.0
+0.75,6,Schistosoma,1.0,0.0
+0.75,7,Taenia Sp,0.0,1.0
+0.75,7,Taenia Sp,0.01,1.0
+0.75,7,Taenia Sp,0.02,1.0
+0.75,7,Taenia Sp,0.03,1.0
+0.75,7,Taenia Sp,0.04,1.0
+0.75,7,Taenia Sp,0.05,1.0
+0.75,7,Taenia Sp,0.06,1.0
+0.75,7,Taenia Sp,0.07,1.0
+0.75,7,Taenia Sp,0.08,1.0
+0.75,7,Taenia Sp,0.09,1.0
+0.75,7,Taenia Sp,0.1,1.0
+0.75,7,Taenia Sp,0.11,1.0
+0.75,7,Taenia Sp,0.12,1.0
+0.75,7,Taenia Sp,0.13,1.0
+0.75,7,Taenia Sp,0.14,1.0
+0.75,7,Taenia Sp,0.15,1.0
+0.75,7,Taenia Sp,0.16,1.0
+0.75,7,Taenia Sp,0.17,1.0
+0.75,7,Taenia Sp,0.18,1.0
+0.75,7,Taenia Sp,0.19,1.0
+0.75,7,Taenia Sp,0.2,1.0
+0.75,7,Taenia Sp,0.21,0.9655172413793104
+0.75,7,Taenia Sp,0.22,0.9655172413793104
+0.75,7,Taenia Sp,0.23,0.9655172413793104
+0.75,7,Taenia Sp,0.24,0.9655172413793104
+0.75,7,Taenia Sp,0.25,0.9655172413793104
+0.75,7,Taenia Sp,0.26,0.9655172413793104
+0.75,7,Taenia Sp,0.27,0.9655172413793104
+0.75,7,Taenia Sp,0.28,0.9655172413793104
+0.75,7,Taenia Sp,0.29,0.9655172413793104
+0.75,7,Taenia Sp,0.3,0.9655172413793104
+0.75,7,Taenia Sp,0.31,0.9655172413793104
+0.75,7,Taenia Sp,0.32,0.9655172413793104
+0.75,7,Taenia Sp,0.33,0.9655172413793104
+0.75,7,Taenia Sp,0.34,0.9655172413793104
+0.75,7,Taenia Sp,0.35,0.9655172413793104
+0.75,7,Taenia Sp,0.36,0.9655172413793104
+0.75,7,Taenia Sp,0.37,0.9655172413793104
+0.75,7,Taenia Sp,0.38,0.9655172413793104
+0.75,7,Taenia Sp,0.39,0.9655172413793104
+0.75,7,Taenia Sp,0.4,0.9655172413793104
+0.75,7,Taenia Sp,0.41,0.9655172413793104
+0.75,7,Taenia Sp,0.42,0.9655172413793104
+0.75,7,Taenia Sp,0.43,0.9655172413793104
+0.75,7,Taenia Sp,0.44,0.9655172413793104
+0.75,7,Taenia Sp,0.45,0.9655172413793104
+0.75,7,Taenia Sp,0.46,0.9655172413793104
+0.75,7,Taenia Sp,0.47,0.9655172413793104
+0.75,7,Taenia Sp,0.48,0.9655172413793104
+0.75,7,Taenia Sp,0.49,0.9655172413793104
+0.75,7,Taenia Sp,0.5,0.9655172413793104
+0.75,7,Taenia Sp,0.51,0.9655172413793104
+0.75,7,Taenia Sp,0.52,0.9655172413793104
+0.75,7,Taenia Sp,0.53,0.9117647058823529
+0.75,7,Taenia Sp,0.54,0.9117647058823529
+0.75,7,Taenia Sp,0.55,0.9117647058823529
+0.75,7,Taenia Sp,0.56,0.9117647058823529
+0.75,7,Taenia Sp,0.57,0.9117647058823529
+0.75,7,Taenia Sp,0.58,0.9117647058823529
+0.75,7,Taenia Sp,0.59,0.8888888888888888
+0.75,7,Taenia Sp,0.6,0.8888888888888888
+0.75,7,Taenia Sp,0.61,0.8717948717948718
+0.75,7,Taenia Sp,0.62,0.8717948717948718
+0.75,7,Taenia Sp,0.63,0.8717948717948718
+0.75,7,Taenia Sp,0.64,0.8717948717948718
+0.75,7,Taenia Sp,0.65,0.8636363636363636
+0.75,7,Taenia Sp,0.66,0.8636363636363636
+0.75,7,Taenia Sp,0.67,0.8636363636363636
+0.75,7,Taenia Sp,0.68,0.8636363636363636
+0.75,7,Taenia Sp,0.69,0.8636363636363636
+0.75,7,Taenia Sp,0.7,0.8636363636363636
+0.75,7,Taenia Sp,0.71,0.8636363636363636
+0.75,7,Taenia Sp,0.72,0.8478260869565217
+0.75,7,Taenia Sp,0.73,0.8478260869565217
+0.75,7,Taenia Sp,0.74,0.8235294117647058
+0.75,7,Taenia Sp,0.75,0.8235294117647058
+0.75,7,Taenia Sp,0.76,0.8235294117647058
+0.75,7,Taenia Sp,0.77,0.8235294117647058
+0.75,7,Taenia Sp,0.78,0.8235294117647058
+0.75,7,Taenia Sp,0.79,0.8235294117647058
+0.75,7,Taenia Sp,0.8,0.8113207547169812
+0.75,7,Taenia Sp,0.81,0.8113207547169812
+0.75,7,Taenia Sp,0.82,0.8
+0.75,7,Taenia Sp,0.83,0.8
+0.75,7,Taenia Sp,0.84,0.703125
+0.75,7,Taenia Sp,0.85,0.5822784810126582
+0.75,7,Taenia Sp,0.86,0.5822784810126582
+0.75,7,Taenia Sp,0.87,0.573170731707317
+0.75,7,Taenia Sp,0.88,0.573170731707317
+0.75,7,Taenia Sp,0.89,0.0
+0.75,7,Taenia Sp,0.9,0.0
+0.75,7,Taenia Sp,0.91,0.0
+0.75,7,Taenia Sp,0.92,0.0
+0.75,7,Taenia Sp,0.93,0.0
+0.75,7,Taenia Sp,0.94,0.0
+0.75,7,Taenia Sp,0.95,0.0
+0.75,7,Taenia Sp,0.96,0.0
+0.75,7,Taenia Sp,0.97,0.0
+0.75,7,Taenia Sp,0.98,0.0
+0.75,7,Taenia Sp,0.99,0.0
+0.75,7,Taenia Sp,1.0,0.0
+0.75,8,Trichuris Trichiura,0.0,1.0
+0.75,8,Trichuris Trichiura,0.01,1.0
+0.75,8,Trichuris Trichiura,0.02,1.0
+0.75,8,Trichuris Trichiura,0.03,1.0
+0.75,8,Trichuris Trichiura,0.04,1.0
+0.75,8,Trichuris Trichiura,0.05,1.0
+0.75,8,Trichuris Trichiura,0.06,1.0
+0.75,8,Trichuris Trichiura,0.07,1.0
+0.75,8,Trichuris Trichiura,0.08,1.0
+0.75,8,Trichuris Trichiura,0.09,1.0
+0.75,8,Trichuris Trichiura,0.1,1.0
+0.75,8,Trichuris Trichiura,0.11,1.0
+0.75,8,Trichuris Trichiura,0.12,1.0
+0.75,8,Trichuris Trichiura,0.13,1.0
+0.75,8,Trichuris Trichiura,0.14,1.0
+0.75,8,Trichuris Trichiura,0.15,1.0
+0.75,8,Trichuris Trichiura,0.16,1.0
+0.75,8,Trichuris Trichiura,0.17,1.0
+0.75,8,Trichuris Trichiura,0.18,1.0
+0.75,8,Trichuris Trichiura,0.19,1.0
+0.75,8,Trichuris Trichiura,0.2,1.0
+0.75,8,Trichuris Trichiura,0.21,1.0
+0.75,8,Trichuris Trichiura,0.22,1.0
+0.75,8,Trichuris Trichiura,0.23,1.0
+0.75,8,Trichuris Trichiura,0.24,1.0
+0.75,8,Trichuris Trichiura,0.25,1.0
+0.75,8,Trichuris Trichiura,0.26,1.0
+0.75,8,Trichuris Trichiura,0.27,1.0
+0.75,8,Trichuris Trichiura,0.28,1.0
+0.75,8,Trichuris Trichiura,0.29,1.0
+0.75,8,Trichuris Trichiura,0.3,1.0
+0.75,8,Trichuris Trichiura,0.31,1.0
+0.75,8,Trichuris Trichiura,0.32,1.0
+0.75,8,Trichuris Trichiura,0.33,1.0
+0.75,8,Trichuris Trichiura,0.34,1.0
+0.75,8,Trichuris Trichiura,0.35,1.0
+0.75,8,Trichuris Trichiura,0.36,1.0
+0.75,8,Trichuris Trichiura,0.37,1.0
+0.75,8,Trichuris Trichiura,0.38,1.0
+0.75,8,Trichuris Trichiura,0.39,1.0
+0.75,8,Trichuris Trichiura,0.4,1.0
+0.75,8,Trichuris Trichiura,0.41,1.0
+0.75,8,Trichuris Trichiura,0.42,1.0
+0.75,8,Trichuris Trichiura,0.43,1.0
+0.75,8,Trichuris Trichiura,0.44,1.0
+0.75,8,Trichuris Trichiura,0.45,1.0
+0.75,8,Trichuris Trichiura,0.46,1.0
+0.75,8,Trichuris Trichiura,0.47,1.0
+0.75,8,Trichuris Trichiura,0.48,1.0
+0.75,8,Trichuris Trichiura,0.49,1.0
+0.75,8,Trichuris Trichiura,0.5,1.0
+0.75,8,Trichuris Trichiura,0.51,1.0
+0.75,8,Trichuris Trichiura,0.52,1.0
+0.75,8,Trichuris Trichiura,0.53,1.0
+0.75,8,Trichuris Trichiura,0.54,1.0
+0.75,8,Trichuris Trichiura,0.55,1.0
+0.75,8,Trichuris Trichiura,0.56,1.0
+0.75,8,Trichuris Trichiura,0.57,1.0
+0.75,8,Trichuris Trichiura,0.58,1.0
+0.75,8,Trichuris Trichiura,0.59,1.0
+0.75,8,Trichuris Trichiura,0.6,1.0
+0.75,8,Trichuris Trichiura,0.61,1.0
+0.75,8,Trichuris Trichiura,0.62,1.0
+0.75,8,Trichuris Trichiura,0.63,1.0
+0.75,8,Trichuris Trichiura,0.64,1.0
+0.75,8,Trichuris Trichiura,0.65,1.0
+0.75,8,Trichuris Trichiura,0.66,1.0
+0.75,8,Trichuris Trichiura,0.67,1.0
+0.75,8,Trichuris Trichiura,0.68,1.0
+0.75,8,Trichuris Trichiura,0.69,1.0
+0.75,8,Trichuris Trichiura,0.7,1.0
+0.75,8,Trichuris Trichiura,0.71,1.0
+0.75,8,Trichuris Trichiura,0.72,1.0
+0.75,8,Trichuris Trichiura,0.73,1.0
+0.75,8,Trichuris Trichiura,0.74,1.0
+0.75,8,Trichuris Trichiura,0.75,1.0
+0.75,8,Trichuris Trichiura,0.76,0.9791666666666666
+0.75,8,Trichuris Trichiura,0.77,0.9791666666666666
+0.75,8,Trichuris Trichiura,0.78,0.9791666666666666
+0.75,8,Trichuris Trichiura,0.79,0.8448275862068966
+0.75,8,Trichuris Trichiura,0.8,0.8448275862068966
+0.75,8,Trichuris Trichiura,0.81,0.8448275862068966
+0.75,8,Trichuris Trichiura,0.82,0.8360655737704918
+0.75,8,Trichuris Trichiura,0.83,0.8360655737704918
+0.75,8,Trichuris Trichiura,0.84,0.8360655737704918
+0.75,8,Trichuris Trichiura,0.85,0.8360655737704918
+0.75,8,Trichuris Trichiura,0.86,0.7428571428571429
+0.75,8,Trichuris Trichiura,0.87,0.654320987654321
+0.75,8,Trichuris Trichiura,0.88,0.654320987654321
+0.75,8,Trichuris Trichiura,0.89,0.0
+0.75,8,Trichuris Trichiura,0.9,0.0
+0.75,8,Trichuris Trichiura,0.91,0.0
+0.75,8,Trichuris Trichiura,0.92,0.0
+0.75,8,Trichuris Trichiura,0.93,0.0
+0.75,8,Trichuris Trichiura,0.94,0.0
+0.75,8,Trichuris Trichiura,0.95,0.0
+0.75,8,Trichuris Trichiura,0.96,0.0
+0.75,8,Trichuris Trichiura,0.97,0.0
+0.75,8,Trichuris Trichiura,0.98,0.0
+0.75,8,Trichuris Trichiura,0.99,0.0
+0.75,8,Trichuris Trichiura,1.0,0.0

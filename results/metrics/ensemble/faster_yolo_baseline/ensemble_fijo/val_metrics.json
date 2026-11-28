@@ -1,0 +1,30 @@
+{
+  "model": "ensemble_fijo",
+  "members": [
+    "fasterrcnn_v2:baseline",
+    "yolov10s:baseline"
+  ],
+  "split": "val",
+  "params": {
+    "peso_2": 0.75,
+    "iou_thr": 0.7,
+    "skip_thr": 0.05
+  },
+  "images": 215,
+  "detections": 1105,
+  "map": 0.6855211607897365,
+  "map50": 0.8353948941400059,
+  "map75": 0.8178110470216302,
+  "map_small": 0.0,
+  "map_medium": 0.43907443694164194,
+  "map_large": 0.742164682413399,
+  "mar1": 0.48240314978957405,
+  "mar10": 0.7589771290761308,
+  "mar100": 0.7857602908828775,
+  "mar_small": 0.0,
+  "mar_medium": 0.6266714981447125,
+  "mar_large": 0.828274215927965,
+  "inference": {
+    "note": "latencia: suma de los modelos, el clasificador de tipo y la fusi\u00f3n; ver results/metrics/latency/"
+  }
+}
