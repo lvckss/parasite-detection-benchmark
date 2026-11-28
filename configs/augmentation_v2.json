@@ -1,0 +1,201 @@
+{
+  "name": "all-transforms-v2",
+  "source_paper": "docs/journal.pone.0313734.pdf",
+  "source_dataset": "data/converted/parasites-1s07h",
+  "implementation_library": "OpenCV",
+  "paper_reference": {
+    "library": "imgaug",
+    "original_images": 27558,
+    "reported_augmented_images": 606276,
+    "reported_images_per_class": 303138,
+    "resize": [
+      224,
+      224
+    ],
+    "note": "The paper's dataset size and resize are reference details, not applied to this detection dataset."
+  },
+  "probability_note": "Only channel_shuffle probability 0.35 is explicit in the paper; other probabilities here are experiment defaults.",
+  "seed": 42,
+  "variants_per_image": 3,
+  "include_originals": true,
+  "apply_to": [
+    "train"
+  ],
+  "output": {
+    "min_box_visibility": 0.25,
+    "max_attempts_per_variant": 10,
+    "jpeg_quality": 95
+  },
+  "transformations": {
+    "horizontal_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+    "vertical_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+    "rotation": {
+      "enabled": true,
+      "probability": 0.5,
+      "degrees": [
+        -45,
+        45
+      ],
+      "paper_degrees": [
+        -45,
+        45
+      ]
+    },
+    "scale": {
+      "enabled": true,
+      "probability": 0.5,
+      "factor": [
+        0.8,
+        1.2
+      ],
+      "paper_factor": [
+        0.5,
+        1.5
+      ]
+    },
+    "shear": {
+      "enabled": true,
+      "probability": 0.3,
+      "x_degrees": [
+        -10,
+        10
+      ],
+      "y_degrees": [
+        -10,
+        10
+      ],
+      "parameter_note": "The paper does not give a shear range; these are proposed values."
+    },
+    "crop": {
+      "enabled": true,
+      "probability": 0.2,
+      "removed_fraction_per_side": [
+        0.02,
+        0.1
+      ],
+      "parameter_note": "The paper says 0.02 to 0.1 pixels; this config interprets it as a fraction per edge."
+    },
+    "elastic": {
+      "enabled": true,
+      "probability": 0.2,
+      "alpha": 50,
+      "sigma": 5
+    },
+    "perspective": {
+      "enabled": true,
+      "probability": 0.2,
+      "max_displacement_fraction": [
+        0.01,
+        0.05
+      ],
+      "parameter_note": "The paper mentions perspective deformation but gives no magnitude."
+    },
+    "brightness": {
+      "enabled": true,
+      "probability": 0.5,
+      "factor": [
+        0.8,
+        1.2
+      ],
+      "paper_factor": [
+        0.8,
+        1.2
+      ]
+    },
+    "contrast": {
+      "enabled": true,
+      "probability": 0.5,
+      "factor": [
+        0.8,
+        1.2
+      ],
+      "paper_factor": [
+        0.8,
+        1.2
+      ]
+    },
+    "hue_saturation": {
+      "enabled": true,
+      "probability": 0.3,
+      "hue_degrees": [
+        -20,
+        20
+      ],
+      "saturation_delta": [
+        -20,
+        20
+      ],
+      "saturation_units": "OpenCV HSV channel units (0-255)"
+    },
+    "channel_shuffle": {
+      "enabled": true,
+      "probability": 0.35
+    },
+    "gaussian_noise": {
+      "enabled": true,
+      "probability": 0.2,
+      "standard_deviation_fraction_of_255": [
+        0.01,
+        0.05
+      ],
+      "parameter_note": "Range from the supplied summary; not specified in the paper passage reviewed."
+    },
+    "gaussian_blur": {
+      "enabled": true,
+      "probability": 0.25,
+      "sigma": [
+        0.1,
+        1.0
+      ],
+      "paper_sigma": [
+        0,
+        3
+      ]
+    },
+    "average_blur": {
+      "enabled": true,
+      "probability": 0.2,
+      "kernel_size": [
+        3,
+        7
+      ],
+      "paper_sigma": [
+        0,
+        3
+      ],
+      "parameter_note": "Kernel range is proposed; the paper reports sigma <= 3 but does not specify an average-blur kernel."
+    },
+    "sharpen": {
+      "enabled": true,
+      "probability": 0.2,
+      "alpha": [
+        0,
+        1
+      ],
+      "lightness": [
+        0.75,
+        1.5
+      ]
+    },
+    "dropout": {
+      "enabled": true,
+      "probability": 0.1,
+      "holes": [
+        1,
+        8
+      ],
+      "hole_size_fraction": [
+        0.01,
+        0.05
+      ],
+      "parameter_note": "Hole count/size are proposed because the paper does not specify them."
+    }
+  },
+  "description": "aug_v2: igual que aug_v1 (misma semilla, 3 variantes por imagen y mismos rangos), pero con todas las transformaciones activadas."
+}
