@@ -6,7 +6,7 @@ import math
 import tempfile
 from contextlib import redirect_stdout
 from copy import copy
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from io import StringIO
 from pathlib import Path
 
@@ -22,11 +22,19 @@ from ultralytics.models.yolo.detect import DetectionTrainer, DetectionValidator
 from ultralytics.nn.tasks import DetectionModel
 
 from ultralytics.utils import ops
-from parasite_detection.paths import DEDUP_DATA, MODELS, RESULTS, ROOT
+from parasite_detection.dataset_validation import validate_loaded_image_paths, validate_yolo_dataset
+from parasite_detection.paths import (
+    DEDUP_DATA,
+    MODELS,
+    RESULTS,
+    ROOT,
+    TRAIN_MANIFEST,
+    get_experiment_data_dir,
+    get_experiment_run_name,
+)
 
 
 COCO_WEIGHTS = MODELS / "pretrained/yolov10s.pt"
-TRAIN_MANIFEST = ROOT / "results/visual-labels/dinov2_train_order.json"
 SCORE_THRESHOLD = 0.001
 MAX_DETECTIONS = 100
 SUPPORTED_VERSION = "8.4.215"
@@ -35,8 +43,8 @@ SUPPORTED_VERSION = "8.4.215"
 @dataclass
 class TrainConfig:
     # el nombre nuevo separa esta ejecución de los experimentos con el bucle anterior
-    data_dir: Path = DEDUP_DATA
-    run_name: str = "baseline_ultralytics"
+    data_dir: Path = field(default_factory=lambda: get_experiment_data_dir(DEDUP_DATA))
+    run_name: str = field(default_factory=lambda: get_experiment_run_name("baseline_ultralytics"))
     epochs: int = 100
     batch_size: int = 8
     image_size: int = 640
@@ -101,21 +109,7 @@ def _check_dataset(data_dir):
     data_dir = Path(data_dir).resolve()
     spec = _data_spec(data_dir)
     expected = set(json.loads(TRAIN_MANIFEST.read_text())["ordered_ids"])
-    for split in ("train", "val"):
-        coco = json.loads((data_dir / "annotations" / f"instances_{split}.json").read_text())
-        if sorted(c["id"] for c in coco["categories"]) != list(range(1, 9)):
-            raise ValueError(f"Las clases COCO de {split} deben ser 1–8.")
-        names = {Path(r["file_name"]).stem for r in coco["images"]}
-        if split == "train" and (len(coco["images"]) != 1157 or names != expected):
-            raise ValueError("El train debe contener las 1.157 imágenes definitivas depuradas.")
-        actual = {p.stem for p in (data_dir / "images" / split).iterdir()
-                  if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}}
-        if actual != names:
-            raise ValueError(f"Las imágenes de {split} no coinciden con sus anotaciones COCO.")
-        for record in coco["images"]:
-            label = data_dir / "labels" / split / f"{Path(record['file_name']).stem}.txt"
-            if not label.is_file():
-                raise FileNotFoundError(f"Falta la anotación YOLO: {label}")
+    validate_yolo_dataset(data_dir, expected, splits=("train", "val"))
     return spec
 
 
@@ -188,9 +182,7 @@ class ParasiteTrainer(DetectionTrainer):
             dataset.transforms = dataset.build_transforms(hyp=copy(self.args))
             if not all(isinstance(t, (LetterBox, Format)) for t in dataset.transforms.transforms):
                 raise RuntimeError("El baseline solo admite letterbox y formateo de targets.")
-            expected = set(json.loads(TRAIN_MANIFEST.read_text())["ordered_ids"])
-            if len(dataset) != 1157 or {Path(p).stem for p in dataset.im_files} != expected:
-                raise ValueError("El dataloader debe conservar las 1.157 imágenes depuradas.")
+            validate_loaded_image_paths(self.data["path"], "train", dataset.im_files)
         return dataset
 
     def get_validator(self):
@@ -215,7 +207,15 @@ def _record_settings(trainer):
         "learning_rate": args.lr0, "momentum": args.momentum, "weight_decay": args.weight_decay,
         "warmup_epochs": args.warmup_epochs, "nominal_batch_size": args.nbs,
         "seed": args.seed, "device": str(trainer.device), "amp": bool(trainer.amp),
-        "augmentation": "none", "criterion": type(trainer.model.init_criterion()).__name__,
+        "augmentation": {
+            "online": "none",
+            "offline_config": (
+                json.loads((Path(trainer.data["path"]) / "augmentation_config.json").read_text(encoding="utf-8"))
+                if (Path(trainer.data["path"]) / "augmentation_config.json").is_file()
+                else None
+            ),
+        },
+        "criterion": type(trainer.model.init_criterion()).__name__,
         "inference": "one2one", "evaluation": "pycocotools COCOeval bbox",
         "score_threshold": args.conf, "max_detections": args.max_det,
         "selection": "COCO mAP on validation EMA", "native_args": vars(args),
@@ -269,7 +269,10 @@ def build_model(weights_path=COCO_WEIGHTS):
 
 
 def load_trained_model(path=None, device="auto"):
-    path = Path(path) if path is not None else MODELS / "trained/yolov10s/baseline_ultralytics/weights/best.pt"
+    path = (
+        Path(path) if path is not None
+        else MODELS / "trained/yolov10s" / get_experiment_run_name("baseline_ultralytics") / "weights/best.pt"
+    )
     if not path.is_file():
         raise FileNotFoundError(path)
     if path.suffix == ".pth":
@@ -295,13 +298,16 @@ def _run_validator(model, data_dir, split, image_size, batch_size, device):
     _check_version()
     if split not in {"val", "test"}:
         raise ValueError("Evalúa val o test explícitamente.")
+    data_dir = get_experiment_data_dir(DEDUP_DATA) if data_dir is None else Path(data_dir)
+    spec = _data_spec(data_dir)
+    validate_yolo_dataset(data_dir, splits=(split,))
     if image_size is None:
         image_size = model.overrides.get("imgsz", 640)
     # la evaluación independiente comparte el postprocesado y el evaluador del entrenamiento
     with tempfile.TemporaryDirectory(prefix="parasites-yolo-eval-") as temporary:
         directory = Path(temporary)
         data_file = directory / "dataset.yaml"
-        data_file.write_text(yaml.safe_dump(_data_spec(data_dir)), encoding="utf-8")
+        data_file.write_text(yaml.safe_dump(spec), encoding="utf-8")
         validator = CocoValidator(save_dir=directory, args={
             "data": str(data_file), "split": split, "imgsz": image_size, "batch": batch_size,
             "device": _device(device), "workers": 0, "conf": SCORE_THRESHOLD,
@@ -311,11 +317,11 @@ def _run_validator(model, data_dir, split, image_size, batch_size, device):
         return validator
 
 
-def evaluate_model(model, data_dir=DEDUP_DATA, split="val", image_size=None, batch_size=8, device="auto"):
+def evaluate_model(model, data_dir=None, split="val", image_size=None, batch_size=8, device="auto"):
     return _run_validator(model, data_dir, split, image_size, batch_size, device).coco_results
 
 
-def predict_coco(model, data_dir=DEDUP_DATA, split="test", image_size=None, batch_size=8, device="auto"):
+def predict_coco(model, data_dir=None, split="test", image_size=None, batch_size=8, device="auto"):
     """detecciones en formato coco (ids 1-8) con el mismo letterbox y postprocesado que la validación"""
     validator = _run_validator(model, data_dir, split, image_size, batch_size, device)
     predictions = [{**p, "bbox": [round(v, 2) for v in p["bbox"]], "score": round(p["score"], 5)}

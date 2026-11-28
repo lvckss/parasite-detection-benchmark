@@ -106,6 +106,45 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 - [Formatos de cajas y correspondencia de clases](data/converted/README.md)
 - [Criterio de deduplicación](data/preprocessed/README.md)
 
+## Webs de etiquetado y revisión visual
+
+Ejecuta los comandos desde la raíz del repositorio con el entorno virtual activo. Si aún no tienes el train deduplicado y su orden visual, prepara los datos y genera el manifiesto:
+
+```bash
+just dataset
+just prepare
+python scripts/data/deduplicate_train.py
+python scripts/labeling/order_train_images_by_similarity.py --device cuda
+```
+
+Si no tienes GPU NVIDIA, cambia `--device cuda` por `--device cpu`. La ordenación se necesita una sola vez, salvo que cambie el conjunto deduplicado.
+
+### Etiquetar imágenes del train
+
+```bash
+just label
+```
+
+Esto inicia `scripts/labeling/classify_train_images.py`, abre la web local en `http://127.0.0.1:8765` y guarda las etiquetas en `results/visual-labels/train_dedup_labels.json`. Detén el servidor con **Ctrl+C**. También puedes ejecutarlo directamente con `python scripts/labeling/classify_train_images.py`; usa `--port` para elegir otro puerto y `--no-browser` para no abrir el navegador automáticamente.
+
+### Revisar originales y augmentaciones
+
+Genera primero una variante aumentada —por defecto, desde el train deduplicado— y luego arranca el comparador:
+
+```bash
+python scripts/create_augmented_dataset.py
+python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented-v1
+```
+
+La web local se abre en `http://127.0.0.1:8766`. Permite comparar cada original con sus variantes y ver qué transformaciones se aplicaron. Si ya clasificaste las imágenes, el comparador también puede filtrar por esas etiquetas; no es obligatorio ejecutar primero la web de etiquetado. El dataset debe incluir metadatos de transformaciones, que genera automáticamente la versión actual del script. Detén el servidor con **Ctrl+C**; puedes cambiar el puerto con `--port` o evitar la apertura automática con `--no-browser`.
+
+Para inspeccionar un dataset antiguo que no guarde `applied_transforms`, añade esos metadatos indicando el mismo origen, salida y configuración con que se creó (esto no modifica las imágenes):
+
+```bash
+python scripts/create_augmented_dataset.py --source-dir data/converted/parasites-1s07h --output-dir data/preprocessed/parasites-1s07h-augmented --write-transform-metadata
+python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented
+```
+
 ## Flujo experimental
 
 | Paso | Dónde | Qué produce |
@@ -118,10 +157,153 @@ La conversión conserva las imágenes originales y genera ambos formatos de anot
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
 | 7. Evaluación de YOLOv10-S en val y test | `scripts/evaluation/evaluate_yolo.py --split {val,test}` | Los mismos archivos que el paso 4 en `results/metrics/yolov10s/<run>/` |
 | 8. Análisis de errores de YOLOv10-S | [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
+| 9. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
+| 10. Comparar ambos detectores por variante | [Guía de Colab](#guía-paso-a-paso-en-google-colab) | Una ejecución y un nombre de run distintos por modelo y variante |
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
-Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo. La [demo con métricas simuladas](notebooks/05_training_dashboard_demo.ipynb) permite probarlo sin entrenar.
+Los notebooks de entrenamiento comparten un [dashboard LIVE/REPORT](src/parasite_detection/dashboard/README.md), con métricas y gráficas en una sola salida. Cada ejecución exporta un HTML autónomo junto al CSV y conserva un resumen visual en el notebook al guardarlo.
+
+## Experimentos de aumentación en Colab/Kaggle
+
+El siguiente bloque de trabajo es medir cómo cambia el rendimiento de **Faster R-CNN v2** y **YOLOv10-S** al ampliar progresivamente las augmentaciones. Es un plan experimental: las ejecuciones de esta sección aún no se consideran resultados hasta que sus métricas se registren.
+
+### Preparar variantes
+
+Partir del train deduplicado evita volver a introducir en train imágenes casi duplicadas de val o test. El generador conserva los originales, aplica las transformaciones únicamente a train y copia val/test sin modificar. Cada configuración debe tener su propio directorio de salida; el generador no sobrescribe uno existente.
+
+La configuración actual de [`configs/augmentation.json`](configs/augmentation.json) crea tres variantes por imagen de train, además de conservar cada original. Si se aplica al train deduplicado de 1.157 imágenes, el resultado esperado es 4.628 imágenes de train. La configuración actual activa flips horizontal y vertical, rotación, escala, cambios de brillo y contraste y desenfoque gaussiano. Las demás transformaciones están desactivadas. El directorio antiguo `parasites-1s07h-augmented/` se generó desde el train completo de 1.484 imágenes; para mantener la evaluación sin duplicados, genera una variante nueva desde el train deduplicado.
+
+```bash
+python scripts/create_augmented_dataset.py \
+    --source-dir data/preprocessed/parasites-1s07h-dedup \
+    --output-dir data/preprocessed/parasites-1s07h-augmented-v1 \
+    --config configs/augmentation.json
+```
+
+Para cada variante posterior, guardar una configuración identificable y usar otra ruta de salida, por ejemplo `parasites-1s07h-augmented-v2`. Añadir una transformación o un grupo cada vez facilita relacionar los cambios con las métricas; mantener iguales las transformaciones ya probadas y documentar las probabilidades y rangos usados. La carpeta de datos generada no se sube a Git.
+
+### Entrenar en la nube y comparar
+
+1. Subir al almacenamiento privado de Colab o Kaggle el código/configuración del experimento y la variante de datos preparada. Descargar o montar los pesos preentrenados por separado; no guardar datasets ni checkpoints en el repositorio.
+2. Seleccionar la variante antes de importar los módulos en el notebook, por ejemplo con `PARASITE_DATA_DIR=/ruta/al/dataset`; usar `PARASITE_RUN_NAME=aug_v1` para identificar la ejecución. Ambos notebooks consultan estas variables y, si no están definidas, usan el train deduplicado y el nombre del baseline. En los scripts de terminal también se pueden indicar `--data-dir` y `--run-name`. Usar los mismos splits, pesos iniciales, semilla e hiperparámetros del baseline correspondiente. Cambiar solo la variante de augmentación que se está evaluando.
+3. Entrenar los dos modelos con nombres de ejecución únicos, por ejemplo `fasterrcnn_aug_v1` y `yolov10s_aug_v1` (o `aug_v1` en `PARASITE_RUN_NAME`; cada modelo guarda en su propio directorio). Conservar por separado checkpoints, `settings.json`, CSV de entrenamiento y métricas; anotar también el commit del código y la configuración utilizada.
+4. Usar **validation** para elegir época/checkpoint y tomar decisiones. Evaluar **test** solo después de cerrar esas decisiones, con las imágenes y anotaciones originales sin augmentar. No ajustar configuraciones mirando resultados de test.
+5. Repetir el proceso con la siguiente variante y comparar cada detector con su propio baseline y sus ejecuciones anteriores. Registrar mAP COCO@[.5:.95] como métrica principal, además de mAP50, AP por clase y, si se compara latencia, el hardware usado.
+
+> [!IMPORTANT]
+> Ambos entrenadores validan la consistencia de las anotaciones e imágenes. YOLO acepta el baseline del manifiesto o una variante generada que conserva la correspondencia de las imágenes fuente y `augmentation_config.json`; también comprueba que las cajas COCO y YOLO coincidan. Las transformaciones de Ultralytics en tiempo de entrenamiento siguen desactivadas: las augmentaciones de estas pruebas son las materializadas en el dataset.
+
+Registro de las ejecuciones (rellenar solo cuando se hayan completado):
+
+| Variante | Cambios respecto a la anterior | Ejecución Faster R-CNN | Ejecución YOLOv10-S | Val mAP COCO (FRCNN / YOLO) | Test mAP COCO (FRCNN / YOLO) | Estado |
+|---|---|---|---|---:|---:|---|
+| `baseline` | Train deduplicado, sin augmentación | `baseline` | `baseline` | 0,663 / 0,613 | 0,623 / — | Hecho · falta test de YOLO |
+| `aug-v1` | Configuración actual de `augmentation.json` | `aug_v1` | `aug_v1` | — | — | Pendiente |
+| `aug-v2` | Indicar transformaciones y parámetros añadidos | — | — | — | — | Pendiente |
+
+### Guía paso a paso en Google Colab
+
+Experimento `aug_v1`: **dos entrenamientos**, uno por detector, con el train aumentado. Los baselines de ambos modelos ya están entrenados y son la referencia. Todos los hiperparámetros coinciden con los de su baseline y solo cambia el dataset de train. Val y test son los mismos.
+
+El notebook está pensado para una GPU de Colab (T4 o superior). Los datos se regeneran dentro de Colab con los mismos scripts y la semilla 42, así que no hace falta subir el dataset. Una copia periódica guarda checkpoints y métricas en Google Drive para no perderlos si se corta la sesión.
+
+**0. Entorno de ejecución → Cambiar tipo de entorno → GPU.** Después, en celdas sucesivas:
+
+```python
+# 1. Montar Drive y definir rutas
+from google.colab import drive
+drive.mount("/content/drive")
+REPO = "/content/parasite-detection-benchmark"
+BACKUP = "/content/drive/MyDrive/parasites-runs"
+```
+
+```bash
+%%bash
+# 2. Clonar el repo (sin bajar los checkpoints de Git LFS, que no hacen falta para entrenar)
+cd /content
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/lvckss/parasite-detection-benchmark.git
+cd parasite-detection-benchmark
+
+# 3. Instalar las versiones exactas de uv.lock (Ultralytics debe ser 8.4.215)
+pip install -q uv
+uv sync --locked --extra cu128
+.venv/bin/python -c "import torch, ultralytics; print(torch.__version__, torch.cuda.is_available(), ultralytics.__version__)"
+```
+
+```bash
+%%bash
+# 4. Pesos COCO y datos: descarga → conversión → deduplicado → variante aumentada
+cd /content/parasite-detection-benchmark
+PY=.venv/bin/python
+$PY scripts/models/download_weights.py
+$PY scripts/data/download_dataset.py
+$PY scripts/data/prepare_dataset.py
+$PY scripts/data/deduplicate_train.py          # 1157 imágenes de train
+$PY scripts/create_augmented_dataset.py \
+    --source-dir data/preprocessed/parasites-1s07h-dedup \
+    --output-dir data/preprocessed/parasites-1s07h-augmented-v1 \
+    --config configs/augmentation.json          # 4628 imágenes de train
+```
+
+```python
+# 5. Copia de seguridad en Drive cada 5 minutos, en segundo plano, mientras entrena
+import subprocess, threading, time
+def backup():
+    while True:
+        subprocess.run(f"mkdir -p {BACKUP}/models {BACKUP}/metrics && "
+                       f"cp -a {REPO}/models/trained/. {BACKUP}/models/ && "
+                       f"cp -a {REPO}/results/metrics/. {BACKUP}/metrics/", shell=True)
+        time.sleep(300)
+threading.Thread(target=backup, daemon=True).start()
+```
+
+> [!NOTE]
+> No se usan enlaces simbólicos a Drive: `train_yolo.py` rechaza empezar una ejecución si su carpeta ya existe, para no mezclar experimentos.
+
+**6. Entrenamientos.** Cada uno en su propia celda, en el mismo kernel que la celda 5 para que la copia siga activa:
+
+```python
+# a) YOLOv10-S + aug_v1 (por defecto: 100 épocas, lote 8, SGD lr 0,01, paciencia 20, como el baseline)
+!cd {REPO} && .venv/bin/python scripts/training/train_yolo.py --device cuda \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1
+```
+
+```python
+# b) Faster R-CNN v2 + aug_v1 (mismos ajustes que results/metrics/fasterrcnn_v2/baseline/settings.json)
+!cd {REPO} && .venv/bin/python scripts/training/train_faster_rcnn.py --device cuda \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 \
+    --epochs 20 --batch-size 2 --patience 10
+```
+
+> [!WARNING]
+> En `train_faster_rcnn.py`, `--data-dir` por defecto apunta al train **original** (`data/converted/...`), no al deduplicado. Indícalo siempre de forma explícita. El baseline de Faster R-CNN se entrenó con `--patience 10`; el valor por defecto actual es 5.
+
+Si Colab corta la sesión, repetir los pasos 1–4, recuperar la copia de Drive, lanzar de nuevo la celda 5 y reanudar el entrenamiento que estuviera a medias:
+
+```python
+!cp -a {BACKUP}/models/. {REPO}/models/trained/ && cp -a {BACKUP}/metrics/. {REPO}/results/metrics/
+# YOLO
+!cd {REPO} && .venv/bin/python scripts/training/train_yolo.py --resume models/trained/yolov10s/aug_v1/weights/last.pt
+# Faster R-CNN
+!cd {REPO} && .venv/bin/python scripts/training/train_faster_rcnn.py \
+    --resume models/trained/fasterrcnn_v2/aug_v1/last_checkpoint.pth \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 --epochs 20 --patience 10
+```
+
+**7. Evaluar en val y test** solo al terminar y sin volver a ajustar nada mirando test. Val y test no tienen augmentación, así que basta con el dataset deduplicado por defecto:
+
+```python
+!cd {REPO} && for s in val test; do \
+    .venv/bin/python scripts/evaluation/evaluate_faster_rcnn.py --run-name aug_v1 --split $s --device cuda; \
+    .venv/bin/python scripts/evaluation/evaluate_yolo.py --run-name aug_v1 --split $s --device cuda; \
+  done
+```
+
+**8. Llevarse los resultados.** Esperar a que la copia de la celda 5 se ejecute una última vez, o forzarla con `!cp -a {REPO}/results/metrics/. {BACKUP}/metrics/`. Pasar a `results/metrics/` del repo local los archivos ligeros (CSV, JSON y HTML) de `fasterrcnn_v2/aug_v1/` y `yolov10s/aug_v1/`, y rellenar la tabla de arriba. Los pesos (`.pt`, `.pth`) se quedan en Drive.
+
+> [!TIP]
+> Con 4628 imágenes de train, cada época dura unas 4 veces más que en el baseline. Calculo de forma aproximada varias horas por modelo en una T4. Si no hay tiempo para todo, entrena primero YOLO y deja Faster R-CNN para otra sesión. Con Colab Pro puedes elegir una GPU L4 o A100. Al comparar, ten en cuenta que en el mismo número de épocas el modelo aumentado da 4 veces más pasos de gradiente.
 
 ## Resultados
 
@@ -144,6 +326,44 @@ Los tiempos salen de [`benchmark_latency.py`](scripts/evaluation/benchmark_laten
 Una repetición del entrenamiento de Faster R-CNN con la misma configuración y semilla dio 0,657 de mAP en val frente a 0,663 ([`baseline_rerun_lucas/`](results/metrics/fasterrcnn_v2/baseline_rerun_lucas/README.md)). Diferencias de menos de unas 0,01 entre experimentos no son concluyentes.
 
 Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb). Las estrategias de mejora están pendientes.
+
+## Estado del proyecto
+
+Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas de los profesores](docs/notas-profesores.md). Entrega: ZIP con diapositivas en PDF, código reproducible con semillas y este README.
+
+### Hecho
+
+- Entorno reproducible con `uv`, descarga fijada del dataset y conversión a COCO/YOLO.
+- EDA y deduplicado del train frente a val/test (1484 → 1157 imágenes) para evitar fuga de datos.
+- Faster R-CNN v2: entrenamiento completo (todas las capas), validación con `val_loss`, parada temprana, evaluación en val/test y análisis de errores con figuras. **Baseline terminado.**
+- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`) y notebook de análisis de errores. **Baseline entrenado** (val mAP 0,613).
+- Checkpoints de ambos baselines compartidos con Git LFS.
+- Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
+- Dashboard de entrenamiento compartido por ambos modelos.
+
+### Pendiente
+
+- [ ] Evaluar el baseline de YOLOv10-S en test.
+- [ ] **`aug_v1` en ambos detectores** y comparación con su baseline ([guía de Colab](#guía-paso-a-paso-en-google-colab)).
+- [ ] Tiempos de inferencia de ambos modelos medidos en la **misma** máquina.
+- [ ] Al menos una o dos estrategias de mejora más allá de la augmentación (ver ideas).
+- [ ] Tabla y gráficas finales baseline vs. mejoras (mAP@0.5, mAP@[.5:.95], latencia).
+- [ ] Diapositivas (11–12 min, intervienen los tres) y ZIP `GRUPO_XX.zip`.
+
+### Ideas de mejora
+
+Ordenadas de menor a mayor esfuerzo. Cada una debe justificarse con una hipótesis (la originalidad pesa un 30 % de la nota).
+
+| Idea | Hipótesis / justificación | Esfuerzo |
+|---|---|---|
+| Ajuste de umbral de confianza y NMS en val | Las predicciones ya están guardadas en `*_predictions.json`; no requiere reentrenar | Bajo |
+| Test-time augmentation (flips) | Los huevos no tienen orientación canónica, así que los flips no cambian la clase | Bajo |
+| Ensemble Faster R-CNN + YOLO con *Weighted Boxes Fusion* | Un two-stage y un one-stage cometen errores distintos | Medio |
+| `aug_v2`: activar `hue_saturation`/`channel_shuffle` | Las tinciones y el microscopio cambian el color entre imágenes | Medio |
+| Pérdida ponderada por clase o muestreo balanceado | Compensa el desequilibrio entre especies, si el EDA lo confirma | Medio |
+| Congelar capas del backbone vs. entrenar todo; LR distinto backbone/cabeza | Estrategia de *transfer learning* sugerida en el guion | Medio |
+| SGD vs. AdamW | Comparación de optimizadores sugerida en el guion | Medio |
+| Mayor resolución de entrada (p. ej. 800–1024 px) | Los huevos más pequeños podrían perder detalle a 640 px (comprobar en el EDA) | Medio-alto |
 
 ## Equipo
 

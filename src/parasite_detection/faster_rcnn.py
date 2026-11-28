@@ -4,7 +4,7 @@ import csv
 import json
 import math
 from contextlib import redirect_stdout
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from io import StringIO
 from pathlib import Path
 
@@ -18,7 +18,16 @@ from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.transforms.functional import to_tensor
 from tqdm.auto import tqdm
 
-from parasite_detection.paths import MODELS, RESULTS, ROOT
+from parasite_detection.dataset_validation import validate_coco_dataset
+from parasite_detection.paths import (
+    DEDUP_DATA,
+    MODELS,
+    RESULTS,
+    ROOT,
+    TRAIN_MANIFEST,
+    get_experiment_data_dir,
+    get_experiment_run_name,
+)
 
 
 COCO_WEIGHTS = MODELS / "pretrained/fasterrcnn_resnet50_fpn_v2_coco-dd69338a.pth"
@@ -27,7 +36,7 @@ NUM_CLASSES = 9
 
 @dataclass
 class TrainConfig:
-    data_dir: Path
+    data_dir: Path = field(default_factory=lambda: get_experiment_data_dir(DEDUP_DATA))
     epochs: int = 20
     batch_size: int = 2
     learning_rate: float = 0.0025
@@ -42,7 +51,7 @@ class TrainConfig:
     seed: int = 42
     amp: bool = True
     device: str = "auto"
-    run_name: str = "baseline"
+    run_name: str = field(default_factory=lambda: get_experiment_run_name("baseline"))
 
 
 class CocoDetectionDataset(Dataset):
@@ -246,9 +255,11 @@ def save_checkpoint(checkpoint, path):
     temporary_path.replace(path)
 
 
-def load_trained_model(
-    path=MODELS / "trained/fasterrcnn_v2/baseline/best_model.pth", device="auto"
-):
+def load_trained_model(path=None, device="auto"):
+    path = (
+        Path(path) if path is not None
+        else MODELS / "trained/fasterrcnn_v2" / get_experiment_run_name("baseline") / "best_model.pth"
+    )
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)
     model = build_model(checkpoint["image_size"], weights_path=None)
     model.load_state_dict(checkpoint["model"])
@@ -297,6 +308,14 @@ def _train_model(config, resume=None, monitor=None):
     best_epoch = 0
 
     torch.manual_seed(config.seed)
+    expected_train_stems = None
+    if (Path(config.data_dir) / "augmentation_config.json").is_file():
+        expected_train_stems = json.loads(TRAIN_MANIFEST.read_text(encoding="utf-8"))["ordered_ids"]
+    validate_coco_dataset(
+        config.data_dir,
+        splits=("train", "val"),
+        expected_train_stems=expected_train_stems,
+    )
     train_loader, val_loader = create_dataloaders(config)
     model = build_model(config.image_size, COCO_WEIGHTS if resume is None else None).to(device)
     optimizer = torch.optim.SGD(

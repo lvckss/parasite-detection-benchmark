@@ -32,5 +32,17 @@ RAW_DATA = ROOT / "data/raw/parasites-1s07h"
 DATA = ROOT / "data/converted/parasites-1s07h"
 DATASET_YAML = DATA / "dataset.yaml"
 DEDUP_DATA = ROOT / "data/preprocessed/parasites-1s07h-dedup"
+TRAIN_MANIFEST = ROOT / "results/visual-labels/dinov2_train_order.json"
 MODELS = ROOT / "models"
 RESULTS = ROOT / "results"
+
+
+def get_experiment_data_dir(default=DEDUP_DATA) -> Path:
+    """Resolve the selected dataset, allowing cloud notebooks to override it."""
+    configured = os.environ.get("PARASITE_DATA_DIR")
+    return Path(configured).expanduser().resolve() if configured else Path(default)
+
+
+def get_experiment_run_name(default: str) -> str:
+    """Resolve the run name, allowing repeated cloud experiments to stay separate."""
+    return os.environ.get("PARASITE_RUN_NAME", default)

@@ -14,9 +14,9 @@ import cv2
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = ROOT / "data/converted/parasites-1s07h"
+DEFAULT_SOURCE = ROOT / "data/preprocessed/parasites-1s07h-dedup"
 DEFAULT_CONFIG = ROOT / "configs/augmentation.json"
-DEFAULT_OUTPUT = ROOT / "data/preprocessed/parasites-1s07h-augmented"
+DEFAULT_OUTPUT = ROOT / "data/preprocessed/parasites-1s07h-augmented-v1"
 
 
 def _selected(specification, rng):

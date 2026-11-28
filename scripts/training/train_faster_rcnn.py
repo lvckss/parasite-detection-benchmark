@@ -16,7 +16,7 @@ from parasite_detection.faster_rcnn import (
 )
 
 # la terminal usa el dataset convertido si no se indica otra carpeta
-from parasite_detection.paths import DATA
+from parasite_detection.paths import DATA, get_experiment_data_dir, get_experiment_run_name
 
 # estas funciones también se pueden importar desde la carpeta de entrenamiento
 __all__ = [
@@ -45,10 +45,10 @@ def main():
     # patience indica cuántas épocas esperamos sin mejorar el map
     parser.add_argument("--patience", type=int, help="Usa 0 para desactivar la parada temprana.")
     # cada ejecución puede elegir sus datos y su dispositivo
-    parser.add_argument("--data-dir", type=Path, default=DATA)
+    parser.add_argument("--data-dir", type=Path, default=get_experiment_data_dir(DATA))
     parser.add_argument("--device", help="Por ejemplo auto, cpu o cuda.")
     # el nombre de ejecución identifica sus pesos y sus métricas
-    parser.add_argument("--run-name")
+    parser.add_argument("--run-name", default=get_experiment_run_name("baseline"))
     # un checkpoint permite recuperar el modelo y el estado del optimizador
     parser.add_argument("--resume", type=Path, help="Ruta a last_checkpoint.pth.")
 

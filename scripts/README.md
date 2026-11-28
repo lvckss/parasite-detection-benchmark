@@ -15,7 +15,9 @@ scripts/
 ├── labeling/
 │   ├── order_train_images_by_similarity.py
 │   ├── classify_train_images.py
-│   └── visual_labeler/
+│   ├── compare_train_augmentations.py
+│   ├── visual_labeler/
+│   └── augmentation_viewer/
 ├── training/
 │   ├── train_faster_rcnn.py
 │   └── train_yolo.py
@@ -89,7 +91,7 @@ Por defecto usa el dataset deduplicado, cuyo val y test coinciden con los origin
 python scripts/training/train_yolo.py --device cuda
 ```
 
-El nombre predeterminado es `baseline_ultralytics`, separado del baseline anterior con el bucle personalizado. Antes de entrenar se comprueba que el train contiene exactamente las 1.157 imágenes depuradas del manifiesto y sus etiquetas. El dataloader vuelve a comprobar los IDs después de cargar las imágenes. Train y validation necesitan imágenes, anotaciones YOLO y anotaciones COCO.
+El nombre predeterminado es `baseline_ultralytics`, separado del baseline anterior con el bucle personalizado. Antes de entrenar se comprueba que las imágenes, anotaciones COCO y etiquetas YOLO coincidan en train y validation, incluidas las cajas y clases. Test se valida al evaluarlo. El train debe ser el del manifiesto depurado o una variante creada por `create_augmented_dataset.py`, con sus imágenes fuente y `augmentation_config.json` coherentes. El dataloader comprueba además que Ultralytics conserve todos los archivos anotados. Puedes seleccionar el mismo dataset para ambos entrenadores con `PARASITE_DATA_DIR` o indicar `--data-dir`.
 
 El baseline no aplica aumentos aleatorios. El dataloader de train usa exclusivamente `LetterBox` y `Format`, y se comprueba esa lista de transformaciones. Los parámetros de augmentations se guardan a cero en los argumentos de la ejecución.
 
@@ -180,6 +182,7 @@ Abre `/tmp/dashboard-demo/report.html` directamente en un navegador. La carpeta 
 | [`download_dataset.py`](data/download_dataset.py) | Descarga los Parquet originales de Hugging Face según la revisión y los checksums fijados en `configs/dataset.json`. Los guarda en `data/raw/parasites-1s07h/`. | `just dataset` |
 | [`prepare_dataset.py`](data/prepare_dataset.py) | Extrae las imágenes y exporta las anotaciones a formatos COCO y YOLO en `data/converted/parasites-1s07h/`. Conserva las particiones originales. | `just prepare` |
 | [`deduplicate_train.py`](data/deduplicate_train.py) | Genera `data/preprocessed/parasites-1s07h-dedup/`, quitando del train imágenes casi duplicadas de validation o test. Mantiene validation y test y guarda el registro en `results/metrics/deduplication/train_removed_near_duplicates.csv`. El umbral predeterminado es `0.90`. | `python scripts/data/deduplicate_train.py` |
+| [`create_augmented_dataset.py`](create_augmented_dataset.py) | Genera `data/preprocessed/parasites-1s07h-augmented-v1/` desde el train deduplicado, conserva los originales, añade las variantes de `configs/augmentation.json` y deja val/test intactos. | `python scripts/create_augmented_dataset.py` |
 
 Flujo inicial: `just dataset` → `just prepare`.
 
@@ -189,9 +192,11 @@ Flujo inicial: `just dataset` → `just prepare`.
 |---|---|---|
 | [`order_train_images_by_similarity.py`](labeling/order_train_images_by_similarity.py) | Extrae embeddings DINOv2 ViT-S/14 del train depurado, calcula un recorrido por similitud visual y lo reparte entre Alejandro, Rodrigo y Lucas. Requiere exactamente las 1.157 imágenes depuradas; usa CUDA por defecto. Guarda los embeddings en `.cache/visual-labels/` y el orden y lotes en `results/visual-labels/dinov2_train_order.json`. | `python scripts/labeling/order_train_images_by_similarity.py` |
 | [`classify_train_images.py`](labeling/classify_train_images.py) | Inicia el servidor local de la herramienta de etiquetado. Lee únicamente las imágenes del train depurado y requiere que exista el manifiesto de ordenación. | `just label` |
+| [`compare_train_augmentations.py`](labeling/compare_train_augmentations.py) | Abre la web local para revisar originales y variantes de una carpeta aumentada que incluya `applied_transforms`. | `python scripts/labeling/compare_train_augmentations.py --data-dir data/preprocessed/parasites-1s07h-augmented-v1` |
 | [`visual_labeler/`](labeling/visual_labeler/) | Contiene la página, la lógica de interacción y los estilos que sirve el clasificador. No se ejecutan directamente. | Se cargan al iniciar `classify_train_images.py`. |
+| [`augmentation_viewer/`](labeling/augmentation_viewer/) | Contiene la página, la lógica de comparación y los estilos del visor de augmentaciones. No se ejecutan directamente. | Se sirven al iniciar `compare_train_augmentations.py`. |
 
-Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub.
+Para cambiar los parámetros de la ordenación, consulta `python scripts/labeling/order_train_images_by_similarity.py --help`. La primera ejecución descarga el código y los pesos preentrenados de DINOv2 mediante Torch Hub. Ambos servidores se detienen con `Ctrl+C`; puedes consultar sus opciones con `--help`.
 
 ## Preparación y notebooks
 

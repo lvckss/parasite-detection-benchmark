@@ -5,19 +5,27 @@ Aquí irán las variantes de preprocesamiento que probemos a partir de [`convert
 > [!NOTE]
 > Los experimentos de aumentación offline se generan en `parasites-1s07h-augmented/`.
 
-Para generar el dataset de augmentación:
+Genera primero la variante deduplicada para no reintroducir en train casi duplicados de val/test. Después crea la aumentación desde esa variante:
 
 ```bash
-python scripts/prepare_dataset.py
+python scripts/data/prepare_dataset.py
+python scripts/data/deduplicate_train.py
 python scripts/create_augmented_dataset.py
 ```
 
-El primer comando es necesario si `data/converted/parasites-1s07h/` aún no
-contiene las imágenes de las tres particiones. El generador lee
-`configs/augmentation.json`, conserva los originales de `train`,
-añade las variantes configuradas y copia `val`/`test` sin alteraciones. Las
-imágenes y anotaciones originales de `data/converted/` no se modifican. El
-script no entrena ningún modelo.
+La preparación solo hace falta si `data/converted/parasites-1s07h/` aún no
+contiene las imágenes de las tres particiones. El generador usa por defecto
+`data/preprocessed/parasites-1s07h-dedup/` como origen y crea
+`data/preprocessed/parasites-1s07h-augmented-v1/`. Lee
+`configs/augmentation.json`, conserva los originales de `train`, añade las
+variantes configuradas y copia `val`/`test` sin alteraciones. Para otro
+experimento, guarda la configuración y el resultado en rutas nuevas; no
+sobrescribe datasets existentes. El script no entrena ningún modelo.
+
+La carpeta `parasites-1s07h-augmented/` creada con versiones anteriores del
+generador puede contener aumentaciones de las 1.484 imágenes originales de
+train. No la uses para los experimentos sin duplicados: vuelve a generarla
+desde `parasites-1s07h-dedup/` en una carpeta nueva.
 ## `parasites-1s07h-dedup/` · Train sin casi duplicados
 
 En [`01_dataset_overview.ipynb`](../../notebooks/01_dataset_overview.ipynb) vimos que ≈ 35–38 % de val y test son casi duplicados de imágenes de train. Esta variante quita de **train** esas imágenes para que val y test midan imágenes que el modelo no ha visto. **Val y test no cambian.**
