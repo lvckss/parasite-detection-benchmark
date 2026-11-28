@@ -183,12 +183,134 @@ Para cada variante posterior, guardar una configuración identificable y usar ot
 > [!IMPORTANT]
 > Ambos entrenadores validan la consistencia de las anotaciones e imágenes. YOLO acepta el baseline del manifiesto o una variante generada que conserva la correspondencia de las imágenes fuente y `augmentation_config.json`; también comprueba que las cajas COCO y YOLO coincidan. Las transformaciones de Ultralytics en tiempo de entrenamiento siguen desactivadas: las augmentaciones de estas pruebas son las materializadas en el dataset.
 
-Registro de las ejecuciones de augmentación (rellenar solo cuando se hayan completado):
+Registro de las ejecuciones (rellenar solo cuando se hayan completado):
 
 | Variante | Cambios respecto a la anterior | Ejecución Faster R-CNN | Ejecución YOLOv10-S | Val mAP COCO | Test mAP COCO | Estado |
 |---|---|---|---|---:|---:|---|
+| `baseline` | Train deduplicado, sin augmentación | `baseline` | `baseline_ultralytics` | 0,663 / — | 0,623 / — | Faster R-CNN hecho · YOLO pendiente |
 | `aug-v1` | Configuración actual de `augmentation.json` | — | — | — | — | Pendiente |
 | `aug-v2` | Indicar transformaciones y parámetros añadidos | — | — | — | — | Pendiente |
+
+### Guía paso a paso en Google Colab
+
+Pensada para una GPU de Colab (T4 o superior). Los datos se regeneran dentro de Colab con los mismos scripts y la semilla 42, así que no hace falta subir el dataset. Los checkpoints se guardan en Google Drive para no perderlos si se corta la sesión.
+
+**0. Entorno de ejecución → Cambiar tipo de entorno → GPU.** Después, en celdas sucesivas:
+
+```python
+# 1. Montar Drive (aquí quedarán pesos y métricas)
+from google.colab import drive
+drive.mount("/content/drive")
+```
+
+```bash
+%%bash
+# 2. Clonar el repo (sin descargar los .pth de Git LFS, que no hacen falta para entrenar)
+cd /content
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/lvckss/parasite-detection-benchmark.git
+cd parasite-detection-benchmark
+
+# 3. Instalar las versiones exactas de uv.lock (Ultralytics debe ser 8.4.215)
+pip install -q uv
+uv sync --locked --extra cu128
+.venv/bin/python -c "import torch, ultralytics; print(torch.__version__, torch.cuda.is_available(), ultralytics.__version__)"
+```
+
+```bash
+%%bash
+# 4. Pesos COCO y datos: descarga → conversión → deduplicado → variante aumentada
+cd /content/parasite-detection-benchmark
+PY=.venv/bin/python
+$PY scripts/models/download_weights.py
+$PY scripts/data/download_dataset.py
+$PY scripts/data/prepare_dataset.py
+$PY scripts/data/deduplicate_train.py          # 1157 imágenes de train
+$PY scripts/create_augmented_dataset.py \
+    --source-dir data/preprocessed/parasites-1s07h-dedup \
+    --output-dir data/preprocessed/parasites-1s07h-augmented-v1 \
+    --config configs/augmentation.json          # 4628 imágenes de train
+```
+
+```bash
+%%bash
+# 5. Guardar en Drive las carpetas de cada ejecución (enlaces simbólicos)
+cd /content/parasite-detection-benchmark
+D=/content/drive/MyDrive/parasites-runs
+mkdir -p $D/models/yolov10s $D/models/fasterrcnn_v2/aug_v1 $D/results
+ln -sfn $D/models/yolov10s models/trained/yolov10s
+ln -sfn $D/models/fasterrcnn_v2/aug_v1 models/trained/fasterrcnn_v2/aug_v1
+```
+
+**6. Entrenamientos.** Cambiar solo el dataset; el resto de hiperparámetros coincide con el baseline de cada modelo. Lanzar cada uno en su propia celda:
+
+```bash
+%%bash
+cd /content/parasite-detection-benchmark
+# a) Baseline de YOLOv10-S (aún no se ha entrenado): train deduplicado, sin augmentación
+.venv/bin/python scripts/training/train_yolo.py --device cuda \
+    --data-dir data/preprocessed/parasites-1s07h-dedup --run-name baseline_ultralytics
+```
+
+```bash
+%%bash
+cd /content/parasite-detection-benchmark
+# b) YOLOv10-S con la variante aumentada
+.venv/bin/python scripts/training/train_yolo.py --device cuda \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1
+```
+
+```bash
+%%bash
+cd /content/parasite-detection-benchmark
+# c) Faster R-CNN v2 con la variante aumentada (mismos ajustes que results/metrics/fasterrcnn_v2/baseline/settings.json)
+.venv/bin/python scripts/training/train_faster_rcnn.py --device cuda \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 \
+    --epochs 20 --batch-size 2 --patience 10
+```
+
+> [!WARNING]
+> En `train_faster_rcnn.py`, `--data-dir` por defecto apunta al train **original** (`data/converted/...`), no al deduplicado. Indícalo siempre de forma explícita. El baseline de Faster R-CNN se entrenó con `--patience 10`; el valor por defecto actual es 5.
+
+Si Colab corta la sesión, repetir los pasos 1–5 (el paso 4 tarda unos minutos) y reanudar:
+
+```bash
+.venv/bin/python scripts/training/train_yolo.py --resume models/trained/yolov10s/aug_v1/weights/last.pt
+.venv/bin/python scripts/training/train_faster_rcnn.py --resume models/trained/fasterrcnn_v2/aug_v1/last_checkpoint.pth \
+    --data-dir data/preprocessed/parasites-1s07h-augmented-v1 --run-name aug_v1 --epochs 20 --patience 10
+```
+
+**7. Evaluar en val y test** (solo al terminar, sin volver a ajustar nada mirando test):
+
+```bash
+%%bash
+cd /content/parasite-detection-benchmark
+for s in val test; do
+  .venv/bin/python scripts/evaluation/evaluate_faster_rcnn.py --split $s --run-name aug_v1
+done
+```
+
+```bash
+%%bash
+# YOLO no tiene script de evaluación: se llama al módulo con el Python del entorno (.venv),
+# no con el kernel de Colab, que no tiene la versión fijada de Ultralytics
+cd /content/parasite-detection-benchmark
+.venv/bin/python - <<'EOF'
+import json
+from parasite_detection.yolo import evaluate_model, load_trained_model
+for run in ["baseline_ultralytics", "aug_v1"]:
+    model = load_trained_model(f"models/trained/yolov10s/{run}/weights/best.pt", device="cuda")
+    for split in ["val", "test"]:
+        metrics = evaluate_model(model, split=split, device="cuda")
+        print(run, split, metrics)
+        with open(f"results/metrics/yolov10s/{run}/{split}_metrics.json", "w") as f:
+            json.dump(metrics, f, indent=2, default=str)
+EOF
+```
+
+**8. Llevarse los resultados.** Copiar `results/metrics/` (CSV y JSON ligeros) a Drive con `cp -r results/metrics /content/drive/MyDrive/parasites-runs/results/`, pasarlos al repo local y rellenar la tabla de arriba. Los pesos (`.pt`, `.pth`) se quedan en Drive.
+
+> [!TIP]
+> Duración orientativa en una T4: Faster R-CNN con 4628 imágenes y lote 2 son unas 2300 iteraciones por época, así que 20 épocas pueden llevar varias horas. Si el tiempo no da, entrenar primero los dos YOLO (más rápidos) y dejar Faster R-CNN para una sesión aparte; con Colab Pro se puede elegir una GPU L4 o A100.
 
 ## Resultados
 
@@ -201,6 +323,44 @@ Baseline con el train deduplicado: 20 épocas, SGD con lr 0,0025, warmup y cosen
 | YOLOv10-S | — | en curso | | | |
 
 Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb). Las estrategias de mejora están pendientes.
+
+## Estado del proyecto
+
+Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas de los profesores](docs/notas-profesores.md). Entrega: ZIP con diapositivas en PDF, código reproducible con semillas y este README.
+
+### Hecho
+
+- Entorno reproducible con `uv`, descarga fijada del dataset y conversión a COCO/YOLO.
+- EDA y deduplicado del train frente a val/test (1484 → 1157 imágenes) para evitar fuga de datos.
+- Faster R-CNN v2: entrenamiento completo (todas las capas), validación con `val_loss`, parada temprana, evaluación en val/test y análisis de errores con figuras. **Baseline terminado.**
+- YOLOv10-S: entrenador con el motor oficial de Ultralytics y evaluación COCO común con Faster R-CNN.
+- Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
+- Dashboard de entrenamiento compartido por ambos modelos.
+
+### Pendiente
+
+- [ ] **Baseline de YOLOv10-S** (entrenar y evaluar en val/test).
+- [ ] **`aug_v1` en ambos detectores** y comparación con su baseline ([guía de Colab](#guía-paso-a-paso-en-google-colab)).
+- [ ] Análisis de errores y figuras de YOLO equivalentes a las de Faster R-CNN (curvas PR, AP por clase, matriz de confusión).
+- [ ] Tiempos de inferencia de ambos modelos medidos en la **misma** máquina.
+- [ ] Al menos una o dos estrategias de mejora más allá de la augmentación (ver ideas).
+- [ ] Tabla y gráficas finales baseline vs. mejoras (mAP@0.5, mAP@[.5:.95], latencia).
+- [ ] Diapositivas (11–12 min, intervienen los tres) y ZIP `GRUPO_XX.zip`.
+
+### Ideas de mejora
+
+Ordenadas de menor a mayor esfuerzo. Cada una debe justificarse con una hipótesis (la originalidad pesa un 30 % de la nota).
+
+| Idea | Hipótesis / justificación | Esfuerzo |
+|---|---|---|
+| Ajuste de umbral de confianza y NMS en val | Las predicciones ya están guardadas en `*_predictions.json`; no requiere reentrenar | Bajo |
+| Test-time augmentation (flips) | Los huevos no tienen orientación canónica, así que los flips no cambian la clase | Bajo |
+| Ensemble Faster R-CNN + YOLO con *Weighted Boxes Fusion* | Un two-stage y un one-stage cometen errores distintos | Medio |
+| `aug_v2`: activar `hue_saturation`/`channel_shuffle` | Las tinciones y el microscopio cambian el color entre imágenes | Medio |
+| Pérdida ponderada por clase o muestreo balanceado | Compensa el desequilibrio entre especies, si el EDA lo confirma | Medio |
+| Congelar capas del backbone vs. entrenar todo; LR distinto backbone/cabeza | Estrategia de *transfer learning* sugerida en el guion | Medio |
+| SGD vs. AdamW | Comparación de optimizadores sugerida en el guion | Medio |
+| Mayor resolución de entrada (p. ej. 800–1024 px) | Los huevos más pequeños podrían perder detalle a 640 px (comprobar en el EDA) | Medio-alto |
 
 ## Equipo
 
