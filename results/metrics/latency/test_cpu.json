@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-28T13:19:39",
+  "split": "test",
+  "device": "cpu",
+  "hardware": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "torch_threads": 10,
+  "batch_size": 1,
+  "warmup_images": 3,
+  "seed": 42,
+  "protocol": "modelos alternados imagen a imagen, imagen ya en memoria, mediana",
+  "models": {
+    "fasterrcnn_v2/baseline": {
+      "images": 50,
+      "median_ms": 3240.9902500075987,
+      "p25_ms": 2275.6281000038143,
+      "p75_ms": 8318.094850001216,
+      "p95_ms": 8598.384254997654,
+      "mean_ms": 5020.227596000768,
+      "fps_median": 0.30854767304457503
+    },
+    "yolov10s/baseline": {
+      "images": 50,
+      "median_ms": 265.40824997937307,
+      "p25_ms": 222.18760002579074,
+      "p75_ms": 533.0769999782206,
+      "p95_ms": 606.5678150131133,
+      "mean_ms": 355.9294999955455,
+      "fps_median": 3.7677803914449446
+    }
+  }
+}
