@@ -21,7 +21,8 @@ scripts/
 │   └── train_yolo.py
 └── evaluation/
     ├── evaluate_faster_rcnn.py
-    └── evaluate_yolo.py
+    ├── evaluate_yolo.py
+    └── benchmark_latency.py
 ```
 
 ## Entorno y pesos de los modelos
@@ -150,6 +151,17 @@ python scripts/evaluation/evaluate_yolo.py --split test
 ```
 
 Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la misma salida one-to-one sin NMS (confianza `0.001`, 100 detecciones) con los que se eligió el checkpoint, así que el mAP de val debe coincidir con `best_validation.json`. La latencia se mide en una pasada aparte con lote 1: preprocesado, red y postprocesado, sin la lectura de la imagen y sin las 3 primeras imágenes. Usa los mismos hilos de CPU que torch por defecto (Ultralytics los limita a 8), para compararla con Faster R-CNN medido en la misma máquina. [`05_yolov10s_test_analysis.ipynb`](../notebooks/05_yolov10s_test_analysis.ipynb) genera las figuras en `results/figures/yolov10s/<run_name>/`.
+
+## Comparación de latencias
+
+La latencia de las pasadas de evaluación varía mucho en un portátil (energía, temperatura). Para comparar modelos, [`evaluation/benchmark_latency.py`](evaluation/benchmark_latency.py) carga varios detectores y los alterna imagen a imagen, cambiando el orden en cada imagen, sobre las mismas imágenes de test (50 por defecto, semilla 42, más 3 de calentamiento). Todos usan los mismos hilos de CPU, lote 1 y la imagen ya en memoria. Guarda la mediana, p25, p75, p95 y media en `results/metrics/latency/<split>_<device>.json` y el tiempo de cada imagen en un CSV con el mismo nombre.
+
+```bash
+python scripts/evaluation/benchmark_latency.py
+python scripts/evaluation/benchmark_latency.py --model fasterrcnn_v2:baseline --model yolov10s:baseline --images 100
+```
+
+Entrena cada experimento donde quieras, pero mide todas las latencias en la misma máquina. Las mejoras que no cambian la arquitectura ni la inferencia (aumentos, muestreo, pérdidas) tienen la misma latencia que su baseline.
 
 ## Dashboard de entrenamiento
 
