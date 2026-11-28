@@ -156,7 +156,7 @@ python scripts/labeling/compare_train_augmentations.py --data-dir data/preproces
 | 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
 | 7. Evaluación de YOLOv10-S en val y test | `scripts/evaluation/evaluate_yolo.py --split {val,test}` | Los mismos archivos que el paso 4 en `results/metrics/yolov10s/<run>/` |
-| 8. Análisis de errores de YOLOv10-S | [`07_yolov10s_test_analysis.ipynb`](notebooks/07_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
+| 8. Análisis de errores de YOLOv10-S | [`06_yolov10s_test_analysis.ipynb`](notebooks/06_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
 | 9. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
 | 10. Comparar ambos detectores por variante | [Guía de Colab](#guía-paso-a-paso-en-google-colab) | Una ejecución y un nombre de run distintos por modelo y variante |
 
@@ -325,7 +325,7 @@ Los tiempos salen de [`benchmark_latency.py`](scripts/evaluation/benchmark_laten
 
 Una repetición del entrenamiento de Faster R-CNN con la misma configuración y semilla dio 0,657 de mAP en val frente a 0,663 ([`baseline_rerun_lucas/`](results/metrics/fasterrcnn_v2/baseline_rerun_lucas/README.md)). Diferencias de menos de unas 0,01 entre experimentos no son concluyentes.
 
-Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`07_yolov10s_test_analysis.ipynb`](notebooks/07_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`05_yolov10s_training.ipynb`](notebooks/05_yolov10s_training.ipynb). Las estrategias de mejora están pendientes.
+Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`06_yolov10s_test_analysis.ipynb`](notebooks/06_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`05_yolov10s_training.ipynb`](notebooks/05_yolov10s_training.ipynb). Las estrategias de mejora están pendientes.
 
 ## Estado del proyecto
 

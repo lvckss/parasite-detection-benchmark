@@ -152,7 +152,7 @@ python scripts/evaluation/evaluate_yolo.py --split val
 python scripts/evaluation/evaluate_yolo.py --split test
 ```
 
-Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la misma salida one-to-one sin NMS (confianza `0.001`, 100 detecciones) con los que se eligió el checkpoint, así que el mAP de val debe coincidir con `best_validation.json`. La latencia se mide en una pasada aparte con lote 1: preprocesado, red y postprocesado, sin la lectura de la imagen y sin las 3 primeras imágenes. Usa los mismos hilos de CPU que torch por defecto (Ultralytics los limita a 8), para compararla con Faster R-CNN medido en la misma máquina. [`07_yolov10s_test_analysis.ipynb`](../notebooks/07_yolov10s_test_analysis.ipynb) genera las figuras en `results/figures/yolov10s/<run_name>/`.
+Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la misma salida one-to-one sin NMS (confianza `0.001`, 100 detecciones) con los que se eligió el checkpoint, así que el mAP de val debe coincidir con `best_validation.json`. La latencia se mide en una pasada aparte con lote 1: preprocesado, red y postprocesado, sin la lectura de la imagen y sin las 3 primeras imágenes. Usa los mismos hilos de CPU que torch por defecto (Ultralytics los limita a 8), para compararla con Faster R-CNN medido en la misma máquina. [`06_yolov10s_test_analysis.ipynb`](../notebooks/06_yolov10s_test_analysis.ipynb) genera las figuras en `results/figures/yolov10s/<run_name>/`.
 
 ## Comparación de latencias
 
