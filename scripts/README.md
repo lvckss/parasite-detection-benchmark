@@ -161,7 +161,7 @@ Las predicciones salen de `CocoValidator`, el mismo letterbox cuadrado y la mism
 python scripts/training/demo_dashboard.py --output /tmp/dashboard-demo --delay 0
 ```
 
-Abre `/tmp/dashboard-demo/report.html` directamente en un navegador. La carpeta debe estar vacía. Para probar el modo LIVE, usa [`05_training_dashboard_demo.ipynb`](../notebooks/05_training_dashboard_demo.ipynb). Ambos entrenadores admiten `train_model(config, dashboard=dashboard)`; el historial CSV y los checkpoints siguen siendo los originales. [API, persistencia y pruebas](../src/parasite_detection/dashboard/README.md).
+Abre `/tmp/dashboard-demo/report.html` directamente en un navegador. La carpeta debe estar vacía. El modo LIVE se ve al entrenar desde los notebooks de cada modelo. Ambos entrenadores admiten `train_model(config, dashboard=dashboard)`; el historial CSV y los checkpoints siguen siendo los originales. [API, persistencia y pruebas](../src/parasite_detection/dashboard/README.md).
 
 ## Descarga y preparación del dataset
 

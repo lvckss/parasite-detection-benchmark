@@ -19,7 +19,7 @@ El uso es idéntico con `train_model` de Faster R-CNN. Omitir `dashboard` mantie
 
 El botón de sol/luna de la cabecera alterna entre modo claro y oscuro en LIVE y en el informe interactivo. Inicialmente sigue el tema de Jupyter o del sistema y recuerda la elección en el navegador cuando el almacenamiento local está disponible. El tema no modifica las métricas del experimento.
 
-La demo [05_training_dashboard_demo.ipynb](../../../notebooks/05_training_dashboard_demo.ipynb) usa datos sintéticos y permite comprobar las transiciones sin entrenar. También se puede generar un reporte desde terminal:
+Para comprobar las transiciones sin entrenar, se puede generar un reporte con datos sintéticos desde terminal:
 
 ```bash
 python scripts/training/demo_dashboard.py --output /tmp/dashboard-demo --delay 0

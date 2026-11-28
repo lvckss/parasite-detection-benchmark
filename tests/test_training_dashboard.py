@@ -32,16 +32,16 @@ class DashboardTests(unittest.TestCase):
             self.assertEqual(restored.state["phase"], "finished")
             self.assertEqual(restored.state["outcome"], "early_stopped")
             self.assertEqual(restored.state["best"]["epoch"], 3)
-            report = (directory / "report.html").read_text()
+            report = (directory / "report.html").read_text(encoding="utf-8")
             self.assertIn('type="module"', report)
             self.assertNotIn('<script src=', report)
             self.assertNotIn('cdn.', report)
             self.assertIn("data:image/png;base64,", report)
             self.assertIn("&lt;demo&gt;", restored.snapshot_html())
             # una copia visual obsoleta nunca sustituye a los valores del csv
-            state = json.loads((directory / "dashboard_state.json").read_text())
+            state = json.loads((directory / "dashboard_state.json").read_text(encoding="utf-8"))
             state["history"][-1]["map"] = 999
-            (directory / "dashboard_state.json").write_text(json.dumps(state))
+            (directory / "dashboard_state.json").write_text(json.dumps(state), encoding="utf-8")
             self.assertEqual(TrainingDashboard.from_run(directory).state["history"][-1]["map"], history[-1]["map"])
 
     def test_failure_keeps_previous_validations(self):
@@ -55,7 +55,7 @@ class DashboardTests(unittest.TestCase):
             self.assertIn("Error simulado", dashboard.state["error"])
             self.assertEqual(restored.state["phase"], "unknown")
             self.assertEqual(len(restored.state["history"]), 2)
-            self.assertNotIn("Error simulado", (directory / "report.html").read_text())
+            self.assertNotIn("Error simulado", (directory / "report.html").read_text(encoding="utf-8"))
             self.assertFalse(any(event.kind == "error" for event in dashboard.store.read()))
 
     def test_error_does_not_create_reports_or_change_saved_files(self):
