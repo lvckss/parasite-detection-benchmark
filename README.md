@@ -336,16 +336,15 @@ Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas 
 - Entorno reproducible con `uv`, descarga fijada del dataset y conversión a COCO/YOLO.
 - EDA y deduplicado del train frente a val/test (1484 → 1157 imágenes) para evitar fuga de datos.
 - Faster R-CNN v2: entrenamiento completo (todas las capas), validación con `val_loss`, parada temprana, evaluación en val/test y análisis de errores con figuras. **Baseline terminado.**
-- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`) y notebook de análisis de errores. **Baseline entrenado** (val mAP 0,613).
+- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`), evaluación en val/test y análisis de errores con figuras. **Baseline terminado** (test mAP 0,537).
+- Ambos baselines evaluados en la misma máquina y latencias comparadas con `benchmark_latency.py` (YOLOv10-S unas 12,6 veces más rápido).
 - Checkpoints de ambos baselines compartidos con Git LFS.
 - Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
 - Dashboard de entrenamiento compartido por ambos modelos.
 
 ### Pendiente
 
-- [ ] Evaluar el baseline de YOLOv10-S en test.
 - [ ] **`aug_v1` en ambos detectores** y comparación con su baseline ([guía de Colab](#guía-paso-a-paso-en-google-colab)).
-- [ ] Tiempos de inferencia de ambos modelos medidos en la **misma** máquina.
 - [ ] Al menos una o dos estrategias de mejora más allá de la augmentación (ver ideas).
 - [ ] Tabla y gráficas finales baseline vs. mejoras (mAP@0.5, mAP@[.5:.95], latencia).
 - [ ] Diapositivas (11–12 min, intervienen los tres) y ZIP `GRUPO_XX.zip`.
