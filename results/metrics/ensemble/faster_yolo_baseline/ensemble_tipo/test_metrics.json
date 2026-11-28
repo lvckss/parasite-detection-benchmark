@@ -1,0 +1,31 @@
+{
+  "model": "ensemble_tipo",
+  "members": [
+    "fasterrcnn_v2:baseline",
+    "yolov10s:baseline"
+  ],
+  "split": "test",
+  "params": {
+    "peso_2_microscopia": 0.75,
+    "peso_2_resto": 0.75,
+    "iou_thr": 0.7,
+    "skip_thr": 0.05
+  },
+  "images": 411,
+  "detections": 2440,
+  "map": 0.6345727811841188,
+  "map50": 0.7887287870622343,
+  "map75": 0.7561625665166473,
+  "map_small": 0.24724448635339719,
+  "map_medium": 0.41753325771706334,
+  "map_large": 0.7059985596301555,
+  "mar1": 0.4073538066369771,
+  "mar10": 0.7216408890554753,
+  "mar100": 0.7666564345479945,
+  "mar_small": 0.253125,
+  "mar_medium": 0.6070173553084002,
+  "mar_large": 0.8274141453174814,
+  "inference": {
+    "note": "latencia: suma de los modelos, el clasificador de tipo y la fusi\u00f3n; ver results/metrics/latency/"
+  }
+}

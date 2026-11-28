@@ -10,6 +10,7 @@ from contextlib import redirect_stdout
 from io import StringIO
 
 import numpy as np
+from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 
 # nombres de las 12 métricas que imprime cocoeval.summarize
@@ -61,6 +62,43 @@ def pr_curves(evaluator, ground_truth):
                 rows.append({"iou": iou, "category_id": category_id, "name": name,
                              "recall": round(float(recall), 2), "precision": float(value)})
     return rows
+
+
+def map_on_images(ground_truth, predictions, image_ids):
+    """map@[.5:.95] y map@0.5 sobre una lista de imágenes que puede repetir imágenes (para el bootstrap)
+
+    cada aparición de una imagen se renumera como una imagen nueva con sus cajas y sus predicciones
+    """
+    by_image = {}
+    for p in predictions:
+        by_image.setdefault(p["image_id"], []).append(p)
+    images, annotations, detections = [], [], []
+    for new_id, old_id in enumerate(image_ids, start=1):
+        images.append({**ground_truth.imgs[old_id], "id": new_id})
+        for a in ground_truth.imgToAnns[old_id]:
+            annotations.append({**a, "image_id": new_id, "id": len(annotations) + 1})
+        detections.extend({**p, "image_id": new_id} for p in by_image.get(old_id, []))
+    subset = COCO()
+    subset.dataset = {"images": images, "annotations": annotations, "categories": ground_truth.dataset["categories"]}
+    with redirect_stdout(StringIO()):
+        subset.createIndex()
+        if not detections:
+            return 0.0, 0.0
+        evaluator, _ = coco_evaluate(subset, detections, list(range(1, len(image_ids) + 1)))
+    return float(evaluator.stats[0]), float(evaluator.stats[1])
+
+
+def paired_bootstrap(ground_truth, predictions_a, predictions_b, image_ids, resamples=300, seed=42):
+    """intervalo del 95 % de map(a) - map(b) remuestreando las mismas imágenes para los dos"""
+    rng = np.random.default_rng(seed)
+    image_ids = list(image_ids)
+    differences = []
+    for _ in range(resamples):
+        sample = list(rng.choice(image_ids, size=len(image_ids), replace=True))
+        differences.append(map_on_images(ground_truth, predictions_a, sample)[0]
+                           - map_on_images(ground_truth, predictions_b, sample)[0])
+    low, high = np.percentile(differences, [2.5, 97.5])
+    return {"low": float(low), "high": float(high), "p_not_better": float(np.mean(np.array(differences) <= 0))}
 
 
 def latency_summary(latencies_s):

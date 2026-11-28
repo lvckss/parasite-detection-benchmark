@@ -19,7 +19,7 @@ from pycocotools.coco import COCO
 from parasite_detection import mapviz as mv
 
 # paleta de la guía de visualización: dos series categóricas, estados y tinta
-BLUE, ORANGE = "#2a78d6", "#eb6834"
+BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#00b894"
 GOOD, CRITICAL, WARNING = "#0ca30c", "#d03b3b", "#fab219"
 SURFACE, INK, INK_2, MUTED, GRID, AXIS = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
 SEQUENTIAL = ["#fcfcfb", "#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
@@ -206,6 +206,42 @@ def plot_training(history, path=None):
     ax_map.annotate(f"mejor época {int(best['epoch'])}\nmAP {best['map']:.3f} · mAP50 {best['map50']:.3f}",
                     (best["epoch"], best["map"]), xytext=(-12, -42), textcoords="offset points",
                     ha="right", fontsize=8.5, color=INK_2)
+    fig.tight_layout()
+    return save(fig, path)
+
+
+def plot_grouped_bars(table, title="", xlabel="", xlim=None, note="", path=None):
+    """barras horizontales agrupadas: filas = categorías, columnas = modelos (hasta tres, en orden fijo)
+
+    cada barra lleva su valor escrito, porque el tercer color tiene poco contraste con el fondo
+    """
+    colors = [BLUE, ORANGE, AQUA]
+    rows, models = list(table.index), list(table.columns)
+    height = 0.8 / len(models)
+    fig, ax = plt.subplots(figsize=(8, 0.62 * len(rows) * len(models) / 2 + 1.6))
+    y = np.arange(len(rows))
+    for k, model in enumerate(models):
+        positions = y - 0.4 + height * (k + 0.5)
+        # la separación de 2 px entre barras vecinas la da el borde del color del fondo
+        bars = ax.barh(positions, table[model], height=height, color=colors[k], label=model,
+                       edgecolor=SURFACE, linewidth=1.5)
+        for bar, value in zip(bars, table[model]):
+            # separación fija en puntos, para que no dependa de la escala del eje
+            ax.annotate(f"{value:.3f}", (bar.get_width(), bar.get_y() + bar.get_height() / 2),
+                        xytext=(4, 0), textcoords="offset points", va="center", fontsize=8.5, color=INK_2)
+    ax.set_yticks(y, rows)
+    ax.invert_yaxis()
+    ax.tick_params(axis="y", colors=INK)
+    ax.grid(axis="y", visible=False)
+    if xlim:
+        ax.set_xlim(*xlim)
+    ax.set_xlabel(xlabel)
+    # la leyenda va en su propia fila, entre el título y el gráfico
+    ax.set_title(title, pad=26)
+    ax.legend(loc="lower left", ncol=len(models), bbox_to_anchor=(0, 1.0), frameon=False,
+              borderaxespad=0.2, handlelength=1.2, columnspacing=1.4)
+    if note:
+        fig.text(0.01, -0.02, note, fontsize=8.5, color=MUTED)
     fig.tight_layout()
     return save(fig, path)
 

@@ -156,9 +156,10 @@ python scripts/labeling/compare_train_augmentations.py --data-dir data/preproces
 | 5. Análisis de errores y figuras | [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) | Curvas, matriz de confusión, desglose tipo TIDE y ejemplos en `results/figures/fasterrcnn_v2/<run>/` |
 | 6. Entrenamiento de YOLOv10-S | `scripts/training/train_yolo.py` | Checkpoints en `models/trained/yolov10s/<run>/` y métricas en `results/metrics/yolov10s/<run>/` |
 | 7. Evaluación de YOLOv10-S en val y test | `scripts/evaluation/evaluate_yolo.py --split {val,test}` | Los mismos archivos que el paso 4 en `results/metrics/yolov10s/<run>/` |
-| 8. Análisis de errores de YOLOv10-S | [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
-| 9. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
-| 10. Comparar ambos detectores por variante | [Guía de Colab](#guía-paso-a-paso-en-google-colab) | Una ejecución y un nombre de run distintos por modelo y variante |
+| 8. Análisis de errores de YOLOv10-S | [`06_yolov10s_test_analysis.ipynb`](notebooks/06_yolov10s_test_analysis.ipynb) | Las mismas figuras que el paso 5 en `results/figures/yolov10s/<run>/` |
+| 9. Ensemble de ambos detectores | `scripts/evaluation/evaluate_ensemble.py` y [`07_ensemble_analysis.ipynb`](notebooks/07_ensemble_analysis.ipynb) | WBF ajustado en val, métricas en `results/metrics/ensemble/<nombre>/` y figuras comparativas en `results/figures/ensemble/<nombre>/` |
+| 10. Crear una variante aumentada | `scripts/create_augmented_dataset.py` | Nuevas imágenes y anotaciones solo para train; val y test se copian sin cambios |
+| 11. Comparar ambos detectores por variante | [Guía de Colab](#guía-paso-a-paso-en-google-colab) | Una ejecución y un nombre de run distintos por modelo y variante |
 
 Los detalles de cada script están en [`scripts/README.md`](scripts/README.md). Todo usa la semilla 42. Las decisiones (época, umbral de confianza) se toman en validación, y test solo se mide.
 
@@ -318,6 +319,8 @@ Baselines con el train deduplicado, imágenes de 640 px y semilla 42; mejor chec
 | Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 3241 ms/img |
 | YOLOv10-S | val | 0,612 | 0,763 | 0,722 | — |
 | YOLOv10-S | test | 0,537 | 0,683 | 0,638 | 265 ms/img |
+| Ensemble (WBF) | val | 0,686 | 0,835 | 0,818 | — |
+| Ensemble (WBF) | test | 0,635 | 0,789 | 0,756 | 3507 ms/img |
 
 Todas las métricas se han calculado en el mismo portátil con `evaluate_faster_rcnn.py` y `evaluate_yolo.py` (`results/metrics/<modelo>/baseline/`). Ambos checkpoints se reproducen: Faster R-CNN da exactamente las métricas de su primera evaluación y YOLOv10-S da 0,612 en val frente a 0,613 al entrenar (CPU en FP32 frente a GPU).
 
@@ -325,7 +328,9 @@ Los tiempos salen de [`benchmark_latency.py`](scripts/evaluation/benchmark_laten
 
 Una repetición del entrenamiento de Faster R-CNN con la misma configuración y semilla dio 0,657 de mAP en val frente a 0,663 ([`baseline_rerun_lucas/`](results/metrics/fasterrcnn_v2/baseline_rerun_lucas/README.md)). Diferencias de menos de unas 0,01 entre experimentos no son concluyentes.
 
-Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb). Las estrategias de mejora están pendientes.
+Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`06_yolov10s_test_analysis.ipynb`](notebooks/06_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`05_yolov10s_training.ipynb`](notebooks/05_yolov10s_training.ipynb).
+
+**Mejora: ensemble de ambos detectores.** Fusiona las predicciones de Faster R-CNN y YOLOv10-S con *Weighted Boxes Fusion* (peso de YOLO 0,75, elegido en val). En test mejora a Faster R-CNN en +0,012 de mAP (IC 95 % [+0,000, +0,026]) con un 8 % más de latencia, sobre todo porque encuentra más huevos y ajusta mejor las cajas. Dar a YOLO un peso distinto según el tipo de imagen (clasificador entrenado con nuestras etiquetas manuales) no aportó. Decisiones y justificación en [`docs/decisiones-mejora-ensemble.md`](docs/decisiones-mejora-ensemble.md); resultados en [`07_ensemble_analysis.ipynb`](notebooks/07_ensemble_analysis.ipynb). Las demás estrategias de mejora están en curso.
 
 ## Estado del proyecto
 
@@ -341,6 +346,7 @@ Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas 
 - Checkpoints de ambos baselines compartidos con Git LFS.
 - Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
 - Dashboard de entrenamiento compartido por ambos modelos.
+- Mejora por ensemble (WBF) de ambos detectores, con comprobación de la ponderación por tipo de imagen: test mAP 0,635 frente a 0,623 de Faster R-CNN ([decisiones](docs/decisiones-mejora-ensemble.md)).
 
 ### Pendiente
 

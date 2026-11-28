@@ -1,0 +1,62 @@
+{
+  "members": [
+    "fasterrcnn_v2:baseline",
+    "yolov10s:baseline"
+  ],
+  "type_classifier": {
+    "loo_accuracy_4_types": 0.7887445887445887,
+    "loo_accuracy_microscopy_vs_rest": 0.8597402597402597
+  },
+  "selection": "map@[.5:.95] en validación",
+  "chosen": {
+    "ensemble_fijo": {
+      "peso_2": 0.75,
+      "iou_thr": 0.7,
+      "skip_thr": 0.05
+    },
+    "ensemble_tipo": {
+      "peso_2_microscopia": 0.75,
+      "peso_2_resto": 0.75,
+      "iou_thr": 0.7,
+      "skip_thr": 0.05
+    }
+  },
+  "val": {
+    "ensemble_fijo": {
+      "map": 0.6855211607897365,
+      "map50": 0.8353948941400059
+    },
+    "ensemble_tipo": {
+      "map": 0.6855211607897365,
+      "map50": 0.8353948941400059
+    }
+  },
+  "test": {
+    "ensemble_fijo": {
+      "map": 0.6345727811841188,
+      "map50": 0.7887287870622343,
+      "ic95_frente_a_fasterrcnn_v2:baseline": {
+        "low": 0.00042624928952363084,
+        "high": 0.026096629294169615,
+        "p_not_better": 0.015
+      }
+    },
+    "ensemble_tipo": {
+      "map": 0.6345727811841188,
+      "map50": 0.7887287870622343,
+      "ic95_frente_a_ensemble_fijo": {
+        "low": 0.0,
+        "high": 0.0,
+        "p_not_better": 1.0
+      }
+    },
+    "fasterrcnn_v2:baseline": {
+      "map": 0.6230204146060897,
+      "map50": 0.7843836711153268
+    },
+    "yolov10s:baseline": {
+      "map": 0.537137297109573,
+      "map50": 0.6825131801234994
+    }
+  }
+}
