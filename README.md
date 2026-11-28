@@ -309,21 +309,23 @@ Si Colab corta la sesión, repetir los pasos 1–4, recuperar la copia de Drive,
 
 Baselines con el train deduplicado, imágenes de 640 px y semilla 42; mejor checkpoint por mAP de validación. Las métricas mAP son de `pycocotools`.
 
-- **Faster R-CNN v2:** 20 épocas, lote 2, SGD con lr 0,0025, warmup y coseno.
+- **Faster R-CNN v2:** 20 épocas, lote 2, SGD con lr 0,0025, warmup y coseno; mejor época: 16. Entrenado con AMP en GPU.
 - **YOLOv10-S:** 100 épocas previstas, 60 completadas con parada temprana tras 20 sin mejora; mejor época: 40. Lote 8, SGD con lr 0,01, warmup de 3 épocas y coseno, sin aumentos de datos. Entrenado con AMP en una NVIDIA GeForce RTX 3080.
 
-| Modelo | Partición | mAP@[.5:.95] | mAP@0.5 | mAP@0.75 | Inferencia |
+| Modelo | Partición | mAP@[.5:.95] | mAP@0.5 | mAP@0.75 | Inferencia (CPU, lote 1, mediana) |
 |---|---|---|---|---|---|
 | Faster R-CNN v2 | val | 0,663 | 0,809 | 0,791 | — |
-| Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 2,1 s/img (CPU, lote 1) |
-| YOLOv10-S | val | 0,613 | 0,764 | — | 21,4 ms/img (RTX 3080, validación Ultralytics) |
-| YOLOv10-S | test | pendiente | — | — | — |
+| Faster R-CNN v2 | test | 0,623 | 0,784 | 0,745 | 3241 ms/img |
+| YOLOv10-S | val | 0,612 | 0,763 | 0,722 | — |
+| YOLOv10-S | test | 0,537 | 0,683 | 0,638 | 265 ms/img |
 
-Los tiempos de inferencia se han medido con hardware y protocolos distintos (CPU para Faster R-CNN y GPU para YOLO), por lo que no son directamente comparables. El mAP@0.75 de YOLO no está registrado en el resumen disponible; su evaluación en test está pendiente.
+Todas las métricas se han calculado en el mismo portátil con `evaluate_faster_rcnn.py` y `evaluate_yolo.py` (`results/metrics/<modelo>/baseline/`). Ambos checkpoints se reproducen: Faster R-CNN da exactamente las métricas de su primera evaluación y YOLOv10-S da 0,612 en val frente a 0,613 al entrenar (CPU en FP32 frente a GPU).
 
-Los resultados de YOLO están en [`best_validation.json`](results/metrics/yolov10s/baseline/best_validation.json), con la configuración en [`settings.json`](results/metrics/yolov10s/baseline/settings.json), la evolución por época en [`training.csv`](results/metrics/yolov10s/baseline/training.csv) y el informe en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb).
+Los tiempos salen de [`benchmark_latency.py`](scripts/evaluation/benchmark_latency.py), que alterna los dos modelos imagen a imagen sobre las mismas 50 imágenes de test en la misma CPU (Intel, 10 hilos), de modo que una ralentización de la CPU afecta a ambos por igual ([`test_cpu.json`](results/metrics/latency/test_cpu.json)). En la misma imagen, YOLOv10-S es unas 12,6 veces más rápido. Las cifras absolutas dependen de la máquina; con la CPU a pleno rendimiento fueron unos 2,3 s y 227 ms por imagen.
 
-Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb). Las estrategias de mejora están pendientes.
+Una repetición del entrenamiento de Faster R-CNN con la misma configuración y semilla dio 0,657 de mAP en val frente a 0,663 ([`baseline_rerun_lucas/`](results/metrics/fasterrcnn_v2/baseline_rerun_lucas/README.md)). Diferencias de menos de unas 0,01 entre experimentos no son concluyentes.
+
+Detalle por especie, curvas PR, análisis de errores y ejemplos en [`04_faster_rcnn_test_analysis.ipynb`](notebooks/04_faster_rcnn_test_analysis.ipynb) y [`05_yolov10s_test_analysis.ipynb`](notebooks/05_yolov10s_test_analysis.ipynb); la evolución del entrenamiento de YOLO, en [`04_yolov10s_training.ipynb`](notebooks/04_yolov10s_training.ipynb). Las estrategias de mejora están pendientes.
 
 ## Estado del proyecto
 
@@ -334,16 +336,15 @@ Referencia: [guion de la práctica](docs/guion_practica_deteccion.pdf) y [notas 
 - Entorno reproducible con `uv`, descarga fijada del dataset y conversión a COCO/YOLO.
 - EDA y deduplicado del train frente a val/test (1484 → 1157 imágenes) para evitar fuga de datos.
 - Faster R-CNN v2: entrenamiento completo (todas las capas), validación con `val_loss`, parada temprana, evaluación en val/test y análisis de errores con figuras. **Baseline terminado.**
-- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`) y notebook de análisis de errores. **Baseline entrenado** (val mAP 0,613).
+- YOLOv10-S: entrenador con el motor oficial de Ultralytics, evaluación COCO común con Faster R-CNN (`evaluate_yolo.py`), evaluación en val/test y análisis de errores con figuras. **Baseline terminado** (test mAP 0,537).
+- Ambos baselines evaluados en la misma máquina y latencias comparadas con `benchmark_latency.py` (YOLOv10-S unas 12,6 veces más rápido).
 - Checkpoints de ambos baselines compartidos con Git LFS.
 - Generador de datasets aumentados (`configs/augmentation.json`, inspirado en el paper de `docs/`), visor web de augmentaciones y etiquetador visual.
 - Dashboard de entrenamiento compartido por ambos modelos.
 
 ### Pendiente
 
-- [ ] Evaluar el baseline de YOLOv10-S en test.
 - [ ] **`aug_v1` en ambos detectores** y comparación con su baseline ([guía de Colab](#guía-paso-a-paso-en-google-colab)).
-- [ ] Tiempos de inferencia de ambos modelos medidos en la **misma** máquina.
 - [ ] Al menos una o dos estrategias de mejora más allá de la augmentación (ver ideas).
 - [ ] Tabla y gráficas finales baseline vs. mejoras (mAP@0.5, mAP@[.5:.95], latencia).
 - [ ] Diapositivas (11–12 min, intervienen los tres) y ZIP `GRUPO_XX.zip`.
